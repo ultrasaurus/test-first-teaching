@@ -1,1 +1,15 @@
 first assignment, in_words_spec.rb, and concept by Alex Chafee
+
+-------------------
+      Notes
+-------------------
+Homework time!
+
+sudo gem install rspec
+spec in_words_spec.rb
+
+Make it pass! Don't be too ambitious... just work on one spec at a time.
+
+BTW "spec" is another name for "test", and "RSpec" is a spec framework
+for Ruby. Should be pretty self-explanatory.
+
