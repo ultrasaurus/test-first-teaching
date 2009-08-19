@@ -1,0 +1,42 @@
+key ruby concepts
+
+  arithmetic operations
+  array
+  hash
+  string
+  functions
+  loops & iterators
+  modules
+  objects
+  closures
+  regexps
+  dynamic method definition
+    on classes
+    on instances
+  exceptions
+    rescue
+    ensure
+
+key rails concepts
+
+  Exceptions and reading the logs
+  MVC
+  REST
+  Migrations
+  Routes
+  Environments
+  Scaffolding
+  Generators
+  ActiveRecord
+    Base WTF
+    find method
+    Associations
+    what's the SQL?
+  Plugins
+    will_paginate
+  
+Rules
+  Always read the error!
+
+--------------
+
