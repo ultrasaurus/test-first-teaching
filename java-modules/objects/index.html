@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Objects in Java</title>
+  </head>
+
+  <body>
+    <h1>Objects in Java</h1>
+
+<h2>StockTest*:</h2>
+
+<p>
+
+Imagine you're writing a stock trading program.  The most important
+feature is to get a list of the user's current stock portfolio, and to
+calculate its value.  So we start off writing an object that
+encapsulates a single stock, with fields (also known as variables,
+properties, or members) for symbol, price per share, and number of
+shares.  We also want a method that computes the dollar value per
+stock (price per share x number of shares).
+
+<p>
+
+Use variables of type <tt>double</tt> for price and value.
+
+<p>
+
+Get the ball rolling as follows:
+<pre>cd objects
+javac StockTest0.java
+[then, when the above passes...]
+java Test StockTest0
+</pre>
+then repeat for StockTest1, StockTest2, etc.
+
+<p>
+
+<h3>Notes on individual tests:</h3>
+
+<b>testSetSymbol, testSetPrice, testSetNumShares</b>: write a straightforward
+property getter/setter for these three properties.
+
+<p>
+
+<b>testSetNumShares</b> also requires a calculator method, <b>getValue</b>,
+that computes the value of the stock by multiplying the price by the number
+of shares.
+
+<p>
+
+<b>testMultiArgumentConstructor</b>: a constructor is called when an object
+is first created (instantiated).  This is usually a good place to set
+the initial values of all properties.  Note that if you don't specify
+any constructor, the compiler always adds an implicit default
+constructor (one that takes no arguments); this means that if you
+<b>add</b> a non-default constructor, you will have to <b>also</b> add
+a default constructor if you want the old tests to work.  This can be
+done with a simple
+<pre>public Stock() { }</pre>
+
+<p>
+
+<b>testTotalValue</b>: This test calls a <b>static</b> method called
+<tt>totalValue</tt> that takes an <b>array of Stocks</b> as a
+parameter.  A static method is attached to the object class itself,
+but not to any specific instance of that object.  The declaration for
+the <tt>totalValue</tt> method should be something like 
+<pre>public static double totalValue(Stock[] stocks)</pre>
+
+<p>
+
+<b>testToString</b>: Every Java object has a method called toString.
+It returns a string representing that object and its values.  toString
+is supposed to be used for debugging, not for showing to an end-user,
+so its output does not have to be pretty.  However, the default
+implementation of toString is <b>really</b> not pretty, so most people
+<b>override</b> toString and write their own.  The testToString method
+asks you to implement toString following the standard idiom of
+printing the name of the class, then its properties surrounded by [
+square brackets ].
+
+<p>
+
+(When you call <tt>System.out.print(foo)</tt>, the <tt>print</tt>
+method actually invokes foo's <tt>toString</tt> method and prints that
+value.)
+
+<p>
+
+<b>testEquals</b>: Java has two main concepts of equality.  The first
+is, "Are these two object references literally the same instance?"
+That is embodied by the == operator.  The second is, "Are the
+<b>contents</b> of these two objects the same?"  That is emodied by
+the <tt>equals</tt> method.  This test assures that two separate
+objects, created with the same values, are truly counted as equal.
+
+<p>
+
+<b>testNotEquals</b>: This debugs your equals method, making sure that
+you are comparing all values and so forth.
+
+
+<h2>PolymorphismTest*:</h2>
+
+Polymorphism is the object-oriented property whereby two objects of
+different classes can be treated identically, at least to a certain
+extent.  Polymorphism is implemented in Java in two ways:
+<b>inheritance</b> and <b>interfaces</b>.  To implement these tests,
+you must first create an interface (or a superclass) called
+<tt>Asset</tt>, then make your Stock object <b>implement</b> (or
+<b>extend</b>) the Asset parent.  The only thing an Asset
+needs to do, for present purposes, is return its value, so Asset
+will only need a <tt>getValue</tt> method.
+
+<p>
+
+You will then create another type of asset, a Savings Account.
+Then you will see how useful polymorphism is -- it
+allows you to (very slightly) change your totalValue method so it
+works on any type of asset, not just stocks.
+
+<p>
+
+(From an object-oriented design point of view, this new totalValue
+method will be slightly out-of-place.  It's still in the Stock class,
+but is not restricted to Stocks.  We are about to clean this up by
+making a new object, Portfolio, that is devoted to holding collections
+of assets.)
+
+<p>
+
+<h2>PortfolioTest*:</h2>
+
+Finally, we will make a Portfolio object, responsible for holding a
+group of assets.  Here let's not worry too much about making this
+object robust -- we will do that later, in the Collections lab.  For
+now, just make sure it will work for a collection of a few
+assets.
+
+<h2>Bonus: Refactoring Lesson</h2>
+
+Once you are done with the other labs, <a
+href="refactoring.html">click here for a refactoring lesson</a>.
+
+
+
+    <hr> 
+
+    All contents Copyright (C) 2002-3 by Alex Chaffee and Purple
+    Technology.  All rights reserved.  Please do not distribute
+    without permission.  For more information, contact
+    alex@purpletech.com.
+
+    <hr>
+    <address><a href="mailto:alex@stinky.com">Alex Chaffee</a></address>
+<!-- Created: Wed Jul 17 18:15:59 PDT 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Jul 18 15:13:07 PDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Java GUI with Swing</title>
+  </head>
+
+  <body>
+    <h1>Java GUI with Swing</h1>
+
+<p>
+
+In this exercise we will create a simple Calculator GUI using Swing.
+Here is a screen shot:
+
+<p><center>
+<img src="calculator.gif">
+</center>
+
+<p>
+
+It is difficult to write tests for a GUI.  Here we will test as many
+aspects of the GUI as we can "on the inside" -- for example, we will
+test that when you click the "Add" button, the correct sum is
+placed inside the "Result" text field -- but we will not try to make
+sure that the buttons and fields are visible, or "look good".
+
+<p>
+To view the panel yourself, give your CalculatorPanel a main() method:
+
+<pre>
+	public static void main(String[] args)
+	{
+		JPanel p = new CalculatorPanel();
+		JFrame f = new JFrame();
+		f.getContentPane().add(p);
+		f.setSize(350,200);
+		f.setVisible(true);
+	}
+</pre>
+
+<h2>CalculatorTest</h2>
+
+<b>testIsJPanel</b> First, we must create an object named CalculatorPanel that is
+a (extends) JPanel.
+
+<p>
+<b>testTextWidgets</b> Next, we give it three text fields (x, y, and answer).
+This test merely checks that the fields exist.
+
+<p>
+<b>testButtonWidget</b> Likewise, this test checks that the getAddButton
+method returns some button.
+
+<p>
+<b>testAdd</b> This tests the functional heart of our calculator.  To make
+it pass, you must assure that when the add button is clicked, the correct
+value is placed in the answer field.  (Pay attention to converting between
+Strings and ints!)
+
+<p>
+<b>testError</b> Let's add some error checking!  If there are illegal parameters
+in one of the text fields, it should display the string "error" in the answer
+field.
+
+<p>
+<b>testLayout</b> merely asserts that the panel has a FlowLayout as its Layout
+Manager.
+
+<h2>SwingMultiplyTest*</h2>
+<p>
+<b>testMultiply</b> Extra credit!  Add a "Multiply" button and make it work.
+
+<h2></h2>
+<p>
+<b></b>
+
+
+
+
+
+    <hr> 
+
+    All contents Copyright (C) 2002 by Alex Chaffee and Purple
+    Technology.  All rights reserved.  Please do not distribute
+    without permission.  For more information, contact
+    alex@purpletech.com.
+
+
+
+    <hr>
+    <address><a href="mailto:alex@stinky.com">Alex Chaffee</a></address>
+<!-- Created: Wed Jul 17 18:15:59 PDT 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Jul 18 15:13:07 PDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

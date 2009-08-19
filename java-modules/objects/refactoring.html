@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Bonus: Refactoring Lesson</title>
+  </head>
+
+  <body>
+    <h1>Bonus: Refactoring Lesson</h1>
+
+    <p>
+      While we were creating the Stock and Portfolio objects
+      test-first, we needed a totalValue method.  For simplicity's
+      sake, we put it inside the Stock class.  But now that we have a
+      Portfolio object, we see that <tt>Stock.totalValue</tt> is not
+      useful any more.  Furthermore, the code inside
+      <tt>Stock.totalValue</tt> is nearly identical to the code inside
+      <tt>Portfolio.getTotalValue</tt>.  There is a simple three-stage
+      refactoring that will remove this redundancy and leave us with
+      cleaner code that is easier to understand, maintain, and
+      improve.
+    </p>
+    <p>
+      Go to <a href="http://www.refactoring.com/">Martin Fowler's
+      Refactoring Site</a> to learn more about Refactoring.
+    </p>
+
+    <h2>Step 1: Move method</h2>
+    <p>
+      Move the method totalValue from Stock.java to Portfolio.java.
+    </p>
+    <p>
+      This will make Portfolio.java look something like this:
+    </p>
+    <pre>
+...
+    public double getTotalValue()
+    {
+        double total = 0;
+        for (int i=0; i&lt;c; ++i)
+        {
+            total += assets[i].getValue();
+        }
+        return total;
+    }
+
+    public static double totalValue(Asset[] assets)
+    {
+        double total = 0;
+        for (int i=0; i&lt;c; ++i)
+        {
+            total += assets[i].getValue();
+        }
+        return total;
+    }
+...
+    </pre>
+    <p>
+      If you are not using a Refactoring Tool (like IDEA or Eclipse)
+      then you will have to manually go through your source code, find
+      all references to <tt>Stock.totalValue()</tt>, and change them
+      to call <tt>Portfolio.totalValue</tt> instead.  (Yes, this means
+      changing it in tests as well.  (A Refactoring Tool will take
+      care of this sort of tedious change for you.)  Once you've made
+      this change, recompile and run all tests.  To be sure you caught
+      them all, you may want to delete all *.class files -- this will
+      force javac to recompile every single source file.
+    </p>
+    <h2>Step 2: Merge Methods</h2>
+    <p>
+      Notice that the contents of the two methods are nearly
+      identical.  We can define one in terms of the other, unifying
+      them as follows:
+    </p>
+    <pre>
+    public static double totalValue(Asset[] assets)
+    {
+        return new Portfolio(assets).getTotalValue();
+    }
+    </pre>
+    <p>
+      While this may seem slightly less efficient (we need to create a
+      new Portfolio object each time), this will only become visible
+      if this method happens to be called inside a critical loop.  
+    </p>
+    <p>
+      After you make the change, compile and re-run all the tests to
+      make sure the two methods really were equivalent.
+    </p>
+
+    <h2>Step 3: Inline method (optional)</h2>
+    <p>
+      The static totalValue method is now almost useless.  If you
+      like, you can make it go away entirely by replacing every call
+      to
+    </p>
+<pre>Portfolio.totalValue(x)</pre>
+    <p>
+      with
+    </p>
+<pre>new Portfolio(x).getTotalValue()</pre>
+    <p>
+      elsewhere in your code.  Once you have done that for all
+      callers, you may delete the static totalValue method altogether.
+      Then do a clean recompile (to make sure you caught all the
+      references).
+    </p>
+
+    <hr>
+    <address><a href="mailto:alex@stinky.com">Alex Chaffee</a></address>
+<!-- Created: Thu Jul 18 14:24:21 PDT 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Jul 18 14:56:34 PDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

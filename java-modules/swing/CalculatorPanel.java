@@ -1,0 +1,89 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class CalculatorPanel extends JPanel
+{
+	private JTextField textX = new JTextField(10);
+		
+	private JTextField textY = new JTextField(10);
+		
+	private JLabel textAnswer = new JLabel("?");
+
+    private  JButton buttonAdd = new JButton("Add");
+
+    private  JButton buttonMultiply = new JButton("Multiply");
+
+	public JTextField getXTextField() { return textX; }
+	
+	public JTextField getYTextField() { return textY; }
+	
+	public JLabel getAnswerField() { return textAnswer; }
+
+    public JButton getAddButton() { return buttonAdd; }
+
+    public JButton getMultiplyButton() { return buttonMultiply; }
+
+	public CalculatorPanel()
+	{
+		this.setLayout(new FlowLayout());
+		add(new JLabel("x="));
+		this.add(textX);
+		add(new JLabel("y="));
+		this.add(textY);
+        this.add(buttonAdd);
+        this.add(buttonMultiply);
+		this.add(textAnswer);
+
+        buttonAdd.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                performAdd();
+            }
+        });
+
+        buttonMultiply.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                performMultiply();
+            }
+        });
+	}
+
+    private void performMultiply()
+    {
+        try {
+            int x = new Integer(textX.getText().trim()).intValue();
+            int y = new Integer(textY.getText().trim()).intValue();
+            int product = x*y;
+            textAnswer.setText("" + product);
+        }
+        catch (NumberFormatException ex)
+        {
+            textAnswer.setText("error");
+        }
+    }
+
+    public void performAdd()
+	{
+		try {
+			int x = new Integer(textX.getText().trim()).intValue();
+			int y = new Integer(textY.getText().trim()).intValue();
+			int sum = x+y;
+			textAnswer.setText("" + sum);
+		}
+		catch (NumberFormatException ex)
+		{
+			textAnswer.setText("error");
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		JPanel p = new CalculatorPanel();
+		JFrame f = new JFrame();
+		f.getContentPane().add(p);
+		f.setSize(350,200);
+		f.setVisible(true);
+	}
+}

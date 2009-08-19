@@ -1,0 +1,21 @@
+
+--- Using Maps:
+
+Map salaries = new HashMap();
+
+salaries.put("Alex", new Double(100.00));
+salaries.put("John", new Double(2200.02));
+
+Double alexsSalary = (Double)salaries.get("Alex");
+
+
+Iterator i = salaries.keySet().iterator();
+while (i.hasNext())
+{
+   String name = (String)i.next();
+   Double value = (Double)salaries.get(name);
+
+   ...
+}
+
+

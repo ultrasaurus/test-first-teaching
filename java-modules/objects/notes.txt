@@ -1,0 +1,21 @@
+
+ Iterator i = list.iterator();
+ while (i.hasNext())
+ {
+   Object o = i.next();
+  
+   if (o instanceof Dog)
+   {
+     Dog d = (Dog)o;
+
+   }
+
+   if (o.getClass().getName().equals("com.foo.Dog"))
+   {
+      
+   }
+
+
+ }
+
+

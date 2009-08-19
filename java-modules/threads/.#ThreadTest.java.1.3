@@ -1,0 +1,70 @@
+
+public class ThreadTest extends Test
+{
+    public void testAccountConstructor()
+    {
+        Account account = new Account("Joe", 100);
+        assertEquals(100, account.getBalance());
+        assertEquals("Joe", account.getName());
+    }
+
+    public void testDeposit()
+    {
+        Account account = new Account("Joe", 100);
+        account.deposit(50);
+        assertEquals(150, account.getBalance());
+    }
+
+    public void testWithdraw()
+    {
+        Account account = new Account("Joe", 100);
+        account.withdraw(25);
+        assertEquals(75, account.getBalance());
+    }
+
+    public void testDepositor() throws InterruptedException
+    {
+        Account account = new Account("Joe", 0);
+        Thread depositor = new Depositor(account, 2, 1000);
+        depositor.start();
+        depositor.join();
+        assertEquals(2000, account.getBalance());
+    }
+
+    public void testDepositorReturnsCount() throws InterruptedException
+    {
+        Account account = new Account("Joe", 0);
+        Depositor depositor = new Depositor(account, 1, 1000);
+        depositor.start();
+        depositor.join();
+        assertEquals(1000, depositor.getCount());
+    }
+
+    public void testDepositorIsAsynchronous() throws InterruptedException
+    {
+        Account account = new Account("Joe", 0);
+        int reps = 1000000;
+        Depositor depositor = new Depositor(account, 1, reps);
+        depositor.start();
+        while (depositor.getCount() == 0)
+        {
+            Thread.yield();
+        }
+        assertTrue(depositor.getCount() < reps);
+        depositor.join();
+    }
+
+    public void testThreadSafe() throws InterruptedException
+    {
+        int REPS = 2500000;
+        Account account = new Account("Joe", 0);
+        Thread a = new Depositor(account, 1, REPS);
+        Thread b = new Depositor(account, 1, REPS);
+        a.start();
+        b.start();
+        a.join();
+        b.join();
+        assertEquals(REPS * 2, account.getBalance());
+    }
+
+}

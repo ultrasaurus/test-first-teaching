@@ -1,0 +1,50 @@
+--- converting a float to a string:
+
+float f = 1234.56;
+String x = ""+f;
+        = new StringBuffer().append(f).toString();
+  	= new Float(f).toString();
+
+
+--- using a stringbuffer: (A) and (B) are literally equivalent (they
+    compile to more or less the same bytecode)
+
+(A) 
+
+String dog = "My" + " dog " + "has fleas!";
+System.out.println(dog);
+
+(B) 
+
+StringBuffer buf = new StringBuffer();
+
+buf.append("My");
+buf.append(" dog ");
+buf.append("has fleas!");
+
+String dog = buf.toString();
+
+System.out.println(dog);
+
+--- The following are *not* equivalent -- (A) is significantly slower
+    and more memory-intensive
+
+(A)
+
+String nums = "";
+for (int i=0; i<100; ++i) 
+{
+	nums = nums + i + ",";
+}
+System.out.println(nums);
+
+(B)
+
+StringBuffer buf = new StringBuffer();
+for (int i=0; i<100; ++i) 
+{
+	buf.append(i);
+	buf.append(",");
+}
+String nums = buf.toString();
+System.out.println(nums);
