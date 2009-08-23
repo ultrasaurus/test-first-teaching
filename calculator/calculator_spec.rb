@@ -7,7 +7,7 @@ describe Calculator do
   end
 
   it "adds 0 and 0" do
-    @calculator.add(2,2).should == 4
+    @calculator.add(0,0).should == 0
   end
 
   it "adds 2 and 2" do
