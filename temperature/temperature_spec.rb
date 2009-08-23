@@ -36,16 +36,15 @@ describe Temperature do
       @temperature.ctof(100).should == 212
     end
 
-    # sigh...
-    # expected: 98.6,
-    #      got: 98.6 (using ==)
-    # it "converts body temperature" do
-    #   @temperature.ctof(37).should == 98.6
-    # end
-    
     it "converts arbitrary temperature" do
       @temperature.ctof(20).should == 68
     end
+
+    it "converts body temperature" do
+       t = @temperature.ctof(37)
+       (t*10).round.should == 986
+    end
+    
     
   end
 
