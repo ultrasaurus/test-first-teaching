@@ -42,7 +42,7 @@ describe Temperature do
 
     it "converts body temperature" do
        t = @temperature.ctof(37)
-       (t*10).round.should == 986
+       (t*10).round.should == 986 # see http://www.ruby-forum.com/topic/169330#742994
     end
     
     
