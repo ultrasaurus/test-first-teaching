@@ -26,7 +26,7 @@ class PigLatinTest < Test::Unit::TestCase
 
     def test_multiple_words
         s = translate("the quick brown fox")
-        assert_equal("ethay ickquy ownbray oxfay", s,
+        assert_equal("ethay ickquay ownbray oxfay", s,
             "'the quick brown fox' translation failed")
     end
 
