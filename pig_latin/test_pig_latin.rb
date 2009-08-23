@@ -23,7 +23,12 @@ class PigLatinTest < Test::Unit::TestCase
         s = translate("eat pie")
         assert_equal("eatay iepay", s, "'eat pie' translation failed")
     end
-
+    
+    def test_qu_counts_as_a_consonant
+        s = translate("quiet")
+        assert_equal("ietquay", s, "'quiet' translation failed")
+    end
+    
     def test_multiple_words
         s = translate("the quick brown fox")
         assert_equal("ethay ickquay ownbray oxfay", s,
