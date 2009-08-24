@@ -28,7 +28,7 @@ A **Testing Framework** is a tool or library that provides a backdrop for writin
 
 **Test-First Teaching** follows the example of Test-First Development, but with an educational twist. In Test-First Teaching, the student begins with a single unit test (written by the teacher). In order to implement the test, the student has to create source code from scratch. The student then tries to compile and run the test; if the test cannot compile, or if the test runs and fails, then the student must go and fix his error. He then moves on to the next test in the lesson. 
 
-##Why Test-First Training?
+## Why Test-First Training?
 
 In traditional programming exercises, you are either given a fairly large task and asked to implement the whole thing, or you are provided with "skeleton code" -- source code that has been eviscerated to remove key sections, which you are asked to fill in.
 
@@ -57,7 +57,13 @@ Perhaps the most important aspect of test-first teaching is that it teaches the 
         alias spec="--color --format nested"
 
 ## How To Use These Exercises
-Each directory has a spec file.  You will write all the code to make it pass . To walk through this process there are detailed instructions in the index.md file in the "hello" directory.
 
+Each directory has a spec file. You will write all the code to make it pass. 
 
+To walk through this process there are detailed instructions in the index.md file in the "hello" directory.
+
+## Related Projects
+
+* [Ruby Koans](http://github.com/edgecase/ruby_koans)
+* [Ruby Mission](http://github.com/alexch/mission)
 
