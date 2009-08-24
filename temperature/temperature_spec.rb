@@ -41,10 +41,11 @@ describe Temperature do
     end
 
     it "converts body temperature" do
-       t = @temperature.ctof(37)
-       (t*10).round.should == 986 # see http://www.ruby-forum.com/topic/169330#742994
+      @temperature.ctof(37).should be_close(98.6, 0.1)
+      # Why do we need to use be_close? 
+      # See http://www.ruby-forum.com/topic/169330
+      # and http://groups.google.com/group/rspec/browse_thread/thread/f3ebbe3c313202bb
     end
-    
     
   end
 
