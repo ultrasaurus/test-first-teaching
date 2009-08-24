@@ -1,10 +1,12 @@
 # key ruby concepts
 * objects
-* methods (functions)
+  * methods (functions)
+  * Everything has a value
 * arithmetic operations
 * string
 * array
 * hash
+* symbols
 * loops & iterators
 * modules
 * closures
