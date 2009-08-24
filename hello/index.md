@@ -1,3 +1,9 @@
+## Open a terminal in this directory
+
+    cd hello
+
+This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.
+
 ## Run the spec
 
     spec hello_spec.rb
