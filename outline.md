@@ -9,7 +9,7 @@
 * symbols
 * loops & iterators
 * modules
-* closures
+* blocks
 * regexps
 * dynamic method definition
   * on classes
