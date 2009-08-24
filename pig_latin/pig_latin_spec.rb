@@ -1,14 +1,14 @@
-require 'pig_latin'
+require "#{File.dirname(__FILE__)}/pig_latin"
 
 describe "#translate" do
   include PigLatinTranslator
 
-  it "should translate a simple word: nix" do
+  it "should translate a simple word" do
     s = translate("nix")
     s.should == "ixnay"
   end
 
-  it "should translate a word beginning with a vowel: apple" do
+  it "should translate a word beginning with a vowel" do
     pending
     s = translate("apple")
     s.should == "appleay"
@@ -31,4 +31,5 @@ describe "#translate" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"
   end
+
 end
