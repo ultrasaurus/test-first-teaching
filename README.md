@@ -1,13 +1,22 @@
 #Welcome to Test-First Teaching!
 
-## Credits
+**Test-First Teaching** follows the example of Test-Driven Development (see below), but with an educational twist. In Test-First Teaching, the student begins with a single unit test (written by the teacher). In order to implement the test, the student has to create source code from scratch. The student then tries to compile and run the test; if the test cannot compile, or if the test runs and fails, then the student must go and fix his error. He then moves on to the next test in the lesson. 
 
-* Concept by Alex Chaffee
-* Exercises by Alex Chaffee, Sarah Allen
-* Early quality assurance by Sumiki, Dimitri, Liah, Michael, and Brendan
+## Why Test-First Teaching?
 
-## What is Test-First Teaching?
+In traditional programming exercises, you are either given a fairly large task and asked to implement the whole thing, or you are provided with "skeleton code" -- source code that has been eviscerated to remove key sections, which you are asked to fill in.
 
+"Large task" exercises are often challenging to students because of their sheer size. Many lines of code need to be written before you receive any positive reinforcement. This can be frustrating to beginners, and boring for advanced students.
+
+"Skeleton code" exercises are also frustrating. The task of the student should be to figure out how to write code that will accomplish the given task. With skeleton code, you are first presented with the task of figuring out what the original author was trying to do; of reading through the code (often littered with idiosyncratic idioms and obscure comments); and then of trying to implement just one part of the algorithm, without necessarily understanding the larger picture. If the fill-in-the-blank code section is too complicated, the student may never complete the assignment; if it's too simple, no learning may be gained by the exercise.
+
+Finally, in both types of traditional exercises, as a student you don't really know when you are finished! Sometimes, you will succeed in the task, but neglect to print the results, and will keep at it, believing you are still missing something; other times, you might write code that seems to work but is crucially flawed in some way or another. This is one of the most powerful features of test-first development -- you code until the test passes, and then you stop coding. The test provides a map, informing you of where to begin, and where to end.
+
+Test-first teaching is appropriate for both local and remote use. Students in a classroom may rely on classmates or teachers for guidance; but if alone, the tests provide some measure of feedback and guidance (although unit tests can never actually debug and fix the code).
+
+Perhaps the most important aspect of test-first teaching is that it teaches the whole process, from opening a new file in a text editor to compiling and running. At the end of the day, the students can say, "At least I know how to write a program." Many exercises, especially skeletons but also those based on tools and toy problems, end up skipping the fundamentals that are vital not just for coding on a day-to-day basis, but also for cementing the higher-level concepts into habits and skills. 
+
+## What is Unit Testing and Test-Driven Development (TDD)?
 **Unit Testing** refers to writing a set of functions that sit next to a given module of program code. These functions run a series of tests that assure, more-or-less thoroughly, that the program code performs as it is supposed to.
 
 For example, assume there is a function called add that takes two integers as parameters, adds them together, and returns their sum. There might be one unit test that calls add with 2 and 3, and makes sure the result is 5. There might be additional unit tests that "push the envelope" in various other ways, testing its behavior with large numbers, negative numbers, illegal parameters (e.g. strings), and so forth.
@@ -25,22 +34,6 @@ A **Testing Framework** is a tool or library that provides a backdrop for writin
 * Test::Unit, almost identical to JUnit. is included with Ruby
 * shoulda, which can be used as an extension Test::Unit, provides more readable tests and allows you to write less test code
 * RSpec, which is used in this project, has more concise syntax and can be used in the same project, but creates a separate suite of tests, called "specs"
-
-**Test-First Teaching** follows the example of Test-First Development, but with an educational twist. In Test-First Teaching, the student begins with a single unit test (written by the teacher). In order to implement the test, the student has to create source code from scratch. The student then tries to compile and run the test; if the test cannot compile, or if the test runs and fails, then the student must go and fix his error. He then moves on to the next test in the lesson. 
-
-## Why Test-First Training?
-
-In traditional programming exercises, you are either given a fairly large task and asked to implement the whole thing, or you are provided with "skeleton code" -- source code that has been eviscerated to remove key sections, which you are asked to fill in.
-
-"Large task" exercises are often challenging to students because of their sheer size. Many lines of code need to be written before you receive any positive reinforcement. This can be frustrating to beginners, and boring for advanced students.
-
-"Skeleton code" exercises are also frustrating. The task of the student should be to figure out how to write code that will accomplish the given task. With skeleton code, you are first presented with the task of figuring out what the original author was trying to do; of reading through the code (often littered with idiosyncratic idioms and obscure comments); and then of trying to implement just one part of the algorithm, without necessarily understanding the larger picture. If the fill-in-the-blank code section is too complicated, the student may never complete the assignment; if it's too simple, no learning may be gained by the exercise.
-
-Finally, in both types of traditional exercises, as a student you don't really know when you are finished! Sometimes, you will succeed in the task, but neglect to print the results, and will keep at it, believing you are still missing something; other times, you might write code that seems to work but is crucially flawed in some way or another. This is one of the most powerful features of test-first development -- you code until the test passes, and then you stop coding. The test provides a map, informing you of where to begin, and where to end.
-
-Test-first teaching is appropriate for both local and remote use. Students in a classroom may rely on classmates or teachers for guidance; but if alone, the tests provide some measure of feedback and guidance (although unit tests can never actually debug and fix the code).
-
-Perhaps the most important aspect of test-first teaching is that it teaches the whole process, from opening a new file in a text editor to compiling and running. At the end of the day, the students can say, "At least I know how to write a program." Many exercises, especially skeletons but also those based on tools and toy problems, end up skipping the fundamentals that are vital not just for coding on a day-to-day basis, but also for cementing the higher-level concepts into habits and skills. (For a Java example, if you are always provided with a skeleton main() method, you may end up never memorizing the cryptic but essential incantation, "public static void main(String[] args)"). 
 
 ## Setup
 
@@ -66,4 +59,11 @@ To walk through this process there are detailed instructions in the index.md fil
 
 * [Ruby Koans](http://github.com/edgecase/ruby_koans)
 * [Ruby Mission](http://github.com/alexch/mission)
+* [RailsBridge](http://groups.google.com/group/railsbridge)
+
+## Credits
+
+* Concept by Alex Chaffee
+* Exercises by Alex Chaffee, Sarah Allen
+* Early quality assurance by Sumiki, Dimitri, Liah, Michael, and Brendan
 
