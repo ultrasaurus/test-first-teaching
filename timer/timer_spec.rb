@@ -1,7 +1,7 @@
 require 'timer'
 
 describe "Timer" do
-  before (:each) do
+  before(:each) do
     @timer = Timer.new()
   end
 
