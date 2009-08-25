@@ -12,7 +12,6 @@ class Fixnum
       if millions > 0
         numOutput = numOutput + "#{millions.in_words} million" 
         number = number - (millions * 1000000)
-        puts number
         if number > 0
           numOutput += ' '
         end
@@ -25,7 +24,6 @@ class Fixnum
       if thousands > 0
         numOutput = numOutput + "#{thousands.in_words} thousand" 
         number = number - (thousands * 1000)
-        puts number
         if number > 0
           numOutput += ' '
         end
