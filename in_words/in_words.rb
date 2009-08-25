@@ -18,7 +18,6 @@ class Fixnum
       end
     end
 
-
     if number > 999
       thousands = number / 1000
       if thousands > 0
