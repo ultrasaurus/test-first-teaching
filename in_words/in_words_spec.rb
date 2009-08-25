@@ -74,4 +74,11 @@ describe Fixnum do
   it "reads billions" do
     1234567890.in_words.should == 'one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety'
   end
+  
+  it "reads trillions" do
+    1000000000000.in_words.should == 'one trillion'
+    1000000000001.in_words.should == 'one trillion one'
+    1888259040036.in_words.should == 'one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six'
+  end
+  
 end
