@@ -1,11 +1,6 @@
+require "in_words"
 require "rubygems"
 require "spec"
-
-class Fixnum
-  def in_words
-    self.to_s
-  end
-end
 
 describe Fixnum do
 

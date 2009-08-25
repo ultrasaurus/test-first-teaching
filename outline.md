@@ -1,43 +1,10 @@
-# key ruby concepts
-* objects
-  * methods (functions)
-  * Everything has a value
-* arithmetic operations
-* string
-* array
-* hash
-* symbols
-* loops & iterators
-* modules
-* blocks, Proc
-* regexps
-* dynamic method definition
-  * on classes
-  * on instances
-  * method_missing
-* exceptions
-  * rescue
-  * ensure
-
-# key rails concepts
-* Exceptions and reading the logs
-* MVC
-* REST
-* Migrations
-* Routes
-* Environments
-* Scaffolding
-* Generators
-* ActiveRecord
-  * Base WTF
-  * find method
-  * Associations
-  * what's the SQL?
-* Plugins
- * will_paginate
-
-# Rules
-* Always read the error!
-
+# Outline of Tests 
+* **hello** gives you a feel of how to use these tests and you will write your first class.  See [hello/index.md](hello/index.md) for detailed instructions.
+* **temperature**
+  Write another class and do some basic math
+* **in words**
+* **calculator** introduces a little more math, and you'll need to iterate
+* ** withig Latin** lets you manipulate strings
+* **blocks** introduces block syntax
 
 
