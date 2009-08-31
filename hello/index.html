@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
+    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+<html xmlns:svg='http://www.w3.org/2000/svg' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head><meta content='application/xhtml+xml;charset=utf-8' http-equiv='Content-type' /><title></title></head>
+<body>
+<h2 id='open_a_terminal_in_this_directory'>Open a terminal in this directory</h2>
+
+<pre><code>cd hello</code></pre>
+
+<p>This directory is the starting point for this exercise. It contains a spec file and you&#8217;ll be adding a ruby file to (eventually) make the specs pass.</p>
+
+<h2 id='run_the_spec'>Run the spec</h2>
+
+<pre><code>spec hello_spec.rb</code></pre>
+
+<h2 id='watch_it_fail'>Watch it fail</h2>
+
+<p>You should see an error. Don&#8217;t just ignore it! Try to read it and figure out what it&#8217;s telling you. Somewhere on the first line it should say something like</p>
+
+<pre><code>no such file to load -- test-first-teaching/hello/hello (LoadError)</code></pre>
+
+<p>That means that it is looking for a file called &#8220;hello.rb&#8221; and can&#8217;t find it.</p>
+
+<h2 id='create_hellorb'>Create hello.rb</h2>
+
+<p>Open up hello.rb in a text editor. Save it. Run the spec again.</p>
+
+<pre><code>spec hello_spec.rb</code></pre>
+
+<h2 id='watch_it_fail'>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>./hello_spec.rb:3: uninitialized constant Hello (NameError)</code></pre>
+
+<h2 id='create_the_hello_class'>Create the Hello class</h2>
+
+<p>Fix this by opening hello.rb and creating an empty class:</p>
+
+<pre><code>class Hello
+end</code></pre>
+
+<p>Save it. Run the spec again.</p>
+
+<h2 id='watch_it_fail'>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>$ spec hello_spec.rb 
+F
+
+1)
+NoMethodError in &#39;Hello says hello&#39;
+undefined method `message&#39; for #&lt;Hello:0x1180f3c&gt;
+./hello_spec.rb:5:
+
+Finished in 0.002132 seconds
+
+1 example, 1 failure</code></pre>
+
+<p>This means that while it found the file, and it found the class, it couldn&#8217;t find the method named &#8220;message&#8221;.</p>
+
+<h2 id='define_the_message_method'>Define the &#8220;message&#8221; method</h2>
+
+<p>In hello.rb, add the following inside the class (before the &#8220;end&#8221;).</p>
+
+<pre><code>def message
+end</code></pre>
+
+<p>Save it. Run the spec again.</p>
+
+<h2 id='watch_it_fail'>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>&#39;Hello says hello&#39; FAILED
+expected: &quot;hello&quot;,
+     got: nil (using ==)
+./hello_spec.rb:5:</code></pre>
+
+<p>This means that there is a method, but it&#8217;s not returning anything! (&#8220;nil&#8221; is the Ruby way of saying &#8220;not anything&#8221;.)</p>
+
+<h2 id='make_it_return_something'>Make it return something</h2>
+
+<p>Inside the &#8220;message&#8221; method, put a single line containing a string that is <em>not</em> &#8220;hello&#8221;. (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)</p>
+
+<pre><code>def message
+  &quot;whuh?&quot;
+end</code></pre>
+
+<p>Save it. Run the spec again.</p>
+
+<h2 id='watch_it_fail'>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>&#39;Hello says hello&#39; FAILED
+expected: &quot;hello&quot;,
+     got: &quot;whuh?&quot; (using ==)
+./hello_spec.rb:5:</code></pre>
+
+<p>Correct this by changing &#8220;whuh?&#8221; to &#8220;hello&#8221;. Save it. Run the spec again.</p>
+
+<h2 id='watch_it_pass'>Watch it pass!</h2>
+
+<p>Hooray! Finally! It works!</p>
+
+<h2 id='give_yourself_a_high_five'>Give yourself a high five</h2>
+
+<p>Also, sing a song and do a little dance.</p>
+</body></html>
