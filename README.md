@@ -49,6 +49,21 @@ A **Testing Framework** is a tool or library that provides a backdrop for writin
 
         alias spec="--color --format nested"
 
+## Setup again
+
+If you work for a while and then notice that this repository has changed and you want the new stuff:
+
+        git status
+        -- make sure you have nothing to check in, if you do add/commit
+
+        git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
+        git pull ultrasaurus master
+            --> creates remote ultrasaurus/master, now you have new stuff locally  
+        git merge ultrasaurus/master
+            --> now you have new stuff in your master branch
+        git push origin master
+            --> now you have new stuff in your github repo
+
 ## How To Use These Exercises
 
 Each directory has a spec file. You will write all the code to make it pass. 
