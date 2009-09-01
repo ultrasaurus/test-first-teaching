@@ -17,7 +17,7 @@ describe Blocker do
     result.should == 7
   end
 
-  it "executes a block in context" do
+  it "executes a block in the context of the calling method" do
     pending
     n = nil
     Blocker.new.execute do
