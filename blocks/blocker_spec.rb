@@ -38,7 +38,7 @@ describe Blocker do
 
   it "adds one to the value returned by the block" do
     pending
-    Blocker.add_one do
+    Blocker.new.add_one do
       5
     end.should == 6
   end
