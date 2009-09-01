@@ -60,6 +60,7 @@ To walk through this process there are detailed instructions in the index.md fil
 * [Ruby Koans](http://github.com/edgecase/ruby_koans)
 * [Ruby Mission](http://github.com/alexch/mission)
 * [RailsBridge](http://groups.google.com/group/railsbridge)
+* [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) presentation by Alex
 
 ## Credits
 
