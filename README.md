@@ -47,7 +47,7 @@ A **Testing Framework** is a tool or library that provides a backdrop for writin
 
 * Configure RSpec (optional). If you're running a bash shell, you can put the following in your .bash_profile to make the output a bit nicer.
 
-        alias spec="--color --format nested"
+        alias spec="spec --color --format nested"
 
 ## Setup again
 
