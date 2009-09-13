@@ -1,4 +1,4 @@
-require 'perf'
+require 'performance_monitor'
 
 describe PerformanceMonitor do
   it "executes a block" do

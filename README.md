@@ -64,6 +64,8 @@ If you work for a while and then notice that this repository has changed and you
         git push origin master
             --> now you have new stuff in your github repo
 
+If you want to understand all the magical git encantations, watch this great screencast: [http://www.gitcasts.com/posts/railsconf-git-talk](http://www.gitcasts.com/posts/railsconf-git-talk)
+
 ## How To Use These Exercises
 
 Each directory has a spec file. You will write all the code to make it pass. 
