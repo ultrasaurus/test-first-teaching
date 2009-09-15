@@ -32,6 +32,10 @@ describe Person do
     p.errors[:first].should == "can't be blank"
   end
 
+  it 'should require that people specify number of years experience' do
+    # fill in this test
+  end
+
   it 'should have many courses' do
     p = Person.new(:first => "Eve", :last => "Smith")
     p.should respond_to :courses
