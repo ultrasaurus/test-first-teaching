@@ -10,7 +10,6 @@ describe Blocker do
   end
 
   it "executes a block that returns a number" do
-    pending
     result = Blocker.new.execute do
       3 + 4
     end
@@ -18,7 +17,6 @@ describe Blocker do
   end
 
   it "executes a block in the context of the calling method" do
-    pending
     n = nil
     Blocker.new.execute do
       n = 7
@@ -27,7 +25,6 @@ describe Blocker do
   end
 
   it "executes a block 3 times" do
-    pending
     n = 0
     Blocker.new.execute(3) do
       n += 1
@@ -37,8 +34,7 @@ describe Blocker do
   end
 
   it "adds one to the value returned by the block" do
-    pending
-    Blocker.add_one do
+    Blocker.new.add_one do
       5
     end.should == 6
   end
