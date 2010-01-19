@@ -17,10 +17,10 @@ describe PerformanceMonitor do
     n.should == 4
   end
   
-  describe "mock Time" do
+  describe "Time stub" do
     it "should increment mock_time by 10 seconds" do
-      mock_time = 0 
-      Time.stub(:now).and_return { mock_time += 10 }
+      fake_time = 0 
+      Time.stub!(:now).and_return { fake_time += 10 }
       Time.now.should == 10
       Time.now.should == 20
     end
@@ -28,8 +28,8 @@ describe PerformanceMonitor do
 
   it "returns the elapsed time" do
     n = 0 
-    mock_time = 0 
-    Time.stub(:now).and_return { mock_time += 10 }
+    fake_time = 0 
+    Time.stub!(:now).and_return { fake_time += 10 }
     average_run_time = PerformanceMonitor.new.execute(4) do
       n += 1
     end
