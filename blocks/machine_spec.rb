@@ -27,8 +27,7 @@ describe Machine do
   end
 
   
-  it "executes a block 3 times" do 
-    pending
+  it "executes a block 3 times and returns the result" do 
     n = 5
     result = Machine.new.do_something(3) do
       n += 1
