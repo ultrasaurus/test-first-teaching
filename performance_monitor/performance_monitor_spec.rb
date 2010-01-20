@@ -49,6 +49,3 @@ describe PerformanceMonitor do
   end
 
 end
-
-
-
