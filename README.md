@@ -87,6 +87,9 @@ To walk through this process there are detailed instructions in the index.md fil
 * [Ruby Mission](http://github.com/alexch/mission)
 * [RailsBridge](http://groups.google.com/group/railsbridge)
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) presentation by Alex
+* [CS Unplugged](http://www.csunplugged.org/)
+* [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/)
+* [Ruby Learning](http://rubylearning.com/satishtalim/tutorial.html)
 
 ## Credits
 
