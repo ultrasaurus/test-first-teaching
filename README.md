@@ -47,22 +47,33 @@ A **Testing Framework** is a tool or library that provides a backdrop for writin
 
 * Configure RSpec (optional). If you're running a bash shell, you can put the following in your .bash_profile to make the output a bit nicer.
 
-        alias spec="--color --format nested"
+        alias spec="spec --color --format nested"
 
 ## Setup again
 
 If you work for a while and then notice that this repository has changed and you want the new stuff:
 
+View the "status" and make sure you have nothing modified
+
         git status
-        -- make sure you have nothing to check in, if you do add/commit
+
+Add a reference to the remote repository
 
         git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
+
+Pull down the remote repository's master branch. This creates a local branch called `ultrasaurus/master`
+
         git pull ultrasaurus master
-            --> creates remote ultrasaurus/master, now you have new stuff locally  
+
+Now merge the `ultrasaurus/master` stuff into your `master` branch
+
         git merge ultrasaurus/master
-            --> now you have new stuff in your master branch
+
+Finally push your own `master` branch back to your `origin` remote github repository.
+
         git push origin master
-            --> now you have new stuff in your github repo
+
+If you want to understand all the magical git encantations, watch this great screencast: [http://www.gitcasts.com/posts/railsconf-git-talk](http://www.gitcasts.com/posts/railsconf-git-talk)
 
 ## How To Use These Exercises
 
