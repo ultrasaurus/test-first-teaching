@@ -29,11 +29,14 @@ Once a full suite of unit tests is developed, it is good practice to run these t
 2. Writing tests is often seen as a chore; writing the tests first guarantees that at the end of the day you will have written a suite of unit tests (rather than leaving them until the end and possibly never getting around to it).
 3. If you apply a tight cycle of write one test, then write the code to implement that test, then write the next test, your code ends up growing organically. This often (though not always) leads to less wasted effort; you end up writing all the code you need, and none of the code you don't need.
 
-A **Testing Framework** is a tool or library that provides a backdrop for writing tests. For example, to implement a test in the popular JUnit framework, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.  There are several testing frameworks in use for Ruby today:
+A **Testing Framework** is a tool or library that provides a backdrop for writing tests. For example, to implement a test in the popular JUnit framework, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.  
 
-* Test::Unit, almost identical to JUnit. is included with Ruby
+There are several testing frameworks in use for Ruby today:
+
+* Test::Unit, almost identical to JUnit, is included with Ruby
 * shoulda, which can be used as an extension Test::Unit, provides more readable tests and allows you to write less test code
 * RSpec, which is used in this project, has more concise syntax and can be used in the same project, but creates a separate suite of tests, called "specs"
+* in Cucumber, tests are written not in Ruby but in a language designed for tests
 
 ## Setup
 
@@ -87,6 +90,10 @@ To walk through this process there are detailed instructions in the index.md fil
 * [Ruby Mission](http://github.com/alexch/mission)
 * [RailsBridge](http://groups.google.com/group/railsbridge)
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) presentation by Alex
+* [CS Unplugged](http://www.csunplugged.org/)
+* [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/)
+* [Ruby Learning](http://rubylearning.com/satishtalim/tutorial.html)
+* [ruby-warrior](http://github.com/ryanb/ruby-warrior)
 
 ## Credits
 
