@@ -8,23 +8,36 @@ describe "TestData" do
     File.delete @fname if File.exists? @fname
   end
 
-  it "creates a file with fifty lines of correct format" do
-    TestData.create_names(@fname, @num_names)
-    File.should exist @fname
-    num_lines = 0
-    File.open(@fname, "r") do |f|
-      correct_format = f.all? do |line|
-        md = line.match(/name: (\w+) (\w+)/)
-        md.should_not be_nil
-        md.length.should == 3 unless md.nil?
-        num_lines = num_lines + 1
-      end
-      correct_format.should == true 
+  describe "basic behavior" do
+    before do
+      TestData.create_names(@fname, @num_names)
     end
-    num_lines.should == @num_names
+    
+    it "creates a file" do
+      File.should exist @fname
+    end
+
+    it "creates a file with the right number of lines" do
+      num_lines = 0
+      File.open(@fname, "r") do |f|
+        f.each { num_lines += 1 }
+      end
+      num_lines.should == @num_names
+    end
+
+    it "writes lines with correct format" do
+      File.open(@fname, "r") do |f|
+        correct_format = f.all? do |line|
+          md = line.match(/name: (\w+) (\w+)/)
+          md.should_not be_nil
+          md.length.should == 3 unless md.nil?
+        end
+        correct_format.should == true 
+      end
+    end
   end
 
-  it "creates a file with names" do
+  it "creates a file with names using Faker gem" do
     Faker::Name.stub(:name).and_return("Mary Smith", "Bob Roberts")
     TestData.create_names(@fname, @num_names)
     File.open(@fname, "r") do |f|
