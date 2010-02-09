@@ -4,7 +4,6 @@ describe FormatIndependentTextfile do
   before do
     File.should_not exist "test.text"
     File.should_not exist "test.markdown"
-    File.should_not exist "test.textile"
   end
 
   after do
@@ -22,7 +21,17 @@ describe FormatIndependentTextfile do
     
   end
 
-  it "should return textile" do
+  it "should return textile for first level heading" do
+    FormatIndependentTextfile.open("test.markdown", "w+") do |f|
+      f << "# this is a heading\n"
+
+      f.textile.should == <<EOS
+h1. this is a heading
+EOS
+    end
+  end
+
+    it "should return textile for first and second headings" do
     FormatIndependentTextfile.open("test.markdown", "w+") do |f|
       f << "# this is a heading\n"
       f << "## this is a second level heading\n"
