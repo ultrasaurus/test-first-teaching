@@ -5,7 +5,7 @@ class Converter
     @doc.gsub!(/^###/, "h3.")
     @doc.gsub!(/^##/, "h2.")
     @doc.gsub!(/^#/, "h1.")
-    @doc.gsub!(/!\[.*]\((.*?)\)/, '!\1!')
+    @doc.gsub!(/!\[.*?]\((.*?)\)/, '!\1!')
 
   end
 
