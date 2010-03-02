@@ -66,7 +66,15 @@ EOS
 
     @converter.textile.should == "Here is a !link!\n"
   end
- 
+
+    it "converts two links" do
+    @converter.markdown = <<EOS
+![alt-text](http://blazingcloud.net) and ![alt-text](http://google.com)
+EOS
+
+    @converter.textile.should == "!http://blazingcloud.net! and !http://google.com!\n"
+  end
+
     it "converts images in a block of text with special chars" do
     pending
     @converter.markdown = <<EOS
