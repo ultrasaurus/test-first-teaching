@@ -4,34 +4,34 @@ require "#{dir}/performance_monitor"
 
 describe PerformanceMonitor do
   
-  it "takes about 0 seconds to execute an empty block" do
-    PerformanceMonitor.new.execute do
+  it "takes about 0 seconds to run an empty block" do
+    PerformanceMonitor.new.run do
     end.should be_close(0, 0.1)
   end
 
-  it "takes exactly 0 seconds to execute an empty block (with stubs)" do
+  it "takes exactly 0 seconds to run an empty block (with stubs)" do
     Time.stub!(:now).and_return(100)
-    PerformanceMonitor.new.execute do
+    PerformanceMonitor.new.run do
     end.should == 0
   end
 
-  it "takes about 1 second to execute a block that sleeps for 1 second" do
-    PerformanceMonitor.new.execute do
+  it "takes about 1 second to run a block that sleeps for 1 second" do
+    PerformanceMonitor.new.run do
       sleep 1
     end.should be_close(1, 0.1)
   end
 
-  it "takes exactly 1 second to execute a block that sleeps for 1 second (with stubs)" do
+  it "takes exactly 1 second to run a block that sleeps for 1 second (with stubs)" do
     fake_time = 100
     Time.stub!(:now).and_return {fake_time}
-    PerformanceMonitor.new.execute do
+    PerformanceMonitor.new.run do
       fake_time += 1
     end.should == 1
   end
 
-  it "executes a block N times" do
+  it "runs a block N times" do
     n = 0
-    PerformanceMonitor.new.execute(4) do
+    PerformanceMonitor.new.run(4) do
       n += 1
     end
     n.should == 4
@@ -42,7 +42,7 @@ describe PerformanceMonitor do
     run_index = 0
     fake_time = 100
     Time.stub(:now).and_return { fake_time }
-    PerformanceMonitor.new.execute(4) do
+    PerformanceMonitor.new.run(4) do
       fake_time += run_times[run_index]
       run_index += 1
     end.should == 6
