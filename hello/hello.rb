@@ -1,5 +1,5 @@
 class Hello
   def message
-    "whuh?"
+    "hello"
   end
 end
