@@ -1,12 +1,12 @@
 require 'fakeweb'
-require 'news'
+require 'cnn'
 
-describe News do
+describe CNN do
 
   before do
     f = File.new("cnn.html", "r")
     FakeWeb.register_uri(:get, "http://www.cnn.com", :body => f.read)
-    @news = News.new
+    @news = CNN.new
   end
 
   it "should allow you to set the uri" do
@@ -15,7 +15,6 @@ describe News do
   end
 
   it "should fetch the page when you set the uri" do
-    @news.source_data.should == ""
     @news.uri = "http://www.cnn.com"
     @news.source_data.should == File.new("cnn.html", "r").read      
   end

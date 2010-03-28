@@ -1,6 +1,6 @@
 require "open-uri"
  
-class News
+class CNN
   attr_accessor :uri
   attr_reader :source_data
  
