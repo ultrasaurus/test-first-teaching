@@ -15,6 +15,7 @@ describe News do
   end
 
   it "should fetch the page when you set the uri" do
+    @news.source_data.should == ""
     @news.uri = "http://www.cnn.com"
     @news.source_data.should == File.new("cnn.html", "r").read      
   end
@@ -35,6 +36,5 @@ describe News do
          :title => "Evacuations of Haitians to U.S. to resume"}
     end
   end
-
 end
 
