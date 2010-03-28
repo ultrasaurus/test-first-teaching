@@ -1,0 +1,141 @@
+#blq-pre-mast {z-index:9999;}
+.leaderboardcontainer{background:#3f3f3f;width:100%;}
+.bbccom_display_none {display:none!important;}
+.bbccom_visibility_hidden {visibility:hidden;}
+.bbccom_text,
+.bbccom_text a, .bbccom_text a:hover, .bbccom_text a:active, .bbccom_text a:visited,
+.bbccom_text_left,
+.bbccom_companion_text {color:#666666;font-family:arial;text-transform:uppercase;}
+.lhs .bbccom_text a:link, .lhs .bbccom_text a:visited, .lhs .bbccom_text a:active, .lhs .bbccom_text a:hover{background-color:#e5e5e5;color:#666666;padding:0;}
+.bbccom_text {font-size:9px;text-align:right; letter-spacing:2px; display:block;}
+.bbccom_text_left {font-size:9px;text-align:left;letter-spacing:2px;}
+.bbccom_companion_text {font-size:9px;text-align:left;letter-spacing:1px;float:left;padding:11px 5px 0px 0px;}
+.adimg{border-style:none;}
+
+.leaderboard_v4{height:110px;width:728px;text-align:center;padding:8px 2px; margin-left:auto;margin-right:auto;}
+.leaderboard_v3_5{height:110px;width:728px;text-align:center;padding:8px 2px;margin-left:auto;margin-right:auto;}
+.leaderboard_v3{height:110px;width:728px;text-align:center;padding:8px 2px;margin-left:auto;margin-right:auto;}
+.i #bbccom_leaderboard_adlabel {color:#fff;}
+
+.skyscraper_v4{position:absolute;top:156px;left:1000px;border:0;width:160px;height:600px;text-align:center;}
+.skyscraper_v3_5{position:absolute;top:310px;left:815px;border:0;width:160px;height:600px;text-align:center;}
+.skyscraper_v3{position:absolute;top:256px;left:770px;border:0;width:160px;height:600px;text-align:center;}
+
+.bottom_v4{height:80px;width:470px;text-align:center;padding:8px 0; margin:0 0 0 215px;}
+.bottom_v3_5{height:80px;width:470px;text-align:center;padding:8px 0; margin:0 0 0 215px;}
+.bottom_v3{height:80px;width:470px;text-align:center;padding:8px 0; margin:0 0 0 215px;}
+
+.button_v4{height:255px;width:120px;border:0;margin:5px 0 10px 20px;}
+.button_v3_5{height:255px;width:120px;border:0;margin:0 0 0 20px}
+.button_v3{height:255px;width:120px;border:0;margin:0 0 0 20px;}
+.lhs #bbccom_button a:link, .lhs #bbccom_button a:visited, .lhs #bbccom_button a:active  {padding:2px 0;}
+
+.mpu_v4{width:300px;border:0;margin:0 0 20px 3px;}
+
+.storyprintsponsorship_v4 {overflow:auto;border:1px solid #EEEEEE;margin:9px 0pt 29px 213px;width:251px;padding:4px 0;}
+.storyprintsponsorship_v4 p {float:left;font-size:0.8em;padding:6px 0 6px 6px;text-transform:uppercase;margin-right:10px;}
+.storyprintsponsorship_v4 .bbccom_text {display:none;}
+
+
+.adsense_mpu { width:306px;margin-bottom:10px;font-size:1.3em;}
+.adsense_middle {width:466px;margin-bottom:20px;font-size:1em;}
+
+.adsensetitle, .adsensetitle a, .adsensetitle a:link, .adsensetitle a:hover, .adsensetitle a:visited, .adsensetitle a:active {font-weight:bold;color:#555555;}
+.adsensetitle {background:#edf3f3;margin:5px 0 0 0;padding:5px;}
+.adsensead {background:#edf3f3;margin:5px 0 0 0;padding:5px;}
+.adsensead span {color:#000; width:466px;  margin-bottom:20px;font-size:0.9em}
+.adsense_mpu .adsensead a {color:#1F527B}
+.adsense_middle .adsensead a {color:#1F527B}
+
+.adsense_mpu_weather { width:276px; font-size:.95em; background:#FCFCFC; padding:5px 10px 10px 10px;}
+.adsense_middle_weather {width:466px;  margin-bottom:20px;font-size:1em}
+
+.adsense_mpu_weather  .adsensetitle , .adsense_middle_weather  .adsensetitle { font-size:1.1em; color:#9D6F0F; background:#FCFCFC; margin:0; padding:0; }
+.adsense_mpu_weather a, .adsense_middle_weather a { color:#999; }
+.adsense_mpu_weather span, .adsense_middle_weather span { color:#666; font-size:1em; }
+.adsense_mpu_weather .adsensead, .adsense_middle_weather .adsensead {background:#FCFCFC; padding:5px 0 0 0;}
+
+.adsense_optionB {font-family:arial,sans-serif;}
+.adsense_optionB .adsensetitle {font-family:arial,sans-serif;font-size:1.1em;padding:6px;}
+.adsense_optionB .adsensead {font-family:arial,sans-serif;margin:0;padding:6px;}
+.adsense_optionB .adsenseurl a {color:#006;font-size:1em;margin:0;}
+.adsense_optionB .adsensead span {font-size:1em;}
+.adsense_optionB .adsenselabel {font-size:1.1em;}
+.adsense_optionB .adsenselabel a {color:#006;font-size:1.1em;margin:0;}
+
+#bbccom_sponsor_section_news {float:left; margin-top:-8px}
+#bbccom_sponsor_section_news {float:left; margin:0px 0 0 10px}
+#bbccom_sponsor_section_news p {float:left;margin:20px 5px 0 0}
+#bbccom_sponsor_section_news img {display:block;}
+
+#bbccom_sponsor_section { position: absolute; background:none; color:white; left:510px; padding:0; margin:0; top:10px; text-align:right;width:130px; }
+#bbccom_sponsor_section div {background:none;  padding:0; margin:0;width:130px; float:none;display:block}
+#bbccom_sponsor_section div a {width:130px; }
+
+.sportbanner {position:relative;}
+
+#bbccom_partner_button1{border:#EAEAEA 1px solid;margin-bottom:20px;position:relative;}
+#bbccom_partner_button1 .col1 {float:left;}
+#bbccom_partner_button1 .col2 {float:right;}
+#bbccom_partner_button1 .col3 {float:right;}
+#bbccom_partner_button1 .col4 {float:right;width:120px;}
+#bbccom_partner_button1 .row1, #bbccom_partner_button1 .row2, #bbccom_partner_button1 .row3, #bbccom_partner_button1 .row4 {height:40px;}
+.partner_buttons_4cols .col1, .partner_buttons_4cols .col2, .partner_buttons_4cols .col3, .partner_buttons_4cols .col4 {height:40px;width: 150px;}
+.partner_buttons_4cols {border:1px solid #EAEAEA;margin:14px 0;padding:10px 29px 0;position:relative;width:571px;}
+.partner_buttons_4cols .bbccom_text_left{left:0;position:absolute;top:-12px;}
+.partner_buttons_2cols .col1, .partner_buttons_2cols .col2, .partner_buttons_2cols .col3, .partner_buttons_2cols .col4 {height:40px;width: 130px;}
+.partner_buttons_2cols {padding:10px 20px 0;width:264px;}
+.partner_buttons_2cols .bbccom_text{position:absolute;right:-3px;top:-14px;}
+#bbccom_partner_button1.partner_buttons_2cols .col2 {float:right;width:120px;}
+
+#bbccom_bottom_adlabel {color:#bbb;}
+#bbccom_leaderboard{height:110px;width:728px;color: #fff;}
+#bbccom_bottom{height:71px;width:470px;text-align:center;}
+#bbccom_button{height:255px;width:120px;}
+#bbccom_mpu{width:300px;}
+#bbccom_leaderboard table, #bbccom_leaderboard tr, #bbccom_leaderboard td, #bbccom_leaderboard th {margin:0; padding:0}
+.moduleAdvertContent {height:31px;padding:6px 10px;cursor:default;}
+.moduleAdvertContent a, .moduleAdvertContent a img {float:left;}
+div.bbccom_module_adlabel{width:180px;float:left;margin:6px 10px 0 0;color:#666;font-family:verdana,helvetica,arial,sans-serif;letter-spacing:normal;font-size:0.8em;}
+.adimg{border-style:none;}
+
+.bbccom_slot_mpu div.f1-winter-olympics-2010 #bbccom_mpu{padding-bottom:29px}
+div.f1-winter-olympics-2010 #bbccom_sponsor_section{left:531px;top:21px;width:260px;}
+div.f1-winter-olympics-2010 #bbccom_sponsor_section div{float:left;}
+div.f1-winter-olympics-2010 #bbccom_sponsor_section_text{padding-top:6px;}
+div.f1-winter-olympics-2010 #bbccom_sponsor_section_image{position:relative;width:100px;}
+div.f1-winter-olympics-2010 .sportbanner div #bbccom_sponsor_section_image a{left:0;top:0;width:100px;}
+#wl-page .adsense_middle {width:100%;}
+#wl-page #bbccom_sponsor_section{color:#fff;margin:0;padding:0;position:absolute;text-align:right;left:371px;top:21px;width:260px;}
+#wl-page #bbccom_sponsor_section div{float:left;}
+#wl-page #bbccom_sponsor_section_text{font-size:0.8em; padding-top:8px;width:130px;}
+#wl-page #bbccom_sponsor_section_image{position:relative;width:100px;width:100px;}
+#wl-page #bbccom_sponsor_section_image a{left:0;top:0;width:100px;}
+
+.embedvideo .latestinfo p {margin-top:388px;}
+
+/* Blogs */
+.blogs #bbccom_mpu,
+.blogs #bbccom_partner_button1,
+.blogs #bbccom_adsense_mpu{float:left;}
+.blogs #bbccom_partner_button1{margin:14px 0;}
+.blogs #bbccom_mpu{margin-bottom:14px;}
+/* Blogs link resets */
+#bbccom_leaderboard_adlabel.bbccom_text a,
+.blogs #content #bbccom_mpu_adlabel a {color:#666666;}
+.blogs .adsense_mpu{font-size:1em;}
+.blogs #content .adsensetitle a:link {color:#555555;}
+.blogs #content .adsenselabel a:link{font-size:1.1em;}
+.blogs #content .adsenselabel a:link,
+.blogs #content .adsenseurl a:link{color:#000066;}
+.blogs #content .adsensead span{line-height:1.4em;}
+/* Blogs sponsor defaults */
+.blogs #bbccom_sponsor_section {width:auto;top:20px;}
+.blogs #bbccom_sponsor_section_text {width:auto;font-size:0.8em;line-height:31px;}
+.blogs #bbccom_sponsor_section_image {width:auto;}
+.blogs #bbccom_sponsor_section_text,
+.blogs #bbccom_sponsor_section_image {float:left;margin-left:10px;}
+
+/* REMOVE THIS */
+.blogs #bbccom_sponsor_section_image {background:#000066;height:31px;width:88px;}
+
