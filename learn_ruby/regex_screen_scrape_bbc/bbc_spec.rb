@@ -1,40 +1,40 @@
 require 'fakeweb'
-require 'news'
+require 'bbc'
 
-describe News do
+describe BBC do
 
   before do
-    f = File.new("cnn.html", "r")
-    FakeWeb.register_uri(:get, "http://www.cnn.com", :body => f.read)
-    @news = News.new
+    f = File.new("bbc.html", "r")
+    FakeWeb.register_uri(:get, "http://www.bbc.com", :body => f.read)
+    @news = BBC.new
   end
 
   it "should allow you to set the uri" do
-    @news.uri = "http://www.cnn.com"
-    @news.uri.should == "http://www.cnn.com"
+    @news.uri = "http://www.bbc.com"
+    @news.uri.should == "http://www.bbc.com"
   end
 
   it "should fetch the page when you set the uri" do
-    @news.uri = "http://www.cnn.com"
-    @news.source_data.should == File.new("cnn.html", "r").read      
+    @news.source_data.should == ""
+    @news.uri = "http://www.bbc.com"
+    @news.source_data.should == File.new("bbc.html", "r").read      
   end
 
-  describe "#top_story" do
+  describe "#top_stories" do
     it "should find the first list item after 'Latest news' heading" do
       FakeWeb.register_uri(:get, "http://www.test1.com", :body => "<h4>Latest news</h4><ul><li><a href=\"http://something.com\">Story Name</a>")
       @news.uri = "http://www.test1.com"
-      @news.top_story.should == 
+      @news.top_stories.should == 
         {:url => "http://something.com",
          :title => "Story Name"}
     end
 
     it "should return the first headlines with url listed under 'Latest News'" do
-      @news.uri = "http://www.cnn.com"
-      @news.top_story.should == 
+      @news.uri = "http://www.bbc.com"
+      @news.top_stories.should == 
         {:url => "/2010/WORLD/americas/01/31/haiti.us.airlifts/index.html?hpt=T2",
          :title => "Evacuations of Haitians to U.S. to resume"}
     end
   end
-
 end
 
