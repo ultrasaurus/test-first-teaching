@@ -18,6 +18,12 @@ describe Dictionary do
     d.include?('fish').should be_false
   end
 
+  it "should not include a prefix that wasn't added as a word in and of itself" do
+    d = Dictionary.new
+    d.add('fish')
+    d.include?('fi').should be_false
+  end
+
   it "should be able to add words" do
     d = Dictionary.new
     d.add('fish')
