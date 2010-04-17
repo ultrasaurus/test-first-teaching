@@ -1,5 +1,3 @@
-dictionary_spec.rb
-
 require 'dictionary'
 
 describe Dictionary do
