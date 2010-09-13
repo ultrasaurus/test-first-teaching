@@ -1,4 +1,5 @@
 GEM
+  remote: http://rubygems.org/
   specs:
     erector (0.8.1)
       hoe (>= 1.5.0)
@@ -6,10 +7,13 @@ GEM
       rake (>= 0.8.7)
       rubyforge (>= 2.0.4)
     json_pure (1.4.5)
+    rack (1.2.1)
     rake (0.8.7)
     rspec (1.3.0)
     rubyforge (2.0.4)
       json_pure (>= 1.1.7)
+    sinatra (1.0)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -17,3 +21,4 @@ PLATFORMS
 DEPENDENCIES
   erector
   rspec
+  sinatra
