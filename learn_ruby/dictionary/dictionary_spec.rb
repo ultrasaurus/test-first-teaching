@@ -60,7 +60,3 @@ describe Dictionary do
     @d.add('great')
     @d.find('fi').sort.should == ['fish', 'fiend'].sort
   end
-  
-  
-end
-
