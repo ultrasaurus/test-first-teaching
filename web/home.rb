@@ -54,14 +54,21 @@ h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif;  }
 
 p {margin-top: 0; margin-bottom: 1em;}
 li { margin-bottom: .5em;}
+code { font-size: 125%;}
 
 .headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #E2FDEB; }
 .main { padding: 1em;}
-.toc { float: left; margin: 0 1em 1em 0; padding: .5em;
-  border: 1px solid black; 
-  border-left: 0;
-  border-top: 0;
-  }
+
+.toc { float: left; margin: 0 1em 1em 0; padding: 0; border-right: 1px solid black;}
+.toc ul { padding:0; margin:0; }
+.toc li { padding:0; margin:0; list-style-type:none; border-bottom: 1px solid black; }
+.toc a , .toc a:visited { padding: .5em; text-decoration:none; display:block; color: blue; font-size: .8em; }
+.toc a:hover { background: #F8C585; }
+
+.footer { text-align: center; font-size: .75em; border-top: 1px solid black; padding: .25em; background-color: #E2FDEB; }
+
+.sections { clear:left; }
+
     STYLE
   end
 
@@ -82,16 +89,18 @@ li { margin-bottom: .5em;}
     end
 
     div :class => "main" do
+      p 'This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called "Test First Teaching" and has been applied successfully in a classroom environment.'
       
-      p do
-        text 'This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called "Test First Teaching" and has been applied successfully in a classroom environment.'
-      end
-
-      sections.each do |section|
-        widget section
+      div :class => "sections" do
+        sections.each do |section|
+          widget section
+        end
       end
     end
     
+    div :class => "footer" do
+      p "TestFirst.org is a production of Sarah Allen, Alex Chaffee, and many other contributors."
+    end
   end
   
   def sections
@@ -139,9 +148,8 @@ Once a full suite of unit tests is developed, it is good practice to run these t
 
 1. **Design**. It forces you to think first about the design of the interface to the code, instead of jumping straight to the implementation. Having a well-designed interface is often more important than having an efficient implementation.
 2. **Discipline**. Writing tests is often seen as a chore; writing the tests first guarantees that at the end of the day you will have written a suite of unit tests (rather than leaving them until the end and possibly never getting around to it).
-3. **Reduced Work/Cost**. If you apply a tight cycle of write one test, then write the code to implement that test, then write the next test, your code ends up growing organically. This often (though not always) leads to less wasted effort; you end up writing all the code you need, and none of the code you don't need.
+3. **Less Work**. If you apply a tight cycle of write one test, then write the code to implement that test, then write the next test, your code ends up growing organically. This often (though not always) leads to less wasted effort; you end up writing all the code you need, and none of the code you don't need.
     MARKDOWN
-
 
     Section.new(:name => "Testing Frameworks", :text => <<-MARKDOWN),
 A **Testing Framework** is a tool or library that provides a backdrop for writing tests. For example, to implement a test in the popular JUnit framework, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.  
