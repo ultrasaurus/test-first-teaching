@@ -1,5 +1,20 @@
 require "erector"
 
+class Erector::Widget
+  def markdown(s)
+    rawtext 
+  end
+end
+
+class Section < Erector::Widget
+  def name
+  end
+  
+  def content
+    
+  end
+end
+
 class Home < Erector::Widgets::Page
   def topic(s)
     strong s

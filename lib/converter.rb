@@ -6,7 +6,6 @@ class Converter
     @doc.gsub!(/^##/, "h2.")
     @doc.gsub!(/^#/, "h1.")
     @doc.gsub!(/!\[.*?]\((.*?)\)/, '!\1!')
-
   end
 
   def textile
