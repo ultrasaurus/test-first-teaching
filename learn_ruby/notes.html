@@ -1,0 +1,97 @@
+<h1>Teacher Notes</h1>
+
+<h2>key ruby concepts</h2>
+
+<ul>
+<li>objects
+
+<ul>
+<li>methods (functions)</li>
+<li>Everything has a value</li>
+</ul>
+</li>
+<li>arithmetic operations</li>
+<li>string</li>
+<li>array</li>
+<li>hash</li>
+<li>symbols</li>
+<li>loops &amp; iterators</li>
+<li>modules</li>
+<li>blocks, Proc</li>
+<li>regexps</li>
+<li>dynamic method definition
+
+<ul>
+<li>on classes</li>
+<li>on instances</li>
+<li>method_missing</li>
+</ul>
+</li>
+<li>exceptions
+
+<ul>
+<li>rescue</li>
+<li>ensure</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>key rails concepts</h2>
+
+<ul>
+<li>Exceptions and reading the logs</li>
+<li>MVC</li>
+<li>REST</li>
+<li>Migrations</li>
+<li>Routes</li>
+<li>Environments</li>
+<li>Scaffolding</li>
+<li>Generators</li>
+<li>ActiveRecord
+
+<ul>
+<li>Base WTF</li>
+<li>find method</li>
+<li>Associations</li>
+<li>what's the SQL?</li>
+</ul>
+</li>
+<li>Plugins</li>
+<li>will_paginate</li>
+</ul>
+
+
+<h2>Rules</h2>
+
+<ul>
+<li>Always read the error!</li>
+</ul>
+
+
+<h2>Solutions</h2>
+
+<p>I've created the "solutions" branch. In order to add a solution, you
+must do the following in this exact order:</p>
+
+<ol>
+<li><p>make sure the "master" branch does not have the solution in it --
+either <code>git rm xxx.rb; git commit</code> or go edit the file to have no
+content and <code>git add xxx.rb; git commit</code>.</p></li>
+<li><p>switch to the solutions branch -- <code>git co solutions</code></p></li>
+<li><p>merge the master branch into the solutions branch -- <code>git merge master</code> -- note that this has to happen <em>after</em> you've committed the delete (step 1) or you'll end up merging the delete later which will remove your solution.</p></li>
+<li><p>save the solution (text editor or <code>cat &gt; xxx.rb</code> &amp; paste)</p></li>
+<li><p>add it to the branch -- <code>git add xxx.rb; git commit</code></p></li>
+<li><p>switch back to master -- <code>git co master</code></p></li>
+<li><p>push both branches to github -- <code>git push</code> (or, if you're configured oddly, <code>git push origin master solutions</code>)</p></li>
+</ol>
+
+
+<p>Note: <code>git co</code> is an alias for <code>git checkout</code>. Here are some nice git config settings:</p>
+
+<pre><code>git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global push.default matching
+</code></pre>
