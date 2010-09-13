@@ -9,15 +9,22 @@ h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif;  }
 
 p {margin-top: 0; margin-bottom: 1em;}
 li { margin-bottom: .5em;}
+code { font-size: 125%;}
 
 .headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #E2FDEB; }
 .main { padding: 1em;}
-.toc { float: left; margin: 0 1em 1em 0; padding: .5em;
-  border: 1px solid black; 
-  border-left: 0;
-  border-top: 0;
-  }
-</style></head><body><div class="headline"><h1>TestFirst.org</h1><h2>the home of test-first teaching</h2></div><div class="toc"><li><a href="#welcometotestfirstteaching">Welcome to Test-First Teaching!</a></li><li><a href="#whytestfirstteaching">Why Test-First Teaching?</a></li><li><a href="#unittesting">Unit Testing</a></li><li><a href="#tdd">Test-Driven Development</a></li><li><a href="#testingframeworks">Testing Frameworks</a></li><li><a href="#jointheconversation">Join the Conversation</a></li><li><a href="#installation">Installation</a></li><li><a href="#download">Download</a></li></div><div class="main"><p>This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called &quot;Test First Teaching&quot; and has been applied successfully in a classroom environment.</p><a name="welcometotestfirstteaching"></a><h3>Welcome to Test-First Teaching!</h3><p><strong>Test-First Teaching</strong> follows the example of <a href="#tdd">Test-Driven Development</a>, but with an educational twist. In Test-First Teaching, the student begins with a single unit test (written by the teacher). In order to implement the test, the student has to create source code from scratch. The student then tries to compile and run the test; if the test cannot compile, or if the test runs and fails, then the student must go and fix her error. She then moves on to the next test in the lesson.</p><a name="whytestfirstteaching"></a><h3>Why Test-First Teaching?</h3><p>Test-First Teaching provides a fundamental shift in the way people learn software development. Initially, it helps the student focus on learning very basic syntax, able to independently confirm when they have successfully completed an exercise.  That immediate feedback is valuable for cementing knowledge.</p>
+
+.toc { float: left; margin: 0 1em 1em 0; padding: 0; border-right: 1px solid black;}
+.toc ul { padding:0; margin:0; }
+.toc li { padding:0; margin:0; list-style-type:none; border-bottom: 1px solid black; }
+.toc a , .toc a:visited { padding: .5em; text-decoration:none; display:block; color: blue; font-size: .8em; }
+.toc a:hover { background: #F8C585; }
+
+.footer { text-align: center; font-size: .75em; border-top: 1px solid black; padding: .25em; background-color: #E2FDEB; }
+
+.sections { clear:left; }
+
+</style></head><body><div class="headline"><h1>TestFirst.org</h1><h2>the home of test-first teaching</h2></div><div class="toc"><li><a href="#welcometotestfirstteaching">Welcome to Test-First Teaching!</a></li><li><a href="#whytestfirstteaching">Why Test-First Teaching?</a></li><li><a href="#unittesting">Unit Testing</a></li><li><a href="#tdd">Test-Driven Development</a></li><li><a href="#testingframeworks">Testing Frameworks</a></li><li><a href="#jointheconversation">Join the Conversation</a></li><li><a href="#download">Download</a></li></div><div class="main"><p>This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called &quot;Test First Teaching&quot; and has been applied successfully in a classroom environment.</p><div class="sections"><a name="welcometotestfirstteaching"></a><h3>Welcome to Test-First Teaching!</h3><p><strong>Test-First Teaching</strong> follows the example of <a href="#tdd">Test-Driven Development</a>, but with an educational twist. In Test-First Teaching, the student begins with a single unit test (written by the teacher). In order to implement the test, the student has to create source code from scratch. The student then tries to compile and run the test; if the test cannot compile, or if the test runs and fails, then the student must go and fix her error. She then moves on to the next test in the lesson.</p><a name="whytestfirstteaching"></a><h3>Why Test-First Teaching?</h3><p>Test-First Teaching provides a fundamental shift in the way people learn software development. Initially, it helps the student focus on learning very basic syntax, able to independently confirm when they have successfully completed an exercise.  That immediate feedback is valuable for cementing knowledge.</p>
 
 <p>Test-first teaching also teaches an understanding of all of the arcane error messages in a low stress situation.  The first thing you see, before you have written a line of code, is an error.  Then you discover what you need to do to fix that error. Test-first teaching helps people intuitively understand that mistakes are a natural part of the software development process.</p>
 
@@ -42,7 +49,7 @@ li { margin-bottom: .5em;}
 <ol>
 <li><strong>Design</strong>. It forces you to think first about the design of the interface to the code, instead of jumping straight to the implementation. Having a well-designed interface is often more important than having an efficient implementation.</li>
 <li><strong>Discipline</strong>. Writing tests is often seen as a chore; writing the tests first guarantees that at the end of the day you will have written a suite of unit tests (rather than leaving them until the end and possibly never getting around to it).</li>
-<li><strong>Reduced Work/Cost</strong>. If you apply a tight cycle of write one test, then write the code to implement that test, then write the next test, your code ends up growing organically. This often (though not always) leads to less wasted effort; you end up writing all the code you need, and none of the code you don't need.</li>
+<li><strong>Less Work</strong>. If you apply a tight cycle of write one test, then write the code to implement that test, then write the next test, your code ends up growing organically. This often (though not always) leads to less wasted effort; you end up writing all the code you need, and none of the code you don't need.</li>
 </ol>
 
 <a name="testingframeworks"></a><h3>Testing Frameworks</h3><p>A <strong>Testing Framework</strong> is a tool or library that provides a backdrop for writing tests. For example, to implement a test in the popular JUnit framework, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.</p>
@@ -57,4 +64,4 @@ li { margin-bottom: .5em;}
 <li>in <code>Cucumber</code>, tests are written not in Ruby but in a language designed for tests</li>
 </ul>
 
-<a name="jointheconversation"></a><h3>Join the Conversation</h3><p>Join our <a href="http://groups.google.com/group/test-first-teaching">google group</a></p><a name="installation"></a><h3>Installation</h3><p>Here are some <a href="http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes">good instructions</a> for installing the required software.  You will need Ruby, RubyGems and Rspec to Learn Ruby.</p><a name="download"></a><h3>Download</h3><ul><li><a href="/pkg/learn_ruby-1.0.0.zip">Learn Ruby</a></li></ul></div></body></html>
+<a name="jointheconversation"></a><h3>Join the Conversation</h3><p>Join our <a href="http://groups.google.com/group/test-first-teaching">google group</a></p><a name="download"></a><h3>Download</h3><ul><li><a href="/pkg/learn_ruby-1.0.0.zip">Learn Ruby</a></li></ul></div></div><div class="footer"><p>TestFirst.org is a production of Sarah Allen, Alex Chaffee, and many other contributors.</p></div></body></html>

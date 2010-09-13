@@ -43,26 +43,25 @@
 
 ## Solutions
 
-I've created the "solutions" branch. In order to add a solution, you
-must do the following in this exact order:
+The `solutions` branch is dead; long live the `solution` directory. 
 
-1. make sure the "master" branch does not have the solution in it --
-either `git rm xxx.rb; git commit` or go edit the file to have no
-content and `git add xxx.rb; git commit`.
+To add a solution, you must put your Ruby file(s) in a directory **inside** the current module directory with the name `solution`.
 
-2. switch to the solutions branch -- `git co solutions`
+To test your solution, you must use `../sspec foo_spec.rb`. `sspec` is a custom version of `spec` that adds the solution subdirectory to the load path.
 
-3. merge the master branch into the solutions branch -- `git merge master` -- note that this has to happen *after* you've committed the delete (step 1) or you'll end up merging the delete later which will remove your solution.
+Make sure not to check in any cruft in the original module directory, since that will be seen by (and surely befuddle) students.
 
-4. save the solution (text editor or `cat > xxx.rb` & paste)
+Multiple solutions aren't supported quite yet. Keep watching.
 
-5. add it to the branch -- `git add xxx.rb; git commit`
+## Notes and instructions
 
-6. switch back to master -- `git co master`
+Every module has (or can have) a `index.md` file that the students can read.
 
-7. push both branches to github -- `git push` (or, if you're configured oddly, `git push origin master solutions`)
+The HTML files are all generated from Markdown, so restrict your edits to the `.md` files.
 
-Note: `git co` is an alias for `git checkout`. Here are some nice git config settings:
+## Tricks
+
+Here are some nice git config settings:
 
     git config --global alias.st status
     git config --global alias.ci commit

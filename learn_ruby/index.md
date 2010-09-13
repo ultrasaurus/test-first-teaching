@@ -1,3 +1,8 @@
+## Installation
+
+Here are some [good instructions](http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes)
+for installing the required software.  You will need Ruby, RubyGems and RSpec to Learn Ruby.
+
 ## Setup
 
 * Check out the git repository
@@ -43,6 +48,19 @@ If you want to understand all the magical git incantations, watch this great scr
 Each directory has a spec file. You will write all the code to make it pass. 
 
 To walk through this process there are detailed instructions in the index.md file in the "hello" directory.
+
+## Outline
+
+* **hello** 
+  gives you a feel of how to use these tests and you will write your first class.  See [hello/index.md](hello/index.md) for detailed instructions.
+* **temperature**
+  Write another class and do some basic math.
+* **calculator** introduces a little more math, and you'll need to iterate.
+* **Pig Latin** lets you manipulate strings.
+* **in\_words**
+  Ask a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.
+* **blocks** introduces block syntax.
+
 
 ## Related Projects
 

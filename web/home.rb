@@ -172,16 +172,6 @@ There are several testing frameworks in use for Ruby today:
       end
     end),
     
-    Section.new(:name => "Installation", :text => lambda do
-      p do
-        text 'Here are some '
-        a :href => 'http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes' do
-          text 'good instructions'
-        end
-        text ' for installing the required software.  You will need Ruby, RubyGems and Rspec to Learn Ruby.'
-      end
-    end),
-
     Section.new(:name => "Download", :text => lambda do
       ul do
         li do

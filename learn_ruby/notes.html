@@ -71,23 +71,25 @@
 
 <h2>Solutions</h2>
 
-<p>I've created the "solutions" branch. In order to add a solution, you
-must do the following in this exact order:</p>
+<p>The <code>solutions</code> branch is dead; long live the <code>solution</code> directory.</p>
 
-<ol>
-<li><p>make sure the "master" branch does not have the solution in it --
-either <code>git rm xxx.rb; git commit</code> or go edit the file to have no
-content and <code>git add xxx.rb; git commit</code>.</p></li>
-<li><p>switch to the solutions branch -- <code>git co solutions</code></p></li>
-<li><p>merge the master branch into the solutions branch -- <code>git merge master</code> -- note that this has to happen <em>after</em> you've committed the delete (step 1) or you'll end up merging the delete later which will remove your solution.</p></li>
-<li><p>save the solution (text editor or <code>cat &gt; xxx.rb</code> &amp; paste)</p></li>
-<li><p>add it to the branch -- <code>git add xxx.rb; git commit</code></p></li>
-<li><p>switch back to master -- <code>git co master</code></p></li>
-<li><p>push both branches to github -- <code>git push</code> (or, if you're configured oddly, <code>git push origin master solutions</code>)</p></li>
-</ol>
+<p>To add a solution, you must put your Ruby file(s) in a directory <strong>inside</strong> the current module directory with the name <code>solution</code>.</p>
 
+<p>To test your solution, you must use <code>../sspec foo_spec.rb</code>. <code>sspec</code> is a custom version of <code>spec</code> that adds the solution subdirectory to the load path.</p>
 
-<p>Note: <code>git co</code> is an alias for <code>git checkout</code>. Here are some nice git config settings:</p>
+<p>Make sure not to check in any cruft in the original module directory, since that will be seen by (and surely befuddle) students.</p>
+
+<p>Multiple solutions aren't supported quite yet. Keep watching.</p>
+
+<h2>Notes and instructions</h2>
+
+<p>Every module has (or can have) a <code>index.md</code> file that the students can read.</p>
+
+<p>The HTML files are all generated from Markdown, so restrict your edits to the <code>.md</code> files.</p>
+
+<h2>Tricks</h2>
+
+<p>Here are some nice git config settings:</p>
 
 <pre><code>git config --global alias.st status
 git config --global alias.ci commit

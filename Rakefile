@@ -24,6 +24,19 @@ task :default do
   
   # convert all Erector pages into .html
   system "erector --to-html web"
-
   
+  # run all exercises
+  failed_modules = 0
+  modules = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
+  modules.each do |mod|
+    result = Dir["#{mod}/*_spec.rb"].collect do |test_file| 
+      system "learn_ruby/sspec #{test_file}"      
+    end.uniq == [true]
+    puts "#{mod} " + (result ? "passed" : "FAILED")
+    puts
+    failed_modules += 1 if result == false
+  end
+  puts "#{failed_modules} of #{modules.size} failed modules"
+  
+  exit 1 if something_failed
 end
