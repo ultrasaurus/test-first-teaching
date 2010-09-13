@@ -38,5 +38,8 @@ task :default do
   end
   puts "#{failed_modules} of #{modules.size} failed modules"
   
-  exit 1 if something_failed
+  # exit 1 if something_failed
+  
+  # make the package
+  Rake::Task[:package].invoke
 end
