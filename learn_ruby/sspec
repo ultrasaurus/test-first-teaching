@@ -12,7 +12,7 @@ dirs.pop
 dir = if dirs.empty?
   "solution"
 else
-  "#{dirs.last}/solution"
+  "#{dirs.join('/')}/solution"
 end
 $: << "./#{dir}"
 

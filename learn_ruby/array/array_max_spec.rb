@@ -1,5 +1,8 @@
 require "array_max"
 
+# note: these tests are not well described. 
+# Without a teacher, it's hard to figure out what "should work" means...
+
 describe ArrayMax do
   before do
     @a = ArrayMax.new
