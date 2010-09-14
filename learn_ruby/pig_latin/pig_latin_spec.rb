@@ -13,17 +13,17 @@ describe "#translate" do
     s.should == "appleay"
   end
 
-  it "should translate a two consonent word: stupid" do
+  it "should translate a word with two consonants" do
     s = translate("stupid")
     s.should == "upidstay"
   end
 
-  it "should translate two words: eat pie" do
+  it "should translate two words" do
     s = translate("eat pie")
     s.should == "eatay iepay"
   end
 
-  it "should translate multiple words: the quick brown fox" do
+  it "should translate many words" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"
   end

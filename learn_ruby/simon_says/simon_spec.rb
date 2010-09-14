@@ -1,4 +1,7 @@
+require "simon"
+
 describe "Simon says" do
+  include Simon
   
   it "should echo hello" do
     echo("hello").should == "hello"
@@ -37,6 +40,6 @@ describe "Simon says" do
   end
 
   it "should tell us the first word of 'oh dear' is 'oh'" do
-    first_word("Hello World").should == "oh"
+    first_word("oh dear").should == "oh"
   end
 end

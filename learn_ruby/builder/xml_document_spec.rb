@@ -3,10 +3,9 @@
 # nested closures
 # "builder pattern"
 
-require File.dirname(__FILE__) + "/xml_document"
+require "xml_document"
 
 describe XmlDocument do
-
   before do
     @xml = XmlDocument.new
   end
@@ -63,5 +62,4 @@ describe XmlDocument do
     "  </goodbye>\n" + 
     "</hello>\n"
   end
-
 end

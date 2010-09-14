@@ -1,22 +1,23 @@
-require 'spec'
-dir = File.dirname(__FILE__)
-require "#{dir}/performance_monitor"
+require "performance_monitor"
 
 describe PerformanceMonitor do
+  before do
+    @monitor = PerformanceMonitor.new
+  end
   
   it "takes about 0 seconds to run an empty block" do
-    PerformanceMonitor.new.run do
+    @monitor.run do
     end.should be_close(0, 0.1)
   end
 
   it "takes exactly 0 seconds to run an empty block (with stubs)" do
     Time.stub!(:now).and_return(100)
-    PerformanceMonitor.new.run do
+    @monitor.run do
     end.should == 0
   end
 
   it "takes about 1 second to run a block that sleeps for 1 second" do
-    PerformanceMonitor.new.run do
+    @monitor.run do
       sleep 1
     end.should be_close(1, 0.1)
   end
@@ -24,14 +25,14 @@ describe PerformanceMonitor do
   it "takes exactly 1 second to run a block that sleeps for 1 second (with stubs)" do
     fake_time = 100
     Time.stub!(:now).and_return {fake_time}
-    PerformanceMonitor.new.run do
+    @monitor.run do
       fake_time += 1
     end.should == 1
   end
 
   it "runs a block N times" do
     n = 0
-    PerformanceMonitor.new.run(4) do
+    @monitor.run(4) do
       n += 1
     end
     n.should == 4
@@ -42,7 +43,7 @@ describe PerformanceMonitor do
     run_index = 0
     fake_time = 100
     Time.stub(:now).and_return { fake_time }
-    PerformanceMonitor.new.run(4) do
+    @monitor.run(4) do
       fake_time += run_times[run_index]
       run_index += 1
     end.should == 6

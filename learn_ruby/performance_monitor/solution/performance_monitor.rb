@@ -1,5 +1,5 @@
 class PerformanceMonitor
-  def execute(count=1)
+  def run(count=1)
     total_time = 0
     count.times do
       start_time = Time.now
