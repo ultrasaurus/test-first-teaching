@@ -29,6 +29,4 @@ describe "Timer" do
     @timer.time_string.should == "01:06:40"
   end
 
-
 end
-

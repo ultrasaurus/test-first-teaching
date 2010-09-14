@@ -4,9 +4,12 @@
 # adds 'solution' to the load path
 
 # todo: support multiple solutions dirs
+# todo: run with or without solution
+
 
 spec_file = ARGV[0]
 puts "Running #{spec_file} with solution"
+puts
 dirs = spec_file.split('/')
 dirs.pop
 dir = if dirs.empty?
@@ -19,10 +22,25 @@ $: << "./#{dir}"
 require 'rubygems'
 version = "1.3.0"
 gem 'rspec', version
+
+
+# http://wiki.github.com/dchelimsky/rspec/custom-formatters
+require 'spec/runner/formatter/nested_text_formatter'
+class FailFast < Spec::Runner::Formatter::NestedTextFormatter
+  def example_failed(example, counter, failure)
+    super
+    @output.puts
+    where = example.location.gsub(/^.*learn_ruby\//, '')
+    @output.puts "Go check #{where}"
+    exit
+  end
+end
+ARGV.unshift('FailFast')
+ARGV.unshift('--format')
+
+ARGV.unshift('--color')
+
+
 load Gem.bin_path('rspec', 'spec', version)
 
-p Gem.path
-rspec_dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(rspec_dir) unless $LOAD_PATH.include?(rspec_dir)
-require 'spec/autorun'
-exit ::Spec::Runner::CommandLine.run
+
