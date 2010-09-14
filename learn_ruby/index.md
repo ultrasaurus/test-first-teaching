@@ -64,18 +64,29 @@ To walk through this process there are detailed instructions in the index.md fil
 
 ## Related Projects
 
-* [Ruby Koans](http://github.com/edgecase/ruby_koans)
+### Learning Ruby via Tests
+* [Test-First Teaching](http://testfirst.org) by Sarah Allen and Alex Chaffee
+* [Ruby Koans](http://github.com/edgecase/ruby_koans) by Jim Weirich and Joe O’Brien
+* [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
+* something by Yehuda Katz
+* [ruby-warrior](http://github.com/ryanb/ruby-warrior) by Ryan Bates - a game written in Ruby for learning Ruby
+
+### Learning Ruby and Programming
+* [Learn To Program](http://pine.fm/LearnToProgram/) by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a [PragProg book](http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition) (2nd ed.)
+* [Ruby Learning](http://rubylearning.com/satishtalim/tutorial.html) - Ruby tutorial
+* [Try Ruby](http://tryruby.org) runs a Ruby interpreter in your browser, with hints and advice
 * [Ruby Mission](http://github.com/alexch/mission)
 * [RailsBridge](http://groups.google.com/group/railsbridge)
-* [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) presentation by Alex
-* [CS Unplugged](http://www.csunplugged.org/)
-* [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/)
-* [Ruby Learning](http://rubylearning.com/satishtalim/tutorial.html)
-* [ruby-warrior](http://github.com/ryanb/ruby-warrior)
+* [CS Unplugged](http://www.csunplugged.org/) - "CS Unplugged provides an extensive collection of free resources that teach principles of Computer Science such as binary numbers, algorithms and data compression through engaging games and puzzles that use cards, string, crayons and lots of running around."
+* [Everyday Scripting with Ruby](http://pragprog.com/titles/bmsft/everyday-scripting-with-ruby) by Brian Marick
+* [Programming Ruby (the Pick Axe)](http://pragprog.com/titles/ruby/programming-ruby) by Dave Thomas
+
+### Test-Driven Development
+* [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex
 
 ## Credits
 
 * Concept by Alex Chaffee
-* Exercises by Alex Chaffee, Sarah Allen
+* Exercises by Alex Chaffee, Sarah Allen, Liah Hansen
 * Early quality assurance by Sumiki, Dimitri, Liah, Michael, and Brendan
 
