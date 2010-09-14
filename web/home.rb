@@ -43,6 +43,7 @@ class Home < Erector::Widgets::Page
 
   def head_content
     stylesheet "ChunkFive/stylesheet.css"
+    palette = %w{#779fe8 #c198ff #E2EBFD #77e882 #eeff82}
     style <<-STYLE
 body {font-size:100%;
   font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
@@ -50,22 +51,25 @@ body {font-size:100%;
 }
 h1 {font: 2.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0;}
 h2 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0; margin: 0}
-h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif;  }
+h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; background: #{palette[2]}; 
+margin: 0 -1em .25em -1em; padding: .5em 1em }
 
 p {margin-top: 0; margin-bottom: 1em;}
 li { margin-bottom: .5em;}
 code { font-size: 125%;}
 
-.headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #E2FDEB; }
+.headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #{palette[3]}; }
 .main { padding: 1em;}
 
-.toc { float: left; margin: 0 1em 1em 0; padding: 0; border-right: 1px solid black;}
+.toc { float: left; margin: 0 1em 0 0; padding: 0; border-right: 1px solid black;}
 .toc ul { padding:0; margin:0; }
 .toc li { padding:0; margin:0; list-style-type:none; border-bottom: 1px solid black; }
-.toc a , .toc a:visited { padding: .5em; text-decoration:none; display:block; color: blue; font-size: .8em; }
-.toc a:hover { background: #F8C585; }
+.toc a , .toc a:visited { padding: .5em; text-decoration:none; display:block; color: blue; font-size: .8em;
+  font-weight: bold;
+  color: black; background: #{palette[0]} }
+.toc a:hover { background: #{palette[1]}; }
 
-.footer { text-align: center; font-size: .75em; border-top: 1px solid black; padding: .25em; background-color: #E2FDEB; }
+.footer { text-align: center; font-size: .75em; border-top: 1px solid black; padding: .25em; background-color: #{palette[3]}; }
 
 .sections { clear:left; }
 
