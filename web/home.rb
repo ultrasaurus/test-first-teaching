@@ -42,6 +42,7 @@ class Home < Erector::Widgets::Page
   end
 
   def head_content
+    # todo: try http://www.fontsquirrel.com/fonts/nevis
     font = "SansationBold"
     stylesheet "Sansation/stylesheet.css"
     palette = %w{#779fe8 #c198ff #E2EBFD #77e882 #eeff82}
@@ -122,7 +123,20 @@ code { font-size: 125%;}
     end
     
     div :class => "footer" do
-      p "TestFirst.org is a production of Sarah Allen, Alex Chaffee, and many other contributors."
+      p do
+        text "TestFirst.org is a production of "
+        a "Sarah Allen", :href => "http://ultrasaurus.com"
+        text ", "
+        a "Alex Chaffee", :href => "http://alexch.github.com"
+        text ", and many other contributors."
+      end
+      p do
+        text "This site uses "
+        a "Sansation", :href => "http://www.fontsquirrel.com/fonts/Sansation"
+        text " by "
+        text "Bernd Montag"
+      end
+      
     end
   end
   
