@@ -1,5 +1,3 @@
-# Learn Ruby
-
 # Instructions
 
 ## Installation
@@ -88,14 +86,14 @@ To walk through this process there are detailed instructions in the `index.md` f
 ### Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex
 
-## Online Ruby References
+### Online Ruby References
 
 * <http://www.ruby-lang.org>
 *	<http://www.ruby-doc.org/>
 *	<http://www.gotapi.com/rubyrails>
 *	<http://apidock.com/>
 
-## When you have a question...
+### When you have a question...
 
 First, search for the answer (keywords, exact error string)
 
@@ -111,10 +109,10 @@ If you didn't find the answer and you need to ask your question:
 2. Note where you have already looked for an answer
 3. If you can, include code snippets that reproduce the problem in isolation
 
-## Other good resources
+### Other good resources
 
 *	<http://www.rubular.com/> - an online Ruby regular expression calculator
-*	irb - when in doubt, try it out!
+*	`irb` - when in doubt, try it out!
 
 # Credits
 
