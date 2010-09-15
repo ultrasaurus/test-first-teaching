@@ -4,15 +4,16 @@
   padding: 0; margin: 0;
 }
 h1 {font: 2.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0;}
-h2 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0; margin: 0}
-h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; background: #E2EBFD; 
-margin: 0 0 .25em -.5em; padding: .5em 1em }
+h2 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0;}
+h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; background: #E2EBFD; }
+h3 {margin: 0 0 .25em -.5em; padding: .5em 1em }
 
 p {margin-top: 0; margin-bottom: 1em;}
 li { margin-bottom: .5em;}
 code { font-size: 125%;}
 
 .headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #77e882; }
+.headline h2 {margin: 0}
 .main { padding: 1em 1em 1em 220px; }
 
 .toc { float: left; position: fixed; width: 200px; margin: -1px 1em 0 0; padding: 0; 
@@ -30,7 +31,7 @@ code { font-size: 125%;}
 
 .sections { clear:left; }
 
-</style></head><body><div class="headline"><h1>TestFirst.org</h1><h2>the home of test-first teaching</h2></div><div class="toc"><li><a href="#welcometotestfirstteaching">Welcome to Test-First Teaching!</a></li><li><a href="#whytestfirstteaching">Why Test-First Teaching?</a></li><li><a href="#unittesting">Unit Testing</a></li><li><a href="#tdd">Test-Driven Development</a></li><li><a href="#testingframeworks">Testing Frameworks</a></li><li><a href="#jointheconversation">Join the Conversation</a></li><li><a href="#download">Download</a></li></div><div class="main"><p>This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called &quot;Test First Teaching&quot; and has been applied successfully in a classroom environment.</p><div class="sections"><a name="welcometotestfirstteaching"></a><h3>Welcome to Test-First Teaching!</h3><p><strong>Test-First Teaching</strong> follows the example of <a href="#tdd">Test-Driven Development</a>, but with an educational twist. In Test-First Teaching, the student begins with a single unit test (written by the teacher). In order to implement the test, the student has to create source code from scratch. The student then tries to compile and run the test; if the test cannot compile, or if the test runs and fails, then the student must go and fix her error. She then moves on to the next test in the lesson.</p><a name="whytestfirstteaching"></a><h3>Why Test-First Teaching?</h3><p>Test-First Teaching provides a fundamental shift in the way people learn software development. Initially, it helps the student focus on learning very basic syntax, able to independently confirm when they have successfully completed an exercise.  That immediate feedback is valuable for cementing knowledge.</p>
+</style></head><body><div class="headline"><h1>TestFirst.org</h1><h2>the home of test-first teaching</h2></div><div class="toc"><li><a href="#welcometotestfirstteaching">Welcome to Test-First Teaching!</a></li><li><a href="#whytestfirstteaching">Why Test-First Teaching?</a></li><li><a href="#unittesting">Unit Testing</a></li><li><a href="#tdd">Test-Driven Development</a></li><li><a href="#testingframeworks">Testing Frameworks</a></li><li><a href="#jointheconversation">Join the Conversation</a></li><li><a href="#download">Download</a></li><li><a href="#learnruby">Learn Ruby</a></li></div><div class="main"><p>This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called &quot;Test First Teaching&quot; and has been applied successfully in a classroom environment.</p><div class="sections"><a name="welcometotestfirstteaching"></a><h3>Welcome to Test-First Teaching!</h3><p><strong>Test-First Teaching</strong> follows the example of <a href="#tdd">Test-Driven Development</a>, but with an educational twist. In Test-First Teaching, the student begins with a single unit test (written by the teacher). In order to implement the test, the student has to create source code from scratch. The student then tries to compile and run the test; if the test cannot compile, or if the test runs and fails, then the student must go and fix her error. She then moves on to the next test in the lesson.</p><a name="whytestfirstteaching"></a><h3>Why Test-First Teaching?</h3><p>Test-First Teaching provides a fundamental shift in the way people learn software development. Initially, it helps the student focus on learning very basic syntax, able to independently confirm when they have successfully completed an exercise.  That immediate feedback is valuable for cementing knowledge.</p>
 
 <p>Test-first teaching also teaches an understanding of all of the arcane error messages in a low stress situation.  The first thing you see, before you have written a line of code, is an error.  Then you discover what you need to do to fix that error. Test-first teaching helps people intuitively understand that mistakes are a natural part of the software development process.</p>
 
@@ -70,4 +71,163 @@ code { font-size: 125%;}
 <li>in <code>Cucumber</code>, tests are written not in Ruby but in a language designed for tests</li>
 </ul>
 
-<a name="jointheconversation"></a><h3>Join the Conversation</h3><p>Join our <a href="http://groups.google.com/group/test-first-teaching">google group</a></p><a name="download"></a><h3>Download</h3><ul><li><a href="/pkg/learn_ruby-1.0.0.zip">Learn Ruby</a></li></ul></div></div><div class="footer"><p>TestFirst.org is a production of Sarah Allen, Alex Chaffee, and many other contributors.</p></div></body></html>
+<a name="jointheconversation"></a><h3>Join the Conversation</h3><p>Join our <a href="http://groups.google.com/group/test-first-teaching">google group</a></p><a name="download"></a><h3>Download</h3><ul><li><a href="/pkg/learn_ruby-1.0.0.zip">Learn Ruby</a></li></ul><a name="learnruby"></a><h3>Learn Ruby</h3><h1>Instructions</h1>
+
+<h2>Installation</h2>
+
+<p>Here are some <a href="http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes">good instructions</a>
+for installing the required software.  You will need Ruby, RubyGems and RSpec to Learn Ruby.</p>
+
+<h2>Setup</h2>
+
+<ul>
+<li><p>Check out the git repository</p>
+
+<pre><code>  git clone git://github.com/ultrasaurus/test-first-teaching.git
+</code></pre></li>
+<li><p>Install RSpec</p>
+
+<pre><code>  sudo gem install rspec
+</code></pre></li>
+<li><p>Configure RSpec (optional). If you're running a bash shell, you can put the following in your .bash_profile to make the output a bit nicer.</p>
+
+<pre><code>  alias spec="spec --color --format nested"
+</code></pre></li>
+</ul>
+
+
+<h2>Setup again</h2>
+
+<p>If you work for a while and then notice that this repository has changed and you want the new stuff:</p>
+
+<ul>
+<li><p>View the "status" and make sure you have nothing modified</p>
+
+<pre><code>  git status
+</code></pre></li>
+<li><p>Add a reference to the remote repository</p>
+
+<pre><code>  git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
+</code></pre></li>
+<li><p>Pull down the remote repository's master branch. This creates a local branch called <code>ultrasaurus/master</code></p>
+
+<pre><code>  git pull ultrasaurus master
+</code></pre></li>
+<li><p>Now merge the <code>ultrasaurus/master</code> stuff into your <code>master</code> branch</p>
+
+<pre><code>  git merge ultrasaurus/master
+</code></pre></li>
+<li><p>Finally push your own <code>master</code> branch back to your <code>origin</code> remote github repository.</p>
+
+<pre><code>  git push origin master
+</code></pre></li>
+</ul>
+
+
+<p>If you want to understand all the magical git incantations, watch this great screencast: <a href="http://www.gitcasts.com/posts/railsconf-git-talk">http://www.gitcasts.com/posts/railsconf-git-talk</a></p>
+
+<h2>How To Use These Exercises</h2>
+
+<p>Each directory has a spec file. You will write all the code to make it pass.</p>
+
+<p>To walk through this process there are detailed instructions in the <code>index.md</code> file in the "hello" directory.</p>
+
+<h2>Outline</h2>
+
+<ul>
+<li><strong>hello</strong>
+gives you a feel of how to use these tests and you will write your first class.  See <a href="hello/index.md">hello/index.md</a> for detailed instructions.</li>
+<li><strong>temperature</strong>
+Write another class and do some basic math.</li>
+<li><strong>calculator</strong> introduces a little more math, and you'll need to iterate.</li>
+<li><strong>pig_latin</strong> lets you manipulate strings.</li>
+<li><strong>in_words</strong> asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.</li>
+<li><strong>blocks</strong> introduces block syntax, including <code>yield</code></li>
+</ul>
+
+
+<h1>Resources</h1>
+
+<h3>Learning Ruby via Tests</h3>
+
+<ul>
+<li><a href="http://testfirst.org">Test-First Teaching</a> by Sarah Allen and Alex Chaffee</li>
+<li><a href="http://rubykoans.com">Ruby Koans</a> by Jim Weirich and Joe O’Brien</li>
+<li><a href="http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/">Growing OO Software In Ruby</a> by Brian Marick - Ruby version of <a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software Guided by Tests</a></li>
+<li>something by Yehuda Katz</li>
+<li><a href="http://github.com/ryanb/ruby-warrior">ruby-warrior</a> by Ryan Bates - a game written in Ruby for learning Ruby</li>
+</ul>
+
+
+<h3>Learning Ruby and Programming</h3>
+
+<ul>
+<li><a href="http://pine.fm/LearnToProgram/">Learn To Program</a> by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a <a href="http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition">PragProg book</a> (2nd ed.)</li>
+<li><a href="http://rubylearning.com/satishtalim/tutorial.html">Ruby Learning</a> - Ruby tutorial</li>
+<li><a href="http://tryruby.org">Try Ruby</a> runs a Ruby interpreter in your browser, with hints and advice</li>
+<li><a href="http://github.com/alexch/mission">Ruby Mission</a></li>
+<li><a href="http://groups.google.com/group/railsbridge">RailsBridge</a></li>
+<li><a href="http://www.csunplugged.org/">CS Unplugged</a> - "CS Unplugged provides an extensive collection of free resources that teach principles of Computer Science such as binary numbers, algorithms and data compression through engaging games and puzzles that use cards, string, crayons and lots of running around."</li>
+<li><a href="http://pragprog.com/titles/bmsft/everyday-scripting-with-ruby">Everyday Scripting with Ruby</a> by Brian Marick</li>
+<li><a href="http://pragprog.com/titles/ruby/programming-ruby">Programming Ruby (the Pick Axe)</a> by Dave Thomas</li>
+<li><a href="http://github.com/liahhansen/learn-to-program">learn to program</a> by Liah Hansen</li>
+<li>Nice User's Guide: <a href="http://www.rubyist.net/~slagell/ruby/">http://www.rubyist.net/~slagell/ruby/</a></li>
+</ul>
+
+
+<h3>Test-Driven Development</h3>
+
+<ul>
+<li><a href="http://www.slideshare.net/alexchaffee/test-driven">Test-Driven</a> - presentation by Alex</li>
+</ul>
+
+
+<h3>Online Ruby References</h3>
+
+<ul>
+<li><a href="http://www.ruby-lang.org">http://www.ruby-lang.org</a></li>
+<li><a href="http://www.ruby-doc.org/">http://www.ruby-doc.org/</a></li>
+<li><a href="http://www.gotapi.com/rubyrails">http://www.gotapi.com/rubyrails</a></li>
+<li><a href="http://apidock.com/">http://apidock.com/</a></li>
+</ul>
+
+
+<h3>When you have a question...</h3>
+
+<p>First, search for the answer (keywords, exact error string)</p>
+
+<ul>
+<li>Google</li>
+<li>http://www.ruby-forum.com</li>
+<li>http://stackoverflow.com/</li>
+</ul>
+
+
+<p>If you didn't find the answer and you need to ask your question:</p>
+
+<ol>
+<li>Include version numbers:
+ $ ruby -v
+ ruby 1.8.6 (2008-08-11 patchlevel 287) [universal-darwin9.0]</li>
+<li>Note where you have already looked for an answer</li>
+<li>If you can, include code snippets that reproduce the problem in isolation</li>
+</ol>
+
+
+<h3>Other good resources</h3>
+
+<ul>
+<li><a href="http://www.rubular.com/">http://www.rubular.com/</a> - an online Ruby regular expression calculator</li>
+<li><code>irb</code> - when in doubt, try it out!</li>
+</ul>
+
+
+<h1>Credits</h1>
+
+<ul>
+<li>Concept by Alex Chaffee</li>
+<li>Exercises by Alex Chaffee, Sarah Allen, Liah Hansen, Kai Middleton</li>
+<li>Early quality assurance by Sumiki, Dimitri, Liah, Michael, and Brendan</li>
+</ul>
+
+</div></div><div class="footer"><p>TestFirst.org is a production of Sarah Allen, Alex Chaffee, and many other contributors.</p></div></body></html>
