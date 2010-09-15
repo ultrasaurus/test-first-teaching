@@ -83,7 +83,7 @@ To walk through this process there are detailed instructions in the `index.md` f
 * [Everyday Scripting with Ruby](http://pragprog.com/titles/bmsft/everyday-scripting-with-ruby) by Brian Marick
 * [Programming Ruby (the Pick Axe)](http://pragprog.com/titles/ruby/programming-ruby) by Dave Thomas
 * [learn to program](http://github.com/liahhansen/learn-to-program) by Liah Hansen
-* Nice User’s Guide: http://www.rubyist.net/~slagell/ruby/
+* Nice User's Guide: <http://www.rubyist.net/~slagell/ruby/>
 
 ### Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex
@@ -103,7 +103,7 @@ First, search for the answer (keywords, exact error string)
 *	http://www.ruby-forum.com 
 *	http://stackoverflow.com/ 
 
-If you didn’t find the answer and you need to ask your question:
+If you didn't find the answer and you need to ask your question:
 
 1. Include version numbers:
     $ ruby -v
@@ -113,8 +113,8 @@ If you didn’t find the answer and you need to ask your question:
 
 ## Other good resources
 
-*	Regular expressions: <http://www.rubular.com/>
-*	irb  
+*	<http://www.rubular.com/> - an online Ruby regular expression calculator
+*	irb - when in doubt, try it out!
 
 # Credits
 

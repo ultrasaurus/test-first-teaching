@@ -43,3 +43,8 @@ task :default do
   # make the package
   Rake::Task[:package].invoke
 end
+
+task :foo do
+  puts Dir.pwd
+end
+

@@ -1,3 +1,7 @@
+<h1>Learn Ruby</h1>
+
+<h1>Instructions</h1>
+
 <h2>Installation</h2>
 
 <p>Here are some <a href="http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes">good instructions</a>
@@ -25,30 +29,29 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 
 <p>If you work for a while and then notice that this repository has changed and you want the new stuff:</p>
 
-<p>View the "status" and make sure you have nothing modified</p>
+<ul>
+<li><p>View the "status" and make sure you have nothing modified</p>
 
-<pre><code>    git status
-</code></pre>
+<pre><code>  git status
+</code></pre></li>
+<li><p>Add a reference to the remote repository</p>
 
-<p>Add a reference to the remote repository</p>
+<pre><code>  git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
+</code></pre></li>
+<li><p>Pull down the remote repository's master branch. This creates a local branch called <code>ultrasaurus/master</code></p>
 
-<pre><code>    git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
-</code></pre>
+<pre><code>  git pull ultrasaurus master
+</code></pre></li>
+<li><p>Now merge the <code>ultrasaurus/master</code> stuff into your <code>master</code> branch</p>
 
-<p>Pull down the remote repository's master branch. This creates a local branch called <code>ultrasaurus/master</code></p>
+<pre><code>  git merge ultrasaurus/master
+</code></pre></li>
+<li><p>Finally push your own <code>master</code> branch back to your <code>origin</code> remote github repository.</p>
 
-<pre><code>    git pull ultrasaurus master
-</code></pre>
+<pre><code>  git push origin master
+</code></pre></li>
+</ul>
 
-<p>Now merge the <code>ultrasaurus/master</code> stuff into your <code>master</code> branch</p>
-
-<pre><code>    git merge ultrasaurus/master
-</code></pre>
-
-<p>Finally push your own <code>master</code> branch back to your <code>origin</code> remote github repository.</p>
-
-<pre><code>    git push origin master
-</code></pre>
 
 <p>If you want to understand all the magical git incantations, watch this great screencast: <a href="http://www.gitcasts.com/posts/railsconf-git-talk">http://www.gitcasts.com/posts/railsconf-git-talk</a></p>
 
@@ -56,7 +59,7 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 
 <p>Each directory has a spec file. You will write all the code to make it pass.</p>
 
-<p>To walk through this process there are detailed instructions in the index.md file in the "hello" directory.</p>
+<p>To walk through this process there are detailed instructions in the <code>index.md</code> file in the "hello" directory.</p>
 
 <h2>Outline</h2>
 
@@ -66,14 +69,13 @@ gives you a feel of how to use these tests and you will write your first class. 
 <li><strong>temperature</strong>
 Write another class and do some basic math.</li>
 <li><strong>calculator</strong> introduces a little more math, and you'll need to iterate.</li>
-<li><strong>Pig Latin</strong> lets you manipulate strings.</li>
-<li><strong>in_words</strong>
-Ask a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.</li>
-<li><strong>blocks</strong> introduces block syntax.</li>
+<li><strong>pig_latin</strong> lets you manipulate strings.</li>
+<li><strong>in_words</strong> asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.</li>
+<li><strong>blocks</strong> introduces block syntax, including <code>yield</code></li>
 </ul>
 
 
-<h2>Related Projects</h2>
+<h1>Resources</h1>
 
 <h3>Learning Ruby via Tests</h3>
 
@@ -97,6 +99,8 @@ Ask a number to say itself in English. Extend a built-in class. By the end you'l
 <li><a href="http://www.csunplugged.org/">CS Unplugged</a> - "CS Unplugged provides an extensive collection of free resources that teach principles of Computer Science such as binary numbers, algorithms and data compression through engaging games and puzzles that use cards, string, crayons and lots of running around."</li>
 <li><a href="http://pragprog.com/titles/bmsft/everyday-scripting-with-ruby">Everyday Scripting with Ruby</a> by Brian Marick</li>
 <li><a href="http://pragprog.com/titles/ruby/programming-ruby">Programming Ruby (the Pick Axe)</a> by Dave Thomas</li>
+<li><a href="http://github.com/liahhansen/learn-to-program">learn to program</a> by Liah Hansen</li>
+<li>Nice User’s Guide: http://www.rubyist.net/~slagell/ruby/</li>
 </ul>
 
 
@@ -107,7 +111,47 @@ Ask a number to say itself in English. Extend a built-in class. By the end you'l
 </ul>
 
 
-<h2>Credits</h2>
+<h2>Online Ruby References</h2>
+
+<ul>
+<li><a href="http://www.ruby-lang.org">http://www.ruby-lang.org</a></li>
+<li><a href="http://www.ruby-doc.org/">http://www.ruby-doc.org/</a></li>
+<li><a href="http://www.gotapi.com/rubyrails">http://www.gotapi.com/rubyrails</a></li>
+<li><a href="http://apidock.com/">http://apidock.com/</a></li>
+</ul>
+
+
+<h2>When you have a question...</h2>
+
+<p>First, search for the answer (keywords, exact error string)</p>
+
+<ul>
+<li>Google</li>
+<li>http://www.ruby-forum.com</li>
+<li>http://stackoverflow.com/</li>
+</ul>
+
+
+<p>If you didn’t find the answer and you need to ask your question:</p>
+
+<ol>
+<li>Include version numbers:
+ $ ruby -v
+ ruby 1.8.6 (2008-08-11 patchlevel 287) [universal-darwin9.0]</li>
+<li>Note where you have already looked for an answer</li>
+<li>If you can, include code snippets that reproduce the problem in isolation</li>
+</ol>
+
+
+<h2>Other good resources</h2>
+
+<ul>
+<li>Regular expressions: <a href="http://www.rubular.com/">http://www.rubular.com/</a></li>
+<li>irb</li>
+</ul>
+
+
+<h1>Credits</h1>
 
 <ul>
 <li>Concept by Alex Chaffee</li>

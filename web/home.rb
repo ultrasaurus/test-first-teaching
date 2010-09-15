@@ -50,15 +50,16 @@ body {font-size:100%;
   padding: 0; margin: 0;
 }
 h1 {font: 2.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0;}
-h2 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0; margin: 0}
-h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; background: #{palette[2]}; 
-margin: 0 0 .25em -.5em; padding: .5em 1em }
+h2 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0;}
+h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; background: #{palette[2]}; }
+h3 {margin: 0 0 .25em -.5em; padding: .5em 1em }
 
 p {margin-top: 0; margin-bottom: 1em;}
 li { margin-bottom: .5em;}
 code { font-size: 125%;}
 
 .headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #{palette[3]}; }
+.headline h2 {margin: 0}
 .main { padding: 1em 1em 1em 220px; }
 
 .toc { float: left; position: fixed; width: 200px; margin: -1px 1em 0 0; padding: 0; 
@@ -188,6 +189,8 @@ There are several testing frameworks in use for Ruby today:
         end
       end
     end),
+    
+    Section.new(:name => "Learn Ruby", :text => File.read("#{File.dirname(__FILE__)}/../learn_ruby/index.md")),
     
   ]
     
