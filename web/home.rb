@@ -42,25 +42,29 @@ class Home < Erector::Widgets::Page
   end
 
   def head_content
-    stylesheet "ChunkFive/stylesheet.css"
+    font = "SansationBold"
+    stylesheet "Sansation/stylesheet.css"
     palette = %w{#779fe8 #c198ff #E2EBFD #77e882 #eeff82}
     style <<-STYLE
-body {font-size:100%;
-  font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+body {
+  font-size:100%; font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
   padding: 0; margin: 0;
 }
-h1 {font: 2.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0;}
-h2 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; letter-spacing: 0; line-height: 0;}
-h3 {font: 1.5em 'ChunkFiveRegular', 'LucidaGrande', sans-serif; background: #{palette[2]}; }
-h3 {margin: 0 0 .25em -.5em; padding: .5em 1em }
+h1 {font: 3em '#{font}', 'Lucida Grande', sans-serif; letter-spacing: 0; font-weight: regular; }
+h2 {font: 1.5em '#{font}', 'Lucida Grande', sans-serif; letter-spacing: 0; font-weight: regular; }
+h3 {font: 1.5em '#{font}', 'Lucida Grande', sans-serif; font-weight: regular; }
 
 p {margin-top: 0; margin-bottom: 1em;}
 li { margin-bottom: .5em;}
 code { font-size: 125%;}
 
 .headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #{palette[3]}; }
-.headline h2 {margin: 0}
+.headline h1 {margin: 0;}
+.headline h2 {margin: 0;}
 .main { padding: 1em 1em 1em 220px; }
+.main h1, .main h2, .main h3 {
+  margin: 0 0 .25em -.5em; padding: .5em 1em .25em; background: #{palette[2]}; 
+}
 
 .toc { float: left; position: fixed; width: 200px; margin: -1px 1em 0 0; padding: 0; 
   border-right: 1px solid black;
