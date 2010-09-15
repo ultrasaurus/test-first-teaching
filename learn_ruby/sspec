@@ -31,7 +31,7 @@ class FailFast < Spec::Runner::Formatter::NestedTextFormatter
     super
     @output.puts
     where = example.location.gsub(/^.*learn_ruby\//, '')
-    @output.puts "Go check #{where}"
+    @output.puts "Go check #{blue(where)}"
     exit
   end
 end

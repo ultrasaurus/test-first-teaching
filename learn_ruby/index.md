@@ -1,3 +1,7 @@
+# Learn Ruby
+
+# Instructions
+
 ## Installation
 
 Here are some [good instructions](http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes)
@@ -21,33 +25,33 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 
 If you work for a while and then notice that this repository has changed and you want the new stuff:
 
-View the "status" and make sure you have nothing modified
+* View the "status" and make sure you have nothing modified
 
         git status
 
-Add a reference to the remote repository
+* Add a reference to the remote repository
 
         git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
 
-Pull down the remote repository's master branch. This creates a local branch called `ultrasaurus/master`
+* Pull down the remote repository's master branch. This creates a local branch called `ultrasaurus/master`
 
         git pull ultrasaurus master
 
-Now merge the `ultrasaurus/master` stuff into your `master` branch
+* Now merge the `ultrasaurus/master` stuff into your `master` branch
 
         git merge ultrasaurus/master
 
-Finally push your own `master` branch back to your `origin` remote github repository.
+* Finally push your own `master` branch back to your `origin` remote github repository.
 
         git push origin master
 
-If you want to understand all the magical git incantations, watch this great screencast: [http://www.gitcasts.com/posts/railsconf-git-talk](http://www.gitcasts.com/posts/railsconf-git-talk)
+If you want to understand all the magical git incantations, watch this great screencast: <http://www.gitcasts.com/posts/railsconf-git-talk>
 
 ## How To Use These Exercises
 
 Each directory has a spec file. You will write all the code to make it pass. 
 
-To walk through this process there are detailed instructions in the index.md file in the "hello" directory.
+To walk through this process there are detailed instructions in the `index.md` file in the "hello" directory.
 
 ## Outline
 
@@ -56,13 +60,11 @@ To walk through this process there are detailed instructions in the index.md fil
 * **temperature**
   Write another class and do some basic math.
 * **calculator** introduces a little more math, and you'll need to iterate.
-* **Pig Latin** lets you manipulate strings.
-* **in\_words**
-  Ask a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.
-* **blocks** introduces block syntax.
+* **pig\_latin** lets you manipulate strings.
+* **in\_words** asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.
+* **blocks** introduces block syntax, including `yield`
 
-
-## Related Projects
+# Resources
 
 ### Learning Ruby via Tests
 * [Test-First Teaching](http://testfirst.org) by Sarah Allen and Alex Chaffee
@@ -80,11 +82,41 @@ To walk through this process there are detailed instructions in the index.md fil
 * [CS Unplugged](http://www.csunplugged.org/) - "CS Unplugged provides an extensive collection of free resources that teach principles of Computer Science such as binary numbers, algorithms and data compression through engaging games and puzzles that use cards, string, crayons and lots of running around."
 * [Everyday Scripting with Ruby](http://pragprog.com/titles/bmsft/everyday-scripting-with-ruby) by Brian Marick
 * [Programming Ruby (the Pick Axe)](http://pragprog.com/titles/ruby/programming-ruby) by Dave Thomas
+* [learn to program](http://github.com/liahhansen/learn-to-program) by Liah Hansen
+* Nice User’s Guide: http://www.rubyist.net/~slagell/ruby/
 
 ### Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex
 
-## Credits
+## Online Ruby References
+
+* <http://www.ruby-lang.org>
+*	<http://www.ruby-doc.org/>
+*	<http://www.gotapi.com/rubyrails>
+*	<http://apidock.com/>
+
+## When you have a question...
+
+First, search for the answer (keywords, exact error string)
+
+*	Google
+*	http://www.ruby-forum.com 
+*	http://stackoverflow.com/ 
+
+If you didn’t find the answer and you need to ask your question:
+
+1. Include version numbers:
+    $ ruby -v
+    ruby 1.8.6 (2008-08-11 patchlevel 287) \[universal-darwin9.0\]
+2. Note where you have already looked for an answer
+3. If you can, include code snippets that reproduce the problem in isolation
+
+## Other good resources
+
+*	Regular expressions: <http://www.rubular.com/>
+*	irb  
+
+# Credits
 
 * Concept by Alex Chaffee
 * Exercises by Alex Chaffee, Sarah Allen, Liah Hansen, Kai Middleton
