@@ -1,5 +1,4 @@
 module PigLatinTranslator
-
   def translate(word)
     words = word.split(" ")
     arrResult = []
@@ -16,7 +15,6 @@ module PigLatinTranslator
   
   def add_ay(word)
     word + "ay"
-  end  
-
+  end
 end
 

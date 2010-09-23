@@ -66,9 +66,11 @@ To walk through this process there are detailed instructions in the `index.md` f
 
 ### Learning Ruby via Tests
 * [Test-First Teaching](http://testfirst.org) by Sarah Allen and Alex Chaffee
-* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O’Brien
+  * [Learning TDD Through Test First Teaching](http://www.youtube.com/watch?v=KgfdlZuVz7I) talk by Sarah Allen at East Bay Ruby Meetup
 * [Metakoans](http://rubyquiz.com/quiz67.html) by ara.t.howard
-* [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
+* [Ruby Learning Tests](http://clarkware.com/cgi/blosxom/2005/03/18) by Mike Clark
+* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O’Brien (inspired by Metakoans and Ruby Learning Tests)
+* [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - a Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
 * something by Yehuda Katz
 * [ruby-warrior](http://github.com/ryanb/ruby-warrior) by Ryan Bates - a game written in Ruby for learning Ruby
 
