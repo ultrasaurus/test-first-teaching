@@ -3,10 +3,12 @@ GEM
   specs:
     erector (0.8.1)
       hoe (>= 1.5.0)
+    fakeweb (1.3.0)
     hoe (2.6.1)
       rake (>= 0.8.7)
       rubyforge (>= 2.0.4)
     json_pure (1.4.5)
+    polyglot (0.3.1)
     rack (1.2.1)
     rake (0.8.7)
     rdiscount (1.6.5)
@@ -15,12 +17,16 @@ GEM
       json_pure (>= 1.1.7)
     sinatra (1.0)
       rack (>= 1.0)
+    treetop (1.4.8)
+      polyglot (>= 0.3.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   erector
+  fakeweb
   rdiscount
   rspec
   sinatra
+  treetop
