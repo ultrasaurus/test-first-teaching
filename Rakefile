@@ -21,9 +21,7 @@ task :build do
     files.grep(/#{mod}/).each do |file|
       num = "%02d" % i
       dir = File.dirname(file)
-      puts dir
       dir = "pkg/" + dir.gsub(/learn_ruby\//, "learn_ruby/#{num}_")
-      puts dir
       FileUtils.mkdir_p dir
       FileUtils.cp_r(file, dir)
     end
