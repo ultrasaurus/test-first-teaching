@@ -1,14 +1,17 @@
 require 'rake/packagetask'
 require 'rdiscount'
 
-Rake::PackageTask.new(:zip) do |spec|
-  spec.name = "learn_ruby"
-  spec.need_zip = true
-  spec.package_files.include("learn_ruby/**/*_spec.rb")
-  spec.package_files.include("learn_ruby/**/*_data.rb")
-  spec.package_files.include("learn_ruby/**/*.html")
-  spec.package_files.include("learn_ruby/sample_data/vehicles.rb")
-  spec.version = "1.0.0"
+task :build do
+  files = Dir.glob("learn_ruby/**/*_spec.rb") +
+    Dir.glob("learn_ruby/**/*_data.rb") +
+    Dir.glob("learn_ruby/**/*.html") +
+    Dir.glob("learn_ruby/sample_data/vehicles.rb")
+  
+  files.each do |file|
+    dir = "pkg/#{File.dirname(file)}"
+    FileUtils.mkdir_p dir
+    FileUtils.cp_r(file, dir)
+  end
 end
 
 task :default do
@@ -23,7 +26,7 @@ task :default do
   end
   
   # convert all Erector pages into .html
-  system "erector --to-html web"
+  system "erector --to-html ./web"
   
   # run all exercises
   failed_modules = 0
@@ -41,7 +44,7 @@ task :default do
   # exit 1 if something_failed
   
   # make the package
-  Rake::Task[:package].invoke
+  Rake::Task[:build].invoke
 end
 
 task :foo do

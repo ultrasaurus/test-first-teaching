@@ -209,16 +209,6 @@ There are several testing frameworks in use for Ruby today:
       end
     end),
     
-    Section.new(:name => "Download", :text => lambda do
-      ul do
-        li do
-          a :href => '/pkg/learn_ruby-1.0.0.zip' do
-            text 'Learn Ruby'
-          end
-        end
-      end
-    end),
-    
     Section.new(:name => "Learn Ruby", :text => File.read("#{File.dirname(__FILE__)}/../learn_ruby/index.md")),
     
   ]

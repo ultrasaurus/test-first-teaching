@@ -1,0 +1,24 @@
+rename directories (prepend order number)
+
+generate and push course into a github repo
+- dir = ../learn_ruby
+- repo = git@github.com:alexch/learn_ruby
+- modules = * (all directories)
+
+read the dir and repo from course.yaml
+
+allow multiple course.yaml files (many courses)
+- rake  => courses/default.yaml
+- rake COURSE=noisebridge => courses/noisebridge-2010.yaml
+-- dir = ../learn_ruby_noisebridge-2010
+-- repo = git@github.com:mockdeep/learn_ruby_noisebridge-2010
+
+read the set of included modules from course.yaml
+
+read module ordering from course.yaml
+ - rename directories (prepend order number)
+
+read github repo info from course.yaml
+
+create course repo if not found
+
