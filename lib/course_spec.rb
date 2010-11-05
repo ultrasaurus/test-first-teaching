@@ -5,10 +5,10 @@ require 'wrong'
 include Wrong
 
 describe Course do
-  it "lists all modules under the curriculum dir" do
-    modules = Course.all_modules("#{here}/../learn_ruby")
-    assert { modules.include? "array" }
-    assert { modules.include? "simon_says" }
+  it "lists all chapters under the curriculum dir" do
+    chapters = Course.all_chapters("#{here}/../learn_ruby")
+    assert { chapters.include? "array" }
+    assert { chapters.include? "simon_says" }
     # dumb test, but better than nothing
   end
 

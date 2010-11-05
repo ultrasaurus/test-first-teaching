@@ -4,9 +4,9 @@ require 'yaml'
 $: << './lib'
 require 'course'
 
-desc "lists all the module dirs in the learn_ruby dir in YAML"
-task :list_modules do
-  puts Course.all_modules("learn_ruby").to_yaml
+desc "lists all the chapter dirs in the learn_ruby dir in YAML"
+task :list_chapters do
+  puts Course.all_chapters("learn_ruby").to_yaml
 end
 
 task :build do
@@ -43,17 +43,17 @@ task :default do
   system "erector --to-html ./web"
 
   # run all exercises
-  failed_modules = 0
-  modules = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
-  modules.each do |mod|
+  failed_chapters = 0
+  chapters = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
+  chapters.each do |mod|
     result = Dir["#{mod}/*_spec.rb"].collect do |test_file| 
       system "learn_ruby/sspec #{test_file}"      
     end.uniq == [true]
     puts "#{mod} " + (result ? "passed" : "FAILED")
     puts
-    failed_modules += 1 if result == false
+    failed_chapters += 1 if result == false
   end
-  puts "#{failed_modules} of #{modules.size} failed modules"
+  puts "#{failed_chapters} of #{chapters.size} failed chapters"
 
   # exit 1 if something_failed
 

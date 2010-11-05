@@ -1,6 +1,6 @@
 <p>This repo contains all the source code that generates the <a href="http://testfirst.org">http://testfirst.org</a> web site and courses.</p>
 
-<p>Courses comprise sets of modules; each course has its own github repo, which students clone (or fork and clone) and do their work inside the clone.</p>
+<p>Courses comprise sets of chapters; each course has its own github repo, which students clone (or fork and clone) and do their work inside the clone.</p>
 
 <p>If you want to teach a class, this project is for you. If you want to learn ruby, go check out <a href="http://github.com/alexch/learn_ruby">http://github.com/alexch/learn_ruby</a> instead.</p>
 
@@ -8,11 +8,11 @@
 
 <p><strong>curriculum</strong> - a top-level category, usually specified by language or framework. E.g. <code>learn_ruby</code> or <code>learn_java</code> or <code>learn_rails</code>.</p>
 
-<p><strong>module</strong> - a group of related test-first exercises inside a curriculum. E.g. <code>array</code> or <code>calculator</code> or <code>threads</code>. Modules can contain tests, descriptions, sample data, and solutions.</p>
+<p><strong>chapter</strong> - a group of related test-first exercises inside a curriculum. E.g. <code>array</code> or <code>calculator</code> or <code>threads</code>. chapters can contain tests, descriptions, sample data, and solutions.</p>
 
-<p><strong>course</strong> - a list, in order, of a chosen group of modules that will be built into a <em>repo</em> that students can clone. Each course is defined by a <strong>course file</strong> which is in YAML format.</p>
+<p><strong>course</strong> - a list, in order, of a chosen group of chapters that will be built into a <em>repo</em> that students can clone. Each course is defined by a <strong>course file</strong> which is in YAML format.</p>
 
-<p><strong>course repo</strong> - a git repository (probably on github) containing a built-out of a course's modules, but with some automatic processing. For instance, the repo does not contain solutions. Students should <code>git clone</code> this repo when taking a class. On the local file system, the repo must be located as a <strong>sibling</strong> of the test-first-teaching directory.</p>
+<p><strong>course repo</strong> - a git repository (probably on github) containing a built-out of a course's chapters, but with some automatic processing. For instance, the repo does not contain solutions. Students should <code>git clone</code> this repo when taking a class. On the local file system, the repo must be located as a <strong>sibling</strong> of the test-first-teaching directory.</p>
 
 <h2>How to teach a class</h2>
 
@@ -25,11 +25,11 @@
 </ol>
 
 
-<h2>How to write modules</h2>
+<h2>How to write chapters</h2>
 
 <p>(todo: more detail)</p>
 
-<p>edit the spec files inside the module directory and the solution files inside its <code>solution</code> subdirectory. Run <code>rake</code> and all modules will be tested. (todo: run <code>rake MODULE=foo</code> to run only the foo module's tests)</p>
+<p>edit the spec files inside the chapter directory and the solution files inside its <code>solution</code> subdirectory. Run <code>rake</code> and all chapters will be tested. (todo: run <code>rake CHAPTER=foo</code> to run only the foo chapter's tests)</p>
 
 <h2>How to edit and publish the web site</h2>
 

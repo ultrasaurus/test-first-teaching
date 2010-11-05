@@ -12,8 +12,8 @@ class Course
   end
   
   # todo: move to Curriculum object
-  def self.all_modules(curriculum_name)
-    modules = Dir.glob("learn_ruby/*").
+  def self.all_chapters(curriculum_name)
+    chapters = Dir.glob("learn_ruby/*").
     select{|d| File.directory?(d)}.
     map{|d| d.split('/')[1]}
   end
