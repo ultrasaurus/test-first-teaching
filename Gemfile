@@ -1,5 +1,6 @@
 source :gemcutter
-gem "rspec"
+gem "rspec", "~>2"
+gem "wrong"
 gem "erector"
 gem "treetop"
 gem "sinatra"
