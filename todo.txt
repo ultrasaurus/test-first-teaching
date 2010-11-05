@@ -1,10 +1,6 @@
+rake: run specs in lib/*_spec.rb
 
-generate and push course into a github repo
-- dir = ../learn_ruby
-- repo = git@github.com:alexch/learn_ruby
-- modules = * (all directories)
-
-`rake CHAPTER=foo` to run only the foo chapter's tests
+`rake chapter=foo` to run only the foo chapter's tests
 
 use RSpec 2 in sspec
 
@@ -12,14 +8,6 @@ refactor home.rb into several files
 
 add separate web pages & nav for learn_ruby and learn_java
 
-allow multiple course.yaml files (many courses)
-- rake  => courses/default.yaml
-- rake COURSE=noisebridge => courses/noisebridge-2010.yaml
--- dir = ../learn_ruby_noisebridge-2010
--- repo = git@github.com:mockdeep/learn_ruby_noisebridge-2010
-
-read github repo info from course.yaml
-
-create course repo if not found
+create course repo on github if it doesn't already exist, using github API
 
 allow subdirectories inside chapters

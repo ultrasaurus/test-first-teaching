@@ -44,6 +44,8 @@ task :default do
   #   end
   # end
 
+  # todo: run specs in lib/*_spec.rb
+
   # run all exercises in all chapters
   failed_chapters = 0
   chapters = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
