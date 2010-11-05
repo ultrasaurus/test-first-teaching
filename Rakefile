@@ -1,12 +1,12 @@
-require 'rake/packagetask'
 require 'rdiscount'
 require 'yaml'
 
+$: << './lib'
+require 'course'
+
+desc "lists all the module dirs in the learn_ruby dir in YAML"
 task :list_modules do
-  modules = Dir.glob("learn_ruby/*").
-  select{|d| File.directory?(d)}.
-  map{|d| d.split('/')[1]}
-  puts modules.to_yaml
+  puts Course.all_modules("learn_ruby").to_yaml
 end
 
 task :build do

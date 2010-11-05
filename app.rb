@@ -1,3 +1,5 @@
+# This is a trivial Sinatra app that drives testfirst.org on Heroku
+
 require 'rubygems'
 require 'sinatra'
 require 'erector'

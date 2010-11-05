@@ -1,4 +1,7 @@
 --- 
+:name: learn_ruby
+:repo: git@github.com:alexch/learn_ruby
+:modules:
     - hello
     - calculator
     - temperature
