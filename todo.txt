@@ -1,6 +1,3 @@
-rename module to chapter
-
-read the dir and repo from course.yaml
 
 generate and push course into a github repo
 - dir = ../learn_ruby
@@ -10,6 +7,10 @@ generate and push course into a github repo
 `rake CHAPTER=foo` to run only the foo chapter's tests
 
 use RSpec 2 in sspec
+
+refactor home.rb into several files
+
+add separate web pages & nav for learn_ruby and learn_java
 
 allow multiple course.yaml files (many courses)
 - rake  => courses/default.yaml
@@ -21,3 +22,4 @@ read github repo info from course.yaml
 
 create course repo if not found
 
+allow subdirectories inside chapters

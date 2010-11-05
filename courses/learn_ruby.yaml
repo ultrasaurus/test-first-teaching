@@ -1,7 +1,6 @@
 --- 
-:name: learn_ruby
-:repo: git@github.com:alexch/learn_ruby
-:modules:
+:repo: git@github.com:alexch/learn_ruby.git
+:chapters:
     - hello
     - calculator
     - temperature
@@ -14,8 +13,8 @@
     - blocks
     - performance_monitor
     - builder
-    - regex_screen_scrape_cnn
     - dictionary
+    - regex_screen_scrape_cnn
     - fiftynames
     - orange_tree
     - roster
