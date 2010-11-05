@@ -82,6 +82,11 @@ describe Course do
       end
     end
     
+    it "copies root-level files" do
+      assert { File.exists? "#{@tmpdir}/tool" }
+      assert { File.exists? "#{@tmpdir}/notes.html" }
+    end
+    
     it "clears away old contents (like previously generated chapter dirs)"
     
   end

@@ -55,38 +55,44 @@ class Course
 
   def build
     FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated chapter dirs
+
+    copy_files curriculum_dir, repo_dir
     
     @chapters.each_with_index do |chapter, i|
       num = "%02d" % i
       numbered = "#{num}_#{chapter}"
       source_dir = "#{curriculum_dir}/#{chapter}"
       target_dir = "#{@repo_dir}/#{numbered}"
-      FileUtils.mkdir_p target_dir
-      files = Dir.glob("#{source_dir}/*")
-      markdown_files = []
-      files.select! do |file|
-        if File.directory?(file)
-          nil
-        elsif file =~ /\.md$/
-          markdown_files << file.split('/').last
-          nil
-        else
-          true
-        end
+      copy_files source_dir, target_dir
+    end  
+  end
+  
+  def copy_files(source_dir, target_dir)
+    FileUtils.mkdir_p target_dir
+    files = Dir.glob("#{source_dir}/*")
+    markdown_files = []
+    files.select! do |file|
+      if File.directory?(file)
+        nil
+      elsif file =~ /\.md$/
+        markdown_files << file.split('/').last
+        nil
+      else
+        true
       end
-      
-      FileUtils.cp files, target_dir
-
-      markdown_files.each do |markdown_file|
-        html_file = target_dir + "/" + markdown_file.gsub(/\.md$/, '.html')
-
-        File.open(html_file, "w") do |f|
-          markdown = File.read("#{source_dir}/#{markdown_file}")
-          f.print Markdown.new(markdown).to_html
-        end
-      end
-      
     end
+    
+    FileUtils.cp files, target_dir
+
+    markdown_files.each do |markdown_file|
+      html_file = target_dir + "/" + markdown_file.gsub(/\.md$/, '.html')
+
+      File.open(html_file, "w") do |f|
+        markdown = File.read("#{source_dir}/#{markdown_file}")
+        f.print Markdown.new(markdown).to_html
+      end
+    end
+    
   end
   
   
