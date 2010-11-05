@@ -18,15 +18,17 @@ If you want to teach a class, this project is for you. If you want to learn ruby
 
 (todo: more detail)
 
-1. choose or create a course file for your class (e.g. ruby-for-artists.yaml)
-2. run `rake build COURSE=ruby-for-artists` and inspect the resulting repo (e.g. `../ruby-for-artists/`)
-3. run `rake push COURSE=ruby-for-artists` and watch for the course repo code to appear on github
+1. choose or create a course file for your class inside the `courses` dir (e.g. ruby-for-artists.yaml)
+2. run `rake course:build course=ruby-for-artists` and inspect the resulting repo (e.g. `../ruby-for-artists/`)
+3. run `rake course:push course=ruby-for-artists` and watch for the course repo code to appear on github
+
+See `courses/learn_ruby.yaml` for an example.
 
 ## How to write chapters
 
 (todo: more detail)
 
-edit the spec files inside the chapter directory and the solution files inside its `solution` subdirectory. Run `rake` and all chapters will be tested. (todo: run `rake CHAPTER=foo` to run only the foo chapter's tests)
+Create or edit the spec files inside the chapter directory and the solution files inside its `solution` subdirectory. Run `rake` and all chapters will be tested. (todo: run `rake chapter=foo` to run only the foo chapter's tests)
 
 ## How to edit and publish the web site
 
