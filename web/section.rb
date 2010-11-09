@@ -1,18 +1,23 @@
 class Section < Erector::Widget
   needs :name, :text
-  needs :aname => nil
+  needs :page_id
+  needs :anchor_name => nil
 
   def initialize(opts)
     super
-    @aname = @name.downcase.gsub(/[^a-z]/, '') unless @aname
+    @anchor_name = @name.downcase.gsub(/[^a-z]/, '') unless @anchor_name
+  end
+  
+  def href
+    "/#{@page_id}#{@anchor_name.nil? ? "" : "##{@anchor_name}"}"
   end
   
   def as_toc
-    a @name, :href => "##{@aname}"
+    a @name, :href => href
   end
   
   def content
-    a :name => @aname
+    a :name => @anchor_name
     h3 @name
     if @text.is_a? Proc
       @text.call
@@ -21,4 +26,3 @@ class Section < Erector::Widget
     end
   end  
 end
-
