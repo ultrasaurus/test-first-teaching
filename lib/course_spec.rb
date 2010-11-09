@@ -1,9 +1,15 @@
 here = File.expand_path(File.dirname(__FILE__))
 
-require 'course'
+require 'rspec'
 require 'wrong'
 include Wrong
 require 'tmpdir'
+
+begin
+  require 'course'
+rescue LoadError
+  require "#{here}/course"
+end
 
 describe Course do
   it "can find the project root directory" do
@@ -87,7 +93,16 @@ describe Course do
       assert { File.exists? "#{@tmpdir}/notes.html" }
     end
     
-    it "clears away old contents (like previously generated chapter dirs)"
+    it "clears away old contents (like previously generated chapter dirs)" do
+      chapter_dir = "#{@tmpdir}/99_dummy"
+      FileUtils.mkdir_p chapter_dir
+      File.open("#{chapter_dir}/hello.txt", "w") do |f|
+        f.write("hello")
+      end
+      assert { File.exists? "#{chapter_dir}/hello.txt" }
+      @course.build
+      deny { File.exists? "#{chapter_dir}/hello.txt" }
+    end
     
   end
 

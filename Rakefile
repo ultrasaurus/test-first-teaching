@@ -33,19 +33,13 @@ task :web do
   system "erector --to-html ./web"
 end  
 
-task :default do
-  # # convert all .md files into .html
-  # FileList['**/*.md'].each do |markdown_file|
-  #   markdown = File.read(markdown_file)
-  #   html_file = markdown_file.gsub(/\.md$/, '.html')
-  #   puts "writing #{html_file}"
-  #   File.open(html_file, "w") do |f|
-  #     f.print Markdown.new(markdown).to_html
-  #   end
-  # end
+require 'rspec/core/rake_task'
 
-  # todo: run specs in lib/*_spec.rb
-
+RSpec::Core::RakeTask.new(:test) do |task|
+  task.pattern = "lib/*_spec.rb"
+end
+  
+task :default => :test do
   # run all exercises in all chapters
   failed_chapters = 0
   chapters = FileList['learn_ruby/*'].select{|path| File.directory?(path)}

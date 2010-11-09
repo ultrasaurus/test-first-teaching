@@ -55,7 +55,7 @@ class Course
   end
 
   def build
-    FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated chapter dirs
+    FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated chapter dirs and files
 
     copy_files curriculum_dir, repo_dir
     
