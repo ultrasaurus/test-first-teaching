@@ -43,7 +43,7 @@ If you work for a while and then notice that this repository has changed and you
 
         git push origin master
 
-If you want to understand all the magical git incantations, watch this great screencast: <http://www.gitcasts.com/posts/railsconf-git-talk>
+If you want to understand all the magical git incantations, watch this great screencast: <http://blip.tv/file/4094854> (more at <http://www.gitcasts.com>)
 
 ## How To Use These Exercises
 
