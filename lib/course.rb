@@ -23,7 +23,8 @@ class Course
     if file.is_a? String
       file = File.new("#{Course.root}/courses/#{file}.yaml")
     end
-    data = YAML::load_file(file)
+#    data = YAML::load_file(file)
+    data = YAML::load(file.read)
     @curriculum_name = data[:curriculum] || "learn_ruby"
     @course_name = file.path.split('/').last.gsub(/\.yaml/, '')
     @chapters = data[:chapters]
@@ -71,7 +72,7 @@ class Course
     FileUtils.mkdir_p target_dir
     files = Dir.glob("#{source_dir}/*")
     markdown_files = []
-    files.select! do |file|
+    files = files.select do |file|
       if File.directory?(file)
         nil
       elsif file =~ /\.md$/

@@ -62,7 +62,7 @@ task :default do
   # exit 1 if something_failed
 
   # make the package
-  Rake::Task[:build].invoke
+  Rake::Task[:"course:build"].invoke
 end
 
 task :foo do
