@@ -54,7 +54,7 @@ To walk through this process there are detailed instructions in the `index.md` f
 ## Outline
 
 * **hello** 
-  gives you a feel of how to use these tests and you will write your first class.  See [hello/index.md](hello/index.md) for detailed instructions.
+  gives you a feel of how to use these tests and you will write your first class.  See [hello/index.html](hello/index.html) for detailed instructions.
 * **temperature**
   Write another class and do some basic math.
 * **calculator** introduces a little more math, and you'll need to iterate.
@@ -64,17 +64,17 @@ To walk through this process there are detailed instructions in the `index.md` f
 
 # Resources
 
-### Learning Ruby via Tests
+## Learning Ruby via Tests
 * [Test-First Teaching](http://testfirst.org) by Sarah Allen and Alex Chaffee
   * [Learning TDD Through Test First Teaching](http://www.youtube.com/watch?v=KgfdlZuVz7I) talk by Sarah Allen at East Bay Ruby Meetup
 * [Metakoans](http://rubyquiz.com/quiz67.html) by ara.t.howard
 * [Ruby Learning Tests](http://clarkware.com/cgi/blosxom/2005/03/18) by Mike Clark
-* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O’Brien (inspired by Metakoans and Ruby Learning Tests)
+* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O'Brien (inspired by Metakoans and Ruby Learning Tests)
 * [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - a Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
 * something by Yehuda Katz
 * [ruby-warrior](http://github.com/ryanb/ruby-warrior) by Ryan Bates - a game written in Ruby for learning Ruby
 
-### Learning Ruby and Programming
+## Learning Ruby and Programming
 * [Learn To Program](http://pine.fm/LearnToProgram/) by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a [PragProg book](http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition) (2nd ed.)
 * [Ruby Learning](http://rubylearning.com/satishtalim/tutorial.html) - Ruby tutorial
 * [Try Ruby](http://tryruby.org) runs a Ruby interpreter in your browser, with hints and advice
@@ -86,33 +86,34 @@ To walk through this process there are detailed instructions in the `index.md` f
 * [learn to program](http://github.com/liahhansen/learn-to-program) by Liah Hansen
 * Nice User's Guide: <http://www.rubyist.net/~slagell/ruby/>
 
-### Test-Driven Development
+## Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex
 
-### Online Ruby References
+## Online Ruby References
 
 * <http://www.ruby-lang.org>
 *	<http://www.ruby-doc.org/>
 *	<http://www.gotapi.com/rubyrails>
 *	<http://apidock.com/>
 
-### When you have a question...
+## When you have a question...
 
 First, search for the answer (keywords, exact error string)
 
-*	Google
-*	http://www.ruby-forum.com 
-*	http://stackoverflow.com/ 
+*	[Google](http://google.com)
+*	<http://www.ruby-forum.com>
+*	<http://stackoverflow.com/>
 
 If you didn't find the answer and you need to ask your question:
 
-1. Include version numbers:
+1. Include version numbers: <pre>
     $ ruby -v
     ruby 1.8.6 (2008-08-11 patchlevel 287) \[universal-darwin9.0\]
+</pre>
 2. Note where you have already looked for an answer
 3. If you can, include code snippets that reproduce the problem in isolation
 
-### Other good resources
+## Other good resources
 
 *	<http://www.rubular.com/> - an online Ruby regular expression calculator
 *	`irb` - when in doubt, try it out!

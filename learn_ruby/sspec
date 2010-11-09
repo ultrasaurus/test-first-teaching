@@ -8,7 +8,7 @@
 
 
 spec_file = ARGV[0]
-puts "Running #{spec_file} with solution"
+puts "Running chapter #{spec_file} with solution"
 puts
 dirs = spec_file.split('/')
 dirs.pop
@@ -32,7 +32,7 @@ class FailFast < Spec::Runner::Formatter::NestedTextFormatter
     @output.puts
     where = example.location.gsub(/^.*learn_ruby\//, '')
     @output.puts "Go check #{blue(where)}"
-    exit
+    exit 1
   end
 end
 ARGV.unshift('FailFast')

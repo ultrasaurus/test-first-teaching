@@ -1,64 +1,68 @@
-require 'rake/packagetask'
 require 'rdiscount'
 require 'yaml'
 
-task :list_modules do
-  modules = Dir.glob("learn_ruby/*").
-  select{|d| File.directory?(d)}.
-  map{|d| d.split('/')[1]}
-  puts modules.to_yaml
+$: << './lib'
+require 'course'
+
+desc "lists all the chapter dirs in the learn_ruby dir in YAML"
+task :list_chapters do
+  puts Course.all_chapters("learn_ruby").to_yaml
 end
 
-task :build do
-
-  files = Dir.glob("learn_ruby/**/*_spec.rb") +
-  Dir.glob("learn_ruby/**/*_data.rb") +
-  Dir.glob("learn_ruby/**/*.html") +
-  Dir.glob("learn_ruby/sample_data/vehicles.rb")
-
-  mods = YAML::load_file("learn_ruby/course.yaml")
-  mods.each_with_index do |mod, i|
-    files.grep(/#{mod}/).each do |file|
-      num = "%02d" % i
-      dir = File.dirname(file)
-      dir = "pkg/" + dir.gsub(/learn_ruby\//, "learn_ruby/#{num}_")
-      FileUtils.mkdir_p dir
-      FileUtils.cp_r(file, dir)
-    end
+namespace :course do
+  def course
+    Course.new(ENV['course'] || "learn_ruby")
   end
+  
+  desc "build the course into its repo dir (default: course=learn_ruby)"
+  task :build do
+    course.build
+  end
+  
+  desc "build the course into its repo dir and push it to github (default: course=learn_ruby)"
+  task :push do
+    c = course
+    c.create_repo
+    c.build
+    c.push_repo
+  end    
 end
+
+desc "convert all Erector pages into .html"
+task :web do
+  system "erector --to-html ./web"
+end  
 
 task :default do
-  # convert all .md files into .html
-  FileList['**/*.md'].each do |markdown_file|
-    markdown = File.read(markdown_file)
-    html_file = markdown_file.gsub(/\.md$/, '.html')
-    puts "writing #{html_file}"
-    File.open(html_file, "w") do |f|
-      f.print Markdown.new(markdown).to_html
-    end
-  end
+  # # convert all .md files into .html
+  # FileList['**/*.md'].each do |markdown_file|
+  #   markdown = File.read(markdown_file)
+  #   html_file = markdown_file.gsub(/\.md$/, '.html')
+  #   puts "writing #{html_file}"
+  #   File.open(html_file, "w") do |f|
+  #     f.print Markdown.new(markdown).to_html
+  #   end
+  # end
 
-  # convert all Erector pages into .html
-  system "erector --to-html ./web"
+  # todo: run specs in lib/*_spec.rb
 
-  # run all exercises
-  failed_modules = 0
-  modules = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
-  modules.each do |mod|
+  # run all exercises in all chapters
+  failed_chapters = 0
+  chapters = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
+  chapters.each do |mod|
     result = Dir["#{mod}/*_spec.rb"].collect do |test_file| 
       system "learn_ruby/sspec #{test_file}"      
     end.uniq == [true]
     puts "#{mod} " + (result ? "passed" : "FAILED")
-    puts
-    failed_modules += 1 if result == false
+    puts ""
+    failed_chapters += 1 if result == false
   end
-  puts "#{failed_modules} of #{modules.size} failed modules"
+  puts "#{failed_chapters} of #{chapters.size} failed chapters"
 
   # exit 1 if something_failed
 
   # make the package
-  Rake::Task[:build].invoke
+  Rake::Task[:"course:build"].invoke
 end
 
 task :foo do
