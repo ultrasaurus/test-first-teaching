@@ -1,12 +1,12 @@
 ## Open a terminal in this directory
 
-    cd hello
+    cd 00_hello
 
 This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.
 
 ## Run the spec
 
-    spec hello_spec.rb
+    rake
         
 ## Watch it fail
 
@@ -20,7 +20,7 @@ That means that it is looking for a file called `hello.rb` and can't find it.
 
 Open up `hello.rb` in a text editor. Save it. Run the spec again.
 
-    spec hello_spec.rb
+    rake
         
 ## Watch it fail
 
@@ -41,7 +41,7 @@ Save it. Run the spec again.
 
 Now you should see an error like this:
 
-    $ spec hello_spec.rb 
+    $ rake 
     F
 
     1)
@@ -104,3 +104,6 @@ Hooray! Finally! It works!
 
 Also, sing a song and do a little dance.
 
+## And then...
+
+Fix the next failure! :-)
