@@ -93,6 +93,12 @@ describe Course do
       assert { File.exists? "#{@tmpdir}/notes.html" }
     end
     
+    it "copies ubiquitous files" do
+      chapter_dirs.each do |chapter_dir|
+        assert { File.exists? "#{@tmpdir}/#{chapter_dir}/ubiquity.txt" }
+      end
+    end
+    
     it "clears away old contents (like previously generated chapter dirs)" do
       chapter_dir = "#{@tmpdir}/99_dummy"
       FileUtils.mkdir_p chapter_dir
