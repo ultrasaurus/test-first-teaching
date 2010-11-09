@@ -1,4 +1,3 @@
-
 class Curriculum < Page
   needs :name
   
@@ -14,9 +13,12 @@ class Curriculum < Page
     @sections ||= begin
       here = File.expand_path(File.dirname(__FILE__))
       text = File.read("#{here}/../#{@name}/index.md")
-      # section_texts = text.split(/^# /)
-      # p section_texts
-      [new_section(:name => @name, :text => text)]
+      chunks = text.split(/^\# /m)
+      chunks.map do |chunk|
+        next if chunk.empty?
+        header, body = chunk.split("\n", 2)
+        new_section(:name => header, :text => body)
+      end.compact
     end
   end
   

@@ -4,15 +4,16 @@ require 'yaml'
 $: << './lib'
 require 'course'
 
-desc "lists all the chapter dirs in the learn_ruby dir in YAML"
+def course
+  Course.new(ENV['course'] || "learn_ruby")
+end
+
+desc "list all the chapter dirs in the course dir in YAML, for help making new course.yaml files"
 task :list_chapters do
-  puts Course.all_chapters("learn_ruby").to_yaml
+  puts Course.all_chapters(course.curriculum_name).to_yaml
 end
 
 namespace :course do
-  def course
-    Course.new(ENV['course'] || "learn_ruby")
-  end
   
   desc "build the course into its repo dir (default: course=learn_ruby)"
   task :build do
@@ -28,17 +29,14 @@ namespace :course do
   end    
 end
 
-desc "convert all Erector pages into .html"
-task :web do
-  system "erector --to-html ./web"
-end  
-
 require 'rspec/core/rake_task'
 
+desc "run tests of the framework"
 RSpec::Core::RakeTask.new(:test) do |task|
   task.pattern = "lib/*_spec.rb"
 end
-  
+
+desc "run tests, exercises, and build the course (default: course=learn_ruby)"
 task :default => :test do
   # run all exercises in all chapters
   failed_chapters = 0
@@ -59,7 +57,7 @@ task :default => :test do
   Rake::Task[:"course:build"].invoke
 end
 
-task :foo do
-  puts Dir.pwd
+desc "launch the testfirst.org website on http://localhost:9292"
+task :run do
+  system 'rerun "rackup config.ru"'
 end
-

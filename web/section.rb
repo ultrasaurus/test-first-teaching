@@ -18,7 +18,7 @@ class Section < Erector::Widget
   
   def content
     a :name => @anchor_name
-    h3 @name
+    h2 @name
     if @text.is_a? Proc
       @text.call
     else

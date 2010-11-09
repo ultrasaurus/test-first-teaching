@@ -41,7 +41,7 @@ code { font-size: 125%;}
 .headline a, a:visited { color: black; text-decoration: none; }
 .headline a:hover { color: black; }
 
-.main { padding: 1em 100px 1em #{nav_width+3}em; line-height: 1.25em; }
+.main { padding: 1em 100px 1em #{nav_width+3}em; line-height: 1.25em; min-height: 20em; }
 
 .main h1, .main h2, .main h3 {
   margin: 0 0 .25em -.5em; padding: .5em 1em .25em; background: #{palette[2]}; 
