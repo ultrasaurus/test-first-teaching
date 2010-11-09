@@ -22,3 +22,5 @@ read github repo info from course.yaml
 
 create course repo if not found
 
+http://marakana.com/forums/ruby/ruby_on_rails/191.html
+
