@@ -1,13 +1,9 @@
-rake: run specs in lib/*_spec.rb
-
 `rake chapter=foo` to run only the foo chapter's tests
 
-use RSpec 2 in sspec
-
-refactor home.rb into several files
-
-add separate web pages & nav for learn_ruby and learn_java
+add learn_java
 
 create course repo on github if it doesn't already exist, using github API
 
 allow subdirectories inside chapters
+
+substitute actual course repo git url in index.html
