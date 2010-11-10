@@ -19,8 +19,9 @@ If you want to teach a class, this project is for you. If you want to learn ruby
 (todo: more detail)
 
 1. choose or create a course file for your class inside the `courses` dir (e.g. ruby-for-artists.yaml)
-2. run `rake course:build course=ruby-for-artists` and inspect the resulting repo (e.g. `../ruby-for-artists/`)
-3. run `rake course:push course=ruby-for-artists` and watch for the course repo code to appear on github
+2. create an appropriately named github repo and put its git url in the course file (e.g. `:repo: git@github.com:alexch/ruby-for-artists.git`)
+3. run `rake build course=ruby-for-artists` and inspect the resulting repo (e.g. `../ruby-for-artists/`)
+4. run `rake push course=ruby-for-artists` and watch for the course repo code to appear on github
 
 See `courses/learn_ruby.yaml` for an example.
 

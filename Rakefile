@@ -13,20 +13,19 @@ task :list_chapters do
   puts Course.all_chapters(course.curriculum_name).to_yaml
 end
 
-namespace :course do
-  
-  desc "build the course into its repo dir (default: course=learn_ruby)"
-  task :build do
-    course.build
-  end
-  
-  desc "build the course into its repo dir and push it to github (default: course=learn_ruby)"
-  task :push do
-    c = course
-    c.create_repo
-    c.build
-    c.push_repo
-  end    
+desc "build the course into its repo dir (default: course=learn_ruby)"
+task :build do
+  course.build
+  puts "Built #{course.course_name}"
+end
+
+desc "build the course into its repo dir and push it to github (default: course=learn_ruby)"
+task :push do
+  c = course
+  c.create_repo
+  Rake::Task[:build].invoke
+  c.push_repo # todo: exit on failure
+  puts "Pushed #{course.course_name}"
 end
 
 require 'rspec/core/rake_task'
