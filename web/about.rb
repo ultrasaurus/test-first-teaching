@@ -6,6 +6,10 @@ class About < Page
     "About Test-First Teaching"
   end
   
+  def main_title
+    h1 name
+  end
+  
   def sections
     [
       new_section(:name => "Why Test-First Teaching?", :text => <<-MARKDOWN),
@@ -45,15 +49,25 @@ class About < Page
       MARKDOWN
 
       new_section(:name => "Testing Frameworks", :text => <<-MARKDOWN),
-  A **Testing Framework** is a tool or library that provides a backdrop for writing tests. For example, to implement a test in the popular JUnit framework, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.  
+  A **Testing Framework** is a tool or library that provides a backdrop for writing tests. 
+  
+  For example, to implement a test in the JUnit framework for Java, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.
+  
+  Using RSpec for Ruby, you use the keywords `describe` and `it` to build a nested set of tests (also called "specs" or "examples" in the RSpec lexicon).
 
   There are several testing frameworks in use for Ruby today:
 
-  * `Test::Unit` is included with Ruby 1.8
-  * `Minitest` is included with Ruby 1.9
-  * `shoulda`, which can be used as an extension Test::Unit, provides more readable tests and allows you to write less test code
+  * `Test::Unit` is included with Ruby 1.8, and follows the "xUnit" conventions
+  * `Minitest` is included with Ruby 1.9, and allows both xUnit and RSpec style tests
   * `RSpec`, which is used in this project, has more concise syntax and can be used in the same project, but creates a separate suite of tests, called "specs"
   * in `Cucumber`, tests are written not in Ruby but in a language designed for tests
+
+  There are also many testing libraries which can be used inside any of the frameworks listed above:
+  
+  * [Wrong](http://github.com/sconover/wrong) provides a universal `assert` (or `expect`) that inspects your code and automatically tells you details of why it failed
+  * [shoulda](https://github.com/thoughtbot/shoulda) provides a "chaining DSL" for representing assertions, similar to RSpec
+  * `rr` is a Mock Object library
+  
       MARKDOWN
 
       new_section(:name => "Join the Conversation", :text => lambda do

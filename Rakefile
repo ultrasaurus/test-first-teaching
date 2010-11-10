@@ -53,7 +53,7 @@ task :default => :test do
   # exit 1 if something_failed
 
   # make the package
-  Rake::Task[:"course:build"].invoke
+  Rake::Task[:build].invoke
 end
 
 desc "launch the testfirst.org website on http://localhost:9292"

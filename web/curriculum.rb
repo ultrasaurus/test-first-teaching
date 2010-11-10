@@ -8,6 +8,10 @@ class Curriculum < Page
   def name
     @name.titleize
   end
+
+  def main_title
+    h1 name
+  end
   
   def sections
     @sections ||= begin

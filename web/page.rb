@@ -100,9 +100,13 @@ code { font-size: 125%;}
   def sections
     []
   end
+  
+  def main_title
+  end
 
   def main
     div :class => "main" do
+      main_title
       div :class => "sections" do
         sections.each do |section|
           widget section
