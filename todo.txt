@@ -1,5 +1,5 @@
 `rake chapter=foo` to run only the foo chapter's tests
-ß
+
 add learn_java
 
 create course repo on github if it doesn't already exist, using github API
@@ -7,3 +7,5 @@ create course repo on github if it doesn't already exist, using github API
 allow subdirectories inside chapters
 
 substitute actual course repo git url in index.html
+
+build solutions repo or zip or something, to allow students to see solutions after they've tried

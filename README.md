@@ -27,9 +27,9 @@ See `courses/learn_ruby.yaml` for an example.
 
 ## How to write chapters
 
-Create or edit the spec files inside the chapter directory and the solution files inside its `solution` subdirectory. Run `rake` and all chapters will be tested; the `solution` dir will be added to the load path so you can easily separate exercises and data from solutions. If you want to run rake on just the chapter you're in, like the students will, then say `rake -f ../ubiquitous/Rakefile`
+Create or edit the spec files inside the chapter directory and the solution files inside its `solution` subdirectory. Run `rake` and all chapters will be tested; the `solution` dir will be added to the load path so you can easily separate exercises and data from solutions. If you want to run rake on just the chapter you're in, like the students will, then `cd` into the chapter dir and say `rake`.
 
-TODO: easier way to to run only the foo chapter's tests, e.g. `rake chapter=foo`
+TODO: easier way to to run only the foo chapter's tests from the top level, e.g. `rake chapter=foo`
 
 To look at the generated course, run `rake build course=my_course` and then look inside `../my_course`. 
 
