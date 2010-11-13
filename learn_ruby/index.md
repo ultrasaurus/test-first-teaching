@@ -97,6 +97,10 @@ If you want to understand all these magical git incantations, watch this great s
 * [Programming Ruby (the Pick Axe)](http://pragprog.com/titles/ruby/programming-ruby) by Dave Thomas
 * [learn to program](http://github.com/liahhansen/learn-to-program) by Liah Hansen
 * Nice User's Guide: <http://www.rubyist.net/~slagell/ruby/>
+* Michael Hartl's [Rails Tutorial](http://railstutorial.org)
+* <http://ruby4kids.com>
+* [Ruby in 100 Minutes](http://jumpstartlab.com/resources/ruby-jumpstart/ruby/) by [Jeff Casimir](http://jumpstartlab.com)
+* [Ruby Mendicant University](http://university.rubymendicant.com)
 
 ## Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex
