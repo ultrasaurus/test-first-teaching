@@ -7,4 +7,12 @@ class Array
     end
     result
   end
+  
+  def square
+    map{|n| n*n}
+  end
+
+  def square!
+    map!{|n| n*n}
+  end
 end
