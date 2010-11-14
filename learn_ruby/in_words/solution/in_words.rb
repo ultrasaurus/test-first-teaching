@@ -1,84 +1,58 @@
-
-class Fixnum
+module InWords
   def in_words
     number = self
     if number == 0
       return 'zero'
     end
-    numOutput = ''
+    out = ''
+    
+    orders = [
+      [100, "hundred"],
+      [1000, "thousand"],
+      [1_000_000, "million"],
+      [1_000_000_000, "billion"],
+      [1_000_000_000_000, "trillion"],
+    ]
 
-    if number > 999999
-      millions = number / 1000000
-      if millions > 0
-        numOutput = numOutput + "#{millions.in_words} million" 
-        number = number - (millions * 1000000)
-        if number > 0
-          numOutput += ' '
-        end
-      end
-    end
-
-    if number > 999
-      thousands = number / 1000
-      if thousands > 0
-        numOutput = numOutput + "#{thousands.in_words} thousand" 
-        number = number - (thousands * 1000)
-        if number > 0
-          numOutput += ' '
-        end
-      end
-    end
-
-    if number > 99
-      hundreds = number / 100
-      if hundreds > 0
-        # moreOutput = hundreds.in_words
-        numOutput = numOutput + "#{hundreds.in_words} hundred" 
-        number = number - (hundreds * 100)
-        if number > 0
-          numOutput += ' '
+    orders.reverse.each do |limit, name|
+      if number > (limit-1)
+        count = number / limit
+        if count > 0
+          out << "#{count.in_words} #{name}"
+          number -= (count * limit)
+          if number > 0
+            out << " "
+          end
         end
       end
     end
     
-    tensDigit = number / 10
-    onesDigit = number - tensDigit * 10
+    tens_digit = number / 10
+    ones_digit = number - tens_digit * 10
     ones = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
     tens = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
     teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'ten']
-    if tensDigit == 1
-      numOutput += teens[onesDigit - 1]
-      return numOutput
+    if tens_digit == 1
+      out += teens[ones_digit - 1]
+      return out
     end
-    if tensDigit > 1  
-      numOutput += tens[tensDigit - 1 ]
-      if onesDigit > 0
-        numOutput += ' '
+    if tens_digit > 1  
+      out << tens[tens_digit - 1 ]
+      if ones_digit > 0
+        out << ' '
       end
     end
-    if onesDigit > 0
-      numOutput += ones[onesDigit - 1]
+    if ones_digit > 0
+      out << ones[ones_digit - 1]
     end
-    return numOutput
-  end # end in_words method
-end # end class
+    return out
+  end
+end
+
+class Fixnum
+  include InWords
+end
 
 class Bignum
-  def in_words
-    number = self
-    numOutput = ''
-    if number > 999999999
-      billions = number / 1000000000
-      if billions > 0
-        numOutput = numOutput + "#{billions.in_words} billion" 
-        number = number - (billions * 1000000000)
-        if number > 0
-          numOutput += ' ' + number.in_words.to_s
-          return numOutput
-        else
-          return numOutput
-        end
-      end
-    end
-  end
+  include InWords
 end
