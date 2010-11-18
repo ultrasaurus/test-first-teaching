@@ -2,9 +2,17 @@ require "page"
 
 class About < Page
   
+  def name
+    "About Test-First Teaching"
+  end
+  
+  def main_title
+    h1 name
+  end
+  
   def sections
     [
-      Section.new(:name => "Why Test-First Teaching?", :text => <<-MARKDOWN),
+      new_section(:name => "Why Test-First Teaching?", :text => <<-MARKDOWN),
   Test-First Teaching provides a fundamental shift in the way people learn software development. Initially, it helps the student focus on learning very basic syntax, able to independently confirm when they have successfully completed an exercise.  That immediate feedback is valuable for cementing knowledge.
 
   Test-first teaching also teaches an understanding of all of the arcane error messages in a low stress situation.  The first thing you see, before you have written a line of code, is an error.  Then you discover what you need to do to fix that error. Test-first teaching helps people intuitively understand that mistakes are a natural part of the software development process.
@@ -23,7 +31,7 @@ class About < Page
 
   MARKDOWN
 
-      Section.new(:name => "Unit Testing", :text => <<-MARKDOWN),
+      new_section(:name => "Unit Testing", :text => <<-MARKDOWN),
   **Unit Testing** refers to writing a set of functions that sit next to a given module of program code. These functions run a series of tests that assure, more-or-less thoroughly, that the program code performs as it is supposed to.
 
   For example, assume there is a function called add that takes two integers as parameters, adds them together, and returns their sum. There might be one unit test that calls add with 2 and 3, and makes sure the result is 5. There might be additional unit tests that "push the envelope" in various other ways, testing its behavior with large numbers, negative numbers, illegal parameters (e.g. strings), and so forth.
@@ -31,7 +39,7 @@ class About < Page
   Once a full suite of unit tests is developed, it is good practice to run these tests as often as possible.
       MARKDOWN
 
-      Section.new(:name => "Test-Driven Development", :aname => "tdd", :text => <<-MARKDOWN),
+      new_section(:name => "Test-Driven Development", :anchor_name => "tdd", :text => <<-MARKDOWN),
 
   **Test-Driven Development** (sometimes called Test-First Development or Test-Driven Design) is the practice of writing the unit tests first, before you write a single line of implementation code. While this may seem like putting the cart before the horse, there are several good reasons why you might want to do this:
 
@@ -40,19 +48,29 @@ class About < Page
   3. **Less Work**. If you apply a tight cycle of write one test, then write the code to implement that test, then write the next test, your code ends up growing organically. This often (though not always) leads to less wasted effort; you end up writing all the code you need, and none of the code you don't need.
       MARKDOWN
 
-      Section.new(:name => "Testing Frameworks", :text => <<-MARKDOWN),
-  A **Testing Framework** is a tool or library that provides a backdrop for writing tests. For example, to implement a test in the popular JUnit framework, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.  
+      new_section(:name => "Testing Frameworks", :text => <<-MARKDOWN),
+  A **Testing Framework** is a tool or library that provides a backdrop for writing tests. 
+  
+  For example, to implement a test in the JUnit framework for Java, you write a class that extends the common TestCase superclass. Each method in your subclass that begins with the word "test" is a separate unit test. You then run the JUnit tool (both graphical and text versions are provided) and it loads your class and executes each test method in turn, monitoring the results and providing feedback.
+  
+  Using RSpec for Ruby, you use the keywords `describe` and `it` to build a nested set of tests (also called "specs" or "examples" in the RSpec lexicon).
 
   There are several testing frameworks in use for Ruby today:
 
-  * `Test::Unit` is included with Ruby 1.8
-  * `Minitest` is included with Ruby 1.9
-  * `shoulda`, which can be used as an extension Test::Unit, provides more readable tests and allows you to write less test code
+  * `Test::Unit` is included with Ruby 1.8, and follows the "xUnit" conventions
+  * `Minitest` is included with Ruby 1.9, and allows both xUnit and RSpec style tests
   * `RSpec`, which is used in this project, has more concise syntax and can be used in the same project, but creates a separate suite of tests, called "specs"
   * in `Cucumber`, tests are written not in Ruby but in a language designed for tests
+
+  There are also many testing libraries which can be used inside any of the frameworks listed above:
+  
+  * [Wrong](http://github.com/sconover/wrong) provides a universal `assert` (or `expect`) that inspects your code and automatically tells you details of why it failed
+  * [shoulda](https://github.com/thoughtbot/shoulda) provides a "chaining DSL" for representing assertions, similar to RSpec
+  * `rr` is a Mock Object library
+  
       MARKDOWN
 
-      Section.new(:name => "Join the Conversation", :text => lambda do
+      new_section(:name => "Join the Conversation", :text => lambda do
         p do
           text 'Join our '
           a :href => 'http://groups.google.com/group/test-first-teaching' do

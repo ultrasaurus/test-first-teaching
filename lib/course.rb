@@ -9,6 +9,7 @@ class Course
     chapters = Dir.glob("#{curriculum_dir}/*").
       select {|d| File.directory?(d)}.
       map {|d| d.split('/').last}.
+      reject {|d| d == "ubiquitous"}.
       sort
   end
 
@@ -55,7 +56,7 @@ class Course
   end
 
   def build
-    FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated chapter dirs
+    FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated chapter dirs and files
 
     copy_files curriculum_dir, repo_dir
     
@@ -65,6 +66,7 @@ class Course
       source_dir = "#{curriculum_dir}/#{chapter}"
       target_dir = "#{@repo_dir}/#{numbered}"
       copy_files source_dir, target_dir
+      copy_files "#{curriculum_dir}/ubiquitous", target_dir      
     end  
   end
   

@@ -2,17 +2,9 @@ here = File.expand_path(File.dirname(__FILE__))
 
 require "erector"
 require "rdiscount"
+require "#{here}/ext"
 require "#{here}/section"
-
-class Erector::Widget
-  def markdown(s)
-    rawtext Markdown.new(s).to_html
-  end
-
-  def stylesheet(href)
-    link :rel=>"stylesheet", :type=>"text/css", :href=> href
-  end
-end
+require "#{here}/nav"
 
 class Page < Erector::Widgets::Page
   def topic(s)
@@ -28,6 +20,7 @@ class Page < Erector::Widgets::Page
 
     header_text = '#2D384C'
     header_border = '#B4BCCA'
+    nav_width = 16 # em
     
     style <<-STYLE
 body {
@@ -48,54 +41,25 @@ code { font-size: 125%;}
 .headline a, a:visited { color: black; text-decoration: none; }
 .headline a:hover { color: black; }
 
-.main { padding: 1em 260px 1em 100px ; line-height: 1.25em; }
+.main { padding: 1em 100px 1em #{nav_width+3}em; line-height: 1.25em; min-height: 20em; }
+
 .main h1, .main h2, .main h3 {
   margin: 0 0 .25em -.5em; padding: .5em 1em .25em; background: #{palette[2]}; 
   border: 1px solid #{header_border};
   color: #{header_text};
 }
 
-.toc { float: right; position: fixed; right: 0px; top: 1em;
-  width: 200px; margin: -1px 1em 0 0; padding: 0; 
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  }
-.toc ul { padding:0; margin:0; }
-.toc li { padding:0; margin:0; list-style-type:none; border-bottom: 1px solid black; }
-.toc a , .toc a:visited { padding: .5em; text-decoration:none; display:block; color: blue; font-size: .8em;
-  font-weight: bold;
-  color: black; background: #{palette[0]} }
-.toc a:hover { background: #{palette[1]}; }
-
 .footer { text-align: center; font-size: .75em; border-top: 1px solid black; padding: .25em; background-color: #{palette[3]}; }
 
-.sections { clear:left; }
+.nav {float: left; margin: 1em; border: 1px solid #000; background: #{palette[0]}; width: #{nav_width}em;}
 
-.nav ul {
-	margin-left: 0;
-	padding-left: 0;
-	display: inline;
-	} 
+.nav ul {margin: 0; padding: .25em;} 
 
-.nav ul li {
-	margin-left: 0;
-	margin-bottom: 0;
-	border: 1px solid #000;
-	list-style: none;
-	display: inline;
-	background: #{palette[0]};
-	}
+.nav ul li {margin: .15em; list-style: none;}
+.nav ul li ul li {font-size: .75em;}
 
-.nav ul li:hover { 	background: #{palette[1]}; }
-	
-.nav ul li a { 	padding: 2px 15px 5px; text-decoration: none; }
-	
-.nav ul li.here {
-	border-bottom: 1px solid #ffc;
-	list-style: none;
-	display: inline;
-	}
+.nav ul li a:hover { 	background: #{palette[1]}; }	
+.nav ul li a { 	padding: .15em 15px; text-decoration: none; }
 
 
     STYLE
@@ -103,7 +67,6 @@ code { font-size: 125%;}
   
   def body_content
     headline
-    toc
     nav
     main
     footer
@@ -119,26 +82,31 @@ code { font-size: 125%;}
   end
   
   def nav
-    div :class => "nav" do
-      ul do
-        li { a 'About', :href => "/about" }
-        li { a 'Learn Ruby', :href => "/learn_ruby" }
-      end
-    end
+    widget Nav, :current_page => self.class
   end
-
-  def toc
-    div :class => "toc" do
-      sections.each do |section|
-        li do
-          widget section, {}, {:content_method_name => :as_toc}
-        end
-      end
-    end
+  
+  def name
+    self.class.name # todo: titleize
+  end
+  
+  def page_id
+    self.class.name.downcase #todo: underscore
+  end
+  
+  def new_section(opts)
+    Section.new(opts.merge({:page_id => page_id}))
+  end
+  
+  def sections
+    []
+  end
+  
+  def main_title
   end
 
   def main
     div :class => "main" do
+      main_title
       div :class => "sections" do
         sections.each do |section|
           widget section

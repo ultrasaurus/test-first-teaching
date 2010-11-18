@@ -4,47 +4,47 @@ module Inwords
       if number == 0
         return 'zero'
       end
-      numOutput = ''
+      num_output = ''
 
-      def thingz number, numOutput, size, size_text
+      def thingz number, num_output, size, size_text
         if number > size - 1
           thisnum = number / size
           if thisnum > 0
-            numOutput = numOutput + "#{thisnum.in_words} #{size_text}" 
+            num_output = num_output + "#{thisnum.in_words} #{size_text}" 
             number = number - (thisnum * size)
             if number > 0
-              numOutput += ' '
+              num_output += ' '
             end
           end
         end     
-        return number, numOutput 
+        return number, num_output 
       end
 
-      number, numOutput = thingz(number, numOutput, 1000000000000, "trillion")
-      number, numOutput = thingz(number, numOutput, 1000000000, "billion")
-      number, numOutput = thingz(number, numOutput, 1000000, "million")
-      number, numOutput = thingz(number, numOutput, 1000, "thousand")
-      number, numOutput = thingz(number, numOutput, 100, "hundred")
+      number, num_output = thingz(number, num_output, 1000000000000, "trillion")
+      number, num_output = thingz(number, num_output, 1000000000, "billion")
+      number, num_output = thingz(number, num_output, 1000000, "million")
+      number, num_output = thingz(number, num_output, 1000, "thousand")
+      number, num_output = thingz(number, num_output, 100, "hundred")
 
-      tensDigit = number / 10
-      onesDigit = number - tensDigit * 10
+      tens_digit = number / 10
+      ones_digit = number - tens_digit * 10
       ones = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
       tens = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
       teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'ten']
-      if tensDigit == 1
-        numOutput += teens[onesDigit - 1]
-        return numOutput
+      if tens_digit == 1
+        num_output += teens[ones_digit - 1]
+        return num_output
       end
-      if tensDigit > 1  
-        numOutput += tens[tensDigit - 1 ]
-        if onesDigit > 0
-          numOutput += ' '
+      if tens_digit > 1  
+        num_output += tens[tens_digit - 1 ]
+        if ones_digit > 0
+          num_output += ' '
         end
       end
-      if onesDigit > 0
-        numOutput += ones[onesDigit - 1]
+      if ones_digit > 0
+        num_output += ones[ones_digit - 1]
       end
-      return numOutput
+      return num_output
     end # end in_words method
 end # end module
 

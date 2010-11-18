@@ -7,10 +7,6 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 
 ## Setup
 
-* Check out the git repository
-
-        git clone git://github.com/ultrasaurus/test-first-teaching.git
-
 * Install RSpec
 
         sudo gem install rspec
@@ -19,39 +15,17 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 
         alias spec="spec --color --format nested"
 
-## Setup again
+* Clone the course repository
 
-If you work for a while and then notice that this repository has changed and you want the new stuff:
-
-* View the "status" and make sure you have nothing modified
-
-        git status
-
-* Add a reference to the remote repository
-
-        git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
-
-* Pull down the remote repository's master branch. This creates a local branch called `ultrasaurus/master`
-
-        git pull ultrasaurus master
-
-* Now merge the `ultrasaurus/master` stuff into your `master` branch
-
-        git merge ultrasaurus/master
-
-* Finally push your own `master` branch back to your `origin` remote github repository.
-
-        git push origin master
-
-If you want to understand all the magical git incantations, watch this great screencast: <http://www.gitcasts.com/posts/railsconf-git-talk>
+        git clone git://github.com/alexch/learn_ruby.git
 
 ## How To Use These Exercises
 
-Each directory has a spec file. You will write all the code to make it pass. 
+Your cloned repo has a list of chapter directories. Each directory has a spec file. You will write all the code to make all the specs in it pass.
 
-To walk through this process there are detailed instructions in the `index.md` file in the "hello" directory.
+To get your feet wet in this process, go into the "hello" chapter with `cd 00_hello` and read the detailed instructions in its `index.html` file.
 
-## Outline
+## Outline of some of the chapters
 
 * **hello** 
   gives you a feel of how to use these tests and you will write your first class.  See [hello/index.html](hello/index.html) for detailed instructions.
@@ -61,6 +35,44 @@ To walk through this process there are detailed instructions in the `index.md` f
 * **pig\_latin** lets you manipulate strings.
 * **in\_words** asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.
 * **blocks** introduces block syntax, including `yield`
+
+## Pulling changes
+
+If you've been working for a while and then notice that the course repository has changed and you want the new stuff:
+
+* View the "status" and make sure you have nothing modified
+
+        git status
+
+* Pull the changes
+
+        git pull origin master
+
+## Forking (not cloning)
+
+To save a copy of your own solutions on your own github repo, you'll have to "fork" the course on Github. This will give you a new git url of your very own, which you can then clone as above. For instance, if your github name is `ladyhaha`, your clone command is
+
+        git clone git://github.com/ladyhaha/learn_ruby.git
+
+To pull changes into this new repo is a little tricky and you should probably ask for help before doing it, but here's the instructions.
+
+* Add a reference to the original remote repository
+
+        git remote add ultrasaurus git://github.com/ultrasaurus/learn_ruby
+
+* Pull down the remote repository's master branch. This creates a local branch called `ultrasaurus/master`
+
+        git pull origin master
+
+* Now merge the `ultrasaurus/master` stuff into your `master` branch
+
+        git merge ultrasaurus/master
+
+* Finally push your own `master` branch back to your `origin` remote github repository.
+
+        git push origin master
+
+If you want to understand all these magical git incantations, watch this great screencast: <http://blip.tv/file/4094854> (more at <http://www.gitcasts.com>)
 
 # Resources
 
@@ -85,6 +97,10 @@ To walk through this process there are detailed instructions in the `index.md` f
 * [Programming Ruby (the Pick Axe)](http://pragprog.com/titles/ruby/programming-ruby) by Dave Thomas
 * [learn to program](http://github.com/liahhansen/learn-to-program) by Liah Hansen
 * Nice User's Guide: <http://www.rubyist.net/~slagell/ruby/>
+* Michael Hartl's [Rails Tutorial](http://railstutorial.org)
+* <http://ruby4kids.com>
+* [Ruby in 100 Minutes](http://jumpstartlab.com/resources/ruby-jumpstart/ruby/) by [Jeff Casimir](http://jumpstartlab.com)
+* [Ruby Mendicant University](http://university.rubymendicant.com)
 
 ## Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex

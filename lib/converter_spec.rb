@@ -1,4 +1,4 @@
-require 'converter.rb'
+require 'converter'
 
 describe Converter do
   before do
@@ -27,7 +27,6 @@ EOS
   end
 
     it "converts ### to h3" do
-      pending
     @converter.markdown = <<EOS
 ### heading
 EOS
@@ -35,7 +34,6 @@ EOS
   end
 
      it "converts different kinds of headings" do
-     pending
     @converter.markdown = <<EOS
 # top level heading
 Here is a line without a heading
@@ -59,7 +57,6 @@ EOS
   end
 
     it "converts links" do
-      pending
     @converter.markdown = <<EOS
 Here is a ![alt-text](link)
 EOS
@@ -76,7 +73,6 @@ EOS
   end
 
     it "converts images in a block of text with special chars" do
-    pending
     @converter.markdown = <<EOS
 Here is a ![alt-text](link) in a block of text (which has [special] chars!)
 EOS
