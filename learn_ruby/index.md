@@ -102,6 +102,8 @@ If you want to understand all these magical git incantations, watch this great s
 * <http://ruby4kids.com>
 * [Ruby in 100 Minutes](http://jumpstartlab.com/resources/ruby-jumpstart/ruby/) by [Jeff Casimir](http://jumpstartlab.com)
 * [Ruby Mendicant University](http://university.rubymendicant.com)
+* Trainer on Rails ["Ruby For Rails" tutorial](http://www.public.traineronrails.com/courses/ruby/)
+* ["My 10 Favorite Things About Ruby"](http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/) by Yehuda Katz
 
 ## Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex
