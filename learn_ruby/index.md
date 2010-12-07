@@ -90,12 +90,12 @@ If you want to understand all these magical git incantations, watch this great s
 * [Learn To Program](http://pine.fm/LearnToProgram/) by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a [PragProg book](http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition) (2nd ed.)
 * [Ruby Learning](http://rubylearning.com/satishtalim/tutorial.html) - Ruby tutorial
 * [Try Ruby](http://tryruby.org) runs a Ruby interpreter in your browser, with hints and advice
+* [Read Ruby](http://ruby.runpaint.org/) a book about Ruby, quite technical but well written. Free online.
 * [Ruby Mission](http://github.com/alexch/mission)
 * [RailsBridge](http://groups.google.com/group/railsbridge)
 * [CS Unplugged](http://www.csunplugged.org/) - "CS Unplugged provides an extensive collection of free resources that teach principles of Computer Science such as binary numbers, algorithms and data compression through engaging games and puzzles that use cards, string, crayons and lots of running around."
 * [Everyday Scripting with Ruby](http://pragprog.com/titles/bmsft/everyday-scripting-with-ruby) by Brian Marick
 * [Programming Ruby (the Pick Axe)](http://pragprog.com/titles/ruby/programming-ruby) by Dave Thomas
-* [learn to program](http://github.com/liahhansen/learn-to-program) by Liah Hansen
 * Nice User's Guide: <http://www.rubyist.net/~slagell/ruby/>
 * Michael Hartl's [Rails Tutorial](http://railstutorial.org)
 * <http://ruby4kids.com>
