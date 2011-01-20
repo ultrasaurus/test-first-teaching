@@ -1,0 +1,12 @@
+The target audience for this class are individuals with programming experience in another language and that understand web development. A book will be provided to compliment the class instruction.
+
+The class will cover: 
+- Javascript language 
+- TDD using Jasmine 
+- Working with the browser DOM 
+- AJAX 
+- jQuery basics
+
+Alex Chaffee is an expert in object oriented programming and design, user interface design, website administration, and systems programming in Unix, MacOS, and Windows. Alex's many projects and roles can be viewed on his site, http://alexch.github.com/ .
+
+http://classes.blazingcloud.net/courses/show/18/javascript-for-programmers
