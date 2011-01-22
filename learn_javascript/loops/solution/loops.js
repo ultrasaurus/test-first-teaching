@@ -30,7 +30,9 @@ function sum(a) {
 function paramify(hash) {
 	var out = [];
 	for (var key in hash) {
-		out.push(key + "=" + hash[key]);
+		if (hash.hasOwnProperty(key)) {
+			out.push(key + "=" + hash[key]);
+		}
 	}
 	out.sort();
 	s = out.join("&");

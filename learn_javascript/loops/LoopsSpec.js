@@ -16,7 +16,7 @@ describe("Loops", function() {
 	
 	describe("looping over arrays", function() {
 	
-		/* try to implement the join() function without using the built-in String#join function */
+		// try to implement this join() function without using the built-in String#join function
 		describe("join", function() {
 			it("turns an empty array into an empty string", function() {
 				expect(join([])).toEqual("");
@@ -68,9 +68,8 @@ describe("Loops", function() {
 		});
 	});
 	
-	/* hint: to loop over elements of a hash, you can use
-	   for (var key in hash) {}
-	*/
+	// hint: to loop over elements of a hash, you can use
+	//  for (var key in hash) {}
 	describe("looping over hashes", function() {
 		describe("paramify", function() {
 			it("works on an empty hash", function() {
@@ -86,14 +85,24 @@ describe("Loops", function() {
 			});
 			
 			it("converts a hash with many elements", function() {
-				hash = {a:1,b:2,c:3,d:4,e:5,f:6}
+				var hash = {a:1,b:2,c:3,d:4,e:5,f:6}
 				expect(paramify(hash)).toEqual("a=1&b=2&c=3&d=4&e=5&f=6");
 			});
 			
-			/* this one might be a bit tricky ;-) */
+			// this one might be a bit tricky ;-)
 			it("outputs the parameters in alphabetical order", function() {
-				hash = {f:6,e:5,d:4,c:3,b:2,a:1};
+				var hash = {f:6,e:5,d:4,c:3,b:2,a:1};
 				expect(paramify(hash)).toEqual("a=1&b=2&c=3&d=4&e=5&f=6");
+			});
+			
+			// Advanced. Change "xit" to "it" to run this test.
+			xit("skips properties of the object's prototype", function() {
+				var Alphabet = function() { 
+					this.a = 1;
+					this.b = 2;
+				}
+				Alphabet.prototype = {c: 3};
+				expect(paramify(new Alphabet())).toEqual("a=1&b=2");
 			});
 		});
   });	

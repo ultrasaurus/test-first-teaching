@@ -24,7 +24,7 @@
 
 Your cloned repo has a list of chapter directories. Each directory has a spec file. You will write all the code to make all the specs in it pass.
 
-To get your feet wet in this process, go into the "hello" chapter with `cd 00_hello` and read the detailed instructions in its `index.html` file.
+To get your feet wet in this process, go into the "hello" chapter with `cd 00_hello` and read the detailed instructions in its [`index.html` file](00_hello/index.html).
 
 # Resources
 
