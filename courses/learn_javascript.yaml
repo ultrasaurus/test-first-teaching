@@ -1,0 +1,10 @@
+--- 
+:curriculum: learn_javascript
+:repo: git@github.com:alexch/learn_javascript.git
+:chapters:
+    - hello
+    - properties
+    - loops
+    - set
+    - calculator
+    - temperature
