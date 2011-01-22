@@ -85,6 +85,7 @@ If you want to understand all these magical git incantations, watch this great s
 * [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - a Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
 * something by Yehuda Katz
 * [ruby-warrior](http://github.com/ryanb/ruby-warrior) by Ryan Bates - a game written in Ruby for learning Ruby
+* [Rails for Zombies](http://railsforzombies.org)
 
 ## Learning Ruby and Programming
 * [Learn To Program](http://pine.fm/LearnToProgram/) by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a [PragProg book](http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition) (2nd ed.)
@@ -101,6 +102,8 @@ If you want to understand all these magical git incantations, watch this great s
 * <http://ruby4kids.com>
 * [Ruby in 100 Minutes](http://jumpstartlab.com/resources/ruby-jumpstart/ruby/) by [Jeff Casimir](http://jumpstartlab.com)
 * [Ruby Mendicant University](http://university.rubymendicant.com)
+* Trainer on Rails ["Ruby For Rails" tutorial](http://www.public.traineronrails.com/courses/ruby/)
+* ["My 10 Favorite Things About Ruby"](http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/) by Yehuda Katz
 
 ## Test-Driven Development
 * [Test-Driven](http://www.slideshare.net/alexchaffee/test-driven) - presentation by Alex

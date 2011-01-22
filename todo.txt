@@ -4,6 +4,8 @@ add learn_java
 
 create course repo on github if it doesn't already exist, using github API
 
+http://marakana.com/forums/ruby/ruby_on_rails/191.html
+
 allow subdirectories inside chapters
 
 substitute actual course repo git url in index.html
