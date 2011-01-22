@@ -1,5 +1,7 @@
-* move Rakefile and jasmine.yml into a common place
+* make git repo generator work
 * make 'rake jasmine:ci' work (may need to fix rspec gem version bug in Jasmine)
 * use custom runner
   * 'show passed' on by default
   * stop after first failure
+* figure out how to get common helpers (Jasmine doesn't like my file layout)
+
