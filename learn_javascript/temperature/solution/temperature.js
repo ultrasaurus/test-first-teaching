@@ -1,5 +1,4 @@
-function Temperature(degreesFahrenheitIn) {
-	var degreesFahrenheit = degreesFahrenheitIn;
+function Temperature(degreesFahrenheit) {
 	this.fahrenheit = function() {
 		return degreesFahrenheit;
 	}
