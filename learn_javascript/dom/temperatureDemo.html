@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Temperature Widget Demo</title>
+
+    <script src="color.js" type="text/javascript"></script>
+    <script src="number.js" type="text/javascript"></script>
+    <script src="temperatureWidget.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    window.onload = function() {
+      new TemperatureWidget();
+    };
+    </script>
+
+    <style>
+    #temperatureWidget {
+        border: 2px solid black;
+        padding: 1em;
+    }
+    #temperatureWidget .celcius {
+        border: 1px solid black;
+        padding: 2px 6px;
+        background: white;
+        font-size: 10pt;
+    }
+    </style>
+</head>
+<body>
+    <div id='temperatureWidget'>                                      
+        <p>Fahrenheit: <input name='fahrenheit'></p>                  
+        <p>Celcius: <span class='celcius'>???</span></p>                
+        <p><input type='submit' name='convert' value='Convert'></p>   
+    </div>
+</body>
+</html>
