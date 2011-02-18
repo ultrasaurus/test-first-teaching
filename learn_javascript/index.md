@@ -11,6 +11,8 @@
 
 ## Install Jasmine
 
+    gem install jasmine
+
 ## Install Git
 
 * Mac/Unix: `sudo port install git`
