@@ -40,4 +40,5 @@ To get your feet wet in this process, go into the "hello" chapter with `cd 00_he
   * [Jasmine Review](http://blog.twoalex.com/2010/12/29/test-your-javascript/)
   * [Headless Testing for Continuous Integration with Git and Jasmine](http://www.sencha.com/blog/2011/01/14/headless-testing-for-continuous-integration-with-git-and-jasmine/)
 
-
+* [Mozilla JavaScript Guide](http://developer.mozilla.org/en/JavaScript/Guide)
+* [JavaScript Garden](http://bonsaiden.github.com/JavaScript-Garden/) - "a growing collection of documentation about the most quirky parts of the JavaScript programming language. It gives advice to avoid common mistakes, subtle bugs, as well as performance issues and bad practices that non-expert JavaScript programmers may encounter on their endeavours into the depths of the language."
