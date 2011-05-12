@@ -88,6 +88,12 @@ describe Course do
       end
     end
     
+    it "copies the 'assets' dir" do
+      assert { File.exists? "#{@tmpdir}/assets" }
+      assert { File.directory? "#{@tmpdir}/assets" }
+      assert { File.exists? "#{@tmpdir}/assets/style.css" }
+    end
+    
     it "copies root-level files" do
       assert { File.exists? "#{@tmpdir}/tool" }
       assert { File.exists? "#{@tmpdir}/notes.html" }

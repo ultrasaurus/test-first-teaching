@@ -1,5 +1,4 @@
-# Instructions
-
+# Test-First Instructions
 
 ## Setup
 
@@ -45,7 +44,7 @@ curriculum he or she has chosen. Here is a survey of a few of the chapters:
 
 * **hello** 
   Gives you a feel for how to use these tests.  
-  See [hello/index.html](hello/index.html) for detailed instructions.
+  See [00_hello/index.html](00_hello/index.html) for detailed instructions.
 * **temperature**
   Write and class and do some basic math.
 * **calculator** introduces a little more math, and you'll need to iterate.

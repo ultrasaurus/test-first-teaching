@@ -5,5 +5,6 @@ gem "erector"
 gem "treetop"
 gem "sinatra"
 gem "rdiscount"
+gem "sass"
 
 gem "fakeweb" # used for one of the exercises
