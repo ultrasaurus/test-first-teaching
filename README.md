@@ -53,3 +53,11 @@ Here's the first few lines from `heroku info`:
 	Git Repo:       git@heroku.com:testfirst.git
 
 If you want access to the Heroku app, ask <alex@stinky.com>.
+
+# License
+
+This material is all open-source. We understand that people may want to use these materials to teach classes, and may want to get paid for their work, so commercial use is permitted. All we ask is that you provide credit to this project and the original authors if you reproduce or promote your work.
+
+All contents (included generated courseware) are Copyright (c) 2001-2011 by Alex Chaffee and the Test-First Teaching project, licensed under Creative Commons Attribution (CC BY 3.0) http://creativecommons.org/licenses/by/3.0/
+
+ 
