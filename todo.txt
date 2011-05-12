@@ -11,3 +11,5 @@ allow subdirectories inside chapters
 substitute actual course repo git url in index.html
 
 build solutions repo or zip or something, to allow students to see solutions after they've tried
+
+hello: use functions, not classes, to start

@@ -1,36 +1,53 @@
 # Instructions
 
-## Installation
-
-Here are some [good instructions](http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes)
-for installing the required software.  You will need Ruby, RubyGems and RSpec to Learn Ruby.
 
 ## Setup
 
+* Install Ruby
+
+  * Here are some [good instructions](http://www.wiki.devchix.com/index.php?title=Workshop_Installation_Notes_Rails_3)
+for installing the required software.  You will need Ruby, RubyGems and RSpec to Learn Ruby.
+  * We recommend using [rvm](http://rvm.beginrescueend.com) but you can use any Ruby you want. We officially support Ruby 1.9 but probably work with 1.8.7 as well.
+
 * Install RSpec
 
-        sudo gem install rspec
+        gem install rspec
 
-* Configure RSpec (optional). If you're running a bash shell, you can put the following in your .bash_profile to make the output a bit nicer.
+  * Configure RSpec (optional). If you're running a bash shell, you can put the following in your .bash_profile to make the output a bit nicer.
 
-        alias spec="spec --color --format nested"
+            alias spec="spec --color --format nested"
 
 * Clone the course repository
 
         git clone git://github.com/alexch/learn_ruby.git
 
-## How To Use These Exercises
+* Enter the course directory
 
-Your cloned repo has a list of chapter directories. Each directory has a spec file. You will write all the code to make all the specs in it pass.
+        cd learn_ruby
+        
 
-To get your feet wet in this process, go into the "hello" chapter with `cd 00_hello` and read the detailed instructions in its `index.html` file.
+## Using These Exercises
 
-## Outline of some of the chapters
+Your course directory (cloned repo) has a list of chapter directories. Each
+directory has a spec file. You will write all the code to make all the specs
+in it pass.
+
+To get your feet wet in this process, go into the "hello" chapter with `cd
+00_hello` and read the detailed instructions in its `index.html` file.
+
+If you got through "hello", then congratulations! Now it's time to go to the
+next directory (whose name begins with `01_`) and start learning Ruby!
+
+## Course Outline
+
+Each course is different, so check with your instructor for details on the
+curriculum he or she has chosen. Here is a survey of a few of the chapters: 
 
 * **hello** 
-  gives you a feel of how to use these tests and you will write your first class.  See [hello/index.html](hello/index.html) for detailed instructions.
+  Gives you a feel for how to use these tests.  
+  See [hello/index.html](hello/index.html) for detailed instructions.
 * **temperature**
-  Write another class and do some basic math.
+  Write and class and do some basic math.
 * **calculator** introduces a little more math, and you'll need to iterate.
 * **pig\_latin** lets you manipulate strings.
 * **in\_words** asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.
@@ -77,20 +94,19 @@ If you want to understand all these magical git incantations, watch this great s
 # Resources
 
 ## Learning Ruby via Tests
+* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O'Brien (inspired by Metakoans and Ruby Learning Tests)
+    * [Metakoans](http://rubyquiz.com/quiz67.html) by ara.t.howard
+    * [Ruby Learning Tests](http://clarkware.com/cgi/blosxom/2005/03/18) by Mike Clark
 * [Test-First Teaching](http://testfirst.org) by Sarah Allen and Alex Chaffee
   * [Learning TDD Through Test First Teaching](http://www.youtube.com/watch?v=KgfdlZuVz7I) talk by Sarah Allen at East Bay Ruby Meetup
-* [Metakoans](http://rubyquiz.com/quiz67.html) by ara.t.howard
-* [Ruby Learning Tests](http://clarkware.com/cgi/blosxom/2005/03/18) by Mike Clark
-* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O'Brien (inspired by Metakoans and Ruby Learning Tests)
 * [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - a Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
-* something by Yehuda Katz
 * [ruby-warrior](http://github.com/ryanb/ruby-warrior) by Ryan Bates - a game written in Ruby for learning Ruby
-* [Rails for Zombies](http://railsforzombies.org)
 
 ## Learning Ruby and Programming
-* [Learn To Program](http://pine.fm/LearnToProgram/) by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a [PragProg book](http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition) (2nd ed.)
+* [Learn To Program](http://pine.fm/LearnToProgram/) by **Chris Pine** - great Ruby tutorial, available online (1st ed.) or in a [PragProg book](http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition) (2nd ed.)
 * [Ruby Learning](http://rubylearning.com/satishtalim/tutorial.html) - Ruby tutorial
 * [Try Ruby](http://tryruby.org) runs a Ruby interpreter in your browser, with hints and advice
+* [Rails for Zombies](http://railsforzombies.org) - learn Ruby and Rails in your browser, no setup required
 * [Read Ruby](http://ruby.runpaint.org/) a book about Ruby, quite technical but well written. Free online.
 * [Ruby Mission](http://github.com/alexch/mission)
 * [RailsBridge](http://groups.google.com/group/railsbridge)
@@ -134,8 +150,9 @@ If you didn't find the answer and you need to ask your question:
 
 ## Other good resources
 
-*	<http://www.rubular.com/> - an online Ruby regular expression calculator
 *	`irb` - when in doubt, try it out!
+*	[Ruby Version Manager](http://rvm.beginrescueend.com/) (aka `rvm`) - cleanly manages multiple Ruby installations
+*	<http://www.rubular.com/> - an online Ruby regular expression calculator
 
 # Credits
 
