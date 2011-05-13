@@ -1,6 +1,4 @@
-`rake chapter=foo` to run only the foo chapter's tests
-
-add learn_java
+add learn_java to build process
 
 create course repo on github if it doesn't already exist, using github API
 
@@ -13,3 +11,10 @@ substitute actual course repo git url in index.html
 build solutions repo or zip or something, to allow students to see solutions after they've tried
 
 hello: use functions, not classes, to start
+
+If there are any failing tests, don't show any pending tests
+
+CalculatorAdvanced SUCKS
+
+Chris Pine doesn't do arrays for a while -- must sync better
+
