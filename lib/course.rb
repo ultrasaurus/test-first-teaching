@@ -115,6 +115,9 @@ class Course
   <link href="#{prefix}assets/style.css" media="screen" rel="stylesheet" type="text/css" /> 
 </head>
 <body>
+  <div class='header'>
+    <a href="http://testfirst.org">TestFirst.org</a>
+  </div>
   <div class='content'>
         HTML
         markdown = File.read("#{source_dir}/#{markdown_file}")
@@ -122,9 +125,9 @@ class Course
         
         f.print <<-HTML
   </div>
-<div class='footer'>
-  <a href="http://testfirst.org">TestFirst.org</a>
-</div>
+  <div class='footer'>
+    <a href="http://testfirst.org">TestFirst.org</a>
+  </div>
 </body>
 </html>
         HTML

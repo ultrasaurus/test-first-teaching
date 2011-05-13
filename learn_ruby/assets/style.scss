@@ -17,15 +17,38 @@ $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
 
+/* Font Stacks http://www.artsiteframework.com/guide/fontstacks.php */
+$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$times:     Times, "Times New Roman", serif;
+$trebuchet: "Trebuchet MS", sans-serif;
+$verdana:   Verdana, sans-serif;
+$georgia:   Georgia, serif;
+$lucida:    "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+$gill:      "Gill Sans", "Gill Sans MT", GillSans, Calibri, "Trebuchet MS", sans-serif;
+$optima:    Optima, Candara, "Trebuchet MS", sans-serif;
+
 body {
     background-color: white;
-    font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+    font-family: $optima;
     margin: 0px;
+    font-size: 15px;
+    line-height: 19px;
 }
-
 h1,h2,h3 {
-    font-family: "Gill Sans", "Gill Sans MT", GillSans, Calibri, "Trebuchet MS", sans-serif;
+    font-family: $lucida;    
     margin-left: -1em;
+}
+h1 {
+    text-shadow: #999 1px 1px 1px;    
+    padding: .5em .25em;
+    margin-top: 1em;
+}
+h2 {
+    margin-top: 1em;
+    border-bottom: $blue 1px dotted;
+}
+a, a:visited {
+    color: $blue;
 }
 
 .content {
@@ -34,17 +57,37 @@ h1,h2,h3 {
     margin: 1em auto;
 }
 
+.header, .footer {
+    font-size: 80%;
+    padding: .25em;
+    background-color: #dfd;
+}
+.header {
+    border-bottom: 1px solid $base03;
+    text-align: left;
+}
 .footer {
     border-top: 1px solid $base03;
     text-align: center;
-    font-size: 80%;
-    padding: .25em;
-    background-color: $base2;    
 }
 
 pre {
     font-family: Courier, "Courier New", monospace;
-    background-color: $base3;
-    padding: .25em;
+    background-color: #e9e9ff;
+    padding: .5em .25em;
     border: 1px solid $base1;
+}
+code {
+    background-color: #efefff;
+}
+pre > code { 
+    background-color: #e9e9ff;
+}
+
+li > p:nth-child(0) {
+    margin: 0;
+}
+ul li ul li {
+    margin-top: .1em;
+    margin-bottom: 1em;
 }

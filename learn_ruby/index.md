@@ -93,9 +93,7 @@ If you want to understand all these magical git incantations, watch this great s
 # Resources
 
 ## Learning Ruby via Tests
-* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O'Brien (inspired by Metakoans and Ruby Learning Tests)
-    * [Metakoans](http://rubyquiz.com/quiz67.html) by ara.t.howard
-    * [Ruby Learning Tests](http://clarkware.com/cgi/blosxom/2005/03/18) by Mike Clark
+* [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O'Brien (inspired by [Metakoans](http://rubyquiz.com/quiz67.html) by ara.t.howard and [Ruby Learning Tests](http://clarkware.com/cgi/blosxom/2005/03/18) by Mike Clark)
 * [Test-First Teaching](http://testfirst.org) by Sarah Allen and Alex Chaffee
   * [Learning TDD Through Test First Teaching](http://www.youtube.com/watch?v=KgfdlZuVz7I) talk by Sarah Allen at East Bay Ruby Meetup
 * [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - a Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
