@@ -12,64 +12,34 @@ class Page < Erector::Widgets::Page
     text ' '
   end
 
+  def page_title
+    "TestFirst.org - The Home of Test-First Teaching"
+  end
+
   def head_content
+    super
+    
     # todo: try http://www.fontsquirrel.com/fonts/nevis
-    font = "SansationBold"
-    stylesheet "Sansation/stylesheet.css"
+    # font = "SansationBold"
+    # stylesheet "Sansation/stylesheet.css"
+    stylesheet "Bentham/stylesheet.css"
     palette = %w{#779fe8 #c198ff #E2EBFD #77e882 #eeff82}
 
     header_text = '#2D384C'
     header_border = '#B4BCCA'
     nav_width = 16 # em
     
-    style <<-STYLE
-body {
-  font-size:100%; font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-  padding: 0; margin: 0;
-}
-h1 {font: 3em '#{font}', 'Lucida Grande', sans-serif; letter-spacing: 0; font-weight: regular; }
-h2 {font: 1.5em '#{font}', 'Lucida Grande', sans-serif; letter-spacing: 0; font-weight: regular; }
-h3 {font: 1.5em '#{font}', 'Lucida Grande', sans-serif; font-weight: regular; }
-
-p {margin-top: 0; margin-bottom: 1em;}
-li { margin-bottom: .5em;}
-code { font-size: 125%;}
-
-.headline { border-bottom: 1px solid black; padding: .5em; margin: 0; background-color: #{palette[3]}; }
-.headline h1 {margin: 0;}
-.headline h2 {margin: 0;}
-.headline a, a:visited { color: black; text-decoration: none; }
-.headline a:hover { color: black; }
-
-.main { padding: 1em 100px 1em #{nav_width+3}em; line-height: 1.25em; min-height: 20em; }
-
-.main h1, .main h2, .main h3 {
-  margin: 0 0 .25em -.5em; padding: .5em 1em .25em; background: #{palette[2]}; 
-  border: 1px solid #{header_border};
-  color: #{header_text};
-}
-
-.footer { text-align: center; font-size: .75em; border-top: 1px solid black; padding: .25em; background-color: #{palette[3]}; }
-
-.nav {float: left; margin: 1em; border: 1px solid #000; background: #{palette[0]}; width: #{nav_width}em;}
-
-.nav ul {margin: 0; padding: .25em;} 
-
-.nav ul li {margin: .15em; list-style: none;}
-.nav ul li ul li {font-size: .75em;}
-
-.nav ul li a:hover { 	background: #{palette[1]}; }	
-.nav ul li a { 	padding: .15em 15px; text-decoration: none; }
-
-
-    STYLE
+    here = File.expand_path(File.dirname(__FILE__))
+    style raw(Sass::Engine.for_file("#{here}/tft-web.scss", {}).render)
   end
   
   def body_content
-    headline
-    nav
-    main
-    footer
+    div :class => "wrapper" do
+      headline
+      nav
+      main
+      footer
+    end
   end
   
   def headline
@@ -123,12 +93,21 @@ code { font-size: 125%;}
         text ", "
         a "Alex Chaffee", :href => "http://alexch.github.com"
         text ", and many other contributors."
-      end
-      p do
+        br
+        text "Site design by "
+        a "Chandra Nalaani", :href => "http://chandranalaani.com/"
+        text ". "
         text "This site uses "
-        a "Sansation", :href => "http://www.fontsquirrel.com/fonts/Sansation"
+        # a "Sansation", :href => "http://www.fontsquirrel.com/fonts/Sansation"
+        # text " by "
+        # text "Bernd Montag"
+        a "Bentham", :href => "http://www.fontsquirrel.com/fonts/Bentham"
         text " by "
-        text "Bernd Montag"
+        a "Ben Weiner", :href => "http://www.readingtype.org/"
+        text ". "
+        text "Powered by "
+        a "Erector", :href => "http://erector.rubyforge.org/"
+        text "."
       end
       
     end

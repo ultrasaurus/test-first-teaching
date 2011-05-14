@@ -99,8 +99,8 @@ class Course
     scss_files.each do |input_file|
       output_file = target_dir + "/" + input_file.gsub(/\.scss$/, '.css')
       File.open(output_file, "w") do |f|
-        input = File.read("#{source_dir}/#{input_file}")
-        f.print Sass::Engine.new(input, :syntax => :scss).render
+        sass = Sass::Engine.for_file "#{source_dir}/#{input_file}", {}
+        f.print sass.render
       end
     end
 

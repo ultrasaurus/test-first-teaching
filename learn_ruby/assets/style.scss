@@ -17,15 +17,7 @@ $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
 
-/* Font Stacks http://www.artsiteframework.com/guide/fontstacks.php */
-$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$times:     Times, "Times New Roman", serif;
-$trebuchet: "Trebuchet MS", sans-serif;
-$verdana:   Verdana, sans-serif;
-$georgia:   Georgia, serif;
-$lucida:    "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
-$gill:      "Gill Sans", "Gill Sans MT", GillSans, Calibri, "Trebuchet MS", sans-serif;
-$optima:    Optima, Candara, "Trebuchet MS", sans-serif;
+@import '../../web/font-stacks.scss';
 
 body {
     background-color: white;
@@ -72,12 +64,13 @@ a, a:visited {
 }
 
 pre {
-    font-family: Courier, "Courier New", monospace;
+    font-family: $code;
     background-color: #e9e9ff;
     padding: .5em .25em;
     border: 1px solid $base1;
 }
 code {
+    font-family: $code;
     background-color: #efefff;
 }
 pre > code { 

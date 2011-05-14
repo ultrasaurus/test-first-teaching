@@ -1,0 +1,210 @@
+@import 'font-stacks.scss';
+
+
+/* -------- general -------- */ 
+
+body {
+  width: 70%;
+  padding: 0;
+  margin: auto;
+  font-size: 100%;
+  font-family: $optima;
+  line-height: 150%;
+  color: #202020; /* dark grey */
+}
+
+p {
+  margin:0 1em 1em 1em;
+  line-height: 170%;
+}
+
+ul li {
+  margin-bottom:10px;
+}
+
+/* -------- nav -------- */
+
+.nav {
+  float: left;
+  margin: 25px 1.5em 1em 0;
+  background: -webkit-gradient(  linear,  left bottom,  left top,  color-stop(0.15, rgb(255,255,255)),  color-stop(0.85, rgb(248,248,248))  );
+  background: -moz-linear-gradient(  center bottom,  rgb(255,255,255) 15%,  rgb(248,248,248) 85%  );
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 225px;
+
+  ul {
+    margin: 0;
+    padding: .25em;
+  }
+
+  ul li {
+    margin: .15em;
+    list-style: none;
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a {
+      padding: .15em 15px;
+      text-decoration: none;
+    }
+  }
+
+  ul li ul li {
+    font-size: .75em;
+  }
+
+}
+
+/* --------  -------- */
+
+div#wrapper {
+  display: inline-block;
+}
+
+div.main {
+  overflow: hidden;
+  margin: 10px 0;
+  padding: 0 1em 1em 0;
+  min-height: 20em;
+
+  .sections {
+    margin: 10px;
+  }
+}
+
+
+div#intro {
+  margin: 15px 0 0 0;
+}
+div#intro * p {
+  margin-right: 0;
+}
+div#introVideo {
+  margin: 10px 0 20px 15px;
+}
+
+/* -------- headers -------- */
+.headline {
+  border-bottom: 1px dotted #848383;
+
+  h1 {
+    color: #800000;
+    margin: 30px 0 -12px 0;
+    padding: 0;
+    font: 60px/68px 'BenthamRegular', Helvetica, 'Trebuchet MS', sans-serif;
+    letter-spacing: 0;
+  }
+
+  h2 {
+    margin: 0 0 20px 13px;
+    padding: 0;
+    font: 20px/24px 'BenthamRegular', Helvetica, 'Trebuchet MS', sans-serif;
+    color: #686868;
+    letter-spacing: 0;
+    font-variant:small-caps;
+  }
+
+  a, a:visited {
+    color: #800000;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #37030B;
+    text-decoration: none;
+  }
+}
+
+div.main {  
+  h1, h2 {
+    color: #000;
+    line-height:100%;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.80;
+    -khtml-opacity: 0.80;
+    opacity: 0.80;
+    padding: 15px 0 10px 8px;
+    background: none;
+  }
+
+  h1 {
+    margin: 15px 0 10px 0;
+    font-size:140%;
+    overflow-x: visible;
+    color: #37030B; /* deep red (also TestFirst a:hover), or: #800000 (TestFirst a) */ 
+  }
+  
+  h2 {
+    line-height:100%;
+    font-size:120%;
+    color: #190623; /* deep purple */ 
+  }
+  
+  h3 {
+    color: #181818;
+    font-size:110%;
+    margin: 15px 0 5px 8px;
+  }
+  
+}
+
+
+/* -------- links -------- */
+
+a {
+  text-decoration: none;  
+}
+
+a:link {
+  color: #800000; /* red */
+}
+
+a:active {
+  color: #BE3D01; /* orange */
+}
+
+a:hover {
+  color: #37030B; /* deep red */
+  text-decoration: underline;
+}
+
+a:visited {
+/*  color: #190623; /* dark purple */
+  color: #500000; /* dark red */
+}
+
+/* -------- special - code, pre, etc. -------- */
+
+code, pre {
+  font-family: $code;
+  color: #000;
+  background-color: #f8f8f8; /* very light grey */
+  font-size: 100%;
+  padding: 0;
+}
+
+pre {
+  margin-left:15px;
+}
+
+.chapters {
+  color: #190623; /* purple */
+  font-weight: bold;
+  font-size: 110%;
+  border: 1px dotted #190623;
+  padding: 1px 3px;
+}
+
+/* -------- footer -------- */
+
+.footer {
+  text-align: center;
+  font-size: .75em;
+  border-top: 1px dotted #848383;
+  padding: 1em .5em;
+}

@@ -7,4 +7,5 @@ gem "sinatra"
 gem "rdiscount"
 gem "sass"
 
+gem "rerun" # used by 'rake run'
 gem "fakeweb" # used for one of the exercises
