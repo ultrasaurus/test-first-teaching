@@ -18,7 +18,7 @@ class Page < Erector::Widgets::Page
 
   def head_content
     super
-    
+
     # todo: try http://www.fontsquirrel.com/fonts/nevis
     # font = "SansationBold"
     # stylesheet "Sansation/stylesheet.css"
@@ -28,11 +28,11 @@ class Page < Erector::Widgets::Page
     header_text = '#2D384C'
     header_border = '#B4BCCA'
     nav_width = 16 # em
-    
+
     here = File.expand_path(File.dirname(__FILE__))
     style raw(Sass::Engine.for_file("#{here}/tft-web.scss", {}).render)
   end
-  
+
   def self.google_analytics_code account_id
     <<-JAVASCRIPT
     var _gaq = _gaq || [];
@@ -48,7 +48,7 @@ class Page < Erector::Widgets::Page
   end
 
   external :script, google_analytics_code('UA-23415770-1')
-  
+
   def body_content
     div :class => "wrapper" do
       headline
@@ -57,36 +57,36 @@ class Page < Erector::Widgets::Page
       footer
     end
   end
-  
+
   def headline
     div :class => "headline" do
       h1 do
         a 'TestFirst.org', :href => "/"
       end
-      h2 "the home of test-first teaching"      
+      h2 "the home of test-first teaching"
     end
   end
-  
+
   def nav
     widget Nav, :current_page => self.class
   end
-  
+
   def name
     self.class.name # todo: titleize
   end
-  
+
   def page_id
     self.class.name.downcase #todo: underscore
   end
-  
+
   def new_section(opts)
     Section.new(opts.merge({:page_id => page_id}))
   end
-  
+
   def sections
     []
   end
-  
+
   def main_title
   end
 
@@ -101,7 +101,7 @@ class Page < Erector::Widgets::Page
     end
   end
 
-  def footer    
+  def footer
     div :class => "footer" do
       p do
         text "TestFirst.org is a production of "
@@ -125,7 +125,7 @@ class Page < Erector::Widgets::Page
         a "Erector", :href => "http://erector.rubyforge.org/"
         text "."
       end
-      
+
     end
   end
 end
