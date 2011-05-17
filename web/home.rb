@@ -9,7 +9,7 @@ class Home < Page
   end
   
   def main
-    div :class => "main" do
+    div :class => "main home" do
       p 'This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called "Test First Teaching" and has been applied successfully in a classroom environment.'
       
       div :id=>"introVideo" do
