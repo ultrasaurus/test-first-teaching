@@ -27,8 +27,10 @@ class Home < Page
         text ' page.'
       end
       p do
-        text 'To learn Ruby via tests, read the '
+        text 'To learn programming via tests, read the '
         a "Learn Ruby", :href => '/learn_ruby'
+        text ' or '
+        a "Learn JavaScript", :href => '/learn_javascript'
         text ' page.'
       end
     end
