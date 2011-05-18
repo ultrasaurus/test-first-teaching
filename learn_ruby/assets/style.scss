@@ -19,7 +19,7 @@ $green:     #859900;
 $header-border:    #002b36;
 $header-bg:     #dfd;
 $pre-border:      #93a1a1;
-$pre-background:  #e9e9ff; 
+$pre-background:  #e9e9ff;
 
 $nav-width: 14em;
 $nav-margin: 1em;
@@ -44,11 +44,11 @@ a, a:visited {
     min-height: 30em;
 
     h1,h2,h3 {
-        font-family: $lucida;    
+        font-family: $lucida;
         margin-left: -1em;
     }
     h1 {
-        text-shadow: #999 1px 1px 1px;    
+        text-shadow: #999 1px 1px 1px;
         padding: .5em .25em;
         margin-top: 1em;
     }
@@ -100,7 +100,7 @@ code {
     font-family: $code;
     background-color: #efefff;
 }
-pre > code { 
+pre > code {
     background-color: $pre-background;
 }
 

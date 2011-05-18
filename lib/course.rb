@@ -6,7 +6,7 @@ require 'erector'
 
 class Course
   include Erector::Mixin
-  
+
   # todo: move to Curriculum object
   def self.all_chapters(curriculum_name)
     curriculum_dir = "#{Course.root}/#{curriculum_name}"
@@ -21,7 +21,7 @@ class Course
     here = File.dirname(__FILE__)
     File.expand_path("#{here}/..")
   end
-  
+
   attr_accessor :curriculum_name, :course_name, :chapters, :repo, :repo_dir
 
   def initialize(file)
@@ -34,19 +34,19 @@ class Course
     @course_name = file.path.split('/').last.gsub(/\.yaml/, '')
     @chapters = data[:chapters]
     @repo = data[:repo] || "git@github.com:alexch/#{@course_name}.git"
-    @repo_dir = 
+    @repo_dir =
       File.expand_path "#{Course.root}/../#{course_name}"
   end
-  
+
   def create_repo
-    FileUtils.mkdir_p @repo_dir    
+    FileUtils.mkdir_p @repo_dir
     Dir.chdir(@repo_dir) do
       system "git init"
       system "git remote add origin #{@repo} 2>/dev/null"
       system "git pull origin master"
     end
   end
-  
+
   def push_repo
     Dir.chdir(@repo_dir) do
       system "git add -A"
@@ -54,11 +54,11 @@ class Course
       system "git push origin master"
     end
   end
-  
+
   def curriculum_dir
     "#{Course.root}/#{@curriculum_name}"
   end
-  
+
   def assets_dir
     "#{curriculum_dir}/assets"
   end
@@ -68,7 +68,7 @@ class Course
 
     copy_files curriculum_dir, repo_dir, 0
     copy_files assets_dir, "#{repo_dir}/assets"
-    
+
     @chapters.each_with_index do |chapter, i|
       num = "%02d" % i
       numbered = "#{num}_#{chapter}"
@@ -77,10 +77,10 @@ class Course
       raise "Missing chapter #{source_dir}" unless File.exist? source_dir and File.directory? source_dir
       FileUtils.touch "#{source_dir}/index.md" unless File.exist?("#{source_dir}/index.md")
       copy_files source_dir, target_dir
-      copy_files "#{curriculum_dir}/ubiquitous", target_dir      
-    end  
+      copy_files "#{curriculum_dir}/ubiquitous", target_dir
+    end
   end
-  
+
   def copy_files(source_dir, target_dir, level = 1)
     FileUtils.mkdir_p target_dir
     files = Dir.glob("#{source_dir}/*")
@@ -98,9 +98,9 @@ class Course
         true
       end
     end
-    
+
     FileUtils.cp files, target_dir
-    
+
     scss_files.each do |input_file|
       output_file = target_dir + "/" + input_file.gsub(/\.scss$/, '.css')
       File.open(output_file, "w") do |f|
@@ -113,13 +113,13 @@ class Course
       html_file = target_dir + "/" + markdown_file.gsub(/\.md$/, '.html')
       prefix = "../" * level
       current_chapter = source_dir.split('/').last
-      
+
       File.open(html_file, "w") do |f|
         f.print <<-HTML
 <html>
 <head>
   <title>Test-First Teaching: #{course_name}: #{current_chapter}</title>
-  <link href="#{prefix}assets/style.css" media="screen" rel="stylesheet" type="text/css" /> 
+  <link href="#{prefix}assets/style.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <div class='header'>
@@ -142,10 +142,10 @@ class Course
         HTML
       end
     end
-    
+
   end
   def nav(current_chapter, level)
-    
+
     erector {
       div(:class => 'nav') {
         h2 { a course_name, :href=> ("../" * level) + 'index.html' }
@@ -154,7 +154,7 @@ class Course
           chapters.each_with_index do |chapter, i|
             num = "%02d" % i
             numbered = "#{num}_#{chapter}"
-            li {              
+            li {
               if current_chapter == chapter
                 text chapter
               else
@@ -171,7 +171,7 @@ class Course
       }
     }
   end
-  
+
   def chapter_info(current_chapter, source_dir)
     erector {
       div(:class => "info") {
@@ -188,6 +188,6 @@ class Course
       }
     }
   end
-  
-  
+
+
 end
