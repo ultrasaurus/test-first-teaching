@@ -1,6 +1,6 @@
 class Nav < Erector::Widget
   def pages
-    [Home.new, About.new, Curriculum.new(:name => "learn_ruby")]
+    [Home.new, About.new, LearnRuby.new, LearnJavaScript.new]
   end
 
   def content

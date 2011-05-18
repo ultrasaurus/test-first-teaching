@@ -74,8 +74,9 @@ class About < Page
         p do
           text 'Join our '
           a :href => 'http://groups.google.com/group/test-first-teaching' do
-            text 'google group'
+            text 'test-first teaching mailing list'
           end
+          text '.'
         end
       end),
 

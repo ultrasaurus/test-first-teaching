@@ -76,7 +76,7 @@ class Page < Erector::Widgets::Page
   end
 
   def page_id
-    self.class.name.downcase #todo: underscore
+    self.class.name.gsub(/([a-z])([A-Z])/, '\1_\2').downcase
   end
 
   def new_section(opts)

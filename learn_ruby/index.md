@@ -1,12 +1,13 @@
-# Instructions
+# Learn Ruby Test-First
 
 ## Setup
 
 * Install Ruby
 
-  * Here are some [good instructions](http://www.wiki.devchix.com/index.php?title=Workshop_Installation_Notes_Rails_3)
-for installing the required software.  You will need Ruby, RubyGems and RSpec to Learn Ruby.
+  * You will need Ruby, RubyGems and RSpec to Learn Ruby.
   * We recommend using [rvm](http://rvm.beginrescueend.com) but you can use any Ruby you want. We officially support Ruby 1.9 but probably work with 1.8.7 as well.
+  * Here are some [good instructions](http://www.wiki.devchix.com/index.php?title=Workshop_Installation_Notes_Rails_3) for installing the required software.
+  * Here are some [other good instructions](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book#sec:rubygems), using rvm.
 
 * Install RSpec
 
@@ -16,18 +17,16 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 
             alias spec="spec --color --format nested"
 
-* Clone the course repository
+* Open a terminal window. (On Mac OS X you can use the `Terminal` app.)
 
-        git clone git://github.com/alexch/learn_ruby.git
-
-* Enter the course directory
+* Enter the course directory. (That's the same directory that this `index.html` file is in.)
 
         cd learn_ruby
-        
+
 
 ## Using These Exercises
 
-Your course directory (cloned repo) has a list of chapter directories. Each
+Your course directory has a list of chapter directories. Each
 directory has a spec file. You will write all the code to make all the specs
 in it pass.
 
@@ -40,10 +39,10 @@ next directory (whose name begins with `01_`) and start learning Ruby!
 ## Course Outline
 
 Each course is different, so check with your instructor for details on the
-curriculum he or she has chosen. Here is a survey of a few of the chapters: 
+curriculum he or she has chosen. Here is a survey of a few of the chapters:
 
-* **hello** 
-  Gives you a feel for how to use these tests.  
+* **hello**
+  Gives you a feel for how to use these tests.
   See [00_hello/index.html](00_hello/index.html) for detailed instructions.
 * **temperature**
   Write and class and do some basic math.
@@ -56,7 +55,30 @@ curriculum he or she has chosen. Here is a survey of a few of the chapters:
 
 After you're in the swing of things, you can read about [advanced setup techniques](advanced_setup.html) like pulling changes and forking. But don't worry about it at first.
 
+# Problems? Questions?
+
+First, ask your neighbor. Then, ask your instructor.
+
+Then ask Google (seriously!). If there's an error, try copying the error string and pasting it into a [Google](http://google.com) search box. If that doesn't help, do a search on one of these sites:
+
+*	<http://stackoverflow.com/>
+*	<http://www.ruby-forum.com>
+
+You can also find help at the [TestFirst.org](http://testfirst.org) site or the [Test-First Teaching mailing list](http://groups.google.com/group/test-first-teaching).
+
+Remember, if you post a technical question online, you should
+
+1. Include version numbers:
+
+        $ ruby -v
+        ruby 1.8.6 (2008-08-11 patchlevel 287) [universal-darwin9.0]
+
+2. Note where you have already looked for an answer
+3. If you can, include code snippets that reproduce the problem in isolation
+
 # Resources
+
+Here is a broad survey of many resources you may find useful. Don't try to read them all! Just browse around when you feel like learning more about Ruby.
 
 ## Learning Ruby via Tests
 * [Ruby Koans](http://rubykoans.com) by Jim Weirich and Joe O'Brien (inspired by [Metakoans](http://rubyquiz.com/quiz67.html) by ara.t.howard and [Ruby Learning Tests](http://clarkware.com/cgi/blosxom/2005/03/18) by Mike Clark)
@@ -93,23 +115,6 @@ After you're in the swing of things, you can read about [advanced setup techniqu
 *	<http://www.ruby-doc.org/>
 *	<http://www.gotapi.com/rubyrails>
 *	<http://apidock.com/>
-
-## When you have a question...
-
-First, search for the answer (keywords, exact error string)
-
-*	[Google](http://google.com)
-*	<http://www.ruby-forum.com>
-*	<http://stackoverflow.com/>
-
-If you didn't find the answer and you need to ask your question:
-
-1. Include version numbers: <pre>
-    $ ruby -v
-    ruby 1.8.6 (2008-08-11 patchlevel 287) \[universal-darwin9.0\]
-</pre>
-2. Note where you have already looked for an answer
-3. If you can, include code snippets that reproduce the problem in isolation
 
 ## Other good resources
 

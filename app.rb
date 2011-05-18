@@ -9,7 +9,8 @@ $: << "#{here}/web"
 require "page"
 require "home"
 require "about"
-require "curriculum"
+require "learn_ruby"
+require "learn_javascript"
 
 set :public, "web"
 
@@ -26,5 +27,13 @@ get '/about' do
 end
 
 get '/learn_ruby' do
-  Curriculum.new(:name => "learn_ruby").to_pretty
+  LearnRuby.new.to_pretty
+end
+
+get '/learn_javascript' do
+  LearnJavaScript.new.to_pretty
+end
+
+get '/download/:file' do
+  send_file("#{here}/download/#{params[:file]}", :disposition => 'attachment', :filename => params[:file])
 end
