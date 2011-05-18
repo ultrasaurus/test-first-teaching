@@ -123,7 +123,7 @@ class Course
 </head>
 <body>
   <div class='header'>
-    <h1><a href="/">TestFirst.org</a></h1>
+    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
     <h2>the home of test-first teaching</h2>
   </div>
   #{nav(current_chapter, level)}
