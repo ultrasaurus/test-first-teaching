@@ -22,7 +22,7 @@ class Course
     File.expand_path("#{here}/..")
   end
 
-  attr_accessor :curriculum_name, :course_name, :chapters, :repo, :repo_dir
+  attr_accessor :curriculum_name, :course_name, :chapters, :repo, :repo_dir, :repo_parent
 
   def initialize(file)
     if file.is_a? String
@@ -34,8 +34,10 @@ class Course
     @course_name = file.path.split('/').last.gsub(/\.yaml/, '')
     @chapters = data[:chapters]
     @repo = data[:repo] || "git@github.com:alexch/#{@course_name}.git"
+    @repo_parent =
+      File.expand_path "#{Course.root}/.."
     @repo_dir =
-      File.expand_path "#{Course.root}/../#{course_name}"
+      File.expand_path "#{@repo_parent}/#{course_name}"
   end
 
   def create_repo
@@ -81,6 +83,15 @@ class Course
     end
   end
 
+  def build_tarball(into_dir)
+    FileUtils.mkdir_p into_dir
+    tarball = "#{into_dir}/#{course_name}.tgz"
+
+    Dir.chdir(repo_parent) do
+      `tar zcf #{tarball} #{course_name}`
+    end
+  end
+
   def copy_files(source_dir, target_dir, level = 1)
     FileUtils.mkdir_p target_dir
     files = Dir.glob("#{source_dir}/*")
@@ -94,6 +105,7 @@ class Course
         nil
       elsif file =~ /\.scss$/
         scss_files << file.split('/').last
+        nil
       else
         true
       end

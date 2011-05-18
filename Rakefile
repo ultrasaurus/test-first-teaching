@@ -17,6 +17,10 @@ desc "build the course into its repo dir (default: course=learn_ruby)"
 task :build do
   course.build
   puts "Built #{course.course_name} into #{course.repo_dir}"
+
+  download_dir = File.expand_path "#{File.dirname(__FILE__)}/download"
+  course.build_tarball download_dir
+  puts "Built tarball into #{download_dir}"
 end
 
 desc "build the course into its repo dir and push it to github (default: course=learn_ruby)"

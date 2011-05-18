@@ -1,4 +1,4 @@
-upgrade to RSpec 2
+upgrade sspec to RSpec 2
 
 create course repo on github if it doesn't already exist, using github gem
 
@@ -7,6 +7,8 @@ http://marakana.com/forums/ruby/ruby_on_rails/191.html
 allow subdirectories inside chapters
 
 substitute actual course repo git url in index.html
+
+build out tarball after building course repo
 
 build solutions repo or zip or something, to allow students to see solutions after they've tried
 
@@ -18,4 +20,6 @@ CalculatorAdvanced SUCKS
 
 Chris Pine doesn't do arrays for a while -- must sync better
 
-table of contents (intra- and inter-page) in generated html pages
+table of contents (intra-page) in generated html pages
+
+clicking on a file (esp. a .rb file) should show it, not download it
