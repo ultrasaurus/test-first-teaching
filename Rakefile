@@ -16,7 +16,7 @@ end
 desc "build the course into its repo dir (default: course=learn_ruby)"
 task :build do
   course.build
-  puts "Built #{course.course_name}"
+  puts "Built #{course.course_name} into #{course.repo_dir}"
 end
 
 desc "build the course into its repo dir and push it to github (default: course=learn_ruby)"

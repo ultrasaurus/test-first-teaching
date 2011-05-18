@@ -13,6 +13,10 @@ require "curriculum"
 
 set :public, "web"
 
+configure do
+  mime_type :rb, 'text/plain'
+end
+
 get '/' do
   Home.new.to_pretty
 end
