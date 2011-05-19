@@ -1,63 +1,48 @@
 # Teacher Notes
 
-## key ruby concepts
-* objects
-  * methods (functions)
-  * Everything has a value
-* arithmetic operations
-* string
-* array
-* hash
-* symbols
-* loops & iterators
-* modules
-* blocks, Proc
-* regexps
-* dynamic method definition
-  * on classes
-  * on instances
-  * method_missing
-* exceptions
-  * rescue
-  * ensure
+## Slides
 
-## key rails concepts
-* Exceptions and reading the logs
-* MVC
-* REST
-* Migrations
-* Routes
-* Environments
-* Scaffolding
-* Generators
-* ActiveRecord
-  * Base WTF
-  * find method
-  * Associations
-  * what's the SQL?
-* Plugins
- * will_paginate
+Some slides are in test-first-teaching/ruby_notes. They're in Markdown+Showoff format, which means they should be usable either as slides
 
-## Rules
+    cd ruby_notes
+    showoff ruby_notes
+
+or plain HTML
+
+    cd ruby_notes
+    rdiscount *.md > index.html
+
+## Rules (for students)
+
 * Always read the error!
 
 ## Solutions
 
-The `solutions` branch is dead; long live the `solution` directory. 
+The `solutions` branch is dead; long live the `solution` directory.
 
-To add a solution, you must put your Ruby file(s) in a directory **inside** the current module directory with the name `solution`.
+To add a solution, you must put your Ruby file(s) in a directory **inside** the chapter directory with the name `solution`, e.g. `learn_ruby/hello/solution/hello.rb`.
 
-To test your solution, you must use `../sspec foo_spec.rb`. `sspec` is a custom version of `spec` that adds the solution subdirectory to the load path.
+Solutions only appear in the teacher repository (`test-first-teaching`) not the generated student repo (`learn_ruby`). When you run `rake` the tests will be run against the solutions, to assure that your code is correct.
 
-Make sure not to check in any cruft in the original module directory, since that will be seen by (and surely befuddle) students.
+Make sure not to check in any cruft in the chapter directory, since that will be seen by (and surely befuddle) students.
 
-Multiple solutions aren't supported quite yet. Keep watching.
+Multiple solutions aren't supported yet.
 
 ## Notes and instructions
 
-Every module has (or can have) a `index.md` file that the students can read.
+Every chapter has (or can have) a `index.md` file that the students can read. This is a good place for background, instructions and hints for solving the exercises.
 
-The HTML files are all generated from Markdown, so restrict your edits to the `.md` files.
+Files ending with `.md` (Markdown) are converted to HTML and given a `.html` suffix, and files ending with `.scss` (Sass/SCSS) are converted to CSS and given a `.css` suffix. Any other files will be copied over to the student repo as is.
+
+Chapter directories become numbered; e.g. `hello` will become `00_hello`.
+
+Each curriculum contains an `assets` directory, which is a good place to put shared files like `.js` and `.css` and images. You can refer to them using `..` in your markdown files, e.g.
+
+    ![logo](../assets/logo.gif)
+
+This works in "preview mode" too, though it's a little weird, since `.scss` isn't converted into `.css` until the course is built using `rake build`.
+
+There's also a `ubiquitous` directory, whose contents are copied into each and every generated chapter directory.
 
 ## Tricks
 
@@ -68,4 +53,6 @@ Here are some nice git config settings:
     git config --global alias.co checkout
     git config --global alias.br branch
     git config --global push.default matching
+    git config --global alias.unadd "reset HEAD"
+    git config --global alias.l "log --oneline --decorate --graph"
 

@@ -42,17 +42,20 @@ end
 desc "run tests, exercises, and build the course (default: course=learn_ruby)"
 task :default => :test do
   # run all exercises in all chapters
-  failed_chapters = 0
+  failed_chapters = []
   chapters = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
-  chapters.each do |mod|
-    result = Dir["#{mod}/*_spec.rb"].collect do |test_file| 
-      system "learn_ruby/sspec #{test_file}"      
-    end.uniq == [true]
-    puts "#{mod} " + (result ? "passed" : "FAILED")
+  chapters.each do |chapter|
+    result = Dir.chdir(chapter) do
+      system "rake"
+    end
+    puts "#{chapter} " + (result ? "passed" : "FAILED")
     puts ""
-    failed_chapters += 1 if result == false
+    failed_chapters << chapter if result == false
   end
-  puts "#{failed_chapters} of #{chapters.size} failed chapters"
+  puts "#{failed_chapters.size} of #{chapters.size} failed chapters"
+  unless failed_chapters.empty?
+    puts failed_chapters.map{|c| "\t#{c}"}.join("\n")
+  end
 
   # exit 1 if something_failed
 

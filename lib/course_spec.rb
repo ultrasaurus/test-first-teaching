@@ -41,7 +41,7 @@ describe Course do
 
   it "can find the repo directory" do
     c = Course.new("sample_course")
-    assert { c.repo_dir ==  "#{Course.root}/../sample_course" }
+    assert { c.repo_dir ==  File.expand_path("#{Course.root}/../sample_course") }
   end
 
   describe "#build" do
