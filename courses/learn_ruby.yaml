@@ -21,6 +21,6 @@
     - blocks
     - performance_monitor
     - builder
-    - regex_screen_scrape_cnn
+    - screen_scrape
 
 #    - orange_tree
