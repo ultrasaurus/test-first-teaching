@@ -6,13 +6,13 @@ describe Dictionary do
   end
   
   it "should be empty when created" do
-    @d.words == []
+    @d.words.should == []
   end
 
   it "should report its contents" do 
     @d.add("fish")
     @d.add("foul")
-    @d.words.sort == ["fish", "foul"].sort
+    @d.words.sort.should == ["fish", "foul"]
   end
 
   it "should not include a word in an empty dictionary" do
@@ -29,7 +29,7 @@ describe Dictionary do
     @d.include?('fish').should be_true
   end
 
-  it "should not find word in empty dictionary" do
+  it "should not find a word in empty dictionary" do
     @d.find('fi').should == []
   end
 
