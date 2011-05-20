@@ -22,7 +22,5 @@
     - performance_monitor
     - builder
     - regex_screen_scrape_cnn
-    - fiftynames
-    - orange_tree
-    - roster
-    - sample_data
+
+#    - orange_tree

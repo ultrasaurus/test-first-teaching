@@ -1,5 +1,4 @@
-# Dictionary
+# Topics
 
-Covers
 * instance variables
 * iterators

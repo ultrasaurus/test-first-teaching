@@ -12,7 +12,7 @@ describe "TestData" do
     before do
       TestData.create_names(@fname, @num_names)
     end
-    
+
     it "creates a file" do
       File.should exist @fname
     end
@@ -32,7 +32,7 @@ describe "TestData" do
           md.should_not be_nil
           md.length.should == 3 unless md.nil?
         end
-        correct_format.should == true 
+        correct_format.should == true
       end
     end
   end

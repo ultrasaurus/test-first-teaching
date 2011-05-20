@@ -24,7 +24,7 @@ describe PerformanceMonitor do
 
   it "takes exactly 1 second to run a block that sleeps for 1 second (with stubs)" do
     fake_time = 100
-    Time.stub!(:now).and_return {fake_time}
+    Time.stub!(:now).and_return { fake_time }
     @monitor.run do
       fake_time += 1
     end.should == 1

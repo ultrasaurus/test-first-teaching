@@ -6,12 +6,12 @@ describe Person do
     p.first.should == "Eve"
     p.last.should == "Smith"
   end
-  
+
   it 'should construct a full name' do
     p = Person.new(:first => "Eve", :last => "Smith")
     p.full_name.should == "Eve Smith"
   end
-  
+
   it 'should save a valid record with first and last name' do
     p = Person.new(:first => "Eve", :last => "Smith")
     p.save
@@ -44,7 +44,7 @@ describe Person do
 
   it 'should have many courses' do
     p = Person.new(:first => "Eve", :last => "Smith")
-    p.courses.create(:name => "Ruby on Rails Fundamentals")  
+    p.courses.create(:name => "Ruby on Rails Fundamentals")
     p.courses.first.name.should == "Ruby on Rails Fundamentals"
   end
 

@@ -29,7 +29,7 @@ $vehicles << {
     :name => 'Bike',
     :wheels => 2,
     :classes => [:ground],
-  } 
+  }
 $vehicles << {
     :name => 'Sea Plane',
     :wheels => 0,

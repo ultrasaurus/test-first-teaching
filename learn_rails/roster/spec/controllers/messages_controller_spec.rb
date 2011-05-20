@@ -16,7 +16,7 @@ describe MessagesController do
       end
 
     end
-    
+
     describe "GET fancy_hello" do
 
       it "renders fancy_hello" do

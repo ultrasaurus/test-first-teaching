@@ -25,7 +25,7 @@ describe "#translate" do
 
   it "counts 'qu' as a single consonant" do
     s = translate("quiet")
-    assert_equal("ietquay", s, "'quiet' translation failed")
+    s.should == "ietquay"
   end
 
   it "translates many words" do

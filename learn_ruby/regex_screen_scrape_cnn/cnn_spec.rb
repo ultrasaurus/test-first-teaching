@@ -1,11 +1,12 @@
+here = File.expand_path(File.dirname(__FILE__))
 require 'fakeweb'
 require 'cnn'
 
 describe CNN do
 
   before do
-    f = File.new("cnn.html", "r")
-    FakeWeb.register_uri(:get, "http://www.cnn.com", :body => f.read)
+    @html = File.new("#{here}/cnn.html").read
+    FakeWeb.register_uri(:get, "http://www.cnn.com", :body => @html)
     @news = CNN.new
   end
 
@@ -16,7 +17,7 @@ describe CNN do
 
   it "should fetch the page when you set the uri" do
     @news.uri = "http://www.cnn.com"
-    @news.source_data.should == File.new("cnn.html", "r").read      
+    @news.source_data.should == @html
   end
 
   describe "#latest_news" do

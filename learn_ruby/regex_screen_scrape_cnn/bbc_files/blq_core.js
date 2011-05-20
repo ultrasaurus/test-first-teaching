@@ -19,7 +19,7 @@ LinkTrack.prototype.updateHrefs = function () {
 	if (!(!document.getElementsByTagName && document.all)) {
 		for (var i=0; i<this.docLinks.length; i++) {
 			currlink = this.docLinks[i];
-			hostname = currlink.hostname ? currlink.hostname.toLowerCase() : ""; 
+			hostname = currlink.hostname ? currlink.hostname.toLowerCase() : "";
 			protocol = currlink.protocol.toLowerCase();
 			linktext = currlink.innerText;
 			if (protocol == 'http:' && (hostname != 'bbc.co.uk' && hostname.indexOf('.bbc.co.uk') == -1 && hostname.indexOf('doubleclick.net') == -1)) {

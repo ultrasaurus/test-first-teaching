@@ -36,10 +36,11 @@ describe XmlDocument do
   end
 
   it "nests several levels" do
-    @xml.hello do
-      @xml.goodbye do
-        @xml.come_back do
-          @xml.ok_fine(:be => "that_way")
+    xml = XmlDocument.new
+    xml.hello do
+      xml.goodbye do
+        xml.come_back do
+          xml.ok_fine(:be => "that_way")
         end
       end
     end.should == "<hello><goodbye><come_back><ok_fine be='that_way'/></come_back></goodbye></hello>"
