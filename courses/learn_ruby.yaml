@@ -11,6 +11,7 @@
     - in_words
     - timer
     - array
+    - rpn_calculator
     - blocks
     - performance_monitor
     - builder
