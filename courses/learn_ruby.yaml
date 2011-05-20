@@ -2,9 +2,10 @@
 :repo: git@github.com:alexch/learn_ruby.git
 :chapters:
     - hello
-    - hello_friend
     - calculator
     - temperature
+    - hello_friend
+    - temperature_object
     - simon_says
     - book_titles
     - pig_latin

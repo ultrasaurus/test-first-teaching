@@ -57,10 +57,10 @@ task :default => :test do
     puts failed_chapters.map{|c| "\t#{c}"}.join("\n")
   end
 
-  # exit 1 if something_failed
+  exit 1 if something_failed
 
   # make the package
-  Rake::Task[:build].invoke
+#  Rake::Task[:build].invoke
 end
 
 desc "launch the testfirst.org website on http://localhost:9292"
