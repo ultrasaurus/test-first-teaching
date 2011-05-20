@@ -1,5 +1,6 @@
 require "simon"
 
+# This test *includes* the Simon module. So you have to go create a module named Simon and put some functions in it.
 describe "Simon says" do
   include Simon
   

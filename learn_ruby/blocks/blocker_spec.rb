@@ -2,7 +2,7 @@ require "blocker"
 
 describe Blocker do
 
-  it "executes a block and returns a string" do
+  it "executes a block that returns a string" do
     result = Blocker.new.execute do
       "hello"
     end
@@ -30,7 +30,6 @@ describe Blocker do
       n += 1
     end
     n.should == 3
-
   end
 
   it "adds one to the value returned by the block" do

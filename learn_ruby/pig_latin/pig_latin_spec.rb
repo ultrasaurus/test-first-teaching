@@ -3,27 +3,32 @@ require "pig_latin"
 describe "#translate" do
   include PigLatinTranslator
 
-  it "should translate a simple word" do
+  it "translates a simple word" do
     s = translate("nix")
     s.should == "ixnay"
   end
 
-  it "should translate a word beginning with a vowel" do
+  it "translates a word beginning with a vowel" do
     s = translate("apple")
     s.should == "appleay"
   end
 
-  it "should translate a word with two consonants" do
+  it "translates a word with two consonants" do
     s = translate("stupid")
     s.should == "upidstay"
   end
 
-  it "should translate two words" do
+  it "translates two words" do
     s = translate("eat pie")
     s.should == "eatay iepay"
   end
 
-  it "should translate many words" do
+  it "counts 'qu' as a single consonant" do
+    s = translate("quiet")
+    assert_equal("ietquay", s, "'quiet' translation failed")
+  end
+
+  it "translates many words" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"
   end

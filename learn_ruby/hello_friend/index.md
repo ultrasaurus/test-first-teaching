@@ -4,7 +4,7 @@ This chapter teaches basic Ruby Object syntax.
 
 ## Open a terminal in this directory
 
-    cd 01_hello_friend
+    cd *_hello_friend
 
 This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.
 

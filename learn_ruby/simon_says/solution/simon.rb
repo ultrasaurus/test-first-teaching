@@ -19,5 +19,4 @@ module Simon
     s.split(" ").first
   end
   
-  
 end
