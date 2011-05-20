@@ -7,7 +7,7 @@ describe PerformanceMonitor do
   
   it "takes about 0 seconds to run an empty block" do
     @monitor.run do
-    end.should be_close(0, 0.1)
+    end.should be_within(0.1).of(0)
   end
 
   it "takes exactly 0 seconds to run an empty block (with stubs)" do
@@ -19,7 +19,7 @@ describe PerformanceMonitor do
   it "takes about 1 second to run a block that sleeps for 1 second" do
     @monitor.run do
       sleep 1
-    end.should be_close(1, 0.1)
+    end.should be_within(0.1).of(1)
   end
 
   it "takes exactly 1 second to run a block that sleeps for 1 second (with stubs)" do
