@@ -1,4 +1,9 @@
-RPN Calculator
+# Topics
+* arrays
+* arithmetic
+* strings
+
+# RPN Calculator
 
 "RPN" stands for "Reverse Polish Notation". (See [the wikipedia entry](http://en.wikipedia.org/wiki/Reverse_Polish_notation) for more information on this colorful term.) Briefly, in an RPN world, instead of using normal "infix" notation, e.g.
 

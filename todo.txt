@@ -6,15 +6,9 @@ allow subdirectories inside chapters
 
 substitute actual course repo git url in index.html
 
-build out tarball after building course repo
-
 build solutions repo or zip or something, to allow students to see solutions after they've tried
 
-hello: use functions, not classes, to start
-
 If there are any failing tests, don't show any pending tests
-
-CalculatorAdvanced SUCKS
 
 Chris Pine doesn't do arrays for a while -- must sync better
 

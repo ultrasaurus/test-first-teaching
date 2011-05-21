@@ -12,6 +12,7 @@
     - temperature_object
     - book_titles
     - timer
+    - array_sum
     - in_words
 
     - array

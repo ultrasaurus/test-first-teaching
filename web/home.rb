@@ -7,24 +7,37 @@ class Home < Page
   def page_id
     ""
   end
-  
+
   def main
     div :class => "main home" do
       p 'This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called "Test First Teaching" and has been applied successfully in a classroom environment.'
-      
+
+
+
       div :id=>"introVideo" do
         z=0.9
         w=(640*z).to_i
         h=(385*z).to_i
         rawtext <<-HTML
-      		<object width="#{w}" height="#{h}"><param name="movie" value="http://www.youtube.com/v/KgfdlZuVz7I?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/KgfdlZuVz7I?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="#{w}" height="#{h}"></embed></object> 
+      		<object width="#{w}" height="#{h}"><param name="movie" value="http://www.youtube.com/v/KgfdlZuVz7I?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/KgfdlZuVz7I?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="#{w}" height="#{h}"></embed></object>
       		HTML
-      end      
-      
+      end
+
       p do
         text 'To learn more about test-first teaching, read the '
         a "About Test-First Teaching", :href => '/about'
-        text ' page.'
+        text ' page, or check out...'
+        ul do
+          li do
+            a "Learning TDD Through Test-First Teaching", :href => ""
+            text " (48 min. video) by Sarah Allen at East Bay Ruby Meetup, April 20, 2010"
+            text " [embedded above]"
+          end
+          li do
+             a "Test-First Teaching Talk", :href => "http://confreaks.net/videos/357-gogaruco2010-test-first-teaching"
+             text " (30 min. video) - Sarah Allen and Alex Chaffee at GoGaRuCo, Sep. 17, 2010"
+           end
+         end
       end
       p do
         text 'To learn programming via tests, read the '
