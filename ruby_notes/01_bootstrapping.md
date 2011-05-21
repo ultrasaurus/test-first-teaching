@@ -97,16 +97,22 @@ literals - `"hi"` for strings, `[1,2]` for arrays, `{:a=>1, :b=2}` for hashes
 
 * Ruby Version Manager
 * manages lots of different versions and distros of Ruby on a single computer
-* `rvm install 1.9.2`
-* `rvm use 1.9.2`
-* Alex's bash prompt:
+  * `rvm install 1.9.2`
+  * `rvm use 1.9.2`
+* also manages gemsets
+  * `rvm gemset create teaching`
+  * `rvm use 1.9.2@teaching`
 
-        export Normal='\[\e[0m\]'
-        export Bright='\[\e[1m\]'
-        export Red='\[\e[0;31m\]'
-        export Green='\[\e[0;32m\]'
-        export BrightGreen='\[\e[1;32m\]'
-        export PS1="\h:${Bright}\W${Normal} [${BrightGreen}\`which_ruby\`${Normal}] \u\$ "
+## Alex's `rvm` bash prompt:
+
+    export Normal='\[\e[0m\]'
+    export Bright='\[\e[1m\]'
+    export Red='\[\e[0;31m\]'
+    export Green='\[\e[0;32m\]'
+    export BrightGreen='\[\e[1;32m\]'
+    export PS1="\h:${Bright}\W${Normal} [${BrightGreen}\`which_ruby\`${Normal}] \u\$ "
+
+(put the above in `~/.bash_profile`)
 
 ## bundler
 

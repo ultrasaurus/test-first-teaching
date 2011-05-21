@@ -86,6 +86,8 @@
     => 4
     >> (2+2).zero?
     => false
+    >> "foo" if false
+    => nil
 
 !SLIDE
 
