@@ -16,10 +16,11 @@ $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
 
-$header-border:    #002b36;
-$header-bg:     #dfd;
+$header-border:   #002b36;
+$header-bg:       #f2f2f2;
 $pre-border:      #93a1a1;
 $pre-background:  #e9e9ff;
+$bubble:    rgb(242,242,242);
 
 $nav-width: 14em;
 $nav-margin: 1em;
@@ -35,6 +36,12 @@ body {
 }
 a, a:visited {
     color: $blue;
+}
+a:hover {
+  text-decoration: underline;
+}
+a {
+  text-decoration: none;
 }
 
 .content {
@@ -64,9 +71,37 @@ a, a:visited {
     padding: .25em;
     background-color: $header-bg;
 }
+
 .header {
     border-bottom: 1px solid $header-border;
     text-align: left;
+
+    h1 {
+        color: #800000;
+        margin: 0 0 -8px 0;
+        padding: 0;
+        font: 30px/48px $optima;
+        letter-spacing: 0;
+    }
+
+    h2 {
+        margin: 0 0 4px 13px;
+        padding: 0;
+        font: 10pt $optima;
+        color: #686868;
+        letter-spacing: 0;
+        font-variant:small-caps;
+    }
+
+    a, a:visited {
+        color: #800000;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #37030B;
+        text-decoration: none;
+    }
 }
 .footer {
     border-top: 1px solid $header-border;
@@ -75,17 +110,30 @@ a, a:visited {
 
 .nav {
     float: left;
-    background-color: $header-bg;
     margin: $nav-margin;
     padding: 0 1em 1em;
     width: $nav-width;
+    font-size: 75%;
+}
+.nav,.info {
+    // todo: use an scss function or mixin
+    background: -webkit-gradient(  linear,  left bottom,  left top,  color-stop(0.15, rgb(255,255,255)),  color-stop(0.85, $bubble)  );
+    background: -moz-linear-gradient(  center bottom,  rgb(255,255,255) 15%,  $bubble 85%  );
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.info {
+    float: right;
+    margin: $nav-margin;
+    padding: 0 1em 1em;
     font-size: 75%;
 }
 
 pre {
     font-family: $code;
     background-color: $pre-background;
-    padding: .5em .25em;
+    padding: .5em 1em;
     border: 1px solid $pre-border;
 }
 code {
