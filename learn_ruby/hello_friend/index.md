@@ -111,3 +111,13 @@ Also, sing a song and do a little dance.
 ## And then...
 
 Fix the next failure! :-)
+
+Hint 1: in order to get the next test to pass, you will need to pass a *parameter*:
+
+    def greeting(who)
+
+Hint 2: once you do that, the **first** test might start failing again. And that means you need to provide a **default value** for that parameter:
+
+    def greeting(who = nil)
+
+

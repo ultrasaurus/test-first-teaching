@@ -69,9 +69,9 @@ This means that while it found the file, and it found the function, it's not ret
 
 ## Make it return something
 
-Inside the "greeting" function, put a single line containing a string that is *not* "hello". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)
+Inside the "hello" function, put a single line containing a string that is *not* "Hello!". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)
 
-    def greeting
+    def hello
       "whuh?"
     end
 
@@ -107,9 +107,9 @@ Fix the next failure! `:-)`
 
 Hint 1: in order to get the next test to pass, you will need to pass a *parameter*:
 
-    def greeting(who)
+    def hello(who)
 
 Hint 2: once you do that, the **first** test might start failing again. And that means you need to provide a **default value** for that parameter:
 
-    def greeting(who = nil)
+    def hello(who = nil)
 
