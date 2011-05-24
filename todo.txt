@@ -15,3 +15,5 @@ Chris Pine doesn't do arrays for a while -- must sync better
 table of contents (intra-page) in generated html pages
 
 clicking on a file (esp. a .rb file) should show it, not download it
+
+rename chapter to "exercise" (or "mission"?)
