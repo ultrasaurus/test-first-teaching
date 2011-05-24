@@ -167,16 +167,17 @@ class Course
           chapters.each_with_index do |chapter, i|
             num = "%02d" % i
             numbered = "#{num}_#{chapter}"
+            titled = "#{num} #{chapter.split('_').map{|s|s.capitalize}.join(' ')}"
             li {
               if current_chapter == chapter
-                text numbered
+                text titled
               else
                 href = (if level == 0
                   "#{numbered}/"
                 else
                   "../" * level + numbered + "/"
                 end) + "index.html"
-                a chapter, :href => href
+                a titled, :href => href
               end
             }
           end
