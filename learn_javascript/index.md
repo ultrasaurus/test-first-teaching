@@ -8,7 +8,7 @@
 
 * Enter the course directory. (That's the same directory that this `index.html` file is in.)
 
-        cd learn_ruby
+        cd learn_javascript
 
 
 ## Install Ruby
