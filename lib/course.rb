@@ -169,7 +169,7 @@ class Course
             numbered = "#{num}_#{chapter}"
             li {
               if current_chapter == chapter
-                text chapter
+                text numbered
               else
                 href = (if level == 0
                   "#{numbered}/"

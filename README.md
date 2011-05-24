@@ -4,6 +4,13 @@ Courses comprise sets of chapters; each course has its own github repo, which st
 
 If you want to teach a class, or edit the exercises, then this project is for you. If you want to learn ruby, go check out <http://github.com/alexch/learn_ruby> instead.
 
+## Quick Start
+
+    git clone [this repo]
+    cd test-first-teaching
+    bundle install  # if "bundle install" fails, try "bundle update"
+    rake            # runs all tests, including exercises with solutions
+
 ## Definitions
 
 **curriculum** - a top-level category, usually specified by language or framework. E.g. `learn_ruby` or `learn_java` or `learn_rails`.
