@@ -52,7 +52,31 @@ Here are some nice git config settings:
     git config --global alias.ci commit
     git config --global alias.co checkout
     git config --global alias.br branch
-    git config --global push.default matching
     git config --global alias.unadd "reset HEAD"
     git config --global alias.l "log --oneline --decorate --graph"
+
+    git config --global push.default matching
+
+    git config --global color.branch=auto
+    git config --global color.diff=auto
+    git config --global color.interactive=auto
+    git config --global color.status=auto
+
+Or, you can edit `$HOME/.gitconfig` -- you should have sections like this:
+
+    [color]
+            branch = auto
+            diff = auto
+            interactive = auto
+            status = auto
+    [alias]
+            st = status
+            ci = commit
+            co = checkout
+            br = branch
+            unadd = reset HEAD
+            l = log --oneline --decorate --graph
+    [push]
+            default = matching
+
 
