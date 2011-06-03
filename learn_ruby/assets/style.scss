@@ -46,9 +46,10 @@ a {
 
 .content {
     padding: 0 (2em + $nav-width + 2 * $nav-margin);
+    min-height: 30em;
+    min-width: 20em;
     max-width: 44em;
     margin: 1em auto;
-    min-height: 30em;
 
     h1,h2,h3 {
         font-family: $lucida;
@@ -121,6 +122,7 @@ a {
     background: -moz-linear-gradient(  center bottom,  rgb(255,255,255) 15%,  $bubble 85%  );
     -moz-border-radius: 10px;
     border-radius: 10px;
+    border: 1px solid black;
 }
 
 .info {

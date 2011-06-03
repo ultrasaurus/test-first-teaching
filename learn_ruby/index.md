@@ -121,6 +121,7 @@ Here is a broad survey of many resources you may find useful. Don't try to read 
 *	`irb` - when in doubt, try it out!
 *	[Ruby Version Manager](http://rvm.beginrescueend.com/) (aka `rvm`) - cleanly manages multiple Ruby installations
 *	<http://www.rubular.com/> - an online Ruby regular expression calculator
+* [Git tutorial](http://bit.ly/scott-chacon-git-101-tutorial) by Scott Chacon
 
 # Credits
 

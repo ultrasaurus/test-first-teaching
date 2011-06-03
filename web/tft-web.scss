@@ -1,7 +1,7 @@
 @import 'font-stacks.scss';
 
 
-/* -------- general -------- */ 
+/* -------- general -------- */
 
 body {
   width: 70%;
@@ -60,15 +60,18 @@ ul li {
 
 /* --------  -------- */
 
-div#wrapper {
+#wrapper {
   display: inline-block;
+  max-width: 60em;
 }
 
-div.main {
+.main {
   overflow: hidden;
   margin: 10px 0;
   padding: 0 1em 1em 0;
   min-height: 20em;
+  min-width: 20em;
+  max-width: 40em;
 
   .sections {
     margin: 10px;
@@ -76,13 +79,13 @@ div.main {
 }
 
 
-div#intro {
+#intro {
   margin: 15px 0 0 0;
 }
-div#intro * p {
+#intro * p {
   margin-right: 0;
 }
-div#introVideo {
+#introVideo {
   margin: 10px 0 20px 15px;
 }
 
@@ -118,7 +121,8 @@ div#introVideo {
   }
 }
 
-div.main {  
+div.main {
+
   h1, h2 {
     color: #000;
     line-height:100%;
@@ -136,28 +140,28 @@ div.main {
     margin: 15px 0 10px 0;
     font-size:140%;
     overflow-x: visible;
-    color: #37030B; /* deep red (also TestFirst a:hover), or: #800000 (TestFirst a) */ 
+    color: #37030B; /* deep red (also TestFirst a:hover), or: #800000 (TestFirst a) */
   }
-  
+
   h2 {
     line-height:100%;
     font-size:120%;
-    color: #190623; /* deep purple */ 
+    color: #190623; /* deep purple */
   }
-  
+
   h3 {
     color: #181818;
     font-size:110%;
     margin: 15px 0 5px 8px;
   }
-  
+
 }
 
 
 /* -------- links -------- */
 
 a {
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 a:link {
