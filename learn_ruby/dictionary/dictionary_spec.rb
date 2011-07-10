@@ -4,60 +4,65 @@ describe Dictionary do
   before do
     @d = Dictionary.new
   end
-  
-  it "should be empty when created" do
-    @d.words.should == []
+
+  it 'is empty when created' do
+    @d.entries.should == {}
   end
 
-  it "should report its contents" do 
-    @d.add("fish")
-    @d.add("foul")
-    @d.words.sort.should == ["fish", "foul"]
+  it 'can add whole entries with keyword and definition' do
+    @d.add('fish' => 'aquatic animal')
+    @d.entries.should == {'fish' => 'aquatic animal'}
+    @d.keywords.should == ['fish']
   end
 
-  it "should not include a word in an empty dictionary" do
+  it 'add keywords (without definition)' do
+    @d.add('fish')
+    @d.entries.should == {'fish' => nil}
+    @d.keywords.should == ['fish']
+  end
+
+  it 'can check whether a given keyword exists' do
     @d.include?('fish').should be_false
   end
 
-  it "should not include a prefix that wasn't added as a word in and of itself" do
+  it "doesn't include a prefix that wasn't added as a word in and of itself" do
     @d.add('fish')
     @d.include?('fi').should be_false
   end
 
-  it "should be able to add words" do
-    @d.add('fish')
-    @d.include?('fish').should be_true
+  it "doesn't find a word in empty dictionary" do
+    @d.find('fi').should be_empty # {}
   end
 
-  it "should not find a word in empty dictionary" do
-    @d.find('fi').should == []
-  end
-
-  it "should find nothing if the prefix matches nothing" do
+  it 'finds nothing if the prefix matches nothing' do
     @d.add('fiend')
     @d.add('great')
-    @d.find('nothing').should == []
+    @d.find('nothing').should be_empty
   end
 
-  it "should find a word from a prefix" do
-    @d.add('fish')
-    @d.add('fiend')
-    @d.add('great')
-    @d.find('gr').should == ['great']
+  it "finds an entry" do
+    @d.add('fish' => 'aquatic animal')
+    @d.find('fish').should == {'fish' => 'aquatic animal'}
   end
 
-  it "should find multiple matches from a prefix" do
-    @d.add('fish')
-    @d.add('fiend')
-    @d.add('great')
-    @d.find('fi').sort.should == ['fish', 'fiend'].sort
+  it 'finds multiple matches from a prefix and returns the entire entry (keyword + definition)' do
+    @d.add('fish' => 'aquatic animal')
+    @d.add('fiend' => 'wicked person')
+    @d.add('great' => 'remarkable')
+    @d.find('fi').should == {'fish' => 'aquatic animal', 'fiend' => 'wicked person'}
   end
   
-  it "should find correct matches and disregard partial matches" do
-    @d.add('fan')
-    @d.add('fish')
-    @d.add('fiend')
-    @d.add('great')
-    @d.find('fi').sort.should == ['fish', 'fiend'].sort
+  it 'lists keywords alphabetically' do
+    @d.add('zebra' => 'African land animal with stripes')
+    @d.add('fish' => 'aquatic animal')
+    @d.add('apple' => 'fruit')
+    @d.keywords.should == %w(apple fish zebra)
+  end
+
+  it 'can produce printable output like so: [keyword] "definition"' do
+    @d.add('zebra' => 'African land animal with stripes')
+    @d.add('fish' => 'aquatic animal')
+    @d.add('apple' => 'fruit')
+    @d.printable.should == %Q{[apple] "fruit"\n[fish] "aquatic animal"\n[zebra] "African land animal with stripes"}
   end
 end

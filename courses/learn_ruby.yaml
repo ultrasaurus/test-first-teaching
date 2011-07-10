@@ -1,5 +1,5 @@
 ---
-:repo: git@github.com:alexch/learn_ruby.git
+:repo: git@github.com:wolframarnold/learn_ruby.git
 :chapters:
 
     - hello
@@ -10,6 +10,7 @@
 
     - hello_friend
     - temperature_object
+    - dictionary
     - book_titles
     - timer
     - array_sum
@@ -17,11 +18,10 @@
 
     - array
     - rpn_calculator
-    - dictionary
 
     - blocks
     - performance_monitor
     - builder
-    - screen_scrape
+#    - screen_scrape
 
 #    - orange_tree

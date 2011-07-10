@@ -1,7 +1,5 @@
 class Array
   def sum
-    total = 0
-    each {|n| total += n }
-    total
+    inject(0) {|sum, elem| sum + elem}
   end
 end
