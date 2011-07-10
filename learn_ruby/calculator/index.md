@@ -2,6 +2,8 @@
 
 * functions
 * math
+* arrays
+* iterating/looping
 
 # Calculator
 
@@ -11,7 +13,7 @@ you will build a simple calculator script with the following three methods:
 
 `subtract` takes two parameters and subtracts the second from the first
 
-`multiply` takes an *array* of parameters and multiplies them all together
+`sum` takes an *array* of parameters and adds them all together
 
 # Bonus
 

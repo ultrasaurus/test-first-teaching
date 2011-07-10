@@ -1,7 +1,7 @@
 class Temperature
 
-  def self.from_celcius degrees_celcius
-    new(degrees_celcius * (9.0/5.0) + 32)
+  def self.from_celsius degrees_celsius
+    new(degrees_celsius * (9.0/5.0) + 32)
   end
 
   def initialize degrees_fahrenheit
@@ -12,7 +12,7 @@ class Temperature
     @degrees_fahrenheit
   end
 
-  def degrees_celcius
+  def degrees_celsius
     (@degrees_fahrenheit - 32) * (5.0/9.0)
   end
 
