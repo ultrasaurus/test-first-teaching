@@ -2,7 +2,7 @@
 
 * stubs
 * blocks
-* yields
+* yield
 
 # Performance Monitor
 

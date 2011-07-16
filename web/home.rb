@@ -46,6 +46,25 @@ class Home < Page
         a "Learn JavaScript", :href => '/learn_javascript'
         text ' page.'
       end
+      p do
+        text "Want to try more flavors of test-guided learning? Check out..."
+        ul {
+          li {
+            a "Ruby Koans", :href => "http://rubykoans.com/"
+            text " to learn the Ruby language, syntax, structure, and some common functions and libraries - a useful complement to our "
+            a "learn_ruby", :href => "/learn_ruby"
+            text " labs"
+          }
+          li {
+            a "Coding Bat", :href => "http://codingbat.com/"
+            text " for online in-browser Java and Python exercises"
+          }
+          li {
+            a "Ruby Kickstart", :href => "https://github.com/JoshCheek/ruby-kickstart"
+            text " - screencast lectures and test-driven exercises"
+          }
+        }
+      end
     end
   end
 

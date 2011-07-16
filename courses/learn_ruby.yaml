@@ -3,17 +3,19 @@
 :chapters:
 
     - hello
+    - simon_says
+
     - calculator
     - temperature
-    - simon_says
+
     - pig_latin
 
     - hello_friend
     - temperature_object
     - book_titles
-    - timer
     - array_sum
     - in_words
+    - timer
 
     - array
     - rpn_calculator
@@ -21,7 +23,9 @@
 
     - blocks
     - performance_monitor
+
     - builder
+
     - screen_scrape
 
 #    - orange_tree

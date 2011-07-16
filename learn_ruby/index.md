@@ -86,6 +86,7 @@ Here is a broad survey of many resources you may find useful. Don't try to read 
   * [Learning TDD Through Test First Teaching](http://www.youtube.com/watch?v=KgfdlZuVz7I) talk by Sarah Allen at East Bay Ruby Meetup
 * [Growing OO Software In Ruby](http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/) by Brian Marick - a Ruby version of [Growing Object-Oriented Software Guided by Tests](http://www.growing-object-oriented-software.com/)
 * [ruby-warrior](http://github.com/ryanb/ruby-warrior) by Ryan Bates - a game written in Ruby for learning Ruby
+* [Ruby Kickstart](https://github.com/JoshCheek/ruby-kickstart) by Josh Cheek - another set of test-driven exercises
 
 ## Learning Ruby and Programming
 * [Learn To Program](http://pine.fm/LearnToProgram/) by **Chris Pine** - great Ruby tutorial, available online (1st ed.) or in a [PragProg book](http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition) (2nd ed.)
