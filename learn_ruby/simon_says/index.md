@@ -1,5 +1,5 @@
 # Topics
 
-* modules
+* functions
 * strings
 
