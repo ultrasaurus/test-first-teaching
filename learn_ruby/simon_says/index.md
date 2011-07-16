@@ -1,6 +1,6 @@
 # Simon Says
 
-# Topics
+## Topics
 
 * functions
 * strings

@@ -16,4 +16,6 @@ table of contents (intra-page) in generated html pages
 
 clicking on a file (esp. a .rb file) should show it, not download it
 
-rename chapter to "exercise" (or "mission"?)
+rename chapter to "exercise" or "lab"
+
+rename "assets" to "shared"
