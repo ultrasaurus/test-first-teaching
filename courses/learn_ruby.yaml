@@ -1,5 +1,5 @@
 ---
-:repo: git@github.com:alexch/learn_ruby.git
+:repo: git@github.com:wolframarnold/learn_ruby.git
 :chapters:
 
 # solutions are mere functions
@@ -12,6 +12,7 @@
 # solutions are now objects
     - hello_friend
     - temperature_object
+    - dictionary
     - book_titles
     - array_sum
     - in_words
@@ -19,13 +20,12 @@
 
     - array_extensions
     - rpn_calculator
-    - dictionary
 
     - blocks
     - performance_monitor
 
     - builder
 
-    - screen_scrape
-
+# these are problematic
+#    - screen_scrape
 #    - orange_tree

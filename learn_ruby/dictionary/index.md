@@ -1,4 +1,7 @@
 # Topics
 
+* Hash
+* Array
 * instance variables
-* iterators
+* regular expressions
+

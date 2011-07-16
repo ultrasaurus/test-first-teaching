@@ -6,7 +6,7 @@
 
 # Extending a built-in class
 
-To make this test pass you'll need to extend a built-in class. You'll see that we're creating a new spec for 'Fixnum' -- this isn't a new class you;ll be building, but instead it is a built-in class you will extend.
+To make this test pass you'll need to extend a built-in class. You'll see that we're creating a new spec for 'Fixnum' -- this isn't a new class you'll be building, but instead it is a built-in class you will extend.
 
 Remember that in Ruby, everything is an object, even a number.  Try this in irb:
 

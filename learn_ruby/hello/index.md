@@ -113,3 +113,9 @@ Hint 2: once you do that, the **first** test might start failing again. And that
 
     def hello(who = nil)
 
+Hint 3: to distinguish the cases, you'll need to use branching
+
+    if who.nil?
+      ...
+    end
+

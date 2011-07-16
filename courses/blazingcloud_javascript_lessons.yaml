@@ -1,0 +1,13 @@
+---
+:curriculum: learn_javascript
+:repo: git@github.com:blazingcloud/javascript_lessons.git
+:chapters:
+    - hello
+    - string_basics
+    - properties
+    - loops
+    - color_strings
+    - calculator
+    - temperature
+    - dom
+    - bouncing_ball

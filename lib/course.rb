@@ -52,7 +52,7 @@ class Course
   def push_repo
     Dir.chdir(@repo_dir) do
       system "git add -A"
-      system "git ci -m 'generated'"
+      system "git commit -m 'generated'"
       system "git push origin master"
     end
   end

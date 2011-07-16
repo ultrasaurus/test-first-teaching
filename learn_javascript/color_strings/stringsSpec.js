@@ -1,6 +1,6 @@
 describe("rgb", function() {
 	it("converts the black hex code", function() {
-		expect(rgb("#000000")).toEqual([0, 0, 0]);		
+		expect(rgb("#000000")).toEqual([0, 0, 0]);
 	});
 	it("converts the white hex code", function() {
 		expect(rgb("#FFFFFF")).toEqual([255, 255, 255]);
@@ -11,7 +11,7 @@ describe("rgb", function() {
 	it("converts a trivial hex code", function() {
 		expect(rgb("#010203")).toEqual([1, 2, 3]);
 	});
-	it("converts some arbitrary hex codes", function() {		
+	it("converts some arbitrary hex codes", function() {
 		expect(rgb("#123456")).toEqual([18, 52, 86]);
 		expect(rgb("#CAFE18")).toEqual([202, 254, 24]);
 		expect(rgb("#22BEEF")).toEqual([34, 190, 239]);
