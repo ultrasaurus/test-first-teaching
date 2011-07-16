@@ -11,12 +11,12 @@ describe Array do
       [1,2,4].sum.should == 7
     end
   end
-  
+
   describe '#square' do
     it "does nothing to an empty array" do
       [].square.should == []
     end
-    
+
     it "returns a new array containing the squares of each element" do
       [1,2,3].square.should == [1,4,9]
     end

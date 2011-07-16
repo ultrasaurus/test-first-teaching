@@ -2,14 +2,14 @@
 :repo: git@github.com:alexch/learn_ruby.git
 :chapters:
 
+# solutions are mere functions
     - hello
     - simon_says
-
-    - calculator
     - temperature
-
+    - calculator
     - pig_latin
 
+# solutions are now objects
     - hello_friend
     - temperature_object
     - book_titles
@@ -17,7 +17,7 @@
     - in_words
     - timer
 
-    - array
+    - array_extensions
     - rpn_calculator
     - dictionary
 
