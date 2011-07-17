@@ -3,6 +3,10 @@ require "array_ext" # we don't call it "array.rb" since that would be confusing
 describe Array do
 
   describe "#sum" do
+    it "has a #sum method" do
+      [].should respond_to(:sum)
+    end
+
     it "should be 0 for an empty array" do
       [].sum.should == 0
     end
