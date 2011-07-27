@@ -1,11 +1,9 @@
-module PigLatinTranslator
 
     # Basic pig latin translation rules are:
     #  - if word begins with consonant, move consonant to end + append 'ay'
     #  - if word begins with a vowel append 'ay'to end
     #  - if word begins with 'qu' move these to the end and append 'ay' 
 
-    private
     # private method to convert a single word to pig latin
     # this solution uses regular expressions to match search patterns
     # also uses 'case' statements rather than nested 'if/then/else' constructs
@@ -51,4 +49,3 @@ module PigLatinTranslator
         # Assemble the converted words into a new phrase
         res = piglist.join(" ")  
     end
-end

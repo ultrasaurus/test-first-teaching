@@ -13,3 +13,6 @@ Rule 2: If a word begins with a consonant sound, move it to the end of the word,
 
 (There are a few more rules for edge cases, and there are regional variants too, but that should be enough to understand the tests.)
 
+See <http://en.wikipedia.org/wiki/Pig_latin> for more details.
+
+

@@ -2,14 +2,16 @@ class Book
   attr_reader :title
 
   def title=(new_title)
-    words = new_title.split(" ").map do |w| 
-      if w.length > 3 or w == "i"
-        w.capitalize
-      else
-        w
+    words = new_title.split(" ")
+    words = [words[0].capitalize] +
+      words[1..-1].map do |word|
+        little_words = %w{a an and the in}
+        if little_words.include? word
+          word
+        else
+          word.capitalize
+        end
       end
-    end
-    words[0] = words[0].capitalize
     @title = words.join(" ")
   end
 

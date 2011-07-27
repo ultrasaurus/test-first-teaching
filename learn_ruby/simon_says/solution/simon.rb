@@ -1,3 +1,4 @@
+
 def echo(s)
   s
 end
@@ -6,8 +7,8 @@ def shout(s)
   s.upcase
 end
 
-def repeat(s, n = 2)
-  ([s] * n).join(" ")
+def repeat(s, times = 2)
+  ([s] * times).join(" ")
 end
 
 def start_of_word(s, n)
@@ -25,3 +26,4 @@ end
 def titleize(s)
   s.split.map{|word| capitalize(word)}.join(" ")
 end
+

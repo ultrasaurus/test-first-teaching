@@ -1,4 +1,3 @@
-module PigLatinTranslator
   def translate(s)
     s.split.map do |word|
       v = first_vowel(word)
@@ -13,4 +12,3 @@ module PigLatinTranslator
       word.gsub(/[aeiou].*$/, '').size
     end
   end
-end
