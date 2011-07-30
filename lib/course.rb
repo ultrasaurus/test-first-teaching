@@ -2,9 +2,6 @@ here = File.expand_path(File.dirname(__FILE__))
 require 'yaml'
 require 'rdiscount'
 require 'sass'
-
-puts "Sass version #{Sass::VERSION}"
-
 require 'erector'
 
 class Course
