@@ -52,8 +52,10 @@ task :default => :test do
     puts ""
     failed_chapters << chapter if result == false
   end
-  puts "#{failed_chapters.size} of #{chapters.size} failed chapters"
-  unless failed_chapters.empty?
+
+  something_failed = (not failed_chapters.empty?)
+  if something_failed
+    puts "#{failed_chapters.size} of #{chapters.size} failed chapters"
     puts failed_chapters.map{|c| "\t#{c}"}.join("\n")
   end
 
