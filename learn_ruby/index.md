@@ -9,20 +9,23 @@
   * Here are some [good instructions](http://www.wiki.devchix.com/index.php?title=Workshop_Installation_Notes_Rails_3) for installing the required software.
   * Here are some [other good instructions](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book#sec:rubygems), using rvm.
 
+* Open a terminal window. (On Mac OS X you can use the `Terminal` app.)
+
 * Install RSpec
 
         gem install rspec
-
-  * Configure RSpec (optional). If you're running a bash shell, you can put the following in your .bash_profile to make the output a bit nicer.
-
-            alias spec="spec --color --format nested"
-
-* Open a terminal window. (On Mac OS X you can use the `Terminal` app.)
 
 * Enter the course directory. (That's the same directory that this `index.html` file is in.)
 
         cd learn_ruby
 
+* Enter the `00_hello` lab.
+
+        cd 00_hello
+
+* Open the lab's [index.html](./00_hello/index.html) file in a web browser and follow the instructions there.
+
+        open index.html  # this works on Mac OS X only!
 
 ## Using These Exercises
 

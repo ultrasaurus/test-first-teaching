@@ -105,17 +105,14 @@ Fix the next failure! `:-)`
       says hello
       says hello to someone (FAILED - 1)
 
-Hint 1: in order to get the next test to pass, you will need to pass a *parameter*:
-
-    def hello(who)
-
-Hint 2: once you do that, the **first** test might start failing again. And that means you need to provide a **default value** for that parameter:
+In order to get the next test to pass, you will need to pass a *parameter* and give it a *default value*:
 
     def hello(who = nil)
-
-Hint 3: to distinguish the cases, you'll need to use branching
-
-    if who.nil?
-      ...
+      if who.nil?
+        "Hello!"
+      else
+        "Hello, #{who}!"
+      end
     end
 
+<!--  -->
