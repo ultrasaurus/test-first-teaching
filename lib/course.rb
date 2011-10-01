@@ -88,7 +88,7 @@ class Course
     tarball = "#{into_dir}/#{course_name}.tgz"
 
     Dir.chdir(repo_parent) do
-      `tar zcf #{tarball} #{course_name}`
+      `tar -z -c -f #{tarball} --exclude .git --exclude .gitignore  #{course_name}`
     end
   end
 
