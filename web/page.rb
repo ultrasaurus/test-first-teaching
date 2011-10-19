@@ -110,7 +110,7 @@ class Page < Erector::Widgets::Page
         a "Alex Chaffee", :href => "http://alexch.github.com"
         text ", and many other contributors."
         br
-        text "Site design by "
+        text "Front-end design by "
         a "Chandra Nalaani", :href => "http://chandranalaani.com/"
         text ". "
         text "This site uses "
