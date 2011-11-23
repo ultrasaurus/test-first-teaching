@@ -1,3 +1,8 @@
-def hello(who = nil)
-  "Hello#{", #{who}" if who}!"
+def hello
+  "Hello!"
 end
+
+def greet(who)
+  "Hello, #{who}!"
+end
+

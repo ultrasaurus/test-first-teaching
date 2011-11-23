@@ -103,16 +103,14 @@ Fix the next failure! `:-)`
 
     the hello function
       says hello
+
+    the greet function
       says hello to someone (FAILED - 1)
 
-In order to get the next test to pass, you will need to pass a *parameter* and give it a *default value*:
+In order to get the next test to pass, your function will need to accept an *argument*.
 
-    def hello(who = nil)
-      if who.nil?
-        "Hello!"
-      else
-        "Hello, #{who}!"
-      end
+    def greet(who)
+      "Hello, #{who}!"
     end
 
 <!--  -->
