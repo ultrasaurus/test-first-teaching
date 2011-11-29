@@ -8,9 +8,9 @@ class Course
   include Erector::Mixin
 
   # todo: move to Curriculum object
-  def self.all_chapters(curriculum_name)
+  def self.all_labs(curriculum_name)
     curriculum_dir = "#{Course.root}/#{curriculum_name}"
-    chapters = Dir.glob("#{curriculum_dir}/*").
+    labs = Dir.glob("#{curriculum_dir}/*").
       select {|d| File.directory?(d)}.
       map {|d| d.split('/').last}.
       reject {|d| d == "ubiquitous" || d == "assets"}.
@@ -22,7 +22,7 @@ class Course
     File.expand_path("#{here}/..")
   end
 
-  attr_accessor :curriculum_name, :course_name, :chapters, :repo, :repo_dir, :repo_parent
+  attr_accessor :curriculum_name, :course_name, :labs, :repo, :repo_dir, :repo_parent
 
   def initialize(file)
     if file.is_a? String
@@ -32,7 +32,7 @@ class Course
     data = YAML::load(file.read)
     @curriculum_name = data[:curriculum] || "learn_ruby"
     @course_name = file.path.split('/').last.gsub(/\.yaml/, '')
-    @chapters = data[:chapters]
+    @labs = data[:labs]
     @repo = data[:repo] || "git@github.com:alexch/#{@course_name}.git"
     @repo_parent =
       File.expand_path "#{Course.root}/.."
@@ -66,17 +66,17 @@ class Course
   end
 
   def build
-    FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated chapter dirs and files
+    FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated lab dirs and files
 
     copy_files curriculum_dir, repo_dir, 0
     copy_files assets_dir, "#{repo_dir}/assets"
 
-    @chapters.each_with_index do |chapter, i|
+    @labs.each_with_index do |lab, i|
       num = "%02d" % i
-      numbered = "#{num}_#{chapter}"
-      source_dir = "#{curriculum_dir}/#{chapter}"
+      numbered = "#{num}_#{lab}"
+      source_dir = "#{curriculum_dir}/#{lab}"
       target_dir = "#{@repo_dir}/#{numbered}"
-      raise "Missing chapter #{source_dir}" unless File.exist? source_dir and File.directory? source_dir
+      raise "Missing lab #{source_dir}" unless File.exist? source_dir and File.directory? source_dir
       FileUtils.touch "#{source_dir}/index.md" unless File.exist?("#{source_dir}/index.md")
       copy_files source_dir, target_dir
       copy_files "#{curriculum_dir}/ubiquitous", target_dir
@@ -124,13 +124,13 @@ class Course
     markdown_files.each do |markdown_file|
       html_file = target_dir + "/" + markdown_file.gsub(/\.md$/, '.html')
       prefix = "../" * level
-      current_chapter = source_dir.split('/').last
+      current_lab = source_dir.split('/').last
 
       File.open(html_file, "w") do |f|
         f.print <<-HTML
 <html>
 <head>
-  <title>Test-First Teaching: #{course_name}: #{current_chapter}</title>
+  <title>Test-First Teaching: #{course_name}: #{current_lab}</title>
   <link href="#{prefix}assets/style.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -138,8 +138,8 @@ class Course
     <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
     <h2>the home of test-first teaching</h2>
   </div>
-  #{nav(current_chapter, level)}
-  #{chapter_info(current_chapter, source_dir)}
+  #{nav(current_lab, level)}
+  #{lab_info(current_lab, source_dir)}
   <div class='content'>
         HTML
         markdown = File.read("#{source_dir}/#{markdown_file}")
@@ -157,19 +157,19 @@ class Course
     end
 
   end
-  def nav(current_chapter, level)
+  def nav(current_lab, level)
 
     erector {
       div(:class => 'nav') {
         h2 { a course_name, :href=> ("../" * level) + 'index.html' }
-        b "Chapters:"
+        b "Labs:"
         ul {
-          chapters.each_with_index do |chapter, i|
+          labs.each_with_index do |lab, i|
             num = "%02d" % i
-            numbered = "#{num}_#{chapter}"
-            titled = "#{num} #{chapter.split('_').map{|s|s.capitalize}.join(' ')}"
+            numbered = "#{num}_#{lab}"
+            titled = "#{num} #{lab.split('_').map{|s|s.capitalize}.join(' ')}"
             li {
-              if current_chapter == chapter
+              if current_lab == lab
                 text titled
               else
                 href = (if level == 0
@@ -186,10 +186,10 @@ class Course
     }
   end
 
-  def chapter_info(current_chapter, source_dir)
+  def lab_info(current_lab, source_dir)
     erector {
       div(:class => "info") {
-        h1 current_chapter
+        h1 current_lab
         ul {
           files = Dir.glob("#{source_dir}/*")
           files.each do |file|

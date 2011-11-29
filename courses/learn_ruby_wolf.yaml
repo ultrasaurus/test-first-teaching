@@ -1,6 +1,6 @@
 ---
 :repo: git@github.com:wolframarnold/learn_ruby.git
-:chapters:
+:labs:
 
 # solutions are mere functions
     - hello

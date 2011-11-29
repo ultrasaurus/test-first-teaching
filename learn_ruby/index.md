@@ -29,11 +29,11 @@
 
 ## Using These Exercises
 
-Your course directory has a list of chapter directories. Each
+Your course directory has a list of lab directories. Each
 directory has a spec file. You will write all the code to make all the specs
 in it pass.
 
-To get your feet wet in this process, go into the "hello" chapter with `cd
+To get your feet wet in this process, go into the "hello" lab with `cd
 00_hello` and read the detailed instructions in its `index.html` file.
 
 If you got through "hello", then congratulations! Now it's time to go to the
@@ -42,7 +42,7 @@ next directory (whose name begins with `01_`) and start learning Ruby!
 ## Course Outline
 
 Each course is different, so check with your instructor for details on the
-curriculum he or she has chosen. Here is a survey of a few of the chapters:
+curriculum he or she has chosen. Here is a survey of a few of the labs:
 
 * **hello**
   Gives you a feel for how to use these tests.

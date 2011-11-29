@@ -36,9 +36,9 @@ Jasmine is a JavaScript testing framework. While Jasmine can be run from a plain
 
 # Learning
 
-Your course directory has a list of chapter directories. Each directory has a spec file. You will write all the code to make all the specs in it pass.
+Your course directory has a list of lab directories. Each directory has a spec file. You will write all the code to make all the specs in it pass.
 
-To get your feet wet in this process, go into the "hello" chapter with `cd 00_hello` and read the detailed instructions in its [`index.html` file](00_hello/index.html).
+To get your feet wet in this process, go into the "hello" lab with `cd 00_hello` and read the detailed instructions in its [`index.html` file](00_hello/index.html).
 
 Once you got through "hello", then congratulations! Now it's time to go to the
 next directory (whose name begins with `01_`) and start learning JavaScript!

@@ -1,7 +1,7 @@
 --- 
 :curriculum: learn_javascript
 :repo: git@github.com:alexch/learn_javascript.git
-:chapters:
+:labs:
     - hello
     - properties
     - loops

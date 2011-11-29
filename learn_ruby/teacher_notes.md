@@ -20,21 +20,21 @@ or plain HTML
 
 The `solutions` branch is dead; long live the `solution` directory.
 
-To add a solution, you must put your Ruby file(s) in a directory **inside** the chapter directory with the name `solution`, e.g. `learn_ruby/hello/solution/hello.rb`.
+To add a solution, you must put your Ruby file(s) in a directory **inside** the lab directory with the name `solution`, e.g. `learn_ruby/hello/solution/hello.rb`.
 
 Solutions only appear in the teacher repository (`test-first-teaching`) not the generated student repo (`learn_ruby`). When you run `rake` the tests will be run against the solutions, to assure that your code is correct.
 
-Make sure not to check in any cruft in the chapter directory, since that will be seen by (and surely befuddle) students.
+Make sure not to check in any cruft in the lab directory, since that will be seen by (and surely befuddle) students.
 
 Multiple solutions aren't supported yet.
 
 ## Notes and instructions
 
-Every chapter has (or can have) a `index.md` file that the students can read. This is a good place for background, instructions and hints for solving the exercises.
+Every lab has (or can have) a `index.md` file that the students can read. This is a good place for background, instructions and hints for solving the exercises.
 
 Files ending with `.md` (Markdown) are converted to HTML and given a `.html` suffix, and files ending with `.scss` (Sass/SCSS) are converted to CSS and given a `.css` suffix. Any other files will be copied over to the student repo as is.
 
-Chapter directories become numbered; e.g. `hello` will become `00_hello`.
+Lab directories become numbered; e.g. `hello` will become `00_hello`.
 
 Each curriculum contains an `assets` directory, which is a good place to put shared files like `.js` and `.css` and images. You can refer to them using `..` in your markdown files, e.g.
 
@@ -42,7 +42,7 @@ Each curriculum contains an `assets` directory, which is a good place to put sha
 
 This works in "preview mode" too, though it's a little weird, since `.scss` isn't converted into `.css` until the course is built using `rake build`.
 
-There's also a `ubiquitous` directory, whose contents are copied into each and every generated chapter directory.
+There's also a `ubiquitous` directory, whose contents are copied into each and every generated lab directory.
 
 ## Tricks
 

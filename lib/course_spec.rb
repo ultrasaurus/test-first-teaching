@@ -16,16 +16,16 @@ describe Course do
     assert { Course.root.split('/').last == "test-first-teaching"  }
   end
   
-  it "lists all chapters under the given curriculum" do
-    chapters = Course.all_chapters("sample_curriculum")
-    assert { chapters == ["one", "three", "two"] }
+  it "lists all labs under the given curriculum" do
+    labs = Course.all_labs("sample_curriculum")
+    assert { labs == ["one", "three", "two"] }
   end
   
   it 'initializes from a course yaml file' do
     c = Course.new(File.new("#{Course.root}/courses/sample_course.yaml"))
     assert { c.curriculum_name ==  "sample_curriculum" }
     assert { c.course_name ==  "sample_course" }
-    assert { c.chapters == ["one", "two", "three"] }
+    assert { c.labs == ["one", "two", "three"] }
     assert { c.repo == "git@github.com:alexch/sample_course.git"  }
   end
 
@@ -33,7 +33,7 @@ describe Course do
     c = Course.new("sample_course")
     assert { c.curriculum_name ==  "sample_curriculum" }
     assert { c.course_name ==  "sample_course" }
-    assert { c.chapters == ["one", "two", "three"] }
+    assert { c.labs == ["one", "two", "three"] }
     assert { c.repo == "git@github.com:alexch/sample_course.git"  }
   end
 
@@ -58,33 +58,33 @@ describe Course do
      FileUtils.remove_entry_secure @tmpdir
     end      
 
-    def chapter_dirs
+    def lab_dirs
       ["00_one", "01_two", "02_three"]
     end
 
-    it "numbers chapter directories in order" do
-      chapter_dirs.each do |chapter_dir|
-        assert { File.exists? "#{@tmpdir}/#{chapter_dir}" }
-        assert { File.directory? "#{@tmpdir}/#{chapter_dir}" }
+    it "numbers lab directories in order" do
+      lab_dirs.each do |lab_dir|
+        assert { File.exists? "#{@tmpdir}/#{lab_dir}" }
+        assert { File.directory? "#{@tmpdir}/#{lab_dir}" }
       end
     end
     
     it "copies normal files" do
-      chapter_dirs.each do |chapter_dir|
-        assert { File.exists? "#{@tmpdir}/#{chapter_dir}/foo_spec.rb" }
+      lab_dirs.each do |lab_dir|
+        assert { File.exists? "#{@tmpdir}/#{lab_dir}/foo_spec.rb" }
       end
     end
     
     it "excludes solutions" do
-      chapter_dirs.each do |chapter_dir|
-        deny { File.exists? "#{@tmpdir}/#{chapter_dir}/solution/foo.rb" }
+      lab_dirs.each do |lab_dir|
+        deny { File.exists? "#{@tmpdir}/#{lab_dir}/solution/foo.rb" }
       end
     end
       
     it "converts markdown files into html" do
-      chapter_dirs.each do |chapter_dir|
-        deny { File.exists? "#{@tmpdir}/#{chapter_dir}/stuff.md" }
-        assert { File.exists? "#{@tmpdir}/#{chapter_dir}/stuff.html" }
+      lab_dirs.each do |lab_dir|
+        deny { File.exists? "#{@tmpdir}/#{lab_dir}/stuff.md" }
+        assert { File.exists? "#{@tmpdir}/#{lab_dir}/stuff.html" }
       end
     end
     
@@ -100,20 +100,20 @@ describe Course do
     end
     
     it "copies ubiquitous files" do
-      chapter_dirs.each do |chapter_dir|
-        assert { File.exists? "#{@tmpdir}/#{chapter_dir}/ubiquity.txt" }
+      lab_dirs.each do |lab_dir|
+        assert { File.exists? "#{@tmpdir}/#{lab_dir}/ubiquity.txt" }
       end
     end
     
-    it "clears away old contents (like previously generated chapter dirs)" do
-      chapter_dir = "#{@tmpdir}/99_dummy"
-      FileUtils.mkdir_p chapter_dir
-      File.open("#{chapter_dir}/hello.txt", "w") do |f|
+    it "clears away old contents (like previously generated lab dirs)" do
+      lab_dir = "#{@tmpdir}/99_dummy"
+      FileUtils.mkdir_p lab_dir
+      File.open("#{lab_dir}/hello.txt", "w") do |f|
         f.write("hello")
       end
-      assert { File.exists? "#{chapter_dir}/hello.txt" }
+      assert { File.exists? "#{lab_dir}/hello.txt" }
       @course.build
-      deny { File.exists? "#{chapter_dir}/hello.txt" }
+      deny { File.exists? "#{lab_dir}/hello.txt" }
     end
     
   end

@@ -8,9 +8,9 @@ def course
   Course.new(ENV['course'] || "learn_ruby")
 end
 
-desc "list all the chapter dirs in the course dir in YAML, for help making new course.yaml files"
-task :list_chapters do
-  puts Course.all_chapters(course.curriculum_name).to_yaml
+desc "list all the lab dirs in the course dir in YAML, for help making new course.yaml files"
+task :list_labs do
+  puts Course.all_labs(course.curriculum_name).to_yaml
 end
 
 desc "build the course into its repo dir (default: course=learn_ruby)"
@@ -41,22 +41,22 @@ end
 
 desc "run tests, exercises, and build the course (default: course=learn_ruby)"
 task :default => :test do
-  # run all exercises in all chapters
-  failed_chapters = []
-  chapters = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
-  chapters.each do |chapter|
-    result = Dir.chdir(chapter) do
+  # run all exercises in all labs
+  failed_labs = []
+  labs = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
+  labs.each do |lab|
+    result = Dir.chdir(lab) do
       system "rake"
     end
-    puts "#{chapter} " + (result ? "passed" : "FAILED")
+    puts "#{lab} " + (result ? "passed" : "FAILED")
     puts ""
-    failed_chapters << chapter if result == false
+    failed_labs << lab if result == false
   end
 
-  something_failed = (not failed_chapters.empty?)
+  something_failed = (not failed_labs.empty?)
   if something_failed
-    puts "#{failed_chapters.size} of #{chapters.size} failed chapters"
-    puts failed_chapters.map{|c| "\t#{c}"}.join("\n")
+    puts "#{failed_labs.size} of #{labs.size} failed labs"
+    puts failed_labs.map{|c| "\t#{c}"}.join("\n")
   end
 
   exit 1 if something_failed

@@ -1,6 +1,6 @@
 # Hello, friend!
 
-This chapter teaches basic Ruby Object syntax.
+This lab teaches basic Ruby Object syntax.
 
 ## Open a terminal in this directory
 

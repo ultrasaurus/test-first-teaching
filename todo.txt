@@ -2,7 +2,7 @@ create course repo on github if it doesn't already exist, using github gem
 
 http://marakana.com/forums/ruby/ruby_on_rails/191.html
 
-allow subdirectories inside chapters
+allow subdirectories inside labs
 
 substitute actual course repo git url in index.html
 
@@ -15,7 +15,3 @@ Chris Pine doesn't do arrays for a while -- must sync better
 table of contents (intra-page) in generated html pages
 
 clicking on a file (esp. a .rb file) should show it, not download it
-
-rename chapter to "exercise" or "lab"
-
-rename "assets" to "shared"

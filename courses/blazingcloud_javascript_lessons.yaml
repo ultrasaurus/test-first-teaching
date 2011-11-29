@@ -1,7 +1,7 @@
 ---
 :curriculum: learn_javascript
 :repo: git@github.com:blazingcloud/javascript_lessons.git
-:chapters:
+:labs:
     - hello
     - string_basics
     - properties
