@@ -59,6 +59,7 @@ You can also find help at the [TestFirst.org](http://testfirst.org) site or the 
   * [JavaScript Koans](https://github.com/mrdavidlaing/javascript-koans)
   * [Learning Advanced JavaScript](http://ejohn.org/apps/learn) by [John Resig](http://ejohn.org)
   * [Liah's Class](https://github.com/liahhansen/Learn-to-Program-Javascript)
+  * [Happy Fun Coding](http://happyfuncoding.com/)
 
 * [Jasmine](http://pivotal.github.com/jasmine/)
   * [An Introduction to JavaScript testing with Jasmine BDD](https://github.com/searls/jasmine-intro) - slide presentation with sample code
