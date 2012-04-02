@@ -6,6 +6,9 @@ require 'sinatra'
 require 'erector'
 require 'json'
 
+$: << "#{here}/lib"
+require "code"
+
 $: << "#{here}/web"
 require "page"
 require "home"
@@ -13,9 +16,6 @@ require "about"
 require "learn_ruby"
 require "learn_javascript"
 require "live"
-
-$: << "#{here}/lib"
-require "code"
 
 set :public_folder, "web"
 
@@ -44,13 +44,15 @@ get '/download/:file' do
 end
 
 post "/run" do
+  p params
   if params[:code]
-    Code.new(params[:code]).run.to_json
+    Code.new(params[:code], :rspec => params[:rspec]).run.to_json
   else
-    redirect "/live"
+    "need code, was passed #{params.to_json}"
+    # redirect "/live"
   end
 end
 
 get "/live" do
-  Live.new.to_pretty
+  Live.new(:test => "#{here}/learn_ruby/hello/hello_spec.rb").to_pretty
 end

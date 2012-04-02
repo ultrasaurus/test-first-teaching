@@ -17,6 +17,10 @@ end
 answer = run("1 + 1")
 assert { answer == {:result => 2} }
 
+# returns nil if no code was executed
+answer = run("")
+assert { answer[:result].nil? }
+
 # captures stdout
 answer = run("puts 'hi'; 1 + 1")
 assert { answer == {:result => 2, :stdout => "hi\n" } }
@@ -78,4 +82,19 @@ assert { answer == {:error => {:class => "Timeout::Error", :message=>"execution 
 # assert { answer[:result] == "foo" }
 # deny { File.exist? "#{tempdir}/foo.txt" }
 
-
+# works with rspec
+spec = <<-RUBY
+describe 'add' do
+  it 'adds' do
+    add(2,3).should == 5
+  end
+end
+RUBY
+source = <<-RUBY
+def add(x, y)
+  x + y
+end
+RUBY
+code = Code.new(source, :rspec => spec)
+answer = code.run
+assert { answer[:result] == "awesome" }

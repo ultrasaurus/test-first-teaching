@@ -20,6 +20,8 @@ Interactive version
   like http://eloquentjavascript.net/paper.html
   like Socrates
   like RubyMonk
+  like CodeSchool.com and CodeAcademy.com and TryRuby.org
+
 
 put tarball into git and link to it on github (to prevent out-of-sync issues)
 

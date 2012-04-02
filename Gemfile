@@ -1,6 +1,6 @@
 source :gemcutter
 
-gem "rspec", "~>2"
+gem "rspec", "~>2.9.0"
 gem "erector", ">=0.9.0.pre"
 gem "treetop"
 gem "sinatra"
@@ -11,8 +11,14 @@ gem "rerun" # used by 'rake run'
 gem "fakeweb" # used for one of the exercises
 # gem "fakefs" # used by the code server
 
+# used by the running server
+gem "thin"
+gem "foreman"
+gem "spork"
+
 group :development do
   gem "rake"
   gem "wrong", ">=0.6.2"
   gem "files"
+  gem "bourbon"  # do 'cd web/css; bourbon update' to get new bourbon
 end
