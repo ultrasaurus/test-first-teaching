@@ -4,7 +4,7 @@ require 'files'
 include Files
 
 here = File.expand_path(File.dirname __FILE__)
-require "#{here}/../server/code"
+require "#{here}/../lib/code"
 
 Wrong.config.verbose
 Wrong.config.color

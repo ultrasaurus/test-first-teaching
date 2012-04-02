@@ -3,7 +3,7 @@ require 'yaml'
 
 $: << './lib'
 require 'course'
-
+here = File.expand_path(File.dirname __FILE__)
 def course
   Course.new(ENV['course'] || "learn_ruby")
 end
@@ -18,7 +18,7 @@ task :build do
   course.build
   puts "Built #{course.course_name} into #{course.repo_dir}"
 
-  download_dir = File.expand_path "#{File.dirname(__FILE__)}/download"
+  download_dir = "#{here}/download"
   course.build_tarball download_dir
   puts "Built tarball into #{download_dir}"
 end
@@ -34,9 +34,16 @@ end
 
 require 'rspec/core/rake_task'
 
-desc "run tests of the framework"
-RSpec::Core::RakeTask.new(:test) do |task|
-  task.pattern = "lib/*_spec.rb"
+desc "run tests and specs of the framework"
+task :test => :spec do
+  Dir.glob("#{here}/test/*_test.rb") do |f|
+    require f
+  end
+end
+
+desc "run specs of the framework"
+RSpec::Core::RakeTask.new(:spec) do |task|
+  task.pattern = "test/*_spec.rb"
 end
 
 desc "run tests, exercises, and build the course (default: course=learn_ruby)"

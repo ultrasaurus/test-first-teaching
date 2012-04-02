@@ -1,6 +1,6 @@
 require 'erector'
 
-class Client < Erector::Widgets::Page
+class Live < Erector::Widgets::Page
 
   external :style, <<-CSS
   .panel {
@@ -20,7 +20,7 @@ class Client < Erector::Widgets::Page
   CSS
 
   def page_title
-    "Test-First Client"
+    "Test-First Live!"
   end
 
   def panel title, panel_class = title.downcase
@@ -32,13 +32,17 @@ class Client < Erector::Widgets::Page
 
   def body_content
     div.top {
-
+      h1 "Run Live Code!"
+      form :action => "/run", :method => "post" do
+        textarea :name => "code"
+        input :type => "submit", :name => "submit", :value => "Run"
+      end
     }
     div.main {
       panel "Notes"
       panel "Tests"
       panel "Results"
-      panel "Code"
+      panel "Source"
     }
   end
 end

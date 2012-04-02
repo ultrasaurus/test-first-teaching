@@ -4,6 +4,7 @@ here = File.expand_path(File.dirname(__FILE__))
 require 'rubygems'
 require 'sinatra'
 require 'erector'
+require 'json'
 
 $: << "#{here}/web"
 require "page"
@@ -11,8 +12,12 @@ require "home"
 require "about"
 require "learn_ruby"
 require "learn_javascript"
+require "live"
 
-set :public, "web"
+$: << "#{here}/lib"
+require "code"
+
+set :public_folder, "web"
 
 configure do
   mime_type :rb, 'text/plain'
@@ -36,4 +41,16 @@ end
 
 get '/download/:file' do
   send_file("#{here}/download/#{params[:file]}", :disposition => 'attachment', :filename => params[:file])
+end
+
+post "/run" do
+  if params[:code]
+    Code.new(params[:code]).run.to_json
+  else
+    redirect "/live"
+  end
+end
+
+get "/live" do
+  Live.new.to_pretty
 end
