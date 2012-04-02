@@ -10,9 +10,9 @@ class Home < Page
 
   def main
     div :class => "main home" do
-      p 'This website provides a path to learning Ruby through self-guided exercises that use a software test framework.  This methodology is called "Test First Teaching" and has been applied successfully in a classroom environment.'
+      p "Do you want to learn Ruby or JavaScript? Here's a self-guided path to learning to program using 'Test-First Teaching'. We've used it to teach hundreds of people. We want to teach you too!"
 
-
+      p "Why test first? Traditionally, software homework is either fill-in-the-blank, tiny snippets, or huge, unstructured assignments. Test-first teaching guides you, one step at a time, to writing real programs from scratch."
 
       div :id=>"introVideo" do
         z=0.9
