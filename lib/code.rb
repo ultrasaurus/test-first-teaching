@@ -10,10 +10,14 @@ class Code
     @source = source
     @timeout = options[:timeout] || 30
     @rspec = options[:rspec]
+    @safe_level = 0
+  end
+
+  def safe
+    "$SAFE = #{@safe_level}; nil;\n"
   end
 
   def cmd
-    safe = "$SAFE = 3; nil\n"
     cmd = if @rspec
       # file "source.rb", @source
       file "spec.rb", <<-RUBY
@@ -25,7 +29,7 @@ RSpec.configuration.expect_with :rspec
 #{@rspec}
 #{@source}
       RUBY
-      "STDOUT.puts $SAFE; RSpec::Core::Runner.run(%w(--format documentation --drb #{@files.root}/spec.rb)); puts 'arg'"
+      "STDOUT.puts $SAFE; RSpec::Core::Runner.run(%w(--format documentation --drb #{@files.root}/spec.rb));"
     else
       safe + @source
     end
@@ -66,7 +70,6 @@ RSpec.configuration.expect_with :rspec
     end
 
     out[:result] = result if result
-
     out[:stdout] = captured_stdout.string unless captured_stdout.string == ""
     out[:stderr] = captured_stderr.string unless captured_stderr.string == ""
 
