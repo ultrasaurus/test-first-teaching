@@ -97,4 +97,15 @@ end
 RUBY
 code = Code.new(source, :rspec => spec)
 answer = code.run
-assert { answer[:result] == "awesome" }
+test_results = JSON.parse(answer[:stdout])
+assert { test_results["summary"] }
+assert { test_results["summary"]["example_count"] == 1 }
+assert { test_results["summary"]["failure_count"] == 0 }
+
+# captures exceptions inside rspec
+spec = "raise 'oops'"
+source = ""
+code = Code.new(source, :rspec => spec)
+answer = code.run
+answer.delete(:stdout)
+assert { answer == {:error => {:class => "RuntimeError", :message => "oops", :line => 1}}}

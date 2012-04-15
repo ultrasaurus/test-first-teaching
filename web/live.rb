@@ -6,6 +6,7 @@ class Live < Erector::Widgets::Page
   external :js, "/jquery-1.7.2.min.js"
   external :style, scss(<<-CSS)
   .panel {
+    display: inline-block;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid black;
     margin: 1em;
@@ -20,15 +21,18 @@ class Live < Erector::Widgets::Page
       -webkit-margin-end: 0;
     }
 
-    .code {
-      textarea {
-        font-family: "Courier New", Courier, Monaco, monospace;
-        font-size: 14px;
-        width: 90%;
-        margin: 4px 8px;
-        height: 20em;
-        width: 40em;
-      }
+    .code_box {
+      border: 1px solid #dedede;
+      padding: 4px;
+      font-family: "Courier New", Courier, Monaco, monospace;
+      font-size: 14px;
+      width: 90%;
+      margin: 4px 8px;
+      height: 20em;
+      width: 40em;
+      overflow: auto;
+      display: inline-block;
+      vertical-align: top;
     }
   }
   CSS
@@ -42,11 +46,9 @@ class Live < Erector::Widgets::Page
     div(:class => "panel #{panel_class}") {
       h2 title
       if options[:code]
-        div.code {
-          textarea :name => panel_class, :id => "#{panel_class}_code" do
-            text options[:code]
-          end
-        }
+        textarea.code_box :name => panel_class, :id => "#{panel_class}" do
+          text options[:code]
+        end
       end
       yield if block_given?
     }
@@ -77,20 +79,31 @@ class Live < Erector::Widgets::Page
                 dataType: 'json',
                 url: '/run',
                 data: {
-                  code: $('#source_code').val(),
-                  rspec: $('#tests_code').val()
+                  code: $('#source').val(),
+                  rspec: $('#tests').val()
                 },
                 success: function(data, jqXHR) {
-                  $('#results_code').val(data.stdout);
+                  console.log(data);
+                  $('#output').text(data.stdout);
+                  $('#error').text(JSON.stringify(data.error) || "");
+                  $('#full_response').text(JSON.stringify(data, null, 2));
                 },
-                error: function(data, jqXHR) { alert(data); }
+                error: function(data, jqXHR) {
+                  $('#output').text('');
+                  $('#error').text('ERROR');
+                  $('#full_response').text(JSON.stringify(data, null, 2));
+                }
               });
             });
             JAVASCRIPT
           }
         end
       }
-      panel "Results", :code => ""
+      panel "Response" do
+        panel "output", :code => ''
+        panel "error", :code => ''
+        panel "full_response", :code => ''
+      end
     }
   end
 end

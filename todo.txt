@@ -16,12 +16,39 @@ table of contents (intra-page) in generated html pages
 
 clicking on a file (esp. a .rb file) should show it, not download it
 
-Interactive version
+put tarball into git and link to it on github (to prevent out-of-sync issues)
+
+---
+
+# Test-First Live!
+
   like http://eloquentjavascript.net/paper.html
   like Socrates
   like RubyMonk
   like CodeSchool.com and CodeAcademy.com and TryRuby.org
 
+* look into rubyspec and Speccify
 
-put tarball into git and link to it on github (to prevent out-of-sync issues)
+* return elapsed time
+* better panels (many iterations)
+* JSON RSpec formatter
+  * see https://github.com/jeffkreeftmeijer/fuubar
+  * https://github.com/rspec/rspec-core/blob/master/lib/rspec/core/formatters
+  *
+* get SAFE=3 working again
+* Code editor and highlighter
+  * CodeMirror  http://codemirror.net/
+* "gist this" button
+
+
+See also:
+
+http://www.nytimes.com/2012/03/28/technology/for-an-edge-on-the-internet-computer-code-gains-a-following.html
+http://tryruby.org/
+http://www.codecademy.com/
+http://www.codeschool.com/
+Raspberry Pi
+http://jsfiddle.net/
+
+
 

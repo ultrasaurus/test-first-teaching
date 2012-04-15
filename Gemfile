@@ -1,5 +1,6 @@
 source :gemcutter
 
+gem "rspec-core", :path => "../rspec-core"
 gem "rspec", "~>2.9.0"
 gem "erector", ">=0.9.0.pre"
 gem "treetop"
