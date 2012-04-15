@@ -55,58 +55,75 @@ class Live < Erector::Widgets::Page
   end
 
   def body_content
-    div.top {
-      h1 "Run Live Code!"
-      form :action => "/run", :method => "post" do
-        textarea :name => "code"
-        input :type => "submit", :name => "submit", :value => "Run"
-      end
-    }
     div.main {
       panel "Notes"
+      div.buttons(:style => "text-align: center;") {
+        input :type => "button", :value => ">> Run >>", :id => 'run',
+          :style => "background: #ccc; font-size: 32pt; margin:auto;"
+      }
       table {
         tr {
           td { panel "Tests", :code => File.read(@test) }
           td { panel "Source", :code => "" }
+          td {
+            panel "Results", :code => ""
+          }
         }
         tr :align => "center" do
           td {
-            input :type => "button", :value => "Run", :id => 'run', :style => "width: 50px; height: 50px; font-size: 96pt"
-            jquery <<-JAVASCRIPT
-            $('#run').click(function(){
-              var jqXHR = $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                url: '/run',
-                data: {
-                  code: $('#source').val(),
-                  rspec: $('#tests').val()
-                },
-                success: function(data, jqXHR) {
-                  console.log(data);
-                  $('#output').text(data.stdout);
-                  $('#error').text(JSON.stringify(data.error) || "");
-                  $('#full_response').text(JSON.stringify(data, null, 2));
-                },
-                error: function(data, jqXHR) {
-                  $('#output').text('');
-                  $('#error').text('ERROR');
-                  $('#full_response').text(JSON.stringify(data, null, 2));
-                }
-              });
-            });
-            JAVASCRIPT
           }
         end
       }
       panel "Response" do
-        panel "output", :code => ''
-        panel "error", :code => ''
+        panel "standard_output", :code => ''
+        panel "standard_error", :code => ''
         panel "full_response", :code => ''
       end
     }
-  end
+
+    javascript <<-JAVASCRIPT
+jQuery(document).ready(function($){
+
+  function writeResults(data) {
+    $('#full_response').text(JSON.stringify(data, null, 2) || "");
+    $('#standard_output').text(data.stdout || "");
+    $('#standard_error').text(data.stderr || "");
+
+    // todo: formatting, esp. errors and test results
+    $('#results').text(
+      JSON.stringify(data, null, 2) || ""
+    );
+  }
+
+  $('#run').click(function(){
+    var jqXHR = $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      url: '/run',
+      data: {
+        code: $('#source').val(),
+        rspec: $('#tests').val()
+      },
+      success: function(data, jqXHR) {
+        console.log("ajax success");
+        writeResults(data);
+      },
+      error: function(data, jqXHR) {
+        console.log("ajax error");
+
+        data.error = {class: "System Error", message: "this is probably not your fault"}
+        writeResults(data);
+
+      }
+    });
+  });
+});
+    JAVASCRIPT
 end
+
+end
+
+
 
 # if $0 == __FILE__
 #   require 'erector/erect/erect'
