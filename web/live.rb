@@ -61,18 +61,10 @@ class Live < Erector::Widgets::Page
         input :type => "button", :value => ">> Run >>", :id => 'run',
           :style => "background: #ccc; font-size: 32pt; margin:auto;"
       }
-      table {
-        tr {
-          td { panel "Tests", :code => File.read(@test) }
-          td { panel "Source", :code => "" }
-          td {
-            panel "Results", :code => ""
-          }
-        }
-        tr :align => "center" do
-          td {
-          }
-        end
+      div.user {
+        panel "Tests", :code => File.read(@test)
+        panel "Source", :code => ""
+        panel "Results", :code => ""
       }
       panel "Response" do
         panel "standard_output", :code => ''
