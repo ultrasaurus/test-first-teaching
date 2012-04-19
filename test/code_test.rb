@@ -53,11 +53,11 @@ assert { answer == {:error => {:class => "Timeout::Error", :message=>"execution 
 # sadly, the timeout error loses the line number
 
 # times out during an infinite loop
-code = Code.new("while true do end", :timeout => 0.5)
+code = Code.new("while true do end", :timeout => 0.1)
 start = Time.now
 answer = code.run
 finish = Time.now
-assert { (finish - start) < 2 }
+assert { (finish - start) < 4 }
 assert { answer == {:error => {:class => "Timeout::Error", :message=>"execution expired", :line=>0 }}}
 
 # # times out during a math operation
@@ -83,6 +83,7 @@ assert { answer == {:error => {:class => "Timeout::Error", :message=>"execution 
 # deny { File.exist? "#{tempdir}/foo.txt" }
 
 # works with rspec
+2.times do
 spec = <<-RUBY
 describe 'add' do
   it 'adds' do
@@ -101,6 +102,7 @@ test_results = JSON.parse(answer[:stdout])
 assert { test_results["summary"] }
 assert { test_results["summary"]["example_count"] == 1 }
 assert { test_results["summary"]["failure_count"] == 0 }
+end
 
 # captures exceptions inside rspec
 spec = "raise 'oops'"
