@@ -5,6 +5,14 @@ class Live < Erector::Widgets::Page
 
   external :js, "/jquery-1.7.2.min.js"
   external :style, scss(<<-CSS)
+  .panel.wide {
+    height: 20em;
+    width: 80em;
+    .panel_contents {
+      width: 70em;
+    }
+  }
+
   .panel {
     display: inline-block;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,15 +32,30 @@ class Live < Erector::Widgets::Page
     .panel_contents {
       font-size: 14px;
       width: 90%;
-      margin: 4px 8px;
       height: 20em;
       width: 40em;
+      margin: 4px 8px;
       overflow: auto;
       display: inline-block;
       vertical-align: top;
 
       .error {
+        border: 4px solid #F22;
+      }
+      table.failed {
         border: 4px solid #F77;
+      }
+      tr.failed {
+        background-color: #F99;
+        .exception {
+          background-color: #FDD;
+        }
+      }
+      tr.passed {
+        background-color: #9F9;
+      }
+      th.description {
+        text-align: left;
       }
 
     }
@@ -51,14 +74,15 @@ class Live < Erector::Widgets::Page
 
   def panel title, options = {}
     panel_class = options[:class] || title.downcase
-    div(:class => "panel #{panel_class}") {
+    panel_size = options[:wide] ? "wide" : nil
+    div(:class => "panel #{panel_class} #{panel_size}") {
       h2 title
       if options[:code]
         textarea.code_box.panel_contents :name => panel_class, :id => panel_class do
           text options[:code]
         end
       elsif !options[:empty]
-        div :class => "panel_contents", :id => panel_class
+        div :class => "panel_contents ", :id => panel_class
       end
       yield if block_given?
     }
@@ -74,7 +98,7 @@ class Live < Erector::Widgets::Page
       div.user {
         panel "Tests", :code => File.read(@test)
         panel "Source", :code => ""
-        panel "Results"
+        panel "Results", :wide => true
       }
       panel "Response", :empty => true do
         panel "standard_output", :code => ''
@@ -86,8 +110,31 @@ class Live < Erector::Widgets::Page
     javascript <<-JAVASCRIPT
 jQuery(document).ready(function($){
 
+  function escapeHtml(html) {
+    return String(html)
+    .replace(/&/g, '&amp;')
+    .replace(/\"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  }
+
   function pretty(hash) {
     return JSON.stringify(hash, null, 2) || "";
+  }
+
+  function pre(text) {
+    return "<pre>" + escapeHtml(text) + "</pre>"
+  }
+
+  function backtrace(array) {
+    var text = "";
+    $.each(array, function(index, line) {
+      if (!line.match(/(\\/lib\\/rspec|\\/lib\\/spork|\\/drb\\/drb.rb)/)) {
+        text += line + "\\n"
+      }
+    });
+    return text;
   }
 
   function writeResults(data) {
@@ -106,20 +153,32 @@ jQuery(document).ready(function($){
         "<td>line " + data.error.line + "</td>" +
         "</tr></table>";
     } else if (data.rspec_results) {
+      console.log(data.rspec_results.summary.failure_count)
       html =
-        "<table class='" + (data.rspec_results.failure_count > 0 ? "error" : "success") +  "'>" +
-        "<tr><th>Summary</th><td><pre>" + pretty(data.rspec_results.summary) + "</pre></td></tr>"
+        "<table class='" + (data.rspec_results.summary.failure_count > 0 ? "failed" : "success") +  "'>" +
+        "<th>Test</th><th>Status</th><th>Line</th>"
+
       $.each(data.rspec_results.examples, function(index, example) {
         html += "<tr class='" + example.status + "'>" +
-          "<th>" + example.full_description + "</th>" +
-          "<td>" + example.status + "</td>" +
-          "<td>" + example.line_number + "</td>" +
-          "</tr>"
+          "<th class='description'>" + example.full_description + "</th>"
+        html +=
+          "<td>" + example.status
+          if (example.status == "failed") {
+            html += "<div class='exception'>"
+            html += escapeHtml(example.exception.class) + ":<br>"
+            html += pre(example.exception.message);
+//            html += pre(backtrace(example.exception.backtrace))
+            html += "</div>"
+          }
+          html += "<td>" + example.line_number + "</td>" +
+            "</tr>"
+
       });
+      html += "<tr><th>Summary</th><td><pre>" + pretty(data.rspec_results.summary) + "</pre></td></tr>"
       html += "</table>"
-      html += "<pre>" + (JSON.stringify(data.rspec_results, null, 2) || "") + "\\n</pre>";
+      html += "<pre>" + pretty(data.rspec_results) + "\\n</pre>";
     } else {
-      html = "<pre>" + (JSON.stringify(data, null, 2) || "") + "\\n</pre>";
+      html = "<pre>" + pretty(data) + "\\n</pre>";
     }
 
     $('#results').html(html);
