@@ -86,23 +86,38 @@ class Live < Erector::Widgets::Page
     javascript <<-JAVASCRIPT
 jQuery(document).ready(function($){
 
+  function pretty(hash) {
+    return JSON.stringify(hash, null, 2) || "";
+  }
+
   function writeResults(data) {
     // write hidden low-level results
-    $('#full_response').text(JSON.stringify(data, null, 2) || "");
+    $('#full_response').text(pretty(data));
     $('#standard_output').text(data.stdout || "");
     $('#standard_error').text(data.stderr || "");
 
     // todo: formatting, esp. errors and test results
     var html = "";
     if (data.error) {
-      html = "<div class='error'>" +
-        "<table><tr>" +
+      html =
+        "<table class='error'><tr>" +
         "<th>" + data.error.class + "</th>" +
         "<td>" + data.error.message + "</td>" +
         "<td>line " + data.error.line + "</td>" +
         "</tr></table>";
     } else if (data.rspec_results) {
-      html = "<pre>" + (JSON.stringify(data.rspec_results, null, 2) || "") + "\\n</pre>";
+      html =
+        "<table class='" + (data.rspec_results.failure_count > 0 ? "error" : "success") +  "'>" +
+        "<tr><th>Summary</th><td><pre>" + pretty(data.rspec_results.summary) + "</pre></td></tr>"
+      $.each(data.rspec_results.examples, function(index, example) {
+        html += "<tr class='" + example.status + "'>" +
+          "<th>" + example.full_description + "</th>" +
+          "<td>" + example.status + "</td>" +
+          "<td>" + example.line_number + "</td>" +
+          "</tr>"
+      });
+      html += "</table>"
+      html += "<pre>" + (JSON.stringify(data.rspec_results, null, 2) || "") + "\\n</pre>";
     } else {
       html = "<pre>" + (JSON.stringify(data, null, 2) || "") + "\\n</pre>";
     }
