@@ -100,12 +100,12 @@ jQuery(document).ready(function($){
         console.log("ajax success");
         writeResults(data);
       },
-      error: function(data, jqXHR) {
+      error: function(jqXHR) {
         console.log("ajax error");
-
+        console.log(jqXHR);
+        data = {};
         data.error = {class: "System Error", message: "this is probably not your fault"}
         writeResults(data);
-
       }
     });
   });
