@@ -98,10 +98,11 @@ end
 RUBY
 code = Code.new(source, :rspec => spec)
 answer = code.run
-test_results = JSON.parse(answer[:stdout])
-assert { test_results["summary"] }
-assert { test_results["summary"]["example_count"] == 1 }
-assert { test_results["summary"]["failure_count"] == 0 }
+# test_results = JSON.parse(answer[:stdout])
+rspec_results = answer[:rspec_results]
+assert { rspec_results["summary"] }
+assert { rspec_results["summary"]["example_count"] == 1 }
+assert { rspec_results["summary"]["failure_count"] == 0 }
 end
 
 # captures exceptions inside rspec

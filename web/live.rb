@@ -21,10 +21,7 @@ class Live < Erector::Widgets::Page
       -webkit-margin-end: 0;
     }
 
-    .code_box {
-      border: 1px solid #dedede;
-      padding: 4px;
-      font-family: "Courier New", Courier, Monaco, monospace;
+    .panel_contents {
       font-size: 14px;
       width: 90%;
       margin: 4px 8px;
@@ -33,6 +30,17 @@ class Live < Erector::Widgets::Page
       overflow: auto;
       display: inline-block;
       vertical-align: top;
+
+      .error {
+        border: 4px solid #F77;
+      }
+
+    }
+
+    .code_box {
+      border: 1px solid #dedede;
+      padding: 4px;
+      font-family: "Courier New", Courier, Monaco, monospace;
     }
   }
   CSS
@@ -46,9 +54,11 @@ class Live < Erector::Widgets::Page
     div(:class => "panel #{panel_class}") {
       h2 title
       if options[:code]
-        textarea.code_box :name => panel_class, :id => "#{panel_class}" do
+        textarea.code_box.panel_contents :name => panel_class, :id => panel_class do
           text options[:code]
         end
+      elsif !options[:empty]
+        div :class => "panel_contents", :id => panel_class
       end
       yield if block_given?
     }
@@ -64,9 +74,9 @@ class Live < Erector::Widgets::Page
       div.user {
         panel "Tests", :code => File.read(@test)
         panel "Source", :code => ""
-        panel "Results", :code => ""
+        panel "Results"
       }
-      panel "Response" do
+      panel "Response", :empty => true do
         panel "standard_output", :code => ''
         panel "standard_error", :code => ''
         panel "full_response", :code => ''
@@ -77,14 +87,27 @@ class Live < Erector::Widgets::Page
 jQuery(document).ready(function($){
 
   function writeResults(data) {
+    // write hidden low-level results
     $('#full_response').text(JSON.stringify(data, null, 2) || "");
     $('#standard_output').text(data.stdout || "");
     $('#standard_error').text(data.stderr || "");
 
     // todo: formatting, esp. errors and test results
-    $('#results').text(
-      JSON.stringify(data, null, 2) || ""
-    );
+    var html = "";
+    if (data.error) {
+      html = "<div class='error'>" +
+        "<table><tr>" +
+        "<th>" + data.error.class + "</th>" +
+        "<td>" + data.error.message + "</td>" +
+        "<td>line " + data.error.line + "</td>" +
+        "</tr></table>";
+    } else if (data.rspec_results) {
+      html = "<pre>" + (JSON.stringify(data.rspec_results, null, 2) || "") + "\\n</pre>";
+    } else {
+      html = "<pre>" + (JSON.stringify(data, null, 2) || "") + "\\n</pre>";
+    }
+
+    $('#results').html(html);
   }
 
   $('#run').click(function(){

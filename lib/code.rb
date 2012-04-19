@@ -83,9 +83,22 @@ RSpec.configuration.expect_with :rspec
     out[:stdout] = captured_stdout.string unless captured_stdout.string == ""
     out[:stderr] = captured_stderr.string unless captured_stderr.string == ""
 
+    process_output(out)
+
     puts out.to_json  # todo: more formal logging
 
     out
+  end
+
+  def process_output(out)
+    # todo: subclass
+    if @rspec
+      begin
+        out[:rspec_results] = JSON.parse(out[:stdout])
+      rescue JSON::ParserError
+        # nevermind
+      end
+    end
   end
 
 end
