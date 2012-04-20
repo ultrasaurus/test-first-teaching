@@ -1,5 +1,6 @@
 require 'erector'
 require 'erector_scss'
+require 'rdiscount'
 
 class Live < Erector::Widgets::Page
 
@@ -7,17 +8,16 @@ class Live < Erector::Widgets::Page
   external :style, scss(<<-CSS)
   .panel.wide {
     height: 20em;
-    width: 80em;
-    .panel_contents {
-      width: 70em;
-    }
+    width: 81em;
   }
 
   .panel {
     display: inline-block;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid black;
-    margin: 1em;
+    margin: .5em;
+    width: 40em;
+    text-align: center;
 
     h2 {
       padding: 0 .25em .1em;
@@ -31,33 +31,37 @@ class Live < Erector::Widgets::Page
 
     .panel_contents {
       font-size: 14px;
-      width: 90%;
+      width: 95%;
       height: 20em;
-      width: 40em;
       margin: 4px 8px;
       overflow: auto;
       display: inline-block;
       vertical-align: top;
+      text-align: left;
 
       .error {
         border: 4px solid #F22;
+        font-size: 200%;
       }
-      table.failed {
-        border: 4px solid #F77;
+      div.test {
+        margin: 1px 0 4px;
+        div.description {
+          padding: 2px 2px 2px 1em;
+        }
+        span.description {
+          font-weight: bold;
+        }
       }
-      tr.failed {
+      div.test.failed {
         background-color: #F99;
         .exception {
           background-color: #FDD;
+          padding: 1em 0 1em 6em;
         }
       }
-      tr.passed {
+      div.test.passed {
         background-color: #9F9;
       }
-      th.description {
-        text-align: left;
-      }
-
     }
 
     .code_box {
@@ -81,27 +85,36 @@ class Live < Erector::Widgets::Page
         textarea.code_box.panel_contents :name => panel_class, :id => panel_class do
           text options[:code]
         end
-      elsif !options[:empty]
-        div :class => "panel_contents ", :id => panel_class
+      elsif options[:empty]
+        yield if block_given?
+      else
+        div :class => "panel_contents", :id => panel_class do
+          yield if block_given?
+        end
       end
-      yield if block_given?
     }
   end
 
   def body_content
     div.main {
-      panel "Notes"
-      div.buttons(:style => "text-align: center;") {
-        input :type => "button", :value => ">> Run >>", :id => 'run',
-          :style => "background: #ccc; font-size: 32pt; margin:auto;"
-      }
+      if @notes
+        panel "Notes", :wide => true do
+          markdown = File.read(@notes)
+          html = Markdown.new(markdown).to_html
+          rawtext html
+        end
+      end
       div.user {
         panel "Tests", :code => File.read(@test).
           gsub(/require "hello"\n/, '')  # todo: generalize this for other labs
         panel "Source", :code => ""
+        div.buttons(:style => "text-align: center;") {
+          input :type => "button", :value => ">> Run >>", :id => 'run',
+            :style => "background: #ccc; font-size: 32pt; margin:auto;"
+        }
         panel "Results", :wide => true
       }
-      panel "Response", :empty => true do
+      panel "Response", :empty => true, :wide => true do
         panel "standard_output", :code => ''
         panel "standard_error", :code => ''
         panel "full_response", :code => ''
@@ -148,36 +161,33 @@ jQuery(document).ready(function($){
     var html = "";
     if (data.error) {
       html =
-        "<table class='error'><tr>" +
-        "<th>" + data.error.class + "</th>" +
-        "<td>" + data.error.message + "</td>" +
-        "<td>line " + data.error.line + "</td>" +
-        "</tr></table>";
+        "<div class='error'>" +
+        "<h2>" + data.error.class + "</h2>" +
+        "<p>" + data.error.message + "</p>" +
+        "<p>line " + data.error.line + "</p>" +
+        "</div>";
     } else if (data.rspec_results) {
-      console.log(data.rspec_results.summary.failure_count)
-      html =
-        "<table class='" + (data.rspec_results.summary.failure_count > 0 ? "failed" : "success") +  "'>" +
-        "<th>Test</th><th>Status</th><th>Line</th>"
-
+      html ="<div class='" + (data.rspec_results.summary.failure_count > 0 ? "failed" : "success") +  "'>";
+      html += "<p class='summary'>" + data.rspec_results.summary_line + "</p>"
       $.each(data.rspec_results.examples, function(index, example) {
-        html += "<tr class='" + example.status + "'>" +
-          "<th class='description'>" + example.full_description + "</th>"
-        html +=
-          "<td>" + example.status
-          if (example.status == "failed") {
-            html += "<div class='exception'>"
-            html += escapeHtml(example.exception.class) + ":<br>"
-            html += pre(example.exception.message);
-//            html += pre(backtrace(example.exception.backtrace))
-            html += "</div>"
-          }
-          html += "<td>" + example.line_number + "</td>" +
-            "</tr>"
+        html += "<div class='test " + example.status + "'>" +
+          // todo: line number
+          "<div class='description'>" +
+            "<span class='description'>" + example.full_description + "</span>" +
+            " - " +
+            "<span class='status'>" + example.status + "</span>" +
+          "</div>"
 
+        if (example.status == "failed") {
+          html += "<div class='exception'>"
+          html += escapeHtml(example.exception.class) + ":<br>"
+          html += pre(example.exception.message);
+          // todo: backtrace, once we have useful files and lines
+          // html += pre(backtrace(example.exception.backtrace))
+          html += "</div>"
+        }
+        html += "</div>"
       });
-      html += "<tr><th>Summary</th><td><pre>" + pretty(data.rspec_results.summary) + "</pre></td></tr>"
-      html += "</table>"
-      html += "<pre>" + pretty(data.rspec_results) + "\\n</pre>";
     } else {
       html = "<pre>" + pretty(data) + "\\n</pre>";
     }

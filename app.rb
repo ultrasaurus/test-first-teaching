@@ -54,5 +54,8 @@ post "/run" do
 end
 
 get "/live" do
-  Live.new(:test => "#{here}/learn_ruby/hello/hello_spec.rb").to_pretty
+  Live.new(
+    :test => "#{here}/learn_ruby/hello/hello_spec.rb",
+    :notes => "#{here}/learn_ruby/hello/index.md"
+  ).to_pretty
 end
