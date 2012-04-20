@@ -96,7 +96,8 @@ class Live < Erector::Widgets::Page
           :style => "background: #ccc; font-size: 32pt; margin:auto;"
       }
       div.user {
-        panel "Tests", :code => File.read(@test)
+        panel "Tests", :code => File.read(@test).
+          gsub(/require "hello"\n/, '')  # todo: generalize this for other labs
         panel "Source", :code => ""
         panel "Results", :wide => true
       }
@@ -208,7 +209,7 @@ jQuery(document).ready(function($){
   });
 });
     JAVASCRIPT
-end
+  end
 
 end
 
