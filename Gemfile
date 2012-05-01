@@ -1,6 +1,13 @@
 source :gemcutter
 
-gem "rspec-core", :path => "../rspec-core"
+here = File.dirname __FILE__
+if File.exist?("#{here}/../rspec-core")
+  gem "rspec-core", :path => "../rspec-core"
+else
+  gem "rspec-core", :git => "git://github.com/alexch/rspec-core.git"
+end
+
+
 gem "rspec", "~>2.9.0"
 gem "erector", ">=0.9.0.pre"
 gem "treetop"

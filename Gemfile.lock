@@ -1,5 +1,6 @@
-PATH
-  remote: ../rspec-core
+GIT
+  remote: git://github.com/alexch/rspec-core.git
+  revision: 972591b7b874361686882bdc59b97222c45da8ac
   specs:
     rspec-core (2.9.0)
 
