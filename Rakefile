@@ -74,5 +74,6 @@ end
 
 desc "launch the testfirst.org website on http://localhost:9292"
 task :run do
-  system 'rerun "foreman start"'
+  # system 'rerun "foreman start"'
+  system 'rerun -- rackup -s thin'
 end

@@ -1,12 +1,7 @@
 source :gemcutter
 
-here = File.dirname __FILE__
-if File.exist?("#{here}/../rspec-core")
-  gem "rspec-core", :path => "../rspec-core"
-else
+#  gem "rspec-core", :path => "../rspec-core"
   gem "rspec-core", :git => "git://github.com/alexch/rspec-core.git"
-end
-
 
 gem "rspec", "~>2.9.0"
 gem "erector", ">=0.9.0.pre"
@@ -18,15 +13,15 @@ gem "sass", '~> 3.2.0.alpha.7'
 gem "rerun" # used by 'rake run'
 gem "fakeweb" # used for one of the exercises
 # gem "fakefs" # used by the code server
+gem "files"
 
 # used by the running server
 gem "thin"
-gem "foreman"
-gem "spork"
+# gem "foreman"
+# gem "spork"
 
 group :development do
   gem "rake"
   gem "wrong", ">=0.6.2"
-  gem "files"
   gem "bourbon"  # do 'cd web/css; bourbon update' to get new bourbon
 end
