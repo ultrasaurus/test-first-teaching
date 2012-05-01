@@ -25,6 +25,7 @@ class Code
       # file "source.rb", @source
       file "spec.rb", <<-RUBY
 RSpec.world.reset
+RSpec.configuration.output_stream = nil
 RSpec.configuration.mock_with :rspec
 RSpec.configuration.expect_with :rspec
 
@@ -32,7 +33,7 @@ RSpec.configuration.expect_with :rspec
 #{@rspec}
 #{@source}
       RUBY
-      "RSpec::Core::Runner.run(%w(--format RSpec::Core::Formatters::JsonFormatter --drb #{@files.root}/spec.rb));"
+      "RSpec::Core::Runner.run(%w(--format RSpec::Core::Formatters::JsonFormatter #{@files.root}/spec.rb));"
     else
       safe + @source
     end
@@ -66,11 +67,12 @@ RSpec.configuration.expect_with :rspec
     end
 
     if error
-      puts "\t" + error.backtrace.join("\n\t") if @rspec
+      puts "\t" + error.backtrace.join("\n\t") if @rspec  # todo: better logging
       error.backtrace.first =~ /^<main>:(\d+):/
       line = $1.to_i
       out[:error] = {:class => e.class.name, :message => e.message, :line => line}
   # workaround for spork
+  # todo: patch spork to do better exception handling
     elsif captured_stdout.string =~ /^Exception encountered:/
       result_lines = captured_stdout.string.split("\n")
       result_lines[0] =~ /Exception encountered: #<(\w*): (.*)>$/
@@ -94,9 +96,15 @@ RSpec.configuration.expect_with :rspec
     # todo: subclass
     if @rspec
       begin
-        out[:rspec_results] = JSON.parse(out[:stdout])
+        if out[:stdout]
+          out[:rspec_results] = JSON.parse(out[:stdout])
+        end
+      # to unhide exceptions that rake --trace hides the class of
+      # rescue Exception => e
+      #   p e
+      #   raise e
       rescue JSON::ParserError
-        # nevermind
+        # nevermind - if the output is unparseable, just leave it in stdout
       end
     end
   end

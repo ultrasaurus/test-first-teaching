@@ -38,6 +38,7 @@ put tarball into git and link to it on github (to prevent out-of-sync issues)
 * get SAFE=3 working again
 * Code editor and highlighter
   * CodeMirror  http://codemirror.net/
+  * Ace
 * "gist this" button
 
 
