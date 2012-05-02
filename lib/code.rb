@@ -30,8 +30,11 @@ RSpec.configuration.mock_with :rspec
 RSpec.configuration.expect_with :rspec
 
 #{safe}
-#{@rspec}
-#{@source}
+include RSpec::Core::DSL
+describe "test:" do
+  #{@source}
+  #{@rspec}
+end
       RUBY
       "RSpec::Core::Runner.run(%w(--format RSpec::Core::Formatters::JsonFormatter #{@files.root}/spec.rb));"
     else
@@ -71,7 +74,10 @@ RSpec.configuration.expect_with :rspec
         # since $SAFE is set in the calling thread,
         # so we run a thread inside timeout
         # STDOUT.puts cmd  # remember, STDOUT is always the original stream
-        Thread.new { eval cmd, fresh_binding, "CODE", 1 }.value
+        Thread.new {
+          binding = fresh_binding
+          eval cmd, binding, "CODE", 1
+        }.value
       }
     rescue Exception => e
       error = e
