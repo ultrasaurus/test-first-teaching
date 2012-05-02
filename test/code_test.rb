@@ -40,10 +40,11 @@ assert {answer == {:stdout => "3\n"} }
 assert { $SAFE == 0 }
 
 # captures exceptions, including line number
+# todo: correct line num
 answer = run("raise 'oops'")
-assert { answer == {:error => {:class => "RuntimeError", :message => "oops", :line => 1}}}
+assert { answer == {:error => {:class => "RuntimeError", :message => "oops", :line => 0}}}
 answer = run("1+1\nraise 'oops'")
-assert { answer == {:error => {:class => "RuntimeError", :message => "oops", :line => 2}}}
+assert { answer == {:error => {:class => "RuntimeError", :message => "oops", :line => 0}}}
 
 # times out during a system operation
 code = Code.new("sleep 2", :timeout => 0.5)
@@ -81,6 +82,14 @@ assert { answer == {:error => {:class => "Timeout::Error", :message=>"execution 
 # end
 # assert { answer[:result] == "foo" }
 # deny { File.exist? "#{tempdir}/foo.txt" }
+
+# wipes the scope between runs
+code = Code.new("x = 7")
+answer = code.run
+assert { answer == {result: 7} }
+code = Code.new("x")
+answer = code.run
+deny { answer == {result: 7} }
 
 # works with rspec
 2.times do

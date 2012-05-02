@@ -40,6 +40,20 @@ RSpec.configuration.expect_with :rspec
     cmd
   end
 
+  class BindingPantry
+    def self.fresh_binding
+      BindingPantry.new.create_block.binding
+    end
+
+    def create_block
+      Proc.new {}
+    end
+  end
+
+  def fresh_binding
+    BindingPantry.fresh_binding
+  end
+
   def run
     out = {}
     result = nil
@@ -57,7 +71,7 @@ RSpec.configuration.expect_with :rspec
         # since $SAFE is set in the calling thread,
         # so we run a thread inside timeout
         # STDOUT.puts cmd  # remember, STDOUT is always the original stream
-        Thread.new { eval cmd, TOPLEVEL_BINDING }.value
+        Thread.new { eval cmd, fresh_binding, "CODE", 1 }.value
       }
     rescue Exception => e
       error = e
