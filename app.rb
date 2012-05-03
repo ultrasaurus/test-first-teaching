@@ -8,6 +8,7 @@ require 'json'
 
 $: << "#{here}/lib"
 require "code"
+require "rspec_code"
 
 $: << "#{here}/web"
 require "page"
@@ -46,7 +47,11 @@ end
 post "/run" do
   p params
   if params[:code]
-    Code.new(params[:code], :rspec => params[:rspec]).run.to_json
+    if params[:rspec]
+      RspecCode.new(params[:code], :rspec => params[:rspec]).run.to_json
+    else
+      Code.new(params[:code]).run.to_json
+    end
   else
     "need code, was passed #{params.to_json}"
     # redirect "/live"

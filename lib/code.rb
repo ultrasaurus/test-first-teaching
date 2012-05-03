@@ -11,7 +11,6 @@ class Code
   def initialize(source, options = {})
     @source = source
     @timeout = options[:timeout] || 30
-    @rspec = options[:rspec]
     @safe_level = 3
   end
 
@@ -20,27 +19,7 @@ class Code
   end
 
   def cmd
-    # todo: split out RSpec subclass
-    cmd = if @rspec
-      # file "source.rb", @source
-      file "spec.rb", <<-RUBY
-RSpec.world.reset
-RSpec.configuration.output_stream = nil
-RSpec.configuration.mock_with :rspec
-RSpec.configuration.expect_with :rspec
-
-#{safe}
-include RSpec::Core::DSL
-describe "test:" do
-  #{@source}
-  #{@rspec}
-end
-      RUBY
-      "RSpec::Core::Runner.run(%w(--format RSpec::Core::Formatters::JsonFormatter #{@files.root}/spec.rb));"
-    else
-      safe + @source
-    end
-    cmd
+    safe + @source
   end
 
   class BindingPantry
@@ -91,14 +70,6 @@ end
       error.backtrace.first =~ /^<main>:(\d+):/
       line = $1.to_i
       out[:error] = {:class => e.class.name, :message => e.message, :line => line}
-  # workaround for spork
-  # todo: patch spork to do better exception handling
-    elsif captured_stdout.string =~ /^Exception encountered:/
-      result_lines = captured_stdout.string.split("\n")
-      result_lines[0] =~ /Exception encountered: #<(\w*): (.*)>$/
-      out[:error] = {:class => $1, :message => $2}
-      result_lines[2] =~ /spec.rb:(\d*):/
-      out[:error][:line] = $1.to_i - 6  # fudge factor for extra lines -- todo: use actual fake files
     end
 
     out[:result] = result if result
@@ -113,20 +84,6 @@ end
   end
 
   def process_output(out)
-    # todo: subclass
-    if @rspec
-      begin
-        if out[:stdout]
-          out[:rspec_results] = JSON.parse(out[:stdout])
-        end
-      # to unhide exceptions that rake --trace hides the class of
-      # rescue Exception => e
-      #   p e
-      #   raise e
-      rescue JSON::ParserError
-        # nevermind - if the output is unparseable, just leave it in stdout
-      end
-    end
   end
 
 end

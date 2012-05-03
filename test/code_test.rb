@@ -1,13 +1,6 @@
-require 'wrong'
-include Wrong
-require 'files'
-include Files
-
 here = File.expand_path(File.dirname __FILE__)
-require "#{here}/../lib/code"
-
-Wrong.config.verbose
-Wrong.config.color
+require "#{here}/test_helper"
+require "code"
 
 def run source
   Code.new(source).run
@@ -84,44 +77,9 @@ assert { answer == {:error => {:class => "Timeout::Error", :message=>"execution 
 # deny { File.exist? "#{tempdir}/foo.txt" }
 
 # wipes the scope between runs
-code = Code.new("x = 7")
-answer = code.run
+answer = run("x = 7")
 assert { answer == {result: 7} }
-code = Code.new("x")
+answer = run("x")
 answer = code.run
 deny { answer == {result: 7} }
 
-# works with rspec
-2.times do
-
-spec = <<-RUBY
-describe 'add' do
-  it 'adds' do
-    add(2,3).should == 5
-  end
-end
-RUBY
-source = <<-RUBY
-def add(x, y)
-  x + y
-end
-RUBY
-
-code = Code.new(source, :rspec => spec)
-answer = code.run
-# test_results = JSON.parse(answer[:stdout])
-rspec_results = answer[:rspec_results]
-assert { rspec_results["summary"] }
-assert { rspec_results["summary"]["example_count"] == 1 }
-assert { rspec_results["summary"]["failure_count"] == 0 }
-end
-
-# captures exceptions inside rspec
-spec = "raise 'oops'"
-source = ""
-code = Code.new(source, :rspec => spec)
-answer = code.run
-answer.delete(:stdout)
-assert { answer == {:error => {:class => "RuntimeError", :message => "oops",
-  :line => 0  # todo: fix line number
-  }}}
