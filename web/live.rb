@@ -5,19 +5,43 @@ require 'rdiscount'
 class Live < Erector::Widgets::Page
 
   external :js, "/jquery-1.7.2.min.js"
+
   external :style, scss(<<-CSS)
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .main {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .panels {
+      text-align: center;
+    }
+  }
+
+  .controls {
+    width: 100%;
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+    background-color: #929;
+    padding: 2px;
+
+    input[type=button] {
+      background: #ccc;
+      font-size: 20pt;
+    }
+  }
+
   .panel.wide {
     height: 20em;
     width: 81em;
   }
 
-  .panel {
-    display: inline-block;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border: 1px solid black;
-    margin: .5em;
-    width: 40em;
-    text-align: center;
+  .response {
+    border: 2px solid #22d;
+    @include border-radius(6px);
 
     h2 {
       padding: 0 .25em .1em;
@@ -27,6 +51,26 @@ class Live < Erector::Widgets::Page
       -webkit-margin-after: 0;
       -webkit-margin-start: 0;
       -webkit-margin-end: 0;
+    }
+  }
+
+  .panel {
+    display: inline-block;
+    border: 2px solid #22d;
+    @include border-radius(6px);
+    margin: .25em;
+    width: 40em;
+    text-align: center;
+    position: relative; /* to get the title contained */
+
+    .title {
+      position: absolute;
+      right: 2px;
+      @include border-radius(6px);
+      padding: 2px .25em;
+      border: 1px solid black;
+      margin: .25em;
+      background-color: #eee;
     }
 
     .panel_contents {
@@ -68,6 +112,7 @@ class Live < Erector::Widgets::Page
       border: 1px solid #dedede;
       padding: 4px;
       font-family: "Courier New", Courier, Monaco, monospace;
+      font-size: 12px;
     }
   }
   CSS
@@ -80,7 +125,7 @@ class Live < Erector::Widgets::Page
     panel_class = options[:class] || title.downcase
     panel_size = options[:wide] ? "wide" : nil
     div(:class => "panel #{panel_class} #{panel_size}") {
-      h2 title
+      div.title title
       if options[:code]
         textarea.code_box.panel_contents :name => panel_class, :id => panel_class do
           text options[:code]
@@ -97,28 +142,30 @@ class Live < Erector::Widgets::Page
 
   def body_content
     div.main {
-      if @notes
-        panel "Notes", :wide => true do
-          markdown = File.read(@notes)
-          html = Markdown.new(markdown).to_html
-          rawtext html
-        end
-      end
-      div.user {
-        panel "Tests", :code => File.read(@test).
-          gsub(/require "hello"\n/, '')  # todo: generalize this for other labs
-        panel "Source", :code => ""
-        div.buttons(:style => "text-align: center;") {
-          input :type => "button", :value => ">> Run >>", :id => 'run',
-            :style => "background: #ccc; font-size: 32pt; margin:auto;"
-        }
-        panel "Results", :wide => true
+      div.controls {
+        input :type => "button", :value => ">> Run >>", :id => 'run'
       }
-      panel "Response", :empty => true, :wide => true do
-        panel "standard_output", :code => ''
-        panel "standard_error", :code => ''
-        panel "full_response", :code => ''
-      end
+      div.panels {
+        if @notes
+          panel "Notes", :wide => true do
+            markdown = File.read(@notes)
+            html = Markdown.new(markdown).to_html
+            rawtext html
+          end
+        end
+        div.user {
+          panel "Tests", :code => File.read(@test).
+            gsub(/require "hello"\n/, '')  # todo: generalize this for other labs
+          panel "Source", :code => ""
+          panel "Results", :wide => true
+        }
+        div.response do
+          h2 "Response"
+          panel "standard_output", :code => ''
+          panel "standard_error", :code => ''
+          panel "full_response", :code => ''
+        end
+      }
     }
 
     javascript <<-JAVASCRIPT
@@ -163,7 +210,7 @@ jQuery(document).ready(function($){
       html =
         "<div class='error'>" +
         "<h2>" + data.error.class + "</h2>" +
-        "<p>" + data.error.message + "</p>" +
+        "<p>" + escapeHtml(data.error.message) + "</p>" +
         "<p>line " + data.error.line + "</p>" +
         "</div>";
     } else if (data.rspec_results) {
