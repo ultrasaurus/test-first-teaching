@@ -11,7 +11,7 @@
     - pig_latin
 
 # todo: make `blocks` and `performance_monitor` use functions, not objects
-    - blocks
+    - silly_blocks
     - performance_monitor
 
 # solutions are now objects
@@ -21,7 +21,7 @@
     - timer
     - dictionary
     - rpn_calculator
-    - builder
+    - xml_document
 
 # reopening classes
     - array_extensions

@@ -11,7 +11,7 @@ class Code
   def initialize(source, options = {})
     @source = source
     @timeout = options[:timeout] || 30
-    @safe_level = 3
+    @safe_level = 0  # todo: bump it up
   end
 
   def safe

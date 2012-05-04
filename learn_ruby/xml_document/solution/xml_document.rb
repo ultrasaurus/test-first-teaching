@@ -3,7 +3,7 @@ class XmlDocument
     @indent = indent
     @indent_level = 0
   end
-  
+
   def method_missing(method_name, *args, &block)
     attributes = args[0] || {}
     s = ""
@@ -21,7 +21,7 @@ class XmlDocument
       s << ("  " * @indent_level) if @indent
       s << "</#{method_name}>"
       s << "\n" if @indent
-      
+
     else
       s << "/>"
       s << "\n" if @indent

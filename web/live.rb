@@ -39,7 +39,12 @@ class Live < Erector::Widgets::Page
     width: 81em;
   }
 
-  #response {
+  #notes {
+    text-align: left;
+    padding: 1em;
+  }
+
+  .toggleable {
 
     /* initially invisible, toggleable panel */
     display: none;
@@ -48,6 +53,7 @@ class Live < Erector::Widgets::Page
     background-color: white;
     overflow-y: auto;
 
+    margin: 0 1em;
 
     border: 2px solid #22d;
     @include border-radius(6px);
@@ -94,7 +100,17 @@ class Live < Erector::Widgets::Page
 
       .error {
         border: 4px solid #F22;
+        padding: .5em;
         font-size: 200%;
+        h2 {
+          padding: 0 .25em .1em;
+          border-bottom: 1px solid black;
+
+          -webkit-margin-before: 0;
+          -webkit-margin-after: 0;
+          -webkit-margin-start: 0;
+          -webkit-margin-end: 0;
+        }
       }
       div.test {
         margin: 1px 0 4px;
@@ -149,29 +165,59 @@ class Live < Erector::Widgets::Page
     }
   end
 
+  def here
+    File.expand_path(File.dirname __FILE__)
+  end
+
+  def labs_panel
+    div.toggleable.labs! do
+      h2 "Labs"
+      ul do
+        # todo: unify with Course object
+        curriculum = @curriculum || "learn_ruby"
+        current_lab = @lab || "hello"
+        lab_dir = File.expand_path("#{here}/../#{curriculum}")
+        Dir.glob("#{lab_dir}/*").each do |dir|
+          next unless File.directory? dir
+          lab = dir.split('/').last
+          next if lab == 'assets'
+          li do
+            a lab, :href => "/live/#{curriculum}/#{lab}"
+          end
+        end
+      end
+    end
+  end
+
   def body_content
     div.main {
       div.controls {
         input :type => "button", :value => ">> Run >>", :id => 'run'
-        input :type => "button", :value => "Response", :id => 'toggle_response'
+        input :type => "button", :value => "Notes", :id => 'toggle_notes' if @notes
+        input :type => "button", :value => "Labs", :id => 'toggle_labs'
+        input :type => "button", :value => "Full Response", :id => 'toggle_response'
       }
-      div.response! do
+      div.toggleable.response! do
         h2 "Response"
         panel "standard_output", :code => ''
         panel "standard_error", :code => ''
         panel "full_response", :code => ''
       end
-      div.panels {
-        if @notes
-          panel "Notes", :wide => true do
-            markdown = File.read(@notes)
-            html = Markdown.new(markdown).to_html
-            rawtext html
-          end
+      if @notes
+        div.toggleable.notes! do
+          h2 "Notes"
+          markdown = File.read(@notes)
+          html = Markdown.new(markdown).to_html
+          rawtext html
         end
+      end
+
+      labs_panel
+
+      div.panels {
         div.user {
           panel "Tests", :code => File.read(@test).
-            gsub(/require "hello"\n/, '')  # todo: generalize this for other labs
+            gsub(/require [\"\'].*[\"\'].*\n/, '')  # todo: allow some requires
           panel "Source", :code => ""
           panel "Results", :wide => true
         }
@@ -277,7 +323,15 @@ jQuery(document).ready(function($){
 
   $('#toggle_response').click(function() {
     $('#response').toggle();
-  })
+  });
+
+  $('#toggle_notes').click(function() {
+    $('#notes').toggle();
+  });
+
+  $('#toggle_labs').click(function() {
+    $('#labs').toggle();
+  });
 });
     JAVASCRIPT
   end

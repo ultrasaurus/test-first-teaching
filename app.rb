@@ -58,9 +58,20 @@ post "/run" do
   end
 end
 
+# todo: test
+get "/live/:curriculum/:lab" do
+  lab_dir = "#{here}/#{params[:curriculum]}/#{params[:lab]}"
+  puts lab_dir
+  Live.new(
+    :test => "#{lab_dir}/#{params[:lab]}_spec.rb",
+    :notes => ("#{lab_dir}/index.md" if File.exist? "#{lab_dir}/index.md")
+  ).to_pretty
+end
+
 get "/live" do
   Live.new(
     :test => "#{here}/learn_ruby/hello/hello_spec.rb",
     :notes => "#{here}/learn_ruby/hello/index.md"
   ).to_pretty
 end
+

@@ -30,15 +30,21 @@ put tarball into git and link to it on github (to prevent out-of-sync issues)
 * look into rubyspec and Speccify
 
 * return elapsed time
-* better panels (many iterations)
-* JSON RSpec formatter
-  * see https://github.com/jeffkreeftmeijer/fuubar
-  * https://github.com/rspec/rspec-core/blob/master/lib/rspec/core/formatters
-  *
+
+* use Course object inside Live for selected and ordered labs
+
+* UI
+  * "hide" X button for toggleable panels
+  * icons in buttons
+  * spinny during ajax request
+
 * get SAFE=3 working again
+  * current problem: using RSpec's stub method (Time.stub(:now)) from inside a SAFE block replaces it with an unsafe version of the method so you can't call it even once the SAFE thread exits. And this causes Rack::CommonLogger to raise an exception (when it calls Time.now) which breaks the entire web server. Ugh.
+
 * Code editor and highlighter
   * CodeMirror  http://codemirror.net/
   * Ace
+
 * "gist this" button
 
 

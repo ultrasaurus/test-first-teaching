@@ -40,6 +40,3 @@ No more bottles of beer on the wall.
   end
 end
 
-puts bottles(99)
-
-
