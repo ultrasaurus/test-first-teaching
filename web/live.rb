@@ -39,7 +39,16 @@ class Live < Erector::Widgets::Page
     width: 81em;
   }
 
-  .response {
+  #response {
+
+    /* initially invisible, toggleable panel */
+    display: none;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    overflow-y: auto;
+
+
     border: 2px solid #22d;
     @include border-radius(6px);
 
@@ -144,7 +153,14 @@ class Live < Erector::Widgets::Page
     div.main {
       div.controls {
         input :type => "button", :value => ">> Run >>", :id => 'run'
+        input :type => "button", :value => "Response", :id => 'toggle_response'
       }
+      div.response! do
+        h2 "Response"
+        panel "standard_output", :code => ''
+        panel "standard_error", :code => ''
+        panel "full_response", :code => ''
+      end
       div.panels {
         if @notes
           panel "Notes", :wide => true do
@@ -159,12 +175,6 @@ class Live < Erector::Widgets::Page
           panel "Source", :code => ""
           panel "Results", :wide => true
         }
-        div.response do
-          h2 "Response"
-          panel "standard_output", :code => ''
-          panel "standard_error", :code => ''
-          panel "full_response", :code => ''
-        end
       }
     }
 
@@ -264,6 +274,10 @@ jQuery(document).ready(function($){
       }
     });
   });
+
+  $('#toggle_response').click(function() {
+    $('#response').toggle();
+  })
 });
     JAVASCRIPT
   end
