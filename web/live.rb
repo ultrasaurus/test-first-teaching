@@ -8,6 +8,18 @@ class Live < Erector::Widgets::Page
 
   external :style, scss(<<-CSS)
 
+  $control_bar: #08253B;
+  $button_bg: #E6EFF5;
+  $button_hover: #00AEEF;
+  $panel_border: #559;
+  $panel_title_bg: #EEE;
+  $error_border: #F33;
+  $test_failed_bg: #F99;
+  $test_exception_bg: #FDD;
+  $test_passed_bg: #9F9;
+  $code_border: #DEDEDE;
+
+
   body {
     padding: 0;
     margin: 0;
@@ -25,12 +37,16 @@ class Live < Erector::Widgets::Page
     margin: 0;
     font-size: 12px;
     text-align: center;
-    background-color: #929;
+    background-color: $control_bar;
     padding: 2px;
 
     input[type=button] {
-      background: #ccc;
-      font-size: 20pt;
+      background: $button_bg;
+      font-size: 16pt;
+
+      &:hover {
+        background: $button_hover;
+      }
     }
   }
 
@@ -55,7 +71,7 @@ class Live < Erector::Widgets::Page
 
     margin: 0 1em;
 
-    border: 2px solid #22d;
+    border: 2px solid $panel_border;
     @include border-radius(6px);
 
     h2 {
@@ -71,7 +87,7 @@ class Live < Erector::Widgets::Page
 
   .panel {
     display: inline-block;
-    border: 2px solid #22d;
+    border: 2px solid $panel_border;
     @include border-radius(6px);
     margin: .25em;
     width: 40em;
@@ -85,7 +101,7 @@ class Live < Erector::Widgets::Page
       padding: 2px .25em;
       border: 1px solid black;
       margin: .25em;
-      background-color: #eee;
+      background-color: $panel_title_bg;
     }
 
     .panel_contents {
@@ -99,7 +115,7 @@ class Live < Erector::Widgets::Page
       text-align: left;
 
       .error {
-        border: 4px solid #F22;
+        border: 4px solid $error_border;
         padding: .5em;
         font-size: 200%;
         h2 {
@@ -122,19 +138,19 @@ class Live < Erector::Widgets::Page
         }
       }
       div.test.failed {
-        background-color: #F99;
+        background-color: $test_failed_bg;
         .exception {
-          background-color: #FDD;
+          background-color: $test_exception_bg;
           padding: 1em 0 1em 6em;
         }
       }
       div.test.passed {
-        background-color: #9F9;
+        background-color: $test_passed_bg;
       }
     }
 
     .code_box {
-      border: 1px solid #dedede;
+      border: 2px solid $code_border;
       padding: 4px;
       font-family: "Courier New", Courier, Monaco, monospace;
       font-size: 12px;
