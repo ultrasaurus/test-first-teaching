@@ -9,16 +9,6 @@ class RPNCalculator
     return stack[stack.length - 1]
   end
 
-  def add(x)
-    push(x)
-    plus
-  end
-
-  def subtract(x)
-    push(x)
-    minus
-  end
-
   def push(value)
     stack.push(value.to_f)
   end
@@ -28,9 +18,7 @@ class RPNCalculator
   end
 
   def minus
-    second = pop
-    first = pop
-    stack.push(first - second)
+    stack.push(pop - pop)
   end
 
   def times
@@ -38,9 +26,7 @@ class RPNCalculator
   end
 
   def divide
-    second = pop
-    first = pop
-    stack.push(first / second)
+    stack.push(pop / pop)
   end
 
   def pop
