@@ -1,4 +1,4 @@
-require 'rdiscount'
+#require 'rdiscount'
 require 'yaml'
 
 $: << './lib'
@@ -41,13 +41,15 @@ task :test => :spec do
   end
 end
 
-desc "run specs of the framework"
+desc "run tests of the framework"
 RSpec::Core::RakeTask.new(:spec) do |task|
-  task.pattern = "test/*_spec.rb"
+  task.pattern = "spec/*_spec.rb"
 end
 
+task :default => :course
+
 desc "run tests, exercises, and build the course (default: course=learn_ruby)"
-task :default => :test do
+task :course => :test do
   # run all exercises in all labs
   failed_labs = []
   labs = FileList['learn_ruby/*'].select{|path| File.directory?(path)}

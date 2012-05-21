@@ -1,7 +1,7 @@
 source :gemcutter
 
 #  gem "rspec-core", :path => "../rspec-core"
-  gem "rspec-core", :git => "git://github.com/alexch/rspec-core.git"
+gem "rspec-core", :git => "git://github.com/alexch/rspec-core.git"
 
 gem "rspec", "~>2.9.0"
 gem "erector", ">=0.9.0.pre"
@@ -24,4 +24,9 @@ group :development do
   gem "rake"
   gem "wrong", ">=0.6.2"
   gem "bourbon"  # do 'cd web/css; bourbon update' to get new bourbon
+  gem "spork"
+end
+
+group :test do
+  gem "rack-test"
 end
