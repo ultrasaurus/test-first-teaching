@@ -126,40 +126,49 @@ class Course
       prefix = "../" * level
       current_lab = source_dir.split('/').last
 
+      markdown = File.read("#{source_dir}/#{markdown_file}")
+      html = Markdown.new(markdown).to_html
+
       File.open(html_file, "w") do |f|
-        f.print <<-HTML
-<html>
-<head>
-  <title>Test-First Teaching: #{course_name}: #{current_lab}</title>
-  <link href="#{prefix}assets/style.css" media="screen" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div class='header'>
-    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
-    <h2>the home of test-first teaching</h2>
-  </div>
-  #{nav(current_lab, level)}
-  #{lab_info(current_lab, source_dir)}
-  <div class='content'>
-        HTML
-        markdown = File.read("#{source_dir}/#{markdown_file}")
-        html = Markdown.new(markdown).to_html
-        f.print html
-        f.print <<-HTML
-  </div>
-  <div class='footer'>
-    <a href="http://testfirst.org">TestFirst.org</a>
-  </div>
-</body>
-</html>
-        HTML
+        f.print erector(prettyprint: true) {
+          html do
+            head do
+              title do
+                text "Test-First Teaching: ", course_name, ": ", current_lab
+              end
+              link :href => "#{prefix}assets/style.css", :media => 'screen', :rel => 'stylesheet', :type => 'text/css'
+            end
+            body do
+              div :class => 'header' do
+                h1 do
+                  a :href => 'http://testfirst.org' do
+                    text 'TestFirst.org'
+                  end
+                end
+                h2 do
+                  text 'the home of test-first teaching'
+                end
+              end
+              text raw(nav_bar(current_lab, level)), raw(lab_info(current_lab, source_dir))
+              div :class => 'content' do
+                text raw(html)
+              end
+              div.footer {
+                a "TestFirst.org", href: "http://testfirst.org"
+              }
+            end
+          end
+        }
       end
     end
 
   end
-  def nav(current_lab, level)
 
-    erector {
+
+
+  def nav_bar(current_lab, level)
+
+    erector(prettyprint: true) {
       div(:class => 'nav') {
         h2 { a course_name, :href=> ("../" * level) + 'index.html' }
         b "Labs:"
@@ -187,7 +196,7 @@ class Course
   end
 
   def lab_info(current_lab, source_dir)
-    erector {
+    erector(prettyprint: true) {
       div(:class => "info") {
         h1 current_lab
         ul {
