@@ -8,7 +8,7 @@ This lab teaches basic Ruby Object syntax.
 
 This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.
 
-## Run the spec
+## Run the test
 
     rake
 
@@ -22,7 +22,7 @@ That means that it is looking for a file called `friend.rb` and can't find it.
 
 ## Create friend.rb
 
-Open up `friend.rb` in a text editor. Save it. Run the spec again.
+Open up `friend.rb` in a text editor. Save it. Run the test again.
 
     rake
 
@@ -39,7 +39,7 @@ Fix this by opening `friend.rb` and creating an empty class:
     class Friend
     end
 
-Save it. Run the spec again.
+Save it. Run the test again.
 
 ## Watch it fail
 
@@ -66,7 +66,7 @@ In `friend.rb`, add the following inside the class (before the "end").
     def greeting
     end
 
-Save it. Run the spec again.
+Save it. Run the test again.
 
 ## Watch it fail
 
@@ -87,7 +87,7 @@ Inside the "greeting" method, put a single line containing a string that is *not
       "whuh?"
     end
 
-Save it. Run the spec again.
+Save it. Run the test again.
 
 ## Watch it fail
 
@@ -98,7 +98,7 @@ Now you should see an error like this:
          got: "whuh?" (using ==)
     ./friend_spec.rb:5:
 
-Correct this by changing "whuh?" to "Hello!". Save it. Run the spec again.
+Correct this by changing "whuh?" to "Hello!". Save it. Run the test again.
 
 ## Watch it pass!
 

@@ -8,7 +8,7 @@ This lab teaches basic Ruby function syntax.
 
 This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.
 
-## Run the spec
+## Run the test
 
     rake
 
@@ -22,7 +22,7 @@ That means that it is looking for a file called `hello.rb` and can't find it.
 
 ## Create hello.rb
 
-Open up `hello.rb` in a text editor. Save it. Run the spec again.
+Open up `hello.rb` in a text editor. Save it. Run the test again.
 
     rake
 
@@ -48,7 +48,7 @@ Fix this by opening `hello.rb` and creating an empty function:
     def hello
     end
 
-Save it. Run the spec again.
+Save it. Run the test again.
 
 ## Watch it fail
 
@@ -75,7 +75,7 @@ Inside the "hello" function, put a single line containing a string that is *not*
       "whuh?"
     end
 
-Save it. Run the spec again.
+Save it. Run the test again.
 
 ## Watch it fail
 
@@ -87,7 +87,7 @@ Now you should see an error like this:
               got: "whuh?" (using ==)
        # ./hello/hello_spec.rb:5:in `block (2 levels) in <top (required)>'
 
-Correct this by changing "whuh?" to "Hello!". Save it. Run the spec again.
+Correct this by changing "whuh?" to "Hello!". Save it. Run the test again.
 
 ## Watch it pass!
 
