@@ -11,10 +11,10 @@ class Course
   def self.all_labs(curriculum_name)
     curriculum_dir = "#{Course.root}/#{curriculum_name}"
     labs = Dir.glob("#{curriculum_dir}/*").
-      select {|d| File.directory?(d)}.
-      map {|d| d.split('/').last}.
-      reject {|d| d == "ubiquitous" || d == "assets"}.
-      sort
+        select {|d| File.directory?(d)}.
+        map {|d| d.split('/').last}.
+        reject {|d| d == "ubiquitous" || d == "assets"}.
+        sort
   end
 
   def self.root
@@ -35,9 +35,9 @@ class Course
     @labs = data[:labs]
     @repo = data[:repo] || "git@github.com:alexch/#{@course_name}.git"
     @repo_parent =
-      File.expand_path "#{Course.root}/.."
+        File.expand_path "#{Course.root}/.."
     @repo_dir =
-      File.expand_path "#{@repo_parent}/#{course_name}"
+        File.expand_path "#{@repo_parent}/#{course_name}"
   end
 
   def create_repo
@@ -130,77 +130,87 @@ class Course
       html = Markdown.new(markdown).to_html
 
       File.open(html_file, "w") do |f|
-        f.print erector(prettyprint: true) {
-          html do
-            head do
-              title do
-                text "Test-First Teaching: ", course_name, ": ", current_lab
+        f.print Course::Page.new(
+                    :course_name => course_name,
+                    :current_lab => current_lab,
+                    :prefix => prefix,
+                    :level => level,
+                    :source_dir => source_dir,
+                    :html => html,
+                    :labs => @labs
+                ).to_pretty
+
+      end
+    end
+  end
+
+  class Page < Erector::Widget
+    # todo: fewer parameters, ideally just a Course and a current_lab
+    needs :course_name, :current_lab, :prefix, :level, :source_dir, :html, :labs
+
+    def content
+      html do
+        head do
+          title do
+            text "Test-First Teaching: ", @course_name, ": ", @current_lab
+          end
+          link :href => "#{@prefix}assets/style.css", :media => 'screen', :rel => 'stylesheet', :type => 'text/css'
+        end
+        body do
+          div :class => 'header' do
+            h1 do
+              a :href => 'http://testfirst.org' do
+                text 'TestFirst.org'
               end
-              link :href => "#{prefix}assets/style.css", :media => 'screen', :rel => 'stylesheet', :type => 'text/css'
             end
-            body do
-              div :class => 'header' do
-                h1 do
-                  a :href => 'http://testfirst.org' do
-                    text 'TestFirst.org'
-                  end
-                end
-                h2 do
-                  text 'the home of test-first teaching'
-                end
-              end
-              text raw(nav_bar(current_lab, level)), raw(lab_info(current_lab, source_dir))
-              div :class => 'content' do
-                text raw(html)
-              end
-              div.footer {
-                a "TestFirst.org", href: "http://testfirst.org"
-              }
+            h2 do
+              text 'the home of test-first teaching'
             end
           end
-        }
+          nav_bar
+          lab_info
+          div :class => 'content' do
+            text raw(@html)
+          end
+          div.footer {
+            a "TestFirst.org", href: "http://testfirst.org"
+          }
+        end
       end
     end
 
-  end
+    def nav_bar
 
-
-
-  def nav_bar(current_lab, level)
-
-    erector(prettyprint: true) {
       div(:class => 'nav') {
-        h2 { a course_name, :href=> ("../" * level) + 'index.html' }
+        h2 { a @course_name, :href=> ("../" * @level) + 'index.html' }
         b "Labs:"
         ul {
-          labs.each_with_index do |lab, i|
+          @labs.each_with_index do |lab, i|
             num = "%02d" % i
             numbered = "#{num}_#{lab}"
             titled = "#{num} #{lab.split('_').map{|s|s.capitalize}.join(' ')}"
             li {
-              if current_lab == lab
+              if @current_lab == lab
                 text titled
               else
-                href = (if level == 0
-                  "#{numbered}/"
-                else
-                  "../" * level + numbered + "/"
-                end) + "index.html"
+                href = (if @level == 0
+                          "#{numbered}/"
+                        else
+                          "../" * @level + numbered + "/"
+                        end) + "index.html"
                 a titled, :href => href
               end
             }
           end
         }
       }
-    }
-  end
+    end
 
-  def lab_info(current_lab, source_dir)
-    erector(prettyprint: true) {
+    def lab_info
       div(:class => "info") {
-        h1 current_lab
+        h1 @current_lab
         ul {
-          files = Dir.glob("#{source_dir}/*")
+          files = Dir.glob("#{@source_dir}/*")
           files.each do |file|
             unless file =~ /\.(md|scss)/ or File.directory?(file)
               filename = file.split('/').last
@@ -209,8 +219,7 @@ class Course
           end
         }
       }
-    }
+    end
+
   end
-
-
 end
