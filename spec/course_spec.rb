@@ -1,15 +1,9 @@
 here = File.expand_path(File.dirname(__FILE__))
+require "#{here}/spec_helper"
 
-require 'rspec'
-require 'wrong'
-include Wrong
 require 'tmpdir'
 
-begin
-  require 'course'
-rescue LoadError
-  require "#{here}/course"
-end
+require 'course'
 
 describe Course do
   it "can find the project root directory" do

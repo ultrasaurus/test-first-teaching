@@ -31,8 +31,6 @@ put tarball into git and link to it on github (to prevent out-of-sync issues)
 
 * return elapsed time
 
-* use Course object inside Live for selected and ordered labs
-
 * UI
   * "hide" X button for toggleable panels
   * icons in buttons

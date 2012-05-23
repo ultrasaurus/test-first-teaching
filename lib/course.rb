@@ -28,7 +28,7 @@ class Course
     if file.is_a? String
       file = File.new("#{Course.root}/courses/#{file}.yaml")
     end
-#    data = YAML::load_file(file)
+#    data = YAML::load_file(file)  # this should work :-(
     data = YAML::load(file.read)
     @curriculum_name = data[:curriculum] || "learn_ruby"
     @course_name = file.path.split('/').last.gsub(/\.yaml/, '')
@@ -65,6 +65,10 @@ class Course
     "#{curriculum_dir}/assets"
   end
 
+  def lab_dir lab_name
+    "#{curriculum_dir}/#{lab_name}"
+  end
+
   def build
     FileUtils.rm_rf Dir.glob("#{@repo_dir}/*") # clear away old generated lab dirs and files
 
@@ -74,7 +78,7 @@ class Course
     @labs.each_with_index do |lab, i|
       num = "%02d" % i
       numbered = "#{num}_#{lab}"
-      source_dir = "#{curriculum_dir}/#{lab}"
+      source_dir = lab_dir(lab)
       target_dir = "#{@repo_dir}/#{numbered}"
       raise "Missing lab #{source_dir}" unless File.exist? source_dir and File.directory? source_dir
       FileUtils.touch "#{source_dir}/index.md" unless File.exist?("#{source_dir}/index.md")

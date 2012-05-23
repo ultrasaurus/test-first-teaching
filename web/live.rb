@@ -19,7 +19,6 @@ class Live < Erector::Widgets::Page
   $test_passed_bg: #9F9;
   $code_border: #DEDEDE;
 
-
   body {
     padding: 0;
     margin: 0;
@@ -158,6 +157,21 @@ class Live < Erector::Widgets::Page
   }
   CSS
 
+  needs :course, :lab => "hello"
+
+  def initialize *args
+    super
+    @notes = ("#{lab_dir}/index.md" if File.exist? "#{lab_dir}/index.md")
+  end
+
+  def lab_dir lab_name = @lab
+    @course.lab_dir(lab_name)
+  end
+
+  def test
+    "#{lab_dir}/#{lab}_spec.rb"
+  end
+
   def page_title
     "Test-First Live!"
   end
@@ -189,16 +203,15 @@ class Live < Erector::Widgets::Page
     div.toggleable.labs! do
       h2 "Labs"
       ul do
-        # todo: unify with Course object
-        curriculum = @curriculum || "learn_ruby"
-        current_lab = @lab || "hello"
-        lab_dir = File.expand_path("#{here}/../#{curriculum}")
-        Dir.glob("#{lab_dir}/*").each do |dir|
-          next unless File.directory? dir
-          lab = dir.split('/').last
-          next if lab == 'assets'
+        current_lab = @lab
+        @course.labs.each do |lab|
           li do
-            a lab, :href => "/live/#{curriculum}/#{lab}"
+            # todo: pretty lab name; Lab object
+            if lab == @lab
+              span.current lab
+            else
+              a lab, :href => "/live/#{@course.course_name}/#{lab}"
+            end
           end
         end
       end
@@ -232,7 +245,7 @@ class Live < Erector::Widgets::Page
 
       div.panels {
         div.user {
-          panel "Tests", :code => File.read(@test).
+          panel "Tests", :code => File.read(@course.lab_dir(@lab) + "/#{@lab}_spec.rb").
             gsub(/require [\"\'].*[\"\'].*\n/, '')  # todo: allow some requires
           panel "Source", :code => ""
           panel "Results", :wide => true

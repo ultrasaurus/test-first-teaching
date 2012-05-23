@@ -17,6 +17,7 @@ require "about"
 require "learn_ruby"
 require "learn_javascript"
 require "live"
+require "course"
 
 set :public_folder, "web"
 
@@ -45,7 +46,7 @@ get '/download/:file' do
 end
 
 post "/run" do
-  p params
+  # p params
   if params[:code]
     if params[:rspec]
       RspecCode.new(params[:code], :rspec => params[:rspec]).run.to_json
@@ -59,19 +60,17 @@ post "/run" do
 end
 
 # todo: test
-get "/live/:curriculum/:lab" do
-  lab_dir = "#{here}/#{params[:curriculum]}/#{params[:lab]}"
-  puts lab_dir
+get "/live/:course/:lab" do
   Live.new(
-    :test => "#{lab_dir}/#{params[:lab]}_spec.rb",
-    :notes => ("#{lab_dir}/index.md" if File.exist? "#{lab_dir}/index.md")
+    :course => Course.new(params[:course]),
+    :lab => params[:lab]
   ).to_pretty
 end
 
 get "/live" do
   Live.new(
-    :test => "#{here}/learn_ruby/hello/hello_spec.rb",
-    :notes => "#{here}/learn_ruby/hello/index.md"
+    :course => Course.new("learn_ruby"),
+    :lab => "hello"
   ).to_pretty
 end
 
