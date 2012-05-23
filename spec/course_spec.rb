@@ -10,16 +10,16 @@ describe Course do
     assert { Course.root.split('/').last == "test-first-teaching"  }
   end
 
-  it "lists all labs under the given curriculum" do
-    labs = Course.all_labs("sample_curriculum")
-    assert { labs == ["one", "three", "two"] }
+  it "lists all lab names under the given curriculum" do
+    lab_names = Course.all_lab_names("sample_curriculum")
+    assert { lab_names == ["one", "three", "two"] }
   end
 
   it 'initializes from a course yaml file' do
     c = Course.new(File.new("#{Course.root}/courses/sample_course.yaml"))
     assert { c.curriculum_name ==  "sample_curriculum" }
     assert { c.course_name ==  "sample_course" }
-    assert { c.labs == ["one", "two", "three"] }
+    assert { c.lab_names == ["one", "two", "three"] }
     assert { c.repo == "git@github.com:alexch/sample_course.git"  }
   end
 
@@ -27,7 +27,7 @@ describe Course do
     c = Course.new("sample_course")
     assert { c.curriculum_name ==  "sample_curriculum" }
     assert { c.course_name ==  "sample_course" }
-    assert { c.labs == ["one", "two", "three"] }
+    assert { c.lab_names == ["one", "two", "three"] }
     assert { c.repo == "git@github.com:alexch/sample_course.git"  }
   end
 

@@ -63,14 +63,14 @@ end
 get "/live/:course/:lab" do
   Live.new(
     :course => Course.new(params[:course]),
-    :lab => params[:lab]
+    :lab_name => params[:lab]
   ).to_pretty
 end
 
 get "/live" do
   Live.new(
     :course => Course.new("learn_ruby"),
-    :lab => "hello"
+    :lab_name => "hello"
   ).to_pretty
 end
 

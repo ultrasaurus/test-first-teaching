@@ -157,19 +157,19 @@ class Live < Erector::Widgets::Page
   }
   CSS
 
-  needs :course, :lab => "hello"
+  needs :course, :lab_name => "hello"
 
   def initialize *args
     super
     @notes = ("#{lab_dir}/index.md" if File.exist? "#{lab_dir}/index.md")
   end
 
-  def lab_dir lab_name = @lab
+  def lab_dir lab_name = @lab_name
     @course.lab_dir(lab_name)
   end
 
   def test
-    "#{lab_dir}/#{lab}_spec.rb"
+    "#{lab_dir}/#{lab_name}_spec.rb"
   end
 
   def page_title
@@ -203,14 +203,14 @@ class Live < Erector::Widgets::Page
     div.toggleable.labs! do
       h2 "Labs"
       ul do
-        current_lab = @lab
-        @course.labs.each do |lab|
+        current_lab = @lab_name
+        @course.lab_names.each do |lab_name|
           li do
             # todo: pretty lab name; Lab object
-            if lab == @lab
-              span.current lab
+            if lab_name == @lab_name
+              span.current lab_name
             else
-              a lab, :href => "/live/#{@course.course_name}/#{lab}"
+              a lab_name, :href => "/live/#{@course.course_name}/#{lab_name}"
             end
           end
         end
@@ -245,7 +245,7 @@ class Live < Erector::Widgets::Page
 
       div.panels {
         div.user {
-          panel "Tests", :code => File.read(@course.lab_dir(@lab) + "/#{@lab}_spec.rb").
+          panel "Tests", :code => File.read(@course.lab_dir(@lab_name) + "/#{@lab_name}_spec.rb").
             gsub(/require [\"\'].*[\"\'].*\n/, '')  # todo: allow some requires
           panel "Source", :code => ""
           panel "Results", :wide => true
