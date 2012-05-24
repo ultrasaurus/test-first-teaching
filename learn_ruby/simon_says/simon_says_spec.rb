@@ -1,4 +1,4 @@
-require "simon"
+require "simon_says"
 
 describe "Simon says" do
   describe "echo" do
