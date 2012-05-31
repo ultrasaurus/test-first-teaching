@@ -88,6 +88,17 @@ describe Course do
       end
     end
 
+    it "extracts top notes from test files to make index.html" do
+      lab_dir = "one"   # todo: other sample labs
+      index_file = "#{@tmpdir}/00_#{lab_dir}/index.html"
+      spec_file = "#{@tmpdir}/00_#{lab_dir}/#{lab_dir}_spec.rb"
+      assert { File.exists? index_file }
+      index_html = File.read(index_file)
+      assert { index_html.include?(RspecFile.new(:file => spec_file).to_pretty) }
+    end
+
+    it "doesn't overwrite an existing index.html/md file with notes"
+
     it "copies the 'assets' dir" do
       assert { File.exists? "#{@tmpdir}/assets" }
       assert { File.directory? "#{@tmpdir}/assets" }

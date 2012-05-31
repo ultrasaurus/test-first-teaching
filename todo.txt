@@ -41,7 +41,7 @@ put tarball into git and link to it on github (to prevent out-of-sync issues)
 
 * Code editor and highlighter
   * CodeMirror  http://codemirror.net/
-  * Ace
+  * Ace http://ace.ajax.org/
 
 * "gist this" button
 

@@ -5,9 +5,13 @@ Spork.prefork do
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
   require 'rspec/core'
+
   require 'wrong'
   include Wrong
   Wrong.config.color
+
+  require 'files'
+  include Files
 end
 
 Spork.each_run do

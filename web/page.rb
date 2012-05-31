@@ -9,6 +9,8 @@ require "#{here}/section"
 require "#{here}/nav"
 
 class Page < Erector::Widgets::Page
+  needs :sections => []   # todo: test that this is mutate-safe
+
   def topic(s)
     strong s
     text ' '
@@ -86,7 +88,7 @@ class Page < Erector::Widgets::Page
   end
 
   def sections
-    []
+    @sections
   end
 
   def main_title

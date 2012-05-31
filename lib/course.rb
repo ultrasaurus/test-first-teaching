@@ -5,6 +5,8 @@ require 'sass'
 require 'erector'
 
 require 'lab'
+require 'rspec_file'
+
 class Course
   include Erector::Mixin
 
@@ -88,9 +90,19 @@ class Course
       source_dir = lab_dir(lab_name)
       target_dir = "#{@repo_dir}/#{numbered}"
       raise "Missing lab #{source_dir}" unless File.exist? source_dir and File.directory? source_dir
-      FileUtils.touch "#{source_dir}/index.md" unless File.exist?("#{source_dir}/index.md")
       copy_files source_dir, target_dir
       copy_files "#{curriculum_dir}/ubiquitous", target_dir
+      rspec_file = "#{source_dir}/#{lab_name}_spec.rb"
+
+      # write notes as HTML
+      if File.exist? rspec_file
+        notes = RspecFile.new(:file => rspec_file)
+        html = notes.to_pretty
+        write_page "#{target_dir}/index.html", html, lab_name
+      else
+        # todo: test
+        write_page "#{target_dir}/index.html", "", lab_name
+      end
     end
   end
 
@@ -104,10 +116,13 @@ class Course
   end
 
   def copy_files(source_dir, target_dir, level = 1)
+    current_lab_name = source_dir.split('/').last
+
     FileUtils.mkdir_p target_dir
     files = Dir.glob("#{source_dir}/*")
     markdown_files = []
     scss_files = []
+
     files = files.select do |file|
       if File.directory?(file)
         nil
@@ -133,27 +148,31 @@ class Course
     end
 
     markdown_files.each do |markdown_file|
-      html_file = target_dir + "/" + markdown_file.gsub(/\.md$/, '.html')
-      prefix = "../" * level
-      current_lab_name = source_dir.split('/').last
+      output_file = target_dir + "/" + markdown_file.gsub(/\.md$/, '.html')
 
       markdown = File.read("#{source_dir}/#{markdown_file}")
       html = Markdown.new(markdown).to_html
 
-      File.open(html_file, "w") do |f|
-        f.print Course::Page.new(
-                    :course_name => course_name,
-                    :current_lab_name => current_lab_name,
-                    :prefix => prefix,
-                    :level => level,
-                    :source_dir => source_dir,
-                    :html => html,
-                    :lab_names => @lab_names
-                ).to_pretty
-
-      end
+      write_page output_file, html, current_lab_name, level
     end
   end
+
+  def write_page output_file, html, lab_name, level = 1
+    prefix = "../" * level
+    source_dir = lab_dir(lab_name)   # todo: unify
+    File.open(output_file, "w") do |f|
+      f.print Course::Page.new(
+                  :course_name => course_name,
+                  :current_lab_name => lab_name,
+                  :prefix => prefix,
+                  :level => level,
+                  :source_dir => source_dir,
+                  :html => html,
+                  :lab_names => @lab_names
+              ).to_pretty
+    end
+  end
+
 
   class Page < Erector::Widget
     # todo: fewer parameters, ideally just a Course and a current_lab
