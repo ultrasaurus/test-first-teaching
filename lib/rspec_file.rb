@@ -24,6 +24,20 @@ class RspecFile < Erector::Widget
         text raw(html)
       end
       div.tests do
+        # todo: move into a regular css place
+        style raw("
+        .rspec_file > .tests a.raw_file {
+          float:right;
+          padding: 2px 4px;
+          margin: 3px;
+          border: 1px solid #666;
+          background: #ddd;
+        }        ")
+        base_file = @file.split('/').last
+        h1 do
+          text "Tests"
+        end
+        a.raw_file base_file, :href => base_file
         pre do
           text lines.join("\n")
         end

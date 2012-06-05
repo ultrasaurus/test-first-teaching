@@ -45,6 +45,8 @@ put tarball into git and link to it on github (to prevent out-of-sync issues)
 
 * "gist this" button
 
+* client-side markdown: http://code.google.com/p/pagedown/source/browse/Markdown.Converter.js
+
 
 See also:
 
