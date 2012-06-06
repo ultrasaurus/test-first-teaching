@@ -9,8 +9,6 @@
     - simon_says
     - pig_latin
 
-    - mega_calculator
-
 # todo: make `blocks` and `performance_monitor` use functions, not objects
     - blocks
     - performance_monitor
