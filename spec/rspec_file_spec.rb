@@ -51,13 +51,13 @@ end
   end
 
   it "renders the rest of the file as a single code chunk" do
-    tests = html_doc.css('.tests').first
+    tests = html_doc.css('.tests > pre').first
     noko_html(tests).should == <<-HTML.chomp
-<div class="tests"><pre>describe Foo do
+<pre>describe Foo do
   it "works" do
     (2 + 2).should == 4
   end
-end</pre></div>
+end</pre>
     HTML
   end
 

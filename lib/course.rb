@@ -175,6 +175,7 @@ class Course
 
 
   class Page < Erector::Widget
+    # todo: use proper Erector Page object
     # todo: fewer parameters, ideally just a Course and a current_lab
     needs :course_name, :current_lab_name, :prefix, :level, :source_dir, :html, :lab_names
 
@@ -237,18 +238,7 @@ class Course
     end
 
     def lab_info
-      div(:class => "info") {
-        h1 @current_lab_name
-        ul {
-          files = Dir.glob("#{@source_dir}/*")
-          files.each do |file|
-            unless file =~ /\.(md|scss)/ or File.directory?(file)
-              filename = file.split('/').last
-              li { a filename, :href=>filename }
-            end
-          end
-        }
-      }
+      h1 @current_lab_name
     end
 
   end

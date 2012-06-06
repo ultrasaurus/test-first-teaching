@@ -45,7 +45,8 @@ a {
 }
 
 .content {
-    padding: 0 (2em + $nav-width + 2 * $nav-margin);
+    padding: 0 2em
+        0 (2em + $nav-width + 2 * $nav-margin);
     min-height: 30em;
     min-width: 20em;
     max-width: 44em;
@@ -64,6 +65,9 @@ a {
         margin-top: 1em;
         border-bottom: $blue 1px dotted;
     }
+	pre {
+		overflow-x: auto;
+	}
 
 }
 
@@ -116,7 +120,7 @@ a {
     width: $nav-width;
     font-size: 75%;
 }
-.nav,.info {
+.nav {
     // todo: use an scss function or mixin
     background: -webkit-gradient(  linear,  left bottom,  left top,  color-stop(0.15, rgb(255,255,255)),  color-stop(0.85, $bubble)  );
     background: -moz-linear-gradient(  center bottom,  rgb(255,255,255) 15%,  $bubble 85%  );
@@ -125,11 +129,17 @@ a {
     border: 1px solid black;
 }
 
-.info {
-    float: right;
-    margin: $nav-margin;
-    padding: 0 1em 1em;
-    font-size: 75%;
+.rspec_file > .tests {
+    position: relative;
+    a.raw_file {
+	  float:right;
+	  position: absolute;
+	  right: 0;
+	  padding: 2px 4px;
+	  margin: 3px;
+	  border: 1px solid #666;
+	  background: #ddd;
+	}
 }
 
 pre {
