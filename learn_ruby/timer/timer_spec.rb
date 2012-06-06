@@ -1,3 +1,12 @@
+# # Topics
+#
+# * classes
+# * instance variables
+# * string formats
+# * modular arithmetic
+#
+# # Timer
+
 require 'timer'
 
 describe "Timer" do

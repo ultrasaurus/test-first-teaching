@@ -1,3 +1,32 @@
+# # Topics
+#
+# * functions
+# * math
+# * arrays
+# * iterating/looping
+#
+# # Calculator
+#
+# you will build a simple calculator script with the following methods:
+#
+# `add` takes two parameters and adds them
+#
+# `subtract` takes two parameters and subtracts the second from the first
+#
+# `sum` takes an *array* of parameters and adds them all together
+#
+# # Bonus
+#
+# There are also some bonus exercises for when you finish the regular ones. The bonus round will help teach you test-driven *development*, not simply test-guided *learning*.
+#
+# Your mission, should you choose to accept it, is to write *tests* for two new methods:
+#
+# * `multiply` which multiplies two numbers together
+# * `power` which raises one number to the power of another number
+# * `[factorial](http://en.wikipedia.org/wiki/Factorial)` (check Wikipedia if you forgot your high school math).
+#
+#
+
 require "calculator"
 
 describe "add" do
@@ -48,6 +77,10 @@ describe "#multiply" do
 
   it "multiplies several numbers"
 
+end
+
+describe "#power" do
+  it "raises one number to the power of another number"
 end
 
 # http://en.wikipedia.org/wiki/Factorial

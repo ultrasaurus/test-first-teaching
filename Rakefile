@@ -10,7 +10,7 @@ end
 
 desc "list all the lab dirs in the course dir in YAML, for help making new course.yaml files"
 task :list_labs do
-  puts Course.all_labs(course.curriculum_name).to_yaml
+  puts Course.all_lab_names(course.curriculum_name).to_yaml
 end
 
 desc "build the course into its repo dir (default: course=learn_ruby)"
@@ -52,8 +52,9 @@ desc "run tests, exercises, and build the course (default: course=learn_ruby)"
 task :course => :test do
   # run all exercises in all labs
   failed_labs = []
-  labs = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
-  labs.each do |lab|
+  # todo: use Course/Lab objects
+  lab_dirs = FileList['learn_ruby/*'].select{|path| File.directory?(path)}
+  lab_dirs.each do |lab|
     result = Dir.chdir(lab) do
       system "rake"
     end
@@ -78,4 +79,21 @@ desc "launch the testfirst.org website on http://localhost:9292"
 task :run do
   # system 'rerun "foreman start"'
   system 'rerun -- rackup -s thin'
+end
+
+desc "move index.md into test file"
+task :unindex do
+  require 'course'
+  area = 'learn_ruby'
+  Course.all_labs(area).each do |lab|
+    begin
+      notes = File.read(lab.notes_file)
+      commented_notes = notes.gsub(/^/, '# ')
+      tests = File.read(lab.test_file)
+      # File.write(lab.test_file, tests)
+      File.write(lab.test_file, commented_notes + "\n" + tests)
+    rescue => e
+      p e
+    end
+  end
 end

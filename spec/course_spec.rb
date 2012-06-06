@@ -15,6 +15,12 @@ describe Course do
     assert { lab_names == ["one", "three", "two"] }
   end
 
+  it "lists all labs under the given curriculum" do
+    labs = Course.all_labs("sample_curriculum")
+    lab_names = labs.map(&:name)
+    assert { lab_names == ["one", "three", "two"] }
+  end
+
   it 'initializes from a course yaml file' do
     c = Course.new(File.new("#{Course.root}/courses/sample_course.yaml"))
     assert { c.curriculum_name ==  "sample_curriculum" }

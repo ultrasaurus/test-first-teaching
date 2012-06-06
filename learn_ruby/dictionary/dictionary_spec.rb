@@ -1,3 +1,11 @@
+# # Topics
+#
+# * Hash
+# * Array
+# * instance variables
+# * regular expressions
+#
+
 require 'dictionary'
 
 describe Dictionary do

@@ -1,3 +1,11 @@
+# # Topics
+#
+# * blocks
+# * closures
+# * yield
+# * loops
+#
+
 require "silly_blocks"
 
 describe "some silly block functions" do

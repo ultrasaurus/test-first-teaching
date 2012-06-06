@@ -4,6 +4,7 @@ require 'rdiscount'
 require 'sass'
 require 'erector'
 
+require 'lab'
 class Course
   include Erector::Mixin
 
@@ -16,6 +17,10 @@ class Course
         map {|d| d.split('/').last}.
         reject {|d| d == "ubiquitous" || d == "assets"}.
         sort
+  end
+
+  def self.all_labs(curriculum_name)
+    all_lab_names(curriculum_name).map{|lab_name| Lab.new(curriculum_name, lab_name)}
   end
 
   def self.root
@@ -58,6 +63,7 @@ class Course
     end
   end
 
+  #todo: move to Curriculum (Area) object
   def curriculum_dir
     "#{Course.root}/#{@curriculum_name}"
   end

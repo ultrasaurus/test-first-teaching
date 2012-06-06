@@ -1,3 +1,11 @@
+# # Array Extension
+#
+# # Topics
+#
+# * objects, methods, classes
+# * reopening classes
+#
+
 require "array_extensions" # we don't call it "array.rb" since that would be confusing
 
 describe Array do
