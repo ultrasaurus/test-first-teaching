@@ -2,37 +2,11 @@
 #
 # This lab teaches basic Ruby Object syntax.
 #
-# ## Open a terminal in this directory
-#
-#     cd *_hello_friend
-#
-# This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.
-#
-# ## Run the test
-#
-#     rake
-#
 # ## Watch it fail
 #
-# You should see an error. **Don't get scared!** Try to read it and figure out what the computer wants to tell you. Somewhere on the first line it should say something like
-#
-#     no such file to load -- test-first-teaching/hello_friend/friend (LoadError)
-#
-# That means that it is looking for a file called `friend.rb` and can't find it.
-#
-# ## Create friend.rb
-#
-# Open up `friend.rb` in a text editor. Save it. Run the test again.
-#
-#     rake
-#
-# ## Watch it fail
-#
-# Now you should see an error like this:
+# Your first real failure should be something like this:
 #
 #     ./friend_spec.rb:3: uninitialized constant Friend (NameError)
-#
-# ## Create the Friend class
 #
 # Fix this by opening `friend.rb` and creating an empty class:
 #
@@ -41,21 +15,13 @@
 #
 # Save it. Run the test again.
 #
-# ## Watch it fail
+# ## Watch it fail again
 #
 # Now you should see an error like this:
 #
-#     $ rake
-#     F
-#
-#     1)
 #     NoMethodError in 'Friend says hello'
 #     undefined method `greeting' for #<Friend:0x1180f3c>
 #     ./friend_spec.rb:5:
-#
-#     Finished in 0.002132 seconds
-#
-#     1 example, 1 failure
 #
 # This means that while it found the file, and it found the class, it couldn't find the method named "greeting".
 #
@@ -68,7 +34,7 @@
 #
 # Save it. Run the test again.
 #
-# ## Watch it fail
+# ## Watch it fail some more
 #
 # Now you should see an error like this:
 #
@@ -89,7 +55,7 @@
 #
 # Save it. Run the test again.
 #
-# ## Watch it fail
+# ## Watch it fail yet again
 #
 # Now you should see an error like this:
 #
@@ -116,7 +82,7 @@
 #
 #     def greeting(who)
 #
-# Hint 2: once you do that, the **first** test might start failing again. And that means you need to provide a **default value** for that parameter:
+# Hint 2: once you do that, the **first** test might start failing again. To fix both at the same time, you need to provide a **default value** for that parameter:
 #
 #     def greeting(who = nil)
 #
