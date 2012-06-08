@@ -19,11 +19,15 @@ def first_word(s)
   s.split(" ").first
 end
 
-def capitalize(s)
-  s[0].upcase + s[1..-1]
-end
-
 def titleize(s)
-  s.split.map{|word| capitalize(word)}.join(" ")
+  words = s.split.map do |word|
+    if %w(the and over).include?(word)
+      word
+    else
+      word.capitalize
+    end
+  end
+  words.first.capitalize!
+  words.join(" ")
 end
 
