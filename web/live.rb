@@ -10,10 +10,9 @@ function resizePanels() {
   var panels = $('.panels');
   var allPanels = panels.find('.panel');
   var panelCount = allPanels.size();
-  var unitWidth = panels.innerWidth() / panelCount - 8;
+  var unitWidth = Math.floor(panels.innerWidth() / panelCount) - 20;
   var unitHeight = $(window).innerHeight() -
     $('.controls').outerHeight() - 20;
-32;
 
   allPanels.each(function(i) {
     $(this).width(unitWidth);
@@ -38,14 +37,16 @@ $(window).resize(resizePanels);
     background: #DDE;
     margin: 0;
     padding: 0;
+    text-align: center;
 
     .panel {
       display: inline-block;
+      text-align: left;
+
       border: 1px solid $panel_border;
       @include border-radius(6px);
       margin: 0;
       width: 40em;
-      text-align: center;
       position: relative; /* to get the title contained */
 
       .title {
@@ -103,9 +104,6 @@ class Live < Erector::Widgets::Page
 
   .main {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    .panels {
-      text-align: center;
-    }
   }
 
   .controls {
@@ -170,6 +168,7 @@ class Live < Erector::Widgets::Page
       -webkit-margin-end: 0;
     }
   }
+
   div.test {
     margin: 1px 0 4px;
     div.description {
@@ -226,8 +225,6 @@ class Live < Erector::Widgets::Page
         textarea.code_box.panel_contents :name => panel_class, :id => panel_class do
           text options[:code]
         end
-      elsif options[:empty]
-        yield if block_given?
       else
         div :class => "panel_contents", :id => panel_class do
           yield if block_given?
@@ -265,14 +262,7 @@ class Live < Erector::Widgets::Page
         input :type => "button", :value => ">> Run >>", :id => 'run'
         input :type => "button", :value => "Notes", :id => 'toggle_notes' if @notes
         input :type => "button", :value => "Labs", :id => 'toggle_labs'
-        input :type => "button", :value => "Full Response", :id => 'toggle_response'
       }
-      div.toggleable.response! do
-        h2 "Response"
-        panel "standard_output", :code => ''
-        panel "standard_error", :code => ''
-        panel "full_response", :code => ''
-      end
       if @notes
         div.toggleable.notes! do
           h2 "Notes"
@@ -288,7 +278,18 @@ class Live < Erector::Widgets::Page
         panel "Tests", :code => File.read(@course.lab_dir(@lab_name) + "/#{@lab_name}_spec.rb").
           gsub(/require [\"\'].*[\"\'].*\n/, '')  # todo: allow some requires
         panel "Source", :code => ""
-        panel "Results", :wide => true
+        panel "Results" do
+          h2 "Results"
+          div.pretty_results!
+
+          #todo: hide these
+          h2 "Standard Output"
+          pre.standard_output!
+          h2 "Standard Error"
+          pre.standard_error!
+          h2 "Full Response"
+          pre.full_response!
+        end
       end
     }
 
@@ -324,9 +325,9 @@ jQuery(document).ready(function($){
 
   function writeResults(data) {
     // write hidden low-level results
-    $('#full_response').text(pretty(data));
     $('#standard_output').text(data.stdout || "");
     $('#standard_error').text(data.stderr || "");
+    $('#full_response').text(pretty(data));
 
     // todo: formatting, esp. errors and test results
     var html = "";
@@ -363,7 +364,7 @@ jQuery(document).ready(function($){
       html = "<pre>" + pretty(data) + "\\n</pre>";
     }
 
-    $('#results').html(html);
+    $('#pretty_results').html(html);
   }
 
   $('#run').click(function(){
@@ -387,10 +388,6 @@ jQuery(document).ready(function($){
         writeResults(data);
       }
     });
-  });
-
-  $('#toggle_response').click(function() {
-    $('#response').toggle();
   });
 
   $('#toggle_notes').click(function() {
