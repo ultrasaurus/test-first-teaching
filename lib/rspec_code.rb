@@ -44,7 +44,21 @@ end
 
    def process_output(out)
     if out[:stdout]
-      out[:rspec_results] = JSON.parse(out[:stdout])
+      lines = out[:stdout].split("\n")
+      json = nil
+      lines.select! do |line|
+        if line =~ /^{"examples":/
+          if json
+            $stderr.puts "skipping json: #{line}"  #todo: handle this better
+          else
+            out[:rspec_results] = JSON.parse(line)
+          end
+          false
+        else
+          true
+        end
+      end
+      out[:stdout] = lines.join("\n") + "\n"  # todo: only add \n if there was one before
     end
   # to unhide exceptions that rake --trace hides the class of
   # rescue Exception => e

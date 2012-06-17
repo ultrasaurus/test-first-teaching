@@ -66,3 +66,26 @@ answer.delete(:stdout)
 assert { answer == {:error => {:class => "RuntimeError", :message => "oops",
   :line => 0  # todo: fix line number
   }}}
+
+# splits out stdout, stderr, and test results
+spec = <<-RUBY
+  describe 'add' do
+    it 'adds' do
+      add(2,3).should == 5
+    end
+  end
+RUBY
+source = <<-RUBY
+  def add(x, y)
+    puts "x is \#{x}"
+    $stderr.puts "y is \#{y}"
+    x + y
+  end
+RUBY
+
+answer = run_rspec(source, spec)
+assert { answer[:stdout] == "x is 2\n" }
+rspec_results = answer[:rspec_results]
+assert { rspec_results["summary"] }
+assert { rspec_results["summary"]["example_count"] == 1 }
+assert { rspec_results["summary"]["failure_count"] == 0 }
