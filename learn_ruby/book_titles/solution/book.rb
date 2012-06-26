@@ -5,7 +5,7 @@ class Book
     words = new_title.split(" ")
     words = [words[0].capitalize] +
       words[1..-1].map do |word|
-        little_words = %w{a an and the in}
+        little_words = %w{a an and the in of}
         if little_words.include? word
           word
         else
