@@ -84,6 +84,8 @@ class Course
     copy_files curriculum_dir, repo_dir, 0
     copy_files assets_dir, "#{repo_dir}/assets"
 
+    write_gemfile repo_dir
+
     @lab_names.each_with_index do |lab_name, i|
       num = "%02d" % i
       numbered = "#{num}_#{lab_name}"
@@ -173,6 +175,13 @@ class Course
     end
   end
 
+  def write_gemfile repo_dir
+    gemfile_path = "#{repo_dir}/Gemfile"
+    File.write(gemfile_path, <<-RUBY)
+gem "rake"
+gem "rspec", ">=2.0"
+    RUBY
+  end
 
   class Page < Erector::Widget
     # todo: use proper Erector Page object

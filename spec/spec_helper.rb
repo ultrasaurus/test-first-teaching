@@ -1,3 +1,4 @@
+require 'rspec'
 require 'spork'
 
 Spork.prefork do

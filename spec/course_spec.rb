@@ -127,6 +127,12 @@ describe Course do
       deny { File.exists? "#{lab_dir}/hello.txt" }
     end
 
+    it "makes a nice Gemfile" do
+      gemfile = "#{@tmpdir}/Gemfile"
+      assert {File.exist? gemfile}
+      assert {File.read(gemfile).include?("gem \"rake\"\n")}
+    end
+
   end
 
 end
