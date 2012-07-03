@@ -10,7 +10,7 @@ gem "sinatra"
 gem "rdiscount"
 gem "sass", '~> 3.2.0.alpha.7'
 
-gem "rerun" # used by 'rake run'
+gem "rerun", ">=0.7.0.pre" # used by 'rake run'
 gem "fakeweb" # used for one of the exercises
 # gem "fakefs" # used by the code server
 gem "files"
