@@ -46,6 +46,10 @@ class Home < Page
         a "Learn JavaScript", :href => '/learn_javascript'
         text ' page.'
       end
+      p {
+        text 'To contribute to this project (or look for solutions), check out our '
+        a 'GitHub Repository', :href => "http://github.com/ultrasaurus/test-first-teaching"
+      }
       p do
         text "Want to try more flavors of test-guided learning? Check out..."
         ul {
