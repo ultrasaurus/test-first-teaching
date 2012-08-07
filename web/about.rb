@@ -78,9 +78,12 @@ class About < Page
           end
           text '.'
         end
+        p do
+          text "To contribute lessons (or see solutions), check out the "
+          a "test-first-teaching", href: "http://github.com/ultrasaurus/test-first-teaching"
+          text " github repo."
+        end
       end),
-
-
     ]
   end
 end

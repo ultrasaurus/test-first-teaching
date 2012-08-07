@@ -40,6 +40,12 @@ Once you get the materials, open `learn_#{lang.downcase}/index.html` in your fav
           end
           text '.'
         end
+        p do
+          text "To contribute lessons (or see solutions), check out the "
+          a "test-first-teaching", href: "http://github.com/ultrasaurus/test-first-teaching"
+          text " github repo."
+        end
+
       end),
 
 

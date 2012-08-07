@@ -12,7 +12,9 @@ function resizePanels() {
   var panelCount = allPanels.size();
   var unitWidth = Math.floor(panels.innerWidth() / panelCount) - 20;
   var unitHeight = $(window).innerHeight() -
-    $('.controls').outerHeight() - 20;
+    $('.disclaimer').outerHeight() -
+    $('.controls').outerHeight() -
+    20;
 
   allPanels.each(function(i) {
     $(this).width(unitWidth);
@@ -104,6 +106,14 @@ class Live < Erector::Widgets::Page
 
   .main {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .disclaimer {
+    border-bottom: 2px solid black;
+    font-size: 14px;
+    text-align: center;
+    padding: 2px;
+    background-color: white;
   }
 
   .controls {
@@ -258,6 +268,18 @@ class Live < Erector::Widgets::Page
 
   def body_content
     div.main {
+      div.disclaimer {
+        text "This is an "
+        b("experimental")
+        text " live version of Test-First Teaching. For the official downloadable version, see "
+        a "testfirst.org", href: "/"
+        text ", or clone the "
+        a "learn_ruby", href: "http://github.com/alexch/learn_ruby"
+        text " or "
+        a "learn_javascript", href: "http://github.com/alexch/learn_javascript"
+        text " github repos."
+
+      }
       div.controls {
         input :type => "button", :value => ">> Run >>", :id => 'run'
         input :type => "button", :value => "Notes", :id => 'toggle_notes' if @notes

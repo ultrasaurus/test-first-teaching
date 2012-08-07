@@ -48,7 +48,8 @@ class Home < Page
       end
       p {
         text 'To contribute to this project (or look for solutions), check out our '
-        a 'GitHub Repository', :href => "http://github.com/ultrasaurus/test-first-teaching"
+        a 'test-first-teaching GitHub Repository', :href => "http://github.com/ultrasaurus/test-first-teaching"
+        text "."
       }
       p do
         text "Want to try more flavors of test-guided learning? Check out..."
