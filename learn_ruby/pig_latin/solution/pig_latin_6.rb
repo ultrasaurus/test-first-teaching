@@ -1,10 +1,14 @@
-# author: Alex
-
-def translate phrase
-  phrase.split.map do |word|
-    word =~ /^(qu|[^aeiouy]*)(.*)$/
-    first_phoneme = $1  # $1 and $2 get filled with the parenthesized chunks
-    rest_of_word = $2   # from the most recent regular expression match
-    "#{rest_of_word}#{first_phoneme}ay"
+def translate(s)
+  s.split.map do |word|
+    v = first_vowel(word)
+    word.slice(v..-1) + word[0,v] + "ay"
   end.join(" ")
+end
+
+def first_vowel(word)
+  if word =~ /^qu/
+    2
+  else
+    word.gsub(/[aeiou].*$/, '').size
+  end
 end

@@ -1,14 +1,12 @@
-  def translate(s)
-    s.split.map do |word|
-      v = first_vowel(word)
-      word.slice(v..-1) + word[0,v] + "ay"
-    end.join(" ")
-  end
-  
-  def first_vowel(word)
-    if word =~ /^qu/
-      2
-    else
-      word.gsub(/[aeiou].*$/, '').size
-    end
-  end
+# author: Alex
+
+def translate phrase
+  phrase.split.map do |word|
+    word =~ /^([^aeiouyq]*(qu)?)(.*)$/
+    # $1, $2, etc. get filled with the parenthesized chunks
+    # from the most recent regular expression match
+    first_phoneme = $1
+    rest_of_word = $3
+    "#{rest_of_word}#{first_phoneme}ay"
+  end.join(" ")
+end
