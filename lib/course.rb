@@ -178,6 +178,7 @@ class Course
   def write_gemfile repo_dir
     gemfile_path = "#{repo_dir}/Gemfile"
     File.write(gemfile_path, <<-RUBY)
+source :rubygems
 gem "rake"
 gem "rspec", ">=2.0"
     RUBY
