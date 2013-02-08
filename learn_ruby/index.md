@@ -69,6 +69,8 @@ Then ask Google (seriously!). If there's an error, try copying the error string 
 
 You can also find help at the [TestFirst.org](http://testfirst.org) site or the [Test-First Teaching mailing list](http://groups.google.com/group/test-first-teaching).
 
+And many related lectures, notes and videos are at <http://CodeLikeThis.com>.
+
 Remember, if you post a technical question online, you should
 
 1. Include version numbers:
@@ -78,6 +80,16 @@ Remember, if you post a technical question online, you should
 
 2. Note where you have already looked for an answer
 3. If you can, include code snippets that reproduce the problem in isolation
+
+# Solutions and Submissions
+
+This Github repo (`learn_ruby`) is *generated* from a different Github repo, <http://github.com/ultrasaurus/test-first-teaching>.
+
+If you want to see how other students solved the problem, go to that repo and click around. (I'm not providing a direct link because I don't want it to be too easy to cheat!)
+
+If you want to submit a patch or a solution, please fork the [Test-First Teaching](http://github.com/ultrasaurus/test-first-teaching) repo and submit a Pull Request from there.
+
+Also,
 
 # Resources
 
