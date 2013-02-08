@@ -65,7 +65,7 @@ task :course => :test do
 
   something_failed = (not failed_labs.empty?)
   if something_failed
-    puts "#{failed_labs.size} of #{labs.size} failed labs"
+    puts "#{failed_labs.size} of #{lab_dirs.size} failed labs"
     puts failed_labs.map{|c| "\t#{c}"}.join("\n")
   end
 

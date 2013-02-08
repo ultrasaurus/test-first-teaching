@@ -1,4 +1,4 @@
-source :gemcutter
+source :rubygems
 
 #  gem "rspec-core", :path => "../rspec-core"
 gem "rspec-core", :git => "git://github.com/alexch/rspec-core.git"

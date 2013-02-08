@@ -297,8 +297,12 @@ class Live < Erector::Widgets::Page
       labs_panel
 
       widget Panels do
-        panel "Tests", :code => File.read(@course.lab_dir(@lab_name) + "/#{@lab_name}_spec.rb").
+        spec_file_path = @course.lab_dir(@lab_name) + "/#{@lab_name}_spec.rb"
+        panel "Tests", :code => File.read(spec_file_path).
           gsub(/require [\"\'].*[\"\'].*\n/, '')  # todo: allow some requires
+        panel "Tests" do
+          widget RspecFile.new(:file => spec_file_path)
+        end
         panel "Source", :code => ""
         panel "Results" do
           h2 "Results"
