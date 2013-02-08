@@ -18,7 +18,8 @@ class RPNCalculator
   end
 
   def minus
-    stack.push(pop - pop)
+    temp = pop
+    stack.push(pop - temp)
   end
 
   def times
@@ -26,7 +27,8 @@ class RPNCalculator
   end
 
   def divide
-    stack.push(pop / pop)
+    temp = pop
+    stack.push(pop / temp)
   end
 
   def pop
