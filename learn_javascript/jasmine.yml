@@ -2,9 +2,9 @@ src_dir: .
 
 # all files, including specs, are included as src_files
 src_files:
-    - **/*.js
-    - ../helpers/**/*.js
-    - helpers/**/*.js
+    - '**/*.js'
+    - '../helpers/**/*.js'
+    - 'helpers/**/*.js'
 
 # in order to remove duplicates, specify a nonexistent dir for specs
 spec_dir: nada

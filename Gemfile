@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 #  gem "rspec-core", :path => "../rspec-core"
 gem "rspec-core", :git => "git://github.com/alexch/rspec-core.git"
@@ -14,6 +14,8 @@ gem "rerun", ">=0.7.0.pre" # used by 'rake run'
 gem "fakeweb" # used for one of the exercises
 # gem "fakefs" # used by the code server
 gem "files"
+
+gem "jasmine"
 
 # used by the running server
 gem "thin"

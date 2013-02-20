@@ -101,6 +101,10 @@ class Course
         notes = RspecFile.new(:file => rspec_file)
         html = notes.to_pretty
         write_page "#{target_dir}/index.html", html, lab_name
+      elsif File.exist?("#{source_dir}/index.md")
+        # todo: test
+        # don't overwrite index.html that was generated from index.md
+        # skip
       else
         # todo: test
         write_page "#{target_dir}/index.html", "", lab_name
@@ -177,11 +181,16 @@ class Course
 
   def write_gemfile repo_dir
     gemfile_path = "#{repo_dir}/Gemfile"
-    File.write(gemfile_path, <<-RUBY)
-source :rubygems
+    contents = <<-RUBY
+source "https://rubygems.org"
+
 gem "rake"
 gem "rspec", ">=2.0"
     RUBY
+    if course_name == "learn_javascript" #todo: use polymorphism or something
+      contents += "gem \"jasmine\"\n"
+    end
+    File.write(gemfile_path, contents)
   end
 
   class Page < Erector::Widget
