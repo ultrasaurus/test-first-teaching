@@ -1,4 +1,3 @@
-
 def echo(s)
   s
 end
@@ -12,7 +11,7 @@ def repeat(s, times = 2)
 end
 
 def start_of_word(s, n)
-  s[0...n]
+  s[0...n-1]
 end
 
 def first_word(s)
