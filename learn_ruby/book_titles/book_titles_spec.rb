@@ -10,6 +10,7 @@
 # # Notes
 #
 # Book Titles in English obey some strange capitalization rules. For example, "and" is lowercase in "War and Peace". This test attempts to make sense of some of those rules.
+# For more, see http://grammar.yourdictionary.com/capitalization/rules-for-capitalization-in-titles.html
 #
 
 require 'book'
