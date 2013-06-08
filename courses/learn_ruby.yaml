@@ -15,9 +15,9 @@
 
 # solutions are now objects
     - hello_friend
-    - temperature_object
     - book_titles
     - timer
+    - temperature_object
     - dictionary
     - rpn_calculator
     - xml_document

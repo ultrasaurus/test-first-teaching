@@ -22,14 +22,17 @@ class Learn < Page
   def sections
     [
       new_section(:name => "Install", :text => <<-MARKDOWN),
-There are two ways to get the Learning #{lang} materials. Choose one:
+There are two ways to get the Learning #{lang} materials.
 
-1. Download and unpack this tarball
-> [learn_#{lang.downcase}.tgz](download/learn_#{lang.downcase}.tgz)
-2. Use git to clone the repository
+If you have [git](http://git-scm.com/) installed, then you want to **use git to clone the repository**:
+
 > <span style='white-space:nowrap'>`git clone git://github.com/alexch/learn_#{lang.downcase}.git`</span>
 
-Once you get the materials, open `learn_#{lang.downcase}/index.html` in your favorite web browser. Further instructions await therein.
+If you don't have [git](http://git-scm.com/), you may download and unpack this tarball. (But it's better to use git if you can!)
+
+> [learn_#{lang.downcase}.tgz](download/learn_#{lang.downcase}.tgz)
+
+Once you get the materials, **open `learn_#{lang.downcase}/index.html`** in your favorite web browser. Further instructions await therein.
   MARKDOWN
 
       new_section(:name => "Join the Conversation", :text => lambda do
