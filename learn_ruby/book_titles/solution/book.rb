@@ -1,4 +1,4 @@
-require "../03_simon_says/simon_says"
+require "../../simon_says/solution/simon_says"
 
 class Book
   attr_accessor :title
