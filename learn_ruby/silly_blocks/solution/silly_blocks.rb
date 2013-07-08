@@ -1,14 +1,11 @@
 def reverser
-  yield.split(' ').map(&:reverse).join(' ')
+  yield.gsub(/\w+/) { |w| w.each_char.to_a.reverse.join }
 end
 
-def adder num = 1
-  yield + num
+def adder(x = 1)
+  yield + x
 end
 
-def repeater num = 1
-  num.times do
-    yield
-  end
+def repeater(x = 1)
+  x.times { yield }
 end
-

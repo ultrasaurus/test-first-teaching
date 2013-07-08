@@ -1,19 +1,29 @@
-def add(x, y)
+def add(x,y)
   x + y
 end
 
-def subtract(x, y)
+def subtract(x,y)
   x - y
 end
 
-def sum(numbers)
-  numbers.inject(0){|total, number| total+number}
+def sum(a)
+  sum = 0 
+  a.each {|n| sum += n }
+  sum
 end
 
-def factorial x
-  if x <= 1
-    1
-  else
-    x * factorial(x-1)
+def multiply(x,y)
+  x * y
+end
+
+def power(x,m)
+  x ** m
+end
+
+def factorial(x)
+  result = 1 
+  x.times do |n|
+    result *= (n + 1)    
   end
+  result
 end

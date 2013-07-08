@@ -1,12 +1,7 @@
-def measure count=1
-  total_time = 0
-  count.times do
-    start_time = Time.now
+require "time"
 
-    yield
-
-    end_time = Time.now
-    total_time += end_time - start_time
-  end
-  total_time / count
-end
+def measure(n = 1)
+  x = Time::now
+  n.times { yield }
+  (Time::now - x) / n
+end 

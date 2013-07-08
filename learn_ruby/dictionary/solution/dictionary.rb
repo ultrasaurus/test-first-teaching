@@ -1,38 +1,47 @@
 class Dictionary
-  def entries
-    @entries ||= {}
+  attr_accessor :entries
+
+  def initialize
+    @entries = {}
   end
 
-  def add new_entry
-    case new_entry
-      when Hash
-        entries.merge!(new_entry)
-      when String
-        entries[new_entry] = nil
+  def add(x)
+    if x.class == Hash
+      @entries.merge!(x)
+    else
+      @entries.merge!({x => nil})
     end
   end
-
+  
   def keywords
     @entries.keys.sort
   end
 
-  def include? word
-    entries.keys.include? word
+  def include?(x)
+    @entries.has_key?(x)
   end
 
-  def find partial_word
-    result = {}
-    entries.each_pair do |key, definition|
-      if key =~ /^#{partial_word}/
-        result[key] = definition
+  def find(x)
+    returnable = {} 
+    y = Regexp.new(x)
+    @entries.each do |k,v| 
+      if (k =~ y) == 0
+        returnable.merge!({ k => v })
       end
     end
-    result
+      returnable
   end
 
   def printable
-    entries.map do |key_val|
-      %Q{[#{key_val.first}] "#{key_val.last}"}
-    end.sort.join("\n")
+    printable = ""
+    last_key = ""
+    @entries.sort.each do |k,v| 
+      last_key = k
+    end
+    @entries.sort.each do |k,v| 
+      printable += ("["+k.to_s+'] "'+v+'"')
+      printable += "\n" unless k == last_key 
+    end
+    printable
   end
 end

@@ -1,21 +1,21 @@
-# author: Alex Chaffee
-
-def translate phrase
-  phrase.split.map do |word|
-
-    # we are using "/x" to document this big fat regex
-    word =~ /^     # beginning of string
-    (
-      [^aeiouyq]*  # any number of consonants in a row
-      (qu)?        # or maybe a 'qu'
-    )
-    (.*)           # the rest of the string
-    $/x            # end of string
-
-    # $1, $2, etc. get filled with the parenthesized chunks
-    # from the most recent regular expression match
-    first_phoneme = $1
-    rest_of_word = $3
-    "#{rest_of_word}#{first_phoneme}ay"
-  end.join(" ")
+def translate(x)
+  x.gsub!(/\w+/) do |w| 
+    if w[/^[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]/]
+      if w[/^[B-DF-HJ-NPR-TV-Z]?[b-df-hj-npr-tv-z]*(qu|Qu)/]
+        c_size = w[/^[B-DF-HJ-NPR-TV-Z]?[b-df-hj-npr-tv-z]*(qu|Qu)/].length
+      else
+        c_size = w[/^[B-DF-HJ-NPR-TV-Z]?[b-df-hj-npr-tv-z]*/].length
+      end
+      w[c_size..-1]+w[0..c_size-1]
+    else 
+      w
+    end 
+  end
+  x.gsub(/\w+/) do |w|
+    if w[/[A-Z]/]
+      w.downcase!
+      w.gsub!(/^\w/) {|c| c.upcase}
+    end
+    w+"ay"
+  end
 end
