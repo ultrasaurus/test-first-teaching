@@ -1,68 +1,71 @@
 class RPNCalculator
-  attr_accessor :stack
+  attr_accessor :calculator
+  attr_accessor :value
 
   def initialize
-    @stack = [0]
+    @calculator = []
   end
 
-  def value
-    return stack[stack.length - 1]
+  def empty?
+    @calculator.length < 2
   end
 
-  def push(value)
-    stack.push(value.to_f)
+  def push(x)
+    @calculator.push(x)
   end
 
   def plus
-    stack.push(pop + pop)
+    raise "calculator is empty" unless !empty?
+    @value = @calculator.pop
+    @calculator[-1] += @value
+    @value = @calculator[-1]
   end
 
   def minus
-    temp = pop
-    stack.push(pop - temp)
-  end
-
-  def times
-    stack.push(pop * pop)
+    raise "calculator is empty" unless !empty?
+    @value = @calculator.pop
+    @calculator[-1] -= @value
+    @value = @calculator[-1]
   end
 
   def divide
-    temp = pop
-    stack.push(pop / temp)
+    raise "calculator is empty" unless !empty?
+    @value = @calculator.pop.to_f
+    @calculator[-1] = @calculator[-1].to_f / @value
+    @value = @calculator[-1]
   end
 
-  def pop
-    value = stack.pop
-    raise "calculator is empty" if value.nil?
-    return value
+  def times
+    raise "calculator is empty" unless !empty?
+    @value = @calculator.pop.to_f
+    @calculator[-1] = @calculator[-1].to_f * @value
+    @value = @calculator[-1]
   end
 
-  def tokens s
-    s.split.map do |t|
-      case t
-      when '+', '-', '*', '/'
-        t.to_sym
-      else
-        t.to_f
+  def tokens(x)
+    token_array = []
+    x.split.each do |z| 
+      if z[/\d+/] != nil
+        token_array.push(z.to_i)
+      elsif z[/(\+|\-|\*|\/)/] != nil
+        token_array.push(z.to_sym)  
       end
     end
+    token_array
   end
 
-  def evaluate s
-    tokens(s).each do |t|
-      case t
-      when :+
-        plus
-      when :-
-        minus
-      when :*
-        times
-      when :/
-        divide
-      else
-        push t
+  def evaluate(x)
+    tokens(x).each do |s| 
+      if s.is_a? Integer
+        push(s)
+      elsif s.is_a? Symbol
+        plus unless s != :+
+        minus unless s != :-
+        times unless s != :*
+        divide unless s != :/
       end
     end
-    value
+    @value
   end
+
 end

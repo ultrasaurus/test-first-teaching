@@ -1,31 +1,59 @@
 class XmlDocument
-  def initialize(indent = false)
-    @indent = indent
-    @indent_level = 0
+  attr_accessor :indent
+  attr_accessor :depth
+
+  def initialize(x = false)
+    @indent = x
+    @depth = 0
   end
 
-  def method_missing(method_name, *args, &block)
-    attributes = args[0] || {}
-    s = ""
-    s << ("  " * @indent_level) if @indent
-    s << "<#{method_name}"
-    attributes.each_pair do |key, value|
-      s << " #{key}='#{value}'"
+  def hello(x = nil, s = "hello", &b) 
+    @depth += 1
+    spaces = ""
+    (@depth-1).times{spaces += "  "}
+    if b
+      return "<#{s}>#{b.call}</#{s}>" unless @indent
+      return "<#{s}>\n#{spaces}  #{b.call}#{spaces}</#{s}>\n" 
     end
-    if block
-      s << ">"
-      s << "\n" if @indent
-      @indent_level += 1
-      s << yield
-      @indent_level -= 1
-      s << ("  " * @indent_level) if @indent
-      s << "</#{method_name}>"
-      s << "\n" if @indent
+    return "<#{s}/>" unless (x != nil)
+    x.each do |k,v|
+      return "<#{s} #{k}='#{v}'/>" unless @indent
+      return "<#{s} #{k}='#{v}'/>\n"
+    end
+  end
 
+  def goodbye(x = nil, &b)
+    if b
+      hello(x, "goodbye") do
+        b.call
+      end
     else
-      s << "/>"
-      s << "\n" if @indent
+      hello(x, "goodbye")
     end
-    s
   end
+
+  def come_back(x = nil, &b)
+    if b
+      hello(x, "come_back") do
+        b.call
+      end
+    else
+      hello(x, "come_back")
+    end
+  end
+
+  def ok_fine(x = nil, &b)
+    if b
+      hello(x, "ok_fine") do
+        b.call
+      end
+    else
+      hello(x, "ok_fine")
+    end
+  end
+
+  def send(tag_name)
+    "<#{tag_name}/>"
+  end
+
 end

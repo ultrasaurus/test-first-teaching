@@ -1,18 +1,19 @@
-
 class Array
   def sum
     result = 0
-    self.each do |num|
-      result += num
+    self.each do |x| 
+      result += x
     end
     result
   end
 
   def square
-    map{|n| n*n}
+    return self unless !empty?
+    self.map { |x| x ** 2 }
   end
 
   def square!
-    map!{|n| n*n}
+    return self unless !empty?
+    self.map! { |x| x ** 2 }
   end
 end
