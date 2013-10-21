@@ -19,7 +19,7 @@ require "temperature"
 
 describe "temperature conversion functions" do
 
-  describe "#ftoc" do
+  describe "the ftoc function" do
 
     it "converts freezing temperature" do
       ftoc(32).should == 0
@@ -39,7 +39,7 @@ describe "temperature conversion functions" do
 
   end
 
-  describe "#ctof" do
+  describe "the ctof function" do
 
     it "converts freezing temperature" do
       ctof(0).should == 32
