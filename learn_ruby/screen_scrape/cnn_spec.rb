@@ -20,7 +20,7 @@ describe CNN do
     @news.source_data.should == @html
   end
 
-  describe "#latest_news" do
+  describe "latest_news" do
     it "should find the first list item after 'Latest news' heading" do
       FakeWeb.register_uri(:get, "http://www.test1.com", :body => "<h4>Latest news</h4><ul><li><a href=\"http://something.com\">Story Name</a>")
       @news.uri = "http://www.test1.com"

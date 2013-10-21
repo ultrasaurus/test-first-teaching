@@ -150,7 +150,7 @@ end
 
 require "#{File.dirname(__FILE__)}/pig_latin"
 
-describe "#translate" do
+describe "translate" do
   include PigLatinTranslator
 
   it "should translate a simple word" do

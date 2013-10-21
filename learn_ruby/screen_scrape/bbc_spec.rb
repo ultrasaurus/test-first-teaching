@@ -24,7 +24,7 @@ describe BBC do
     end
   end
 
-  describe "#top_stories" do
+  describe "top_stories" do
     it "should find the first list item after 'Latest news' heading" do
       FakeWeb.register_uri(:get, "http://www.test1.com", :body => "<h4>Latest news</h4><ul><li><a href=\"http://something.com\">Story Name</a>")
       @news.uri = "http://www.test1.com"

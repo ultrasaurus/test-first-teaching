@@ -77,7 +77,7 @@ end
 # once the above tests pass,
 # write tests and code for the following:
 
-describe "#multiply" do
+describe "multiply" do
 
   it "multiplies two numbers"
 
@@ -85,12 +85,12 @@ describe "#multiply" do
 
 end
 
-describe "#power" do
+describe "power" do
   it "raises one number to the power of another number"
 end
 
 # http://en.wikipedia.org/wiki/Factorial
-describe "#factorial" do
+describe "factorial" do
   it "computes the factorial of 0"
   it "computes the factorial of 1"
   it "computes the factorial of 2"
