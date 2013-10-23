@@ -21,7 +21,7 @@
           	# the matching substrings to the variables '$1' and '$2' respectively
             $2+$1+"ay"
 
-          when /([^aeiouy]+)(.*)/
+          when /^([^aeiouy]+)(.*)/
             # test for leading consonants (non vowels - e.g. 'stupid') 
             # also note the use of parenthesis as in the previous case
             # '$1' variable here will capture the leading consonants in a word
