@@ -18,7 +18,7 @@ describe Dictionary do
   end
 
   it 'can add whole entries with keyword and definition' do
-    @d.add('fish' => 'aquatic animal')
+    @d.add('fish', 'aquatic animal')
     @d.entries.should == {'fish' => 'aquatic animal'}
     @d.keywords.should == ['fish']
   end
@@ -56,28 +56,28 @@ describe Dictionary do
   end
 
   it "finds an entry" do
-    @d.add('fish' => 'aquatic animal')
+    @d.add('fish', 'aquatic animal')
     @d.find('fish').should == {'fish' => 'aquatic animal'}
   end
 
   it 'finds multiple matches from a prefix and returns the entire entry (keyword + definition)' do
-    @d.add('fish' => 'aquatic animal')
-    @d.add('fiend' => 'wicked person')
-    @d.add('great' => 'remarkable')
+    @d.add('fish', 'aquatic animal')
+    @d.add('fiend', 'wicked person')
+    @d.add('great', 'remarkable')
     @d.find('fi').should == {'fish' => 'aquatic animal', 'fiend' => 'wicked person'}
   end
 
   it 'lists keywords alphabetically' do
-    @d.add('zebra' => 'African land animal with stripes')
-    @d.add('fish' => 'aquatic animal')
-    @d.add('apple' => 'fruit')
+    @d.add('zebra', 'African land animal with stripes')
+    @d.add('fish', 'aquatic animal')
+    @d.add('apple', 'fruit')
     @d.keywords.should == %w(apple fish zebra)
   end
 
   it 'can produce printable output like so: [keyword] "definition"' do
-    @d.add('zebra' => 'African land animal with stripes')
-    @d.add('fish' => 'aquatic animal')
-    @d.add('apple' => 'fruit')
+    @d.add('zebra', 'African land animal with stripes')
+    @d.add('fish', 'aquatic animal')
+    @d.add('apple', 'fruit')
     @d.printable.should == %Q{[apple] "fruit"\n[fish] "aquatic animal"\n[zebra] "African land animal with stripes"}
   end
 end

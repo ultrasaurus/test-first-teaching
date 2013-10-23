@@ -3,13 +3,8 @@ class Dictionary
     @entries ||= {}
   end
 
-  def add new_entry
-    case new_entry
-      when Hash
-        entries.merge!(new_entry)
-      when String
-        entries[new_entry] = nil
-    end
+  def add name, value = nil
+    entries[name] = value
   end
 
   def keywords
