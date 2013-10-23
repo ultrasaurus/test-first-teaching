@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 
 #  gem "rspec-core", :path => "../rspec-core"
-gem "rspec-core", :git => "git://github.com/alexch/rspec-core.git"
 
-gem "rspec", "~>2.9.0"
-gem "erector", ">=0.9.0.pre"
+gem "ZenTest", "~>4.9.4"
+gem "rspec", "~>2.10"
+gem "erector", ">=0.9"
 gem "treetop"
 gem "sinatra"
 gem "rdiscount"
