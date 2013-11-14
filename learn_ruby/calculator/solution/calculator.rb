@@ -10,6 +10,14 @@ def sum(numbers)
   numbers.inject(0){|total, number| total+number}
 end
 
+def multiply(*nums)
+  nums.inject(1) { |result, num| result * num }
+end
+
+def power(x, y)
+  (x ** y)
+end
+
 def factorial x
   if x <= 1
     1
