@@ -185,7 +185,7 @@ class Course
 source "https://rubygems.org"
 
 gem "rake"
-gem "rspec", ">=2.0"
+gem "rspec", "~>2.10"
     RUBY
     if course_name == "learn_javascript" #todo: use polymorphism or something
       contents += "gem \"jasmine\"\n"
