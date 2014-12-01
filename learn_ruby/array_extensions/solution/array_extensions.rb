@@ -1,18 +1,24 @@
+# Solution to problem 14_array_extensions from learn_ruby
+# Author: Coy Sanders (coymeetsworld)
+# Date: 11/14/14
 
 class Array
-  def sum
-    result = 0
-    self.each do |num|
-      result += num
-    end
-    result
-  end
 
-  def square
-    map{|n| n*n}
-  end
+	def sum
+		sum = 0
+		self.each do |val|
+			sum += val
+		end
+		sum
+	end	
 
-  def square!
-    map!{|n| n*n}
-  end
+	def square
+		self.map { |val| val*=val }
+	end
+
+	def square!
+		self.map! { |val| val*=val }
+	end
+
 end
+

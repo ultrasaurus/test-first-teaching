@@ -1,21 +1,39 @@
-# author: Alex Chaffee
+# Solution to problem 04_pig_latin from learn_ruby
+# Author: Coy Sanders (coymeetsworld)
+# Date: 11/08/14
 
-def translate phrase
-  phrase.split.map do |word|
+def translate(str)
 
-    # we are using "/x" to document this big fat regex
-    word =~ /^     # beginning of string
-    (
-      [^aeiouyq]*  # any number of consonants in a row
-      (qu)?        # or maybe a 'qu'
-    )
-    (.*)           # the rest of the string
-    $/x            # end of string
+	words = str.split
+	words.each do |word|
 
-    # $1, $2, etc. get filled with the parenthesized chunks
-    # from the most recent regular expression match
-    first_phoneme = $1
-    rest_of_word = $3
-    "#{rest_of_word}#{first_phoneme}ay"
-  end.join(" ")
+		if word[0] =~ /[A-Z]/
+			capped = true
+			word.downcase!
+		end
+
+		if word[0] =~ /[aeiou]/
+			word.concat("ay")
+		elsif word =~ /qu/
+			arr = word.partition(/qu/)	
+
+			#square => s qu are
+			#quail => qu ail
+
+			if (arr[0] != 'qu')
+				word.replace(arr[2].concat(arr[0] + arr[1] + "ay"))
+			else
+				word.replace(arr[2].concat(arr[1] + "ay"))
+			end
+		else 
+			arr = word.partition(/[aeiou]/)
+			word.replace(arr[1].concat(arr[2] + arr[0] + "ay"))
+		end
+
+		if capped
+			word.capitalize!
+		end
+	end
+
+	words.join(' ')
 end
