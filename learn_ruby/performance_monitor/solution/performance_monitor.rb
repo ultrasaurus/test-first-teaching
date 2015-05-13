@@ -1,12 +1,21 @@
-def measure count=1
-  total_time = 0
-  count.times do
-    start_time = Time.now
+# Solution to problem 06_performance_monitor from learn_ruby
+# Author: Coy Sanders (coymeetsworld)
+# Date: 11/09/14
 
-    yield
+def measure(iterations=1)
+	begin_time = Time.now	
 
-    end_time = Time.now
-    total_time += end_time - start_time
-  end
-  total_time / count
+	ret_val = nil	
+
+	iterations.times do
+		ret_val = yield
+	end
+		
+	if ret_val.nil?
+		ret_val = 0
+	end
+
+	end_time = Time.now
+	(end_time - begin_time) / iterations
+	
 end

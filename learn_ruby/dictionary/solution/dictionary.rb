@@ -1,33 +1,60 @@
+# Solution to problem 11_dictionary from learn_ruby
+# Author: Coy Sanders (coymeetsworld)
+# Date: 11/12/14
+
 class Dictionary
-  def entries
-    @entries ||= {}
-  end
+	attr_accessor :entries
+	
+	def initialize
+		@entries = {}
+	end
 
-  def add name, value = nil
-    entries[name] = value
-  end
+	def add(entry)
 
-  def keywords
-    @entries.keys.sort
-  end
+		if entry.kind_of?(Hash)
+			entry.each do |key, val|
+				@entries[key] = val
+			end
+		elsif entry.kind_of?(String)
+			# Adding the word, but not the definition
+			@entries[entry] = nil
+		end
 
-  def include? word
-    entries.keys.include? word
-  end
+	end
 
-  def find partial_word
-    result = {}
-    entries.each_pair do |key, definition|
-      if key =~ /^#{partial_word}/
-        result[key] = definition
-      end
-    end
-    result
-  end
+	def keywords
+		keywords = []
+		@entries.each_key do |key|
+			keywords.push(key)
+		end
+		keywords.sort
+	end
 
-  def printable
-    entries.map do |key_val|
-      %Q{[#{key_val.first}] "#{key_val.last}"}
-    end.sort.join("\n")
-  end
+	def include?(entry)
+		@entries.each_key do |key|
+			if (key == entry)
+				return true
+			end
+		end
+		false
+	end
+
+	def find(entry)
+		matching_records = {}
+		@entries.each_key do |key|
+			if (key =~ /^#{entry}/)
+				matching_records[key] = @entries[key]
+			end
+		end
+		return matching_records
+	end
+
+	def printable
+		printable_str = ''
+		@entries.sort.map do |key, value|
+			printable_str += "[#{key}] \"#{@entries[key]}\"\n"
+		end
+		printable_str.chop
+	end
 end
+

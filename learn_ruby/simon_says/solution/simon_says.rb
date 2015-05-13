@@ -1,33 +1,35 @@
+# Solution to problem 03_simon_says from learn_ruby
+# Author: Coy Sanders (coymeetsworld)
+# Date: 11/08/14
 
-def echo(s)
-  s
+def echo(word)
+	word
 end
 
-def shout(s)
-  s.upcase
+def shout(word)
+	word.upcase
 end
 
-def repeat(s, times = 2)
-  ([s] * times).join(" ")
+def repeat(word, number=2)
+	phrase = ''
+	number.times do
+		phrase += "#{word} "
+	end
+	phrase.strip
 end
 
-def start_of_word(s, n)
-  s[0...n]
+def start_of_word(word, num_letters=1)
+	word[0..num_letters-1]
 end
 
-def first_word(s)
-  s.split(" ").first
+def first_word(word)
+	words = word.split
+	words[0]
 end
 
-def titleize(s)
-  words = s.split.map do |word|
-    if %w(the and over).include?(word)
-      word
-    else
-      word.capitalize
-    end
-  end
-  words.first.capitalize!
-  words.join(" ")
+def titleize(phrase)
+	exclusion_array = ["and", "or", "the", "over", "to", "the", "a", "but"]
+	phrase = phrase.split.map! { |word| exclusion_array.include?(word) ? word : word.capitalize }.join(' ')
+	phrase.sub!(/./) {|first_letter| first_letter.upcase }
+	phrase
 end
-
