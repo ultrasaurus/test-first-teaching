@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby "2.1.2"
 #  gem "rspec-core", :path => "../rspec-core"
 
-gem "ZenTest", "~>4.9.4"
+# gem "ZenTest", "~>4.9.4"
 gem "rspec", "~>2.10"
 gem "erector", ">=0.9"
 gem "treetop"

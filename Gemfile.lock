@@ -108,7 +108,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZenTest (~> 4.9.4)
   bourbon
   erector (>= 0.9)
   fakeweb
