@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-
+ruby "2.1.2"
 #  gem "rspec-core", :path => "../rspec-core"
 
 gem "ZenTest", "~>4.9.4"
@@ -23,10 +23,11 @@ gem "thin"
 # gem "spork"
 
 group :development do
-  gem "rake"
+  gem "rake", "~> 10.4.2"
   gem "wrong", ">=0.6.2"
   gem "bourbon"  # do 'cd web/css; bourbon update' to get new bourbon
   gem "spork"
+  gem "puma"
 end
 
 group :test do

@@ -2,3 +2,4 @@ pkg
 .bundle
 .idea
 .sass-cache
+.env
