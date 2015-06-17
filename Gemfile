@@ -18,16 +18,16 @@ gem "files"
 gem "jasmine"
 
 # used by the running server
-gem "thin"
-# gem "foreman"
+# gem "thin"
+gem "puma"
 # gem "spork"
 
 group :development do
   gem "rake", "~> 10.4.2"
   gem "wrong", ">=0.6.2"
   gem "bourbon"  # do 'cd web/css; bourbon update' to get new bourbon
+  gem "foreman"
   gem "spork"
-  gem "puma"
 end
 
 group :test do
