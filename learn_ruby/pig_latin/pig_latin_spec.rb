@@ -64,6 +64,16 @@ describe "translate" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"
   end
+  
+  it "capitalizes the words that were intitially capitalized" do
+    s = translate("The quick Brown Fox")
+    expect(s).to eq("Ethay ickquay Ownbray Oxfay")
+  end
+
+  it "retains the punctuation form the original phrase" do
+    s = translate("Mount Everest, is the highest peak!")
+    expect(s).to eq("Ountmay Erestevay, isay ethay ighesthay eakpay!")
+  end
 
   # Test-driving bonus:
   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
