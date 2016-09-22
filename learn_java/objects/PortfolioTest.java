@@ -1,4 +1,5 @@
-public class PortfolioTest extends Test
+import junit.framework.TestCase;
+public class PortfolioTest extends TestCase
 {
     Stock stockHP = new Stock("HPQ", 60.03, 120);
     Stock stockIBM = new Stock("IBM", 32.11, 50);

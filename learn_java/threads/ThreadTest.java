@@ -1,5 +1,6 @@
+import junit.framework.TestCase;
 
-public class ThreadTest extends Test
+public class ThreadTest extends TestCase
 {
     public void testAccountConstructor()
     {

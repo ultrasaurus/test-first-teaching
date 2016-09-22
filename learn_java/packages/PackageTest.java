@@ -1,9 +1,10 @@
+import junit.framework.TestCase;
 
 import java.util.Comparator;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class PackageTest extends Test
+public class PackageTest extends TestCase
 {
     public static void testEnglish()
     {

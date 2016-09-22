@@ -1,7 +1,8 @@
+import junit.framework.TestCase;
 import java.util.*;
 import java.io.IOException;
 
-public class PortfolioWithCollectionsTest extends Test
+public class PortfolioWithCollectionsTest extends TestCase
 {
     Stock stockHP = new Stock("HPQ", 60.03, 120);
     Stock stockIBM = new Stock("IBM", 32.11, 50);

@@ -1,7 +1,8 @@
+import junit.framework.TestCase;
 
 import java.io.*;
 
-public class StockIOTest extends Test
+public class StockIOTest extends TestCase
 {
     Stock hp = new Stock("HP", 11.4, 10);
     Stock yhoo = new Stock("YHOO", 57.2, 30);

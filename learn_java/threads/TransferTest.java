@@ -1,11 +1,12 @@
+import junit.framework.TestCase;
 
-public class TransferTest extends Test
+public class TransferTest extends TestCase
 {
 	public void testTransfer()
 	{
 		Account joseph = new Account("Joseph", 1000);
 		Account mary = new Account("Mary", 500);
-		
+
 		Account.transfer(joseph, mary, 150);
 		assertEquals(850, joseph.getBalance());
 		assertEquals(650, mary.getBalance());
@@ -21,7 +22,7 @@ public class TransferTest extends Test
 		assertEquals(500, joseph.getBalance());
 		assertEquals(1000, mary.getBalance());
 	}
-	
+
 	public void testTransferThreadSafe() throws InterruptedException
 	{
 		Account joseph = new Account("Joseph", 1000);
@@ -33,10 +34,10 @@ public class TransferTest extends Test
 
 		josephToMary.start();
 		maryToJoseph.start();
-		
+
 		josephToMary.join();
 		maryToJoseph.join();
-		
+
 		assertEquals(1000, joseph.getBalance());
 		assertEquals(500, mary.getBalance());
 	}

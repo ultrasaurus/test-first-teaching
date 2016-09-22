@@ -13,8 +13,9 @@ public static void main(String[] args)
                 f.setVisible(true);
         }
 */
+import junit.framework.TestCase;
 
-public class CalculatorTest extends Test
+public class CalculatorTest extends TestCase
 {
     public void testIsJPanel()
     {

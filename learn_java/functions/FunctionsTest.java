@@ -1,5 +1,6 @@
+import junit.framework.TestCase;
 
-public class FunctionsTest extends Test
+public class FunctionsTest extends TestCase
 {
     public void testHello()
     {

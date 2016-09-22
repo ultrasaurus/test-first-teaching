@@ -1,7 +1,8 @@
+import junit.framework.TestCase;
 
 import java.io.*;
 
-public class StreamTest extends Test
+public class StreamTest extends TestCase
 {
     public final String NEWLINE = System.getProperty("line.separator");
 
@@ -10,7 +11,7 @@ public class StreamTest extends Test
 		String contents = IOUtil.readFile("odwalla.txt");
 		assertEquals("This juice is food!", contents);
 	}
-	
+
 	public void testWriteFile() throws IOException
     {
 		String contents = "Drink it & thrive!";

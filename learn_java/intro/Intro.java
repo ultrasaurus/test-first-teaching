@@ -7,7 +7,7 @@ public class Intro
 
     public String getGoodbye()
     {
-        return "Goodbye";
+        return "Farewell";
     }
 }
 

@@ -1,10 +1,11 @@
+import junit.framework.TestCase;
 
 import java.io.File;
 import java.util.List;
 
 //todo: remove duplication between this test and FileStockRepositoryTest somehow
 
-public class MemoryStockRepositoryTest extends Test
+public class MemoryStockRepositoryTest extends TestCase
 {
     Stock hp = new Stock("HP", 11.4, 10);
     Stock yhoo = new Stock("YHOO", 57.2, 30);

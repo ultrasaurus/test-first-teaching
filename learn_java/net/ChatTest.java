@@ -1,9 +1,10 @@
+import junit.framework.TestCase;
 
 import java.net.*;
 import java.io.*;
 import java.util.*;
 
-public class ChatTest extends Test
+public class ChatTest extends TestCase
 {
     public static String CHAT_HOST = "localhost";
     public static int CHAT_PORT = 7778;

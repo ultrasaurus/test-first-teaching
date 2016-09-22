@@ -1,4 +1,6 @@
-public class IntroTest extends Test
+import junit.framework.TestCase;
+
+public class IntroTest extends TestCase
 {
     public void testHello()
     {

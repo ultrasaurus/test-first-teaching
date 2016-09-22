@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Threads</title>
+  </head>
+
+  <body>
+    <h1>Threads</h1>
+
+
+    Here we will write a simple model of a bank account.  First we will get the
+    bank account working without multithreading.  Then we will create some threads
+    that access the accounts.  Then the fun part begins!  Once we start running
+    many threads simultaneously we will encounter some problems, which we will
+    (hopefully) solve.  These solutions may lead to more problems!  Threads are fun!
+
+    <h2>The Depositor Thread</h2>
+
+    <p>
+    The Depositor is an object that runs in a thread (in fact, it will probably
+    extend java.lang.Thread) and continuously deposits a certain amount into a
+    certain account.  In its constuctor it takes three parameters: the account
+    to deposit into, the amount to deposit, and the number of times ro deposit
+    before stopping.  In the code:
+
+    <pre>
+     1:   Thread depositor = new Depositor(account, 5, 1000);
+     2:   depositor.start();
+     3:   depositor.join();
+    </pre>
+
+    Line 1 creates the depositor, intending to deposit $5, 1000x. Line 2 starts
+    the thread.  Line 3 (calling "Thread.join()")
+    makes the test code thread wait until the depositor thread has completed.
+
+    <p>
+
+    Finally, in the testThreadSafe method, we spawn <b>two</b> depositor threads,
+    make them run 25,000,000 times, and then check the results.  If all goes well,
+    there should be
+
+    <hr>
+
+    All contents Copyright (C) 2002 by Alex Chaffee and Purple
+    Technology.  All rights reserved.  Please do not distribute
+    without permission.  For more information, contact
+    alex@purpletech.com.
+
+    <hr>
+    <address><a href="mailto:alex@stinky.com">Alex Chaffee</a></address>
+<!-- Created: Wed Jul 17 18:15:59 PDT 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Jul 18 15:13:07 PDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

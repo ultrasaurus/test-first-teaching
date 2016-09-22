@@ -1,4 +1,6 @@
-public class StockTest extends Test
+import junit.framework.TestCase;
+
+public class StockTest extends TestCase
 {
     public void testSetSymbol()
     {

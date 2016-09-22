@@ -1,7 +1,8 @@
 
 import java.util.Map;
+import junit.framework.TestCase;
 
-public class StringTest extends Test
+public class StringTest extends TestCase
 {
     String textRichardIII = "Now is the winter of our discontent, made glorious summer by this son of York.";
     String textRomeo = "O Romeo, Romeo! Wherefore art thou, Romeo? Deny thy father and refuse thy name; Or, if thou wilt not, be but sworn my love, And I'll no longer be a Capulet.";

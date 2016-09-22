@@ -1,7 +1,8 @@
+import junit.framework.TestCase;
 import javax.swing.*;
 import java.awt.*;
 
-public class CalculatorMultiplyTest extends Test
+public class CalculatorMultiplyTest extends TestCase
 {
 	public void testMultiply()
 	{
@@ -17,5 +18,5 @@ public class CalculatorMultiplyTest extends Test
 		assertEquals("5544", c.getAnswerField().getText());
 	}
 
-	
+
 }

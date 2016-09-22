@@ -1,4 +1,5 @@
-public class PolymorphismTest extends Test
+import junit.framework.TestCase;
+public class PolymorphismTest extends TestCase
 {
     Stock stockHP = new Stock("HPQ", 60.03, 120);
     Stock stockIBM = new Stock("IBM", 32.11, 50);
