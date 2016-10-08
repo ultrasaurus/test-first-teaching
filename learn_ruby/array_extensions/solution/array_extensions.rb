@@ -1,11 +1,7 @@
 
 class Array
   def sum
-    result = 0
-    self.each do |num|
-      result += num
-    end
-    result
+      reduce(0, :+)
   end
 
   def square
