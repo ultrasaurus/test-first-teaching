@@ -23,7 +23,7 @@ gem "puma"
 # gem "spork"
 
 group :development do
-  gem "rake", "~> 10.4.2"
+  gem "rake", "~> 12.3.3"
   gem "wrong", ">=0.6.2"
   gem "bourbon"  # do 'cd web/css; bourbon update' to get new bourbon
   gem "foreman"
